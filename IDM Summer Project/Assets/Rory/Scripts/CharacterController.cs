@@ -23,7 +23,11 @@ public class CharacterController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
         CharacterState newState = state.NewState();
-        if(newState != null) state = newState;
+        if (newState != null) 
+        { 
+            state = newState;
+            state.Enter();
+        }
     }
     private void FixedUpdate()
     {

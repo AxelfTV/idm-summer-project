@@ -11,24 +11,17 @@ public abstract class CharacterState
 
     public static InputHandler input;
     public static Rigidbody playerRb;
-    protected bool enter;
     public abstract void Update();
     public abstract CharacterState NewState();
     protected bool IsGrounded()
     {
         return playerRb.velocity.y >= -0.05f;
     }
-    protected void Enter() 
-    {
-        if (enter) return;
-        enter = true;
-        OnEnter();
-    }
-    protected virtual void OnEnter() 
+    public virtual void Enter() 
     {
         Debug.Log(this);
     }
-  
+    
     public virtual void Move(float speed)
     {
         playerRb.AddForce(input.GetMoveDirection() * speed);
@@ -37,9 +30,7 @@ public abstract class CharacterState
 public class CharacterIdle : CharacterState
 {
     public override void Update()
-    {
-        Enter();
-    }
+    {}
     public override CharacterState NewState()
     {
         if (!IsGrounded()) return new CharacterOffLedge();
@@ -58,7 +49,6 @@ public class CharacterRunning : CharacterState
 {
     public override void Update()
     {
-        Enter();
         Move(_RUNSPEED);
     }
     public override CharacterState NewState()
@@ -77,7 +67,7 @@ public class CharacterRunning : CharacterState
 }
 public class CharacterJump : CharacterState
 {
-    protected override void OnEnter()
+    public override void Enter()
     {
         Debug.Log(this);
         playerRb.velocity = new Vector3(playerRb.velocity.x, 0, playerRb.velocity.z);
@@ -85,12 +75,10 @@ public class CharacterJump : CharacterState
     }
     public override void Update()
     {
-        Enter();
         Move(_RUNSPEED);
     }
     public override CharacterState NewState()
     {
-        if (!enter) return null;
         if (playerRb.velocity.y < -0.05f) return new CharacterFall();
         return null;
     }
@@ -100,7 +88,6 @@ public class CharacterFall : CharacterState
     float buffer = 0;
     public override void Update()
     {
-        Enter();
         Move(_RUNSPEED);
         buffer += Time.fixedDeltaTime;
     }
@@ -117,18 +104,13 @@ public class CharacterFall : CharacterState
     
     public override void Update()
     {
-        Enter();
         Move(_RUNSPEED);
         timer += Time.fixedDeltaTime;
     }
     public override CharacterState NewState()
     {
         if (input.Jump()) return new CharacterJump();
-        if (timer > _COYOTETIME) 
-        {
-            Debug.Log("Timer Up");
-            return new CharacterFall(); 
-        }
+        if (timer > _COYOTETIME) return new CharacterFall(); 
         if (IsGrounded()) return new CharacterIdle();
         return null;
     }
