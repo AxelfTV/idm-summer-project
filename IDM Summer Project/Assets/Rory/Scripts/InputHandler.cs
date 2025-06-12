@@ -27,4 +27,8 @@ public class InputHandler
         move.Normalize();
         return move;
     }
+    public bool Jump()
+    {
+        return Input.GetKeyDown(KeyCode.Space);
+    }
 }

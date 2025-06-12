@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterController : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class CharacterController : MonoBehaviour
     void Start()
     {
         input = new InputHandler();
-        CharacterState.player = gameObject;
+        CharacterState.playerRb = GetComponent<Rigidbody>();
         CharacterState.input = input;
         state = new CharacterIdle();
     }
@@ -19,6 +20,8 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
         CharacterState newState = state.NewState();
         if(newState != null) state = newState;
     }

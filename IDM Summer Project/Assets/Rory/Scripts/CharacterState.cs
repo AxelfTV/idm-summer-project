@@ -4,21 +4,50 @@ using UnityEngine;
 
 public abstract class CharacterState
 {
-    public static InputHandler input;
-    public static GameObject player;
+    protected const float _RUNSPEED = 15;
+    protected const float _JUMPHEIGHT = 4;
+    protected const float _BUFFERTIME = 0.2f;
+    protected const float _COYOTETIME = 0.2f;
 
+    public static InputHandler input;
+    public static Rigidbody playerRb;
+    protected bool enter;
     public abstract void Update();
     public abstract CharacterState NewState();
+    protected bool IsGrounded()
+    {
+        return playerRb.velocity.y >= -0.05f;
+    }
+    protected void Enter() 
+    {
+        if (enter) return;
+        enter = true;
+        OnEnter();
+    }
+    protected virtual void OnEnter() 
+    {
+        Debug.Log(this);
+    }
+  
+    public virtual void Move(float speed)
+    {
+        playerRb.AddForce(input.GetMoveDirection() * speed);
+    }
 }
 public class CharacterIdle : CharacterState
 {
     public override void Update()
     {
-        
+        Enter();
     }
     public override CharacterState NewState()
     {
-        if(input.GetMoveDirection().magnitude > 0)
+        if (!IsGrounded()) return new CharacterOffLedge();
+        if (input.Jump())
+        {
+            return new CharacterJump();
+        }
+        if (input.GetMoveDirection().magnitude > 0)
         {
             return new CharacterRunning();
         }
@@ -29,14 +58,78 @@ public class CharacterRunning : CharacterState
 {
     public override void Update()
     {
-        player.GetComponent<Rigidbody>().AddForce(input.GetMoveDirection() * 15);
+        Enter();
+        Move(_RUNSPEED);
     }
     public override CharacterState NewState()
     {
+        if (!IsGrounded()) return new CharacterOffLedge();
+        if (input.Jump())
+        {
+            return new CharacterJump();
+        }
         if (input.GetMoveDirection().magnitude == 0)
         {
             return new CharacterIdle();
         }
+        return null;
+    }
+}
+public class CharacterJump : CharacterState
+{
+    protected override void OnEnter()
+    {
+        Debug.Log(this);
+        playerRb.velocity = new Vector3(playerRb.velocity.x, 0, playerRb.velocity.z);
+        playerRb.AddForce(Vector3.up * _JUMPHEIGHT, ForceMode.Impulse);
+    }
+    public override void Update()
+    {
+        Enter();
+        Move(_RUNSPEED);
+    }
+    public override CharacterState NewState()
+    {
+        if (!enter) return null;
+        if (playerRb.velocity.y < -0.05f) return new CharacterFall();
+        return null;
+    }
+}
+public class CharacterFall : CharacterState
+{
+    float buffer = 0;
+    public override void Update()
+    {
+        Enter();
+        Move(_RUNSPEED);
+        buffer += Time.fixedDeltaTime;
+    }
+    public override CharacterState NewState()
+    {
+        if (input.Jump()) buffer = -_BUFFERTIME;
+        if (IsGrounded() && buffer < 0) return new CharacterJump();
+        if (IsGrounded()) return new CharacterIdle();
+        return null;
+    }
+}public class CharacterOffLedge : CharacterState
+{
+    float timer = 0;
+    
+    public override void Update()
+    {
+        Enter();
+        Move(_RUNSPEED);
+        timer += Time.fixedDeltaTime;
+    }
+    public override CharacterState NewState()
+    {
+        if (input.Jump()) return new CharacterJump();
+        if (timer > _COYOTETIME) 
+        {
+            Debug.Log("Timer Up");
+            return new CharacterFall(); 
+        }
+        if (IsGrounded()) return new CharacterIdle();
         return null;
     }
 }
