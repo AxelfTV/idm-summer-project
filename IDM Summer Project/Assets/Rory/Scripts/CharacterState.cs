@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class CharacterState
 {
     protected const float _RUNSPEED = 15;
-    protected const float _JUMPHEIGHT = 4;
+    protected const float _JUMPHEIGHT = 8;
     protected const float _BUFFERTIME = 0.2f;
     protected const float _COYOTETIME = 0.2f;
 

@@ -33,6 +33,7 @@ public class InputHandler
     }
     Quaternion GetCameraForwardRotation()
     {
-        return Quaternion.FromToRotation(Vector3.forward, Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up).normalized);
+        return Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up).normalized, Vector3.up);
+        //return Quaternion.FromToRotation(Vector3.forward, Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up).normalized);
     }
 }
