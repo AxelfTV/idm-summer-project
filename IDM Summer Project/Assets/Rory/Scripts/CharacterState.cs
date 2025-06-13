@@ -19,7 +19,7 @@ public abstract class CharacterState
     }
     public virtual void Enter() 
     {
-        Debug.Log(this);
+        //Debug.Log(this);
     }
     
     public virtual void Move(float speed)
@@ -69,7 +69,7 @@ public class CharacterJump : CharacterState
 {
     public override void Enter()
     {
-        Debug.Log(this);
+        base.Enter();
         playerRb.velocity = new Vector3(playerRb.velocity.x, 0, playerRb.velocity.z);
         playerRb.AddForce(Vector3.up * _JUMPHEIGHT, ForceMode.Impulse);
     }

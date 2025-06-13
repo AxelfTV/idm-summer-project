@@ -25,10 +25,14 @@ public class InputHandler
             move += Vector3.back;
         }
         move.Normalize();
-        return move;
+        return GetCameraForwardRotation() * move;
     }
     public bool Jump()
     {
         return Input.GetKeyDown(KeyCode.Space);
+    }
+    Quaternion GetCameraForwardRotation()
+    {
+        return Quaternion.FromToRotation(Vector3.forward, Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up).normalized);
     }
 }
