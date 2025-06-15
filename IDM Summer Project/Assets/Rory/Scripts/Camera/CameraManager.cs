@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-using UnityEngine.SceneManagement;
 
 public class CameraManager : MonoBehaviour
 {
@@ -18,7 +17,7 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        
     }
     
 }

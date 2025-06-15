@@ -827,6 +827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 502794749}
   - component: {fileID: 502794750}
+  - component: {fileID: 502794751}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -862,6 +863,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialCam: {fileID: 1688570648}
+--- !u!114 &502794751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502794748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd455d446b962c845b2c1ad29627534d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &627672586
 PrefabInstance:
   m_ObjectHideFlags: 0
