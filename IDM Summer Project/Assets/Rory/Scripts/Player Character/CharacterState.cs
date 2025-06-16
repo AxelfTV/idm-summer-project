@@ -22,14 +22,18 @@ public abstract class CharacterState
     
     public virtual void Move(float speed)
     {
-        stats.rb.AddForce(stats.input.GetMoveDirection() * speed);
+        //stats.rb.AddForce(stats.input.GetMoveDirection() * speed);
+        Vector3 moveDir = stats.input.GetMoveDirection() * speed;
+        stats.rb.velocity = new Vector3(moveDir.x, stats.rb.velocity.y, moveDir.z);
     }
 }
 public class CharacterIdle : CharacterState
 {
     public CharacterIdle(CharacterStats stats): base(stats) { }
     public override void Update()
-    {}
+    {
+        Move(stats.runSpeed);
+    }
     public override CharacterState NewState()
     {
         if (!IsGrounded()) return new CharacterOffLedge(stats);
