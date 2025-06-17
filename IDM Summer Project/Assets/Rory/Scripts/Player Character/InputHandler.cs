@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputHandler
+public class InputHandler : MonoBehaviour
 {
     Vector3 move;
     public Vector3 GetMoveDirection()
@@ -30,6 +30,14 @@ public class InputHandler
     public bool Jump()
     {
         return Input.GetKeyDown(KeyCode.Space);
+    }
+    public bool Call()
+    {
+        return Input.GetKeyDown(KeyCode.LeftControl);
+    }
+    public bool Interact()
+    {
+        return Input.GetKeyDown(KeyCode.LeftShift);
     }
     Quaternion GetCameraForwardRotation()
     {

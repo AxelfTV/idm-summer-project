@@ -10,6 +10,9 @@ public class CharacterManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //ignore collisions with sheep
+        Physics.IgnoreLayerCollision(6, 7);
+
         stats = GetComponent<CharacterStats>();
         state = new CharacterIdle(stats);
     }
@@ -27,5 +30,14 @@ public class CharacterManager : MonoBehaviour
     private void FixedUpdate()
     {
         state.Update();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bouncy"))
+        {
+            Debug.Log("Bouncy");
+            state = new CharacterJump(stats);
+            state.Enter();
+        }
     }
 }

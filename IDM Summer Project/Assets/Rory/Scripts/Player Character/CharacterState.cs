@@ -25,6 +25,14 @@ public abstract class CharacterState
         //stats.rb.AddForce(stats.input.GetMoveDirection() * speed);
         Vector3 moveDir = stats.input.GetMoveDirection() * speed;
         stats.rb.velocity = new Vector3(moveDir.x, stats.rb.velocity.y, moveDir.z);
+
+        if(moveDir.magnitude > 0)
+        {
+            Vector3 lookDir = stats.rb.velocity;
+            lookDir.y = 0f;
+            stats.rb.transform.rotation = Quaternion.LookRotation(lookDir, Vector3.up);
+        }
+        
     }
 }
 public class CharacterIdle : CharacterState
