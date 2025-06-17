@@ -15,11 +15,65 @@ MonoBehaviour:
   Path: Assets/FMOD/Fmod Project/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638857520391226298
+  lastModified: 638857713504530885
   FileSizes:
   - Name: Desktop
-    Value: 11264
+    Value: 892800
   Exists: 1
+--- !u!114 &-5010695575892319198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Main Menu Music
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Main Menu Music
+  Guid:
+    Data1: -641242946
+    Data2: 1185774004
+    Data3: -2024062299
+    Data4: -1238389458
+  Banks:
+  - {fileID: -5411780681524171995}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 71448
+--- !u!114 &-1223416153962706400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Sheep SFX
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Sheep SFX
+  Guid:
+    Data1: 1096972434
+    Data2: 1116357770
+    Data3: -868763993
+    Data4: -1589116685
+  Banks:
+  - {fileID: -5411780681524171995}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1044
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36,13 +90,14 @@ MonoBehaviour:
   - {fileID: 1394594890381449845}
   - {fileID: -5411780681524171995}
   EditorEvents:
-  - {fileID: 1933740104429628795}
+  - {fileID: -1223416153962706400}
+  - {fileID: -5010695575892319198}
   EditorParameters: []
   MasterBanks:
   - {fileID: -5411780681524171995}
   StringsBanks:
   - {fileID: 1394594890381449845}
-  cacheTime: 638857520391236267
+  cacheTime: 638857713504545966
   cacheVersion: 131625
 --- !u!114 &1394594890381449845
 MonoBehaviour:
@@ -59,35 +114,8 @@ MonoBehaviour:
   Path: Assets/FMOD/Fmod Project/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638857520391236267
+  lastModified: 638857713504545966
   FileSizes:
   - Name: Desktop
-    Value: 758
+    Value: 1032
   Exists: 1
---- !u!114 &1933740104429628795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Sheep VFX
-  m_EditorClassIdentifier: 
-  Path: event:/Sheep VFX
-  Guid:
-    Data1: 1096972434
-    Data2: 1116357770
-    Data3: -868763993
-    Data4: -1589116685
-  Banks:
-  - {fileID: -5411780681524171995}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1044

@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{41627892-448a-428a-a7b6-37ccf30048a1}">
 		<property name="name">
-			<value>Sheep VFX</value>
+			<value>Sheep SFX</value>
 		</property>
 		<property name="outputFormat">
 			<value>2</value>
 		</property>
 		<relationship name="folder">
-			<destination>{39f36184-ad2d-427e-a2eb-5bbd2f7ff21a}</destination>
+			<destination>{52423312-506d-46cd-a368-7385a0df4804}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{41279736-c52a-4385-b47f-f033960c2533}</destination>
@@ -53,7 +53,7 @@
 			<destination>{52611987-caa2-41e8-ad6b-530f74454bfa}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{c367c35f-73e2-4952-9576-30fcbbbbf0d1}</destination>
+			<destination>{70b09db8-af1d-452a-940d-378d70827ede}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{1c5a26fd-eb3a-4e98-877c-daac5c99fa4b}" />
