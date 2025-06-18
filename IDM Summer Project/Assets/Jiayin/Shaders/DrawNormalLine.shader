@@ -2,7 +2,7 @@ Shader "Unlit/DrawNormalLine"
 {
 
     Properties {
-   _EdgeControl ("Edge Control", Range(0, 1)) = 0.5
+   _EdgeControl ("Edge Control", Range(0, 10)) = 0.5
     }
 
     SubShader {

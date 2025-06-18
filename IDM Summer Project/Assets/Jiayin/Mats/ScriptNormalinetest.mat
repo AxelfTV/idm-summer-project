@@ -33,6 +33,6 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _EdgeControl: 0.978
+    - _EdgeControl: 1
     m_Colors: []
   m_BuildTextureStacks: []

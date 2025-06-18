@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TWShader_Skybox
+  m_Shader: {fileID: 4800000, guid: 62c1fab93df10014897940dae0bc2768, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _CloudNoise1:
+        m_Texture: {fileID: 2800000, guid: 7bb0bc017ce287543ae604fa01d6e4c2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CloudNoise2:
+        m_Texture: {fileID: 2800000, guid: b0f3de9855eea01499624908a8e7d62a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CloudTex:
+        m_Texture: {fileID: 2800000, guid: e4c6f6b778d11f04c95d64d9c8215bf7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Cloudflow:
+        m_Texture: {fileID: 2800000, guid: b86113c64d5fdfc4d8e951f1f8e7503b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SunViewGrad:
+        m_Texture: {fileID: 2800000, guid: ca4f2c2b384fe5c4a9cbe620f5d46b7c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SunZenithGrad:
+        m_Texture: {fileID: 2800000, guid: 365a5bf156fa5f0429861d9ec1580d77, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ViewZenithGrad:
+        m_Texture: {fileID: 2800000, guid: f831b8a9af96fa24e8755463c15450a7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _CloudClampadd: -0.1
+    - _CloudClampmut: 3.13
+    - _CloudCut: 0.003
+    - _CloudSpeed: 0.7
+    - _Fuzziness: -0.2
+    - _NoiseScale: 0.08
+    m_Colors:
+    - _CloudColor1: {r: 0.43648982, g: 0.47643626, b: 0.690566, a: 1}
+    - _CloudColor2: {r: 0.41556123, g: 0.27509424, b: 0.5999999, a: 1}
+  m_BuildTextureStacks: []
