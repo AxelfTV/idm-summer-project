@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class SheepState
 {
     protected SheepStats stats;
+
     public SheepState(SheepStats stats)
     {
         this.stats = stats;
@@ -65,7 +66,11 @@ public abstract class SheepState
 
         stats.bouncePad.SetActive(false);
     }
-    
+    public virtual bool Grab()
+    {
+        return false;
+    }
+    public virtual void Throw(){}
 }
 public class SheepIdle : SheepState
 {
@@ -142,37 +147,47 @@ public class SheepToHold : SheepState
     }
     public override SheepState NewState()
     {
-        if (VectorToHold().magnitude < 0.3f) return new SheepHold(stats);
-        //if (stats.input.Interact()) return new SheepThrow(stats);
+        if (VectorToHold().magnitude < 0.3f) 
+        {
+            //attempt to enter players hold
+            if (stats.player.SheepToHold(stats.sheep)) return new SheepHold(stats);
+            //if unable
+            else return new SheepReturn(stats);
+        } 
         if (stats.input.Call()) return new SheepReturn(stats);
         return null;
     }
 }
 public class SheepHold : SheepState
 {
-    public SheepHold(SheepStats stats) : base(stats) { }
+    bool toThrow;
+    public SheepHold(SheepStats stats) : base(stats) {}
     public override void Enter()
     {
         base.Enter();
         HoldMode();
         stats.rb.transform.position = stats.holdPosition.position;
     }
-    public override void Update()
-    {
-        //will be handled by player when interacting is implemented
-        stats.rb.position = stats.holdPosition.position;
-    }
+    public override void Update(){}
     public override SheepState NewState()
     {
-        if (stats.input.Interact()) return new SheepThrow(stats);
-        if (stats.input.Call()) return new SheepReturn(stats);
+        if (stats.input.Call()) 
+        {
+            stats.player.Drop();
+            return new SheepReturn(stats); 
+        }
+        if (toThrow) return new SheepThrow(stats);
         return null;
+    }
+    public override void Throw()
+    {
+        toThrow = true;
     }
 }
 
 public class SheepThrow : SheepState
 {
-    void Throw()
+    void Fire()
     {
         Vector3 throwDir = stats.player.transform.forward + Vector3.up;
         stats.rb.velocity = throwDir * stats.throwDist;
@@ -183,7 +198,7 @@ public class SheepThrow : SheepState
         base.Enter();
         FollowMode();
         stats.rb.position = stats.holdPosition.position;
-        Throw();
+        Fire();
     }
     public override void Update()
     {
@@ -199,6 +214,7 @@ public class SheepThrow : SheepState
 
 public class SheepGround : SheepState
 {
+    bool toGrab;
     public SheepGround(SheepStats stats) : base(stats) { }
     public override void Enter()
     {
@@ -213,6 +229,12 @@ public class SheepGround : SheepState
     public override SheepState NewState()
     {
         if (stats.input.Call()) return new SheepToHold(stats);
+        if (toGrab) return new SheepHold(stats);
         return null;
+    }
+    public override bool Grab()
+    {
+        toGrab = true;
+        return true;
     }
 }

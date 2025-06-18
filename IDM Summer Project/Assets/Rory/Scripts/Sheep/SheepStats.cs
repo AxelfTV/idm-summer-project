@@ -7,7 +7,8 @@ public class SheepStats : MonoBehaviour
 {
     [NonSerialized] public InputHandler input;
     [NonSerialized] public Rigidbody rb;
-    [NonSerialized] public GameObject player;
+    [NonSerialized] public CharacterManager player;
+    [NonSerialized] public SheepManager sheep;
     [NonSerialized] public Transform holdPosition;
     [NonSerialized] public Transform followPosition;
     [NonSerialized] public Collider col;
@@ -26,9 +27,10 @@ public class SheepStats : MonoBehaviour
     {
         col = GetComponent<Collider>();
         rb = GetComponent<Rigidbody>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterManager>();
+        sheep = GetComponent<SheepManager>();
         input = player.GetComponent<InputHandler>();
-        CharacterStats playerStats = player.GetComponent<CharacterStats>();
+        CharacterStats playerStats = player.gameObject.GetComponent<CharacterStats>();
         holdPosition = playerStats.holdPosition;
         followPosition = playerStats.sheepFollowPosition;
     }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SheepManager : MonoBehaviour
+public class SheepManager : MonoBehaviour, IHoldable
 {
     SheepStats stats;
     SheepState state;
@@ -11,6 +11,7 @@ public class SheepManager : MonoBehaviour
     {
         stats = GetComponent<SheepStats>();
         state = new SheepFollow(stats);
+        state.Enter();
     }
 
     // Update is called once per frame
@@ -26,5 +27,23 @@ public class SheepManager : MonoBehaviour
     private void FixedUpdate()
     {
         state.Update();
+    }
+    public bool Grab()
+    {
+        if (state.Grab())
+        {
+            state = new SheepHold(stats);
+            state.Enter();
+            return true;
+        }
+        return false;
+    }
+    public void Throw()
+    {
+        state.Throw();
+    }
+    public GameObject GetGameObject()
+    {
+        return gameObject;
     }
 }
