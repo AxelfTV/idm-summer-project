@@ -1,5 +1,61 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1517812773570895160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1857282472611199703}
+  - component: {fileID: 2044172682542384407}
+  m_Layer: 0
+  m_Name: Decal Projector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1857282472611199703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517812773570895160}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -0.916, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7110689308563430099}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &2044172682542384407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1517812773570895160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0777d029ed3dffa4692f417d4aba19ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 2100000, guid: 160c8df0531f8c848a6227c2a66f6541, type: 2}
+  m_DrawDistance: 1000
+  m_FadeScale: 0.9
+  m_StartAngleFade: 180
+  m_EndAngleFade: 180
+  m_UVScale: {x: 1, y: 1}
+  m_UVBias: {x: 0, y: 0}
+  m_DecalLayerMask: 1
+  m_ScaleMode: 0
+  m_Offset: {x: 0, y: 0, z: 5}
+  m_Size: {x: 1, y: 1, z: 10}
+  m_FadeFactor: 1
 --- !u!1 &3072096319817882600
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +70,7 @@ GameObject:
   - component: {fileID: 3603142872071958648}
   - component: {fileID: 3069384848127208335}
   - component: {fileID: 6016240088775995043}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -37,6 +93,7 @@ Transform:
   - {fileID: 2301045024987279557}
   - {fileID: 5563400394695847112}
   - {fileID: 7313218516063165203}
+  - {fileID: 1857282472611199703}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2752067823167080573
@@ -51,8 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 735b54d7b5b4c4f4580cf8241b2f2d58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdPosition: {fileID: 0}
-  sheepFollowPosition: {fileID: 0}
+  holdPosition: {fileID: 2301045024987279557}
+  sheepFollowPosition: {fileID: 5563400394695847112}
   runSpeed: 15
   jumpHeight: 8
   bufferTime: 0.2
@@ -140,7 +197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5563400394695847112}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sheep Follow Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2301045024987279557}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hold Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
