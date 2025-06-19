@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BasicHoldable : MonoBehaviour, IHoldable
 {
+    Rigidbody rb;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
@@ -11,13 +12,19 @@ public class BasicHoldable : MonoBehaviour, IHoldable
             GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterManager>().Grab(this);
         }
     }
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
     public bool Grab()
     {
+        rb.velocity = Vector3.zero;
         return true;
     }
     public void Throw()
     {
-        GetComponent<Rigidbody>().AddForce(Vector3.up * 10, ForceMode.Impulse);
+        rb.velocity = Vector3.zero;
+        rb.AddForce(Vector3.up * 10, ForceMode.Impulse);
     }
     public GameObject GetGameObject()
     {
