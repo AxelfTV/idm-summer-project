@@ -6,6 +6,7 @@ public class SheepManager : MonoBehaviour, IHoldable
 {
     SheepStats stats;
     SheepState state;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class SheepManager : MonoBehaviour, IHoldable
         SheepState newState = state.NewState();
         if (newState != null)
         {
+            state.Exit();
             state = newState;
             state.Enter();
         }
@@ -45,5 +47,9 @@ public class SheepManager : MonoBehaviour, IHoldable
     public GameObject GetGameObject()
     {
         return gameObject;
+    }
+    public bool HoldingSheep()
+    {
+        return state.holding;
     }
 }

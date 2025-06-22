@@ -11,9 +11,8 @@ public class CharacterStats : MonoBehaviour
     public Transform holdPosition;
     public Transform sheepFollowPosition;
 
-    public float runSpeed = 15;
+    [SerializeField] public float runSpeed = 15;
     public float jumpHeight = 8;
-    public float bufferTime = 0.2f;
     public float coyoteTime = 0.2f;
     // Start is called before the first frame update
     void Start()

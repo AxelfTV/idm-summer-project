@@ -30,6 +30,7 @@ public class SheepStats : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterManager>();
         sheep = GetComponent<SheepManager>();
         input = player.GetComponent<InputHandler>();
+        input.sheep = GetComponent<SheepManager>();
         CharacterStats playerStats = player.gameObject.GetComponent<CharacterStats>();
         holdPosition = playerStats.holdPosition;
         followPosition = playerStats.sheepFollowPosition;

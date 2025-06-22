@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class SheepState
 {
     protected SheepStats stats;
-
+    public bool holding;
     public SheepState(SheepStats stats)
     {
         this.stats = stats;
@@ -17,6 +17,10 @@ public abstract class SheepState
     public virtual void Enter()
     {
         //Debug.Log(this);
+    }
+    public virtual void Exit()
+    {
+
     }
     protected bool IsGrounded()
     {
@@ -164,9 +168,14 @@ public class SheepHold : SheepState
     public SheepHold(SheepStats stats) : base(stats) {}
     public override void Enter()
     {
+        holding = true;
         base.Enter();
         HoldMode();
         stats.rb.transform.position = stats.holdPosition.position;
+    }
+    public override void Exit()
+    {
+        holding = false;
     }
     public override void Update(){}
     public override SheepState NewState()

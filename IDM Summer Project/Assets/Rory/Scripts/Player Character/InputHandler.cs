@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
+    [SerializeField] float jumpBuffer = 0.5f;
+    bool jumpBuffered;
+    bool canDouble;
     Vector3 move;
+
+    public SheepManager sheep;
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StopCoroutine("JumpBuffer");
+            StartCoroutine("JumpBuffer");
+        }
+    }
     public Vector3 GetMoveDirection()
     {
         move = Vector3.zero;
@@ -29,7 +42,18 @@ public class InputHandler : MonoBehaviour
     }
     public bool Jump()
     {
-        return Input.GetKeyDown(KeyCode.Space);
+        return Input.GetKeyDown(KeyCode.Space) || jumpBuffered;
+        
+    }
+    public void OnJump()
+    {
+        jumpBuffered = false;
+    }
+    IEnumerator JumpBuffer()
+    {
+        jumpBuffered = true;
+        yield return new WaitForSeconds(jumpBuffer);
+        jumpBuffered = false;
     }
     public bool Call()
     {
@@ -39,9 +63,24 @@ public class InputHandler : MonoBehaviour
     {
         return Input.GetKeyDown(KeyCode.LeftShift);
     }
+    public bool Glide()
+    {
+        return sheep.HoldingSheep() && Input.GetKey(KeyCode.Space);
+    }
+    public bool DoubleJump()
+    {
+        return sheep.HoldingSheep() && canDouble;
+    }
+    public void OnDouble()
+    {
+        canDouble = false;
+    }
+    public void Grounded()
+    {
+        canDouble = true;
+    }
     Quaternion GetCameraForwardRotation()
     {
         return Quaternion.LookRotation(Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up).normalized, Vector3.up);
-        //return Quaternion.FromToRotation(Vector3.forward, Vector3.ProjectOnPlane(Camera.main.transform.forward, Vector3.up).normalized);
     }
 }
