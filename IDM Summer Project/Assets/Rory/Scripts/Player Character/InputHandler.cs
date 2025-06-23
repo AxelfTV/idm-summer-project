@@ -55,6 +55,10 @@ public class InputHandler : MonoBehaviour
         yield return new WaitForSeconds(jumpBuffer);
         jumpBuffered = false;
     }
+    public bool JumpOver()
+    {
+        return !Input.GetKey(KeyCode.Space);
+    }
     public bool Call()
     {
         return Input.GetKeyDown(KeyCode.LeftControl);

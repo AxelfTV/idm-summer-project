@@ -10,13 +10,18 @@ public class CharacterManager : MonoBehaviour
     CharacterState state;
 
     IHoldable holding = null;
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
         //ignore collisions with sheep
         Physics.IgnoreLayerCollision(6, 7);
 
         stats = GetComponent<CharacterStats>();
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        
         state = new CharacterIdle(stats);
         state.Enter();
     }
