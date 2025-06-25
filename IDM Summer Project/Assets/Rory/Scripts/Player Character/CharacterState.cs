@@ -224,3 +224,25 @@ public class CharacterGlide : CharacterState
         return null;
     }
 }
+public class CharacterBounce : CharacterState
+{
+    public CharacterBounce(CharacterStats stats) : base(stats) { }
+    float jumpTimer = 0;
+    public override void Enter()
+    {
+        base.Enter();
+        stats.input.OnJump();
+        stats.input.Grounded();
+        Jump();
+    }
+    public override void Update()
+    {
+        AirMove();
+        jumpTimer += Time.fixedDeltaTime;
+    }
+    public override CharacterState NewState()
+    {
+        if (jumpTimer >= stats.jumpLength) return new CharacterFall(stats);
+        return null;
+    }
+}

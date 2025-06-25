@@ -111,9 +111,11 @@ MonoBehaviour:
   holdPosition: {fileID: 2301045024987279557}
   sheepFollowPosition: {fileID: 5563400394695847112}
   runSpeed: 15
-  jumpHeight: 8
-  bufferTime: 0.2
+  jumpHeight: 15
+  jumpLength: 0.3
   coyoteTime: 0.2
+  downwardAcceleration: 50
+  airMoveSpeed: 15
 --- !u!114 &5659423559324103451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f05544df8e9b74d9b18ae8d68aae7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpBuffer: 0.2
+  sheep: {fileID: 0}
 --- !u!136 &3069384848127208335
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -145,7 +149,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3072096319817882600}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 7be929106b79b1c4c918938fd1a8e323, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -183,7 +187,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112

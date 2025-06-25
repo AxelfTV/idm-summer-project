@@ -1,5 +1,58 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1670128080994310086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 793153969922357197}
+  - component: {fileID: 2980584261946750802}
+  m_Layer: 0
+  m_Name: Bouce pad
+  m_TagString: Bouncy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &793153969922357197
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670128080994310086}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 875759314784472933}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2980584261946750802
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670128080994310086}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8599549995883090907
 GameObject:
   m_ObjectHideFlags: 0
@@ -15,7 +68,7 @@ GameObject:
   - component: {fileID: 8653569064673536486}
   - component: {fileID: 6577624851264235595}
   - component: {fileID: 1191698871528881121}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Woof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +87,8 @@ Transform:
   m_LocalPosition: {x: -0.39, y: -0.56, z: 1.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 793153969922357197}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4036231310714720814
@@ -111,9 +165,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 840aef4abf7cfcf408165c5618697546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  returnFromFollowDist: 5
+  bouncePad: {fileID: 1670128080994310086}
+  returnFromFollowDist: 10
   followFromReturnDist: 3
-  idleDist: 3
+  idleDist: 1
+  followSpeed: 10
+  travelSpeed: 30
+  throwDist: 7
 --- !u!135 &6577624851264235595
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -42,14 +42,18 @@ public class CharacterManager : MonoBehaviour
     {
         state.Update();
 
-        if (holding != null) holding.GetGameObject().transform.position = stats.holdPosition.position;
+        if (holding != null) 
+        { 
+            holding.GetGameObject().transform.position = stats.holdPosition.position;
+            //holding.GetGameObject().GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Bouncy"))
         {
             Debug.Log("Bouncy");
-            state = new CharacterJump(stats);
+            state = new CharacterBounce(stats);
             state.Enter();
         }
     }

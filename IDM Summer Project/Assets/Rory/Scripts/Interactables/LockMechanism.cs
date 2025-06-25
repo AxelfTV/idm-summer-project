@@ -10,11 +10,11 @@ public abstract class LockMechanism : MonoBehaviour
 
     protected void Lock()
     {
-        unlockableObject.Lock();
+        if (unlockableObject != null) unlockableObject.Lock();
     }
     protected void Unlock()
     {
-        unlockableObject.Unlock();
+        if(unlockableObject != null) unlockableObject.Unlock();
     }
     private void OnValidate()
     {
