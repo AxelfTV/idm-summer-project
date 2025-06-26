@@ -1,25 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Cinemachine;
 
-
-public class Beanstalk : MonoBehaviour, IUnlockableObject
+public class Door : MonoBehaviour, IUnlockableObject
 {
-    [SerializeField] GameObject stalk;
-    
+    [SerializeField] GameObject door;
+
+    public void Lock()
+    {
+        door.SetActive(true);
+    }
     public void Unlock()
     {
-        stalk.SetActive(true);
-    }
-    public void Lock() 
-    {
-        
+        door.SetActive(false);
     }
     // Start is called before the first frame update
     void Start()
     {
-        stalk.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -27,5 +25,4 @@ public class Beanstalk : MonoBehaviour, IUnlockableObject
     {
         
     }
-    
 }

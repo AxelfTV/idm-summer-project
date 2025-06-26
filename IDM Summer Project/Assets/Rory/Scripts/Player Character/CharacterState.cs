@@ -14,10 +14,11 @@ public abstract class CharacterState
     public abstract CharacterState NewState();
     protected bool IsGrounded()
     {
-        float rayLength = 0.2f;
-        Vector3 origin = stats.rb.position + Vector3.down * 1f + Vector3.up * 0.1f;
+        float rayLength = 1.2f;
+        float sphereRadius = 0.4f;
+        Vector3 origin = stats.rb.position + Vector3.up * 0.1f;
 
-        return Physics.Raycast(origin, Vector3.down, rayLength, LayerMask.GetMask("Ground"));
+        return Physics.SphereCast(origin, sphereRadius, Vector3.down,out RaycastHit hit, rayLength, LayerMask.GetMask("Ground"));
     }
     public virtual void Enter() 
     {
