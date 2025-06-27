@@ -46,7 +46,7 @@ Material:
     - _QueueOffset: 0
     - _RecieveLight: 1
     m_Colors:
-    - _MainColor: {r: 0.4792453, g: 0.28250802, b: 0.21611251, a: 0}
+    - _MainColor: {r: 0.78867924, g: 0.45219684, b: 0.33779278, a: 0}
     - _NormalLineColor: {r: 0.5471698, g: 0.33759344, b: 0.33759344, a: 1}
     - _Vector4: {r: -18.83, g: 4.13, b: 42.57, a: -2.58}
   m_BuildTextureStacks: []
