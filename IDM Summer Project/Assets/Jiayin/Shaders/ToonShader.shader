@@ -12,14 +12,17 @@ Shader "Custom/URPToonShader"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" "Queue"="Geometry" }
-        LOD 200
+        Tags { "RenderType"="Opaque" "RenderPipeline" = "UniversalPipeline" 
+            "Queue"="Geometry" "UniversalMaterialType"="Lit"}
+        //LOD 200
 
         Pass
         {
             Name "ForwardLit"
             Tags { "LightMode"="UniversalForward" }
 
+            ZWrite On
+            ZTest LEqual
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -103,7 +106,10 @@ Shader "Custom/URPToonShader"
         }
 
         // 阴影投射
+        UsePass "Universal Render Pipeline/Lit/DepthOnly"
+        UsePass "Universal Render Pipeline/Lit/DepthNormals"
         UsePass "Universal Render Pipeline/Lit/ShadowCaster"
+
     }
     FallBack "Universal Render Pipeline/Lit"
 }
