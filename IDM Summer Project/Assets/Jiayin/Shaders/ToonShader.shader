@@ -3,7 +3,6 @@ Shader "Custom/URPToonShader"
     Properties
     {
         _MainTex ("Main Texture", 2D) = "white" {}
-        _MainTex_ST ("MainTex Tiling Offset", Vector) = (1,1,0,0)
         _Color ("Color Tint", Color) = (1,1,1,1)
         _ShadowThreshold ("Shadow Threshold", Range(0,1)) = 0.5
         _StylishShadow ("Stylish Shadow", Float) = 0.5
@@ -56,7 +55,7 @@ Shader "Custom/URPToonShader"
                 float _ShadowThreshold;
                 float4 _ShadowColor;
                 float4 _ShadowColor2;
-                float _StylishShadow;//阴影边缘
+                float _StylishShadow;//shadow edge 
             CBUFFER_END
 
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
@@ -66,7 +65,7 @@ Shader "Custom/URPToonShader"
                 Varyings OUT;
                 OUT.positionWS = TransformObjectToWorld(IN.positionOS.xyz);
                 OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
-                OUT.uv = IN.uv * _MainTex_ST.xy + _MainTex_ST.zw;
+                OUT.uv = IN.uv ;
                 OUT.positionCS = TransformWorldToHClip(OUT.positionWS);
                 OUT.shadowCoord = TransformWorldToShadowCoord(OUT.positionWS);
                 return OUT;
@@ -74,12 +73,11 @@ Shader "Custom/URPToonShader"
 
             half4 frag(Varyings IN) : SV_Target
             {
-                half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb * _Color.rgb;
-
-                // 主光源
+                half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb;
+               // return half4(albedo,1);
                 Light mainLight = GetMainLight(IN.shadowCoord);
 
-                // 点光源支持
+               //point light support
                 half3 totalLight = mainLight.color.rgb * mainLight.distanceAttenuation;
                 #if defined(_ADDITIONAL_LIGHTS)
                 uint lightCount = GetAdditionalLightsCount();
@@ -90,7 +88,7 @@ Shader "Custom/URPToonShader"
                 }
                 #endif
 
-                // Toon 阴影
+                // Toon shadow
                 half NdotL = saturate(dot(IN.normalWS, mainLight.direction));
                 half shadowAtten = mainLight.shadowAttenuation;
              //  return half4(NdotL * shadowAtten.xxx,1);

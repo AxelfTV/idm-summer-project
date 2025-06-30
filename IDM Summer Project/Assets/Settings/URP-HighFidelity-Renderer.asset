@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4b294f9f2104d4ca60d2a9ae9180fc, type: 3}
   m_Name: RenderCloud
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     material: {fileID: 2100000, guid: 376347d579e63bb40a5c1aea209605fa, type: 2}
     color: {r: 1, g: 0.58679235, b: 0.58679235, a: 1}
