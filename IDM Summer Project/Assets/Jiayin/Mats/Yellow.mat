@@ -7,9 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Yellow
-  m_Shader: {fileID: -6465566751694194690, guid: 82bebf8fbae5f5c4e87a39c2a882756b,
-    type: 3}
+  m_Name: yellow
+  m_Shader: {fileID: 4800000, guid: ca53272b8aba76b428ec2e030a9a88c1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,42 +23,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _NormalLineTex:
+    - _MainTex:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 1.91, y: 2.51}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _QueueControl: 0
-    - _QueueOffset: 0
-    - _RecieveLight: 1
+    - _ShadowThreshold: 0.05
+    - _StylishShadow: 0.43
     m_Colors:
-    - _MainColor: {r: 0.9487405, g: 1, b: 0, a: 0}
-    - _NormalLineColor: {r: 0.5471698, g: 0.33759344, b: 0.33759344, a: 1}
-    - _Vector4: {r: -18.83, g: 4.13, b: 42.57, a: -2.58}
+    - _Color: {r: 1, g: 0.88954484, b: 0, a: 1}
+    - _ShadowColor: {r: 0.5822926, g: 0.6529313, b: 0.8792453, a: 1}
+    - _ShadowColor2: {r: 1, g: 0.5113207, b: 0.67996293, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &7425339003694847124
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 7
