@@ -21,10 +21,11 @@ public class BasicHoldable : MonoBehaviour, IHoldable
         rb.velocity = Vector3.zero;
         return true;
     }
-    public void Throw()
+    public void Throw(Vector3 direction)
     {
         rb.velocity = Vector3.zero;
-        rb.AddForce(Vector3.up * 10, ForceMode.Impulse);
+        direction.Normalize();
+        rb.AddForce((Vector3.up + direction).normalized * 10, ForceMode.Impulse);
     }
     public GameObject GetGameObject()
     {

@@ -5,6 +5,6 @@ using UnityEngine;
 public interface IHoldable
 {
     public bool Grab();
-    public void Throw();
+    public void Throw(Vector3 direction);
     public GameObject GetGameObject();
 }

@@ -20,7 +20,7 @@ public class SoilPatch : LockMechanism
         if (other.CompareTag("Bean"))
         {
             Unlock();
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }

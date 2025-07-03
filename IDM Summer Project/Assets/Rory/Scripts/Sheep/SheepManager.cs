@@ -40,7 +40,7 @@ public class SheepManager : MonoBehaviour, IHoldable
         }
         return false;
     }
-    public void Throw()
+    public void Throw(Vector3 direction)
     {
         state.Throw();
     }

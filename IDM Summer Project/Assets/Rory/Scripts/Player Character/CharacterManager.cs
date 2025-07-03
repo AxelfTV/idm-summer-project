@@ -43,9 +43,16 @@ public class CharacterManager : MonoBehaviour
         state.Update();
 
         if (holding != null) 
-        { 
-            holding.GetGameObject().transform.position = stats.holdPosition.position;
-            //holding.GetGameObject().GetComponent<Rigidbody>().velocity = Vector3.zero;
+        {
+            GameObject holdObj = holding.GetGameObject();
+            if (!holdObj.activeSelf)
+            {
+                Drop(); 
+            }
+            else
+            {
+                holdObj.transform.position = stats.holdPosition.position;
+            }
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -64,7 +71,7 @@ public class CharacterManager : MonoBehaviour
     }
     void Throw()
     {
-        if(holding != null) holding.Throw();
+        if(holding != null) holding.Throw(transform.forward);
         holding = null;
     }
     public bool SheepToHold(IHoldable sheep)
