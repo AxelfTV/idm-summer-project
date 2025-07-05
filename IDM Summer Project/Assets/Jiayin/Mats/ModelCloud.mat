@@ -7,14 +7,14 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HiddenRayMatchingCloud
-  m_Shader: {fileID: 4800000, guid: 229dcb201b536684194aad4379ae7f77, type: 3}
+  m_Name: ModelCloud
+  m_Shader: {fileID: 4800000, guid: d3da0b60d09c64e499791e8ef42fa929, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -23,19 +23,22 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _NoiseTex:
         m_Texture: {fileID: 11700000, guid: 6a897e783039b2c4b946b8135c345445, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ColorOffsetA: 0.21
-    - _ColorOffsetB: 0.76
-    - _NoiseScale: 0.05
-    - _Step: -0.1
+    - _CloudSpeed: 0.35
+    - _NoiseScale: 0.11
+    - _ShadowThreshold: 0.045
+    - _StylishShadow: 0.4
     m_Colors:
-    - _BoundingsMax: {r: 1.1989164, g: 0.71731997, b: 21.913527, a: 0}
-    - _BoundingsMin: {r: -29.358917, g: -4.73732, b: 4.0864735, a: 0}
-    - _ColorA: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorB: {r: 0.4996724, g: 0.51215035, b: 0.5622641, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _ShadowColor: {r: 0.36755425, g: 0.7222656, b: 0.78867924, a: 1}
+    - _ShadowColor2: {r: 0.36856526, g: 0.47034213, b: 0.9622642, a: 1}
   m_BuildTextureStacks: []

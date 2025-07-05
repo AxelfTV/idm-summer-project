@@ -63,10 +63,10 @@ Shader "Hidden/PostProcessing/RayMatchingCloud"
                 float3 tmin = min(t0, t1);
                 float3 tmax = max(t0, t1);
 
-                float dstA = max(max(tmin.x, tmin.y), tmin.z); // 取最小交点
-                float dstB = min(min(tmax.x, tmax.y), tmax.z); // 取最大交点
+                float dstA = max(max(tmin.x, tmin.y), tmin.z); 
+                float dstB = min(min(tmax.x, tmax.y), tmax.z); 
 
-                float dstToBox=max(dstA, 0.0); // 确保不小于0
+                float dstToBox=max(dstA, 0.0);
                 float dstInsideBox=max((dstB-dstToBox),0)
 ;                return float2(dstToBox, dstInsideBox);
             }
@@ -99,7 +99,7 @@ Shader "Hidden/PostProcessing/RayMatchingCloud"
             float4 cloudRayMarching(float3 startPoint, float3 direction,float dstLimit) 
             {
                 float sumDesity = 1;
-                float dstTravelled=0;//已步进距离
+                float dstTravelled=0;
                 float stepSize=exp(_Step)*0.1;
                 float3 LightEmerge=0;
                 for(int j=0;j<32;j++)
@@ -107,7 +107,7 @@ Shader "Hidden/PostProcessing/RayMatchingCloud"
                     // if(dstTravelled<dstLimit)
                     // {
                     //     float3 rayPos=startPoint + direction * dstTravelled;
-                    //     sumDesity += pow(SampleNoise(rayPos+_Time.y),5); // 模拟云密度
+                    //     sumDesity += pow(SampleNoise(rayPos+_Time.y),5); 
                     // }
                     if(dstTravelled<dstLimit)
                     {                    
@@ -131,13 +131,13 @@ Shader "Hidden/PostProcessing/RayMatchingCloud"
 
             float4 Frag(Varyings i) : SV_Target
             {
-                //采样深度
+      
                 float depth=SAMPLE_TEXTURE2D_X(_CameraDepthTexture, sampler_CameraDepthTexture,  i.texcoord).r;
            //      return float4(depth.xxx,1);
                 float4 worldPos =GetWorldPosition(depth, i.texcoord);
 
                  float3 rayPos = _WorldSpaceCameraPos;
-                //采样3D噪声
+        
 
 
                  float3 worldViewDir = normalize(worldPos.xyz - rayPos.xyz) ;
@@ -147,9 +147,9 @@ Shader "Hidden/PostProcessing/RayMatchingCloud"
                 float dstToBox= rayToContainerInfo.x;
                 float dstInsideBox= rayToContainerInfo.y;
 
-                float3 entryPoint=rayPos+ worldViewDir * dstToBox;//进入点
+                float3 entryPoint=rayPos+ worldViewDir * dstToBox;
 
-                float dstLimit=min(depthEyeLiner-dstToBox, dstInsideBox);//步进总距离
+                float dstLimit=min(depthEyeLiner-dstToBox, dstInsideBox);
           //      return float4(dstLimit.xxxx);
                  float4 cloud = cloudRayMarching(entryPoint.xyz, worldViewDir,dstLimit);
                 
