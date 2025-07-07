@@ -33,10 +33,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CloudSpeed: 0.35
-    - _NoiseScale: 0.11
-    - _ShadowThreshold: 0.045
-    - _StylishShadow: 0.4
+    - _CloudSpeed: 0.12
+    - _NoiseScale: 0.02
+    - _ShadowThreshold: 0
+    - _StylishShadow: 0.47
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ShadowColor: {r: 0.36755425, g: 0.7222656, b: 0.78867924, a: 1}
