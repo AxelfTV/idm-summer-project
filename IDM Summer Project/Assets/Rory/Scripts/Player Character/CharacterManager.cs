@@ -60,7 +60,7 @@ public class CharacterManager : MonoBehaviour
         if (other.CompareTag("Bouncy"))
         {
             Debug.Log("Bouncy");
-            state = new CharacterBounce(stats);
+            state = new CharacterBounce(stats, stats.bouncePower);
             state.Enter();
         }
     }

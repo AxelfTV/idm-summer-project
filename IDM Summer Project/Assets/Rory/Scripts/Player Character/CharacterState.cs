@@ -48,17 +48,22 @@ public abstract class CharacterState
         if(moveDir == Vector3.zero)
         {
             Vector3 negDir = new Vector3(-stats.rb.velocity.x, 0,-stats.rb.velocity.z).normalized;
-            stats.rb.AddForce(negDir * stats.airMoveSpeed);
+            stats.rb.AddForce(negDir * stats.airMovePower);
         }
         else
         {
-            stats.rb.AddForce(moveDir * stats.airMoveSpeed);
+            stats.rb.AddForce(moveDir * stats.airMovePower);
+        }
+        Vector3 horVel = Vector3.ProjectOnPlane(stats.rb.velocity, Vector3.up);
+        if(horVel.magnitude > stats.airMoveMaxSpeed) 
+        {
+            stats.rb.velocity = new Vector3(0, stats.rb.velocity.y, 0) + horVel.normalized * stats.airMoveMaxSpeed;
         }
     }
-    protected void Jump()
+    protected void Jump(float power)
     {
         stats.rb.velocity = new Vector3(stats.rb.velocity.x, 0, stats.rb.velocity.z);
-        stats.rb.AddForce(Vector3.up * stats.jumpHeight, ForceMode.Impulse);
+        stats.rb.AddForce(Vector3.up * power, ForceMode.Impulse);
     }
     protected void Fall()
     {
@@ -133,7 +138,7 @@ public class CharacterJump : CharacterState
     {
         base.Enter();
         stats.input.OnJump();
-        Jump();
+        Jump(stats.jumpPower);
     }
     public override void Update()
     {
@@ -192,7 +197,7 @@ public class CharacterDoubleJump : CharacterState
         base.Enter();
         stats.input.OnJump();
         stats.input.OnDouble();
-        Jump();
+        Jump(stats.doubleJumpPower);
     }
     public override void Update()
     {
@@ -201,7 +206,7 @@ public class CharacterDoubleJump : CharacterState
     }
     public override CharacterState NewState()
     {
-        if (jumpTimer >= stats.jumpLength) return new CharacterFall(stats);
+        if (jumpTimer >= stats.doubleJumpLength) return new CharacterFall(stats);
         return null;
     }
 }
@@ -227,14 +232,18 @@ public class CharacterGlide : CharacterState
 }
 public class CharacterBounce : CharacterState
 {
-    public CharacterBounce(CharacterStats stats) : base(stats) { }
+    float bouncePower;
+    public CharacterBounce(CharacterStats stats, float power) : base(stats) 
+    {
+        bouncePower = power;
+    }
     float jumpTimer = 0;
     public override void Enter()
     {
         base.Enter();
         stats.input.OnJump();
         stats.input.Grounded();
-        Jump();
+        Jump(bouncePower);
     }
     public override void Update()
     {
@@ -243,7 +252,7 @@ public class CharacterBounce : CharacterState
     }
     public override CharacterState NewState()
     {
-        if (jumpTimer >= stats.jumpLength) return new CharacterFall(stats);
+        if (jumpTimer >= stats.doubleJumpLength) return new CharacterFall(stats);
         return null;
     }
 }

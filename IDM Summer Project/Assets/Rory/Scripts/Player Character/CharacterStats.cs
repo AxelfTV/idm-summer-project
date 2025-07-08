@@ -12,11 +12,16 @@ public class CharacterStats : MonoBehaviour
     public Transform sheepFollowPosition;
 
     [SerializeField] public float runSpeed = 15;
-    [SerializeField] public float jumpHeight = 8;
+    [SerializeField] public float jumpPower = 8;
     [SerializeField] public float jumpLength = 1f;
+    [SerializeField] public float doubleJumpPower = 8;
+    [SerializeField] public float doubleJumpLength = 1f;
     [SerializeField] public float coyoteTime = 0.2f;
     [SerializeField] public float downwardAcceleration = 1f;
-    [SerializeField] public float airMoveSpeed = 1f;
+    [SerializeField] public float airMovePower = 1f;
+    [SerializeField] public float airMoveMaxSpeed = 1f;
+
+    [SerializeField] public float bouncePower = 15;
     // Start is called before the first frame update
     void Awake()
     {

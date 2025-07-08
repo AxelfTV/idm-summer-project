@@ -111,11 +111,15 @@ MonoBehaviour:
   holdPosition: {fileID: 2301045024987279557}
   sheepFollowPosition: {fileID: 5563400394695847112}
   runSpeed: 15
-  jumpHeight: 15
-  jumpLength: 0.3
+  jumpPower: 10
+  jumpLength: 0.15
+  doubleJumpPower: 12
+  doubleJumpLength: 0.2
   coyoteTime: 0.2
-  downwardAcceleration: 50
-  airMoveSpeed: 15
+  downwardAcceleration: 40
+  airMovePower: 50
+  airMoveMaxSpeed: 15
+  bouncePower: 15
 --- !u!114 &5659423559324103451
 MonoBehaviour:
   m_ObjectHideFlags: 0

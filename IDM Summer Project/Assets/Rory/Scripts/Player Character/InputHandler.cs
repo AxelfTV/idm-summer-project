@@ -57,7 +57,8 @@ public class InputHandler : MonoBehaviour
     }
     public bool JumpOver()
     {
-        return !Input.GetKey(KeyCode.Space);
+        return false;
+        //return !Input.GetKey(KeyCode.Space);
     }
     public bool Call()
     {
