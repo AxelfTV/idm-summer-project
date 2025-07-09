@@ -76,7 +76,7 @@ Shader "Custom/URPToonShader"
                 half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb*_Color;
                // return half4(albedo,1);
                 Light mainLight = GetMainLight(IN.shadowCoord);
-
+                
                //point light support
                 half3 totalLight = mainLight.color.rgb * mainLight.distanceAttenuation;
                 #if defined(_ADDITIONAL_LIGHTS)
@@ -90,7 +90,8 @@ Shader "Custom/URPToonShader"
 
                 // Toon shadow
                 half NdotL = saturate(dot(IN.normalWS, mainLight.direction));
-                half shadowAtten = mainLight.shadowAttenuation;
+              //  half shadowAtten = mainLight.shadowAttenuation;
+                half shadowAtten=MainLightRealtimeShadow(IN.shadowCoord);
              //  return half4(NdotL * shadowAtten.xxx,1);
                 half toonStep1 = NdotL * shadowAtten > _ShadowThreshold ? 1.0: 0.0;
                 half toonStep2 = NdotL * shadowAtten>_ShadowThreshold + _StylishShadow ? 1.0 : 0.0;
