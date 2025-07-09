@@ -36,6 +36,9 @@ public class CameraMovement : MonoBehaviour
             case CamType.verticalScroll:
                 Vector3 dif2 = Vector3.Project(player.position - targetPos, Vector3.up);
                 return initialPos + dif2;
+            case CamType.forwardScroll:
+                Vector3 dif4 = Vector3.Project(player.position - targetPos, Vector3.ProjectOnPlane(transform.forward,Vector3.up).normalized);
+                return initialPos + dif4;
             case CamType.follow:
                 Vector3 dif3 = player.position - targetPos;
                 return initialPos + dif3;
@@ -49,5 +52,6 @@ public enum CamType
     stationary,
     horizontalScroll,
     verticalScroll,
+    forwardScroll,
     follow
 }

@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdPosition: {fileID: 2301045024987279557}
   sheepFollowPosition: {fileID: 5563400394695847112}
-  runSpeed: 15
+  runSpeed: 10
   jumpPower: 10
   jumpLength: 0.15
   doubleJumpPower: 12
