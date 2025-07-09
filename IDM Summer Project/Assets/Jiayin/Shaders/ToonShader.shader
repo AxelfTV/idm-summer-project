@@ -12,7 +12,7 @@ Shader "Custom/URPToonShader"
     SubShader
     {
         Tags { "RenderType"="Opaque" "RenderPipeline" = "UniversalPipeline" 
-            "Queue"="Geometry" "UniversalMaterialType"="Lit"}
+            "Queue"="Geometry" "UniversalMaterialType"="Lit" "DecalMeshForwardEmissive" = "True" }
         //LOD 200
 
         Pass
@@ -32,7 +32,7 @@ Shader "Custom/URPToonShader"
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
-
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl"
             struct Attributes
             {
                 float4 positionOS : POSITION;
@@ -47,6 +47,7 @@ Shader "Custom/URPToonShader"
                 float3 normalWS : TEXCOORD1;
                 float3 positionWS : TEXCOORD2;
                 float4 shadowCoord : TEXCOORD3;
+                float4 screenUV : TEXCOORD4; 
             };
 
             CBUFFER_START(UnityPerMaterial)
@@ -68,6 +69,7 @@ Shader "Custom/URPToonShader"
                 OUT.uv = IN.uv ;
                 OUT.positionCS = TransformWorldToHClip(OUT.positionWS);
                 OUT.shadowCoord = TransformWorldToShadowCoord(OUT.positionWS);
+                OUT.screenUV=ComputeScreenPos(OUT.positionCS);
                 return OUT;
             }
 
@@ -96,10 +98,17 @@ Shader "Custom/URPToonShader"
                 half toonStep1 = NdotL * shadowAtten > _ShadowThreshold ? 1.0: 0.0;
                 half toonStep2 = NdotL * shadowAtten>_ShadowThreshold + _StylishShadow ? 1.0 : 0.0;
           
-                float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL * shadowAtten);
-                half3 color = lerp(shadowColor.rgb*albedo*totalLight, albedo * totalLight, toonStep2);
+                //decal support
+             //   float2 decaluv = IN.screenUV.xy / IN.screenUV.w;
+              //  float4 decal0 = SAMPLE_TEXTURE2D(_DBufferTexture0, sampler_DBufferTexture0, decaluv);
+             
+              
 
-                return half4(color, 1.0);
+                float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL * shadowAtten);
+                half3 baseColor = lerp(shadowColor.rgb*albedo*totalLight, albedo * totalLight, toonStep2);
+            
+                ApplyDecalToBaseColor(IN.positionCS, baseColor);
+                return half4(baseColor, 1.0);
             }
             ENDHLSL
         }
