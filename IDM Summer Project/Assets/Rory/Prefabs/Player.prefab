@@ -55,7 +55,7 @@ MonoBehaviour:
   m_ScaleMode: 0
   m_Offset: {x: 0, y: 0, z: 10}
   m_Size: {x: 1, y: 1, z: 20}
-  m_FadeFactor: 1
+  m_FadeFactor: 0.614
 --- !u!1 &3072096319817882600
 GameObject:
   m_ObjectHideFlags: 0

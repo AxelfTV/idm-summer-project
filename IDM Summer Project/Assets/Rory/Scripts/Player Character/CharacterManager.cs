@@ -55,6 +55,11 @@ public class CharacterManager : MonoBehaviour
             }
         }
     }
+    public void Geyser(float power)
+    {
+        state = new CharacterBounce(stats, power);
+        state.Enter();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Bouncy"))
