@@ -130,8 +130,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centreHalfWidth: 0.2
-  forwardSpeed: 2
-  sideMaxSpeed: 1
+  forwardSpeed: 15
+  sideMaxSpeed: 10
   model: {fileID: 1894621835055222161}
 --- !u!65 &9054599418759113812
 BoxCollider:
