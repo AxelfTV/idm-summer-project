@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bouncy
   - Bean
+  - Ball
   layers:
   - Default
   - TransparentFX
