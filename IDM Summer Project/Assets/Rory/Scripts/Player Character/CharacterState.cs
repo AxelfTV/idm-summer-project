@@ -81,6 +81,7 @@ public abstract class CharacterState
     {
         Vector3 cVel = stats.rb.velocity;
         stats.rb.velocity = new Vector3(cVel.x, -0.5f, cVel.z);
+        stats.input.WhileGlide();
     }
 }
 public class CharacterIdle : CharacterState

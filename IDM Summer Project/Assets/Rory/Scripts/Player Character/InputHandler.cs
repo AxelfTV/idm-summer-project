@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
+    [SerializeField] float glideTime = 5f;
+    float glideEnergy;
     [SerializeField] float jumpBuffer = 0.5f;
     bool jumpBuffered;
     bool canDouble;
@@ -70,7 +72,11 @@ public class InputHandler : MonoBehaviour
     }
     public bool Glide()
     {
-        return sheep.HoldingSheep() && Input.GetKey(KeyCode.Space);
+        return sheep.HoldingSheep() && Input.GetKey(KeyCode.Space) && (glideEnergy>0);
+    }
+    public void WhileGlide() 
+    {
+        glideEnergy -= Time.fixedDeltaTime;
     }
     public bool DoubleJump()
     {
@@ -83,6 +89,7 @@ public class InputHandler : MonoBehaviour
     public void Grounded()
     {
         canDouble = true;
+        glideEnergy = glideTime;
     }
     Quaternion GetCameraForwardRotation()
     {
