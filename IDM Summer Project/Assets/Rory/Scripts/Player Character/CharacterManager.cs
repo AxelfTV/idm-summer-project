@@ -68,6 +68,13 @@ public class CharacterManager : MonoBehaviour
             state = new CharacterBounce(stats, stats.bouncePower);
             state.Enter();
         }
+        else if (other.CompareTag("GlideRing") && stats.input.sheep.HoldingSheep()) 
+        {
+			Debug.Log("Glide Ring");
+            transform.position = other.transform.position;
+			state = new CharacterGlideBoost(stats, other.transform.forward);
+			state.Enter();
+		}
     }
     public void Grab(IHoldable item)
     {
