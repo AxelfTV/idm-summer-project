@@ -19,13 +19,21 @@ public class BubblePlatform : MonoBehaviour
     {
         
     }
+    protected virtual void OnPlayerStand()
+    {
+        spawner.OnPlatformBurst();
+        Burst();
+    }
+    void Burst()
+    {
+        Destroy(gameObject, 0.5f);
+        burst = true;
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Player") && !burst)
         {
-            spawner.OnPlatformBurst();
-            Destroy(gameObject, 0.5f);
-            burst = true;
+            OnPlayerStand();
         }
     }
 }
