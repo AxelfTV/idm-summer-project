@@ -1,6 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-5411780681524171995
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 5902011378778951161}
+  - {fileID: 2724352262177263082}
+  EditorEvents:
+  - {fileID: 6341050758727371719}
+  - {fileID: 4385246371912513592}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 2724352262177263082}
+  StringsBanks:
+  - {fileID: 5902011378778951161}
+  cacheTime: 638858711759425205
+  cacheVersion: 131625
+--- !u!114 &2724352262177263082
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +45,7 @@ MonoBehaviour:
   - Name: Desktop
     Value: 892800
   Exists: 1
---- !u!114 &-5010695575892319198
+--- !u!114 &4385246371912513592
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,7 +64,7 @@ MonoBehaviour:
     Data3: -2024062299
     Data4: -1238389458
   Banks:
-  - {fileID: -5411780681524171995}
+  - {fileID: 2724352262177263082}
   IsStream: 1
   Is3D: 0
   IsOneShot: 1
@@ -47,59 +72,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 71448
---- !u!114 &-1223416153962706400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/SFX/Sheep SFX
-  m_EditorClassIdentifier: 
-  Path: event:/SFX/Sheep SFX
-  Guid:
-    Data1: 1096972434
-    Data2: 1116357770
-    Data3: -868763993
-    Data4: -1589116685
-  Banks:
-  - {fileID: -5411780681524171995}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1044
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
-  m_Name: FMODStudioCache
-  m_EditorClassIdentifier: 
-  EditorBanks:
-  - {fileID: 1394594890381449845}
-  - {fileID: -5411780681524171995}
-  EditorEvents:
-  - {fileID: -1223416153962706400}
-  - {fileID: -5010695575892319198}
-  EditorParameters: []
-  MasterBanks:
-  - {fileID: -5411780681524171995}
-  StringsBanks:
-  - {fileID: 1394594890381449845}
-  cacheTime: 638858711759425205
-  cacheVersion: 131625
---- !u!114 &1394594890381449845
+--- !u!114 &5902011378778951161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,3 +92,30 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1032
   Exists: 1
+--- !u!114 &6341050758727371719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Sheep SFX
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Sheep SFX
+  Guid:
+    Data1: 1096972434
+    Data2: 1116357770
+    Data3: -868763993
+    Data4: -1589116685
+  Banks:
+  - {fileID: 2724352262177263082}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1044

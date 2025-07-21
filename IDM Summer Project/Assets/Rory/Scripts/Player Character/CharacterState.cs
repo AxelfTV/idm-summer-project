@@ -231,6 +231,33 @@ public class CharacterGlide : CharacterState
         return null;
     }
 }
+public class CharacterGlideBoost : CharacterState 
+{
+    Vector3 direction;
+    float boostDuration = 0.5f;
+    float timer = 0;
+	public CharacterGlideBoost(CharacterStats stats, Vector3 direction) : base(stats) 
+    {
+        this.direction = direction;
+    }
+	public override void Enter()
+	{
+		base.Enter();
+        stats.input.Grounded();
+	}
+	public override void Update()
+	{
+        stats.rb.velocity = direction * 20;
+        timer += Time.deltaTime;
+	}
+	public override CharacterState NewState()
+	{
+		if (IsGrounded() && stats.input.Jump()) return new CharacterJump(stats);
+		if (timer > boostDuration) return new CharacterFall(stats);
+		if (IsGrounded()) return new CharacterIdle(stats);
+		return null;
+	}
+}
 public class CharacterBounce : CharacterState
 {
     float bouncePower;
