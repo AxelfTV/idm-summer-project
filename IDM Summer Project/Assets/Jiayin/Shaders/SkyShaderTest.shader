@@ -30,6 +30,7 @@ Shader "TWShader/Skybox"
             #pragma fragment Fragment
             
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 
             struct Attributes
             {
@@ -78,6 +79,9 @@ TEXTURE2D(_Cloudflow);        SAMPLER(sampler_Cloudflow);
             {
                 float3 viewDir = normalize(IN.viewDirWS);
 
+                Light mainLight = GetMainLight();
+                _SunDir = mainLight.direction;
+
                 float sunViewDot = dot(_SunDir, viewDir);
                 float sunZenithDot = _SunDir.y;
                 float viewZenithDot = viewDir.y;
@@ -118,14 +122,14 @@ float3 baseNoise_4=SAMPLE_TEXTURE2D(_CloudTex,sampler_CloudTex,skyUV-prase1*flow
 float3 cloud=lerp(noise2_0,noise2_1,cloudLerp);
 float cloudrange=saturate(IN.uv.y* _CloudClampmut+ _CloudClampadd);
 cloud= cloud*cloudrange;
-//µ×²ãµÄÔÆ
+//ï¿½×²ï¿½ï¿½ï¿½ï¿½
 float3 Lowercloud=saturate(smoothstep(_CloudCut,_CloudCut+_Fuzziness,cloud));
 //return float4(cloud,1);
 
 //return float4(cloud,1);
 float3 finalCloud=cloud+Lowercloud;
 
-//´ÓÉÏµ½ÏÂ½¥±ä
+//ï¿½ï¿½ï¿½Ïµï¿½ï¿½Â½ï¿½ï¿½ï¿½
 float3 CloudColor=lerp(_CloudColor1,_CloudColor2,IN.uv.y);
 
                 float3 skyColor = sunZenithColor + vzMask * viewZenithColor + svMask * sunViewColor;

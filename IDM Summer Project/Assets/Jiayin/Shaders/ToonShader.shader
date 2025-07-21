@@ -3,11 +3,19 @@ Shader "Custom/URPToonShader"
     Properties
     {
         _MainTex ("Main Texture", 2D) = "white" {}
-        _Color ("Color Tint", Color) = (1,1,1,1)
+        _Color0 ("Color0", Color) = (1,1,1,1)
+        _Color1 ("Color1", Color) = (1,1,1,1)
+        _Color2("Color2",Color)=(1,1,1,1)
+        _Color3("Color3",Color)=(1,1,1,1)
+        _HeightFactor("Height Factor", float) = 1
+        _HeightMove("Height Move",float) = 0
+        _HeightTex("Height Texture", 2D) = "white" {}
         _ShadowThreshold ("Shadow Threshold", Range(0,1)) = 0.5
         _StylishShadow ("Stylish Shadow", Float) = 0.5
         _ShadowColor ("Shadow Color", Color) = (0.2,0.2,0.2,1)
         _ShadowColor2("ShadowColor2",color)=(0.5,0.5,0.5,0.5)
+        _OutLineColor("OutlineColor",Color)=(0,0,0,1)
+        _OutLineBlend("OutlineBlend",Range(0,1)) = 1  
     }
     SubShader
     {
@@ -32,7 +40,7 @@ Shader "Custom/URPToonShader"
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
-#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl"
             struct Attributes
             {
                 float4 positionOS : POSITION;
@@ -52,14 +60,27 @@ Shader "Custom/URPToonShader"
 
             CBUFFER_START(UnityPerMaterial)
                 float4 _MainTex_ST;
-                float4 _Color;
+                float4 _Color0;
+                float4 _Color1;
+                float4 _Color2;
+                float4 _Color3;
                 float _ShadowThreshold;
                 float4 _ShadowColor;
                 float4 _ShadowColor2;
                 float _StylishShadow;//shadow edge 
+                float4 _OutLineColor;
+                float _OutLineBlend;
+                //height mix
+                float _HeightFactor;
+                float _HeightMove;
+
+                float4 _HeightTex_ST;
             CBUFFER_END
 
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
+            TEXTURE2D(_NormalLineTex);
+            SAMPLER(sampler_NormalLineTex);
+            TEXTURE2D(_HeightTex); SAMPLER(sampler_HeightTex);
 
             Varyings vert(Attributes IN)
             {
@@ -75,10 +96,20 @@ Shader "Custom/URPToonShader"
 
             half4 frag(Varyings IN) : SV_Target
             {
-                half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb*_Color;
+                // Normal line 
+                float normalLine = SAMPLE_TEXTURE2D(_NormalLineTex, sampler_NormalLineTex, IN.screenUV.xy/IN.screenUV.w).r;
+                
+                float3 positionOS= TransformWorldToObject(IN.positionWS);
+                float heightMap=positionOS.y*_HeightFactor+_HeightMove;
+                float heightTex=SAMPLE_TEXTURE2D(_HeightTex, sampler_HeightTex, IN.uv*_HeightTex_ST.xy+_HeightTex_ST.zw).r;
+                _Color2.rgb = lerp(_Color2.rgb, _Color3.rgb, saturate(heightTex));
+                _Color0.rgb = lerp(_Color0.rgb, _Color1.rgb, saturate(heightTex));
+                float Grassmask =saturate( floor(heightMap*heightTex*10/3)/2);
+                float3 BaseColor= lerp(_Color0.rgb, _Color2.rgb, Grassmask);
+                half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb*BaseColor;
                // return half4(albedo,1);
                 Light mainLight = GetMainLight(IN.shadowCoord);
-                
+              //  return half4(albedo,1);
                //point light support
                 half3 totalLight = mainLight.color.rgb * mainLight.distanceAttenuation;
                 #if defined(_ADDITIONAL_LIGHTS)
@@ -106,7 +137,7 @@ Shader "Custom/URPToonShader"
 
                 float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL * shadowAtten);
                 half3 baseColor = lerp(shadowColor.rgb*albedo*totalLight, albedo * totalLight, toonStep2);
-            
+                baseColor = lerp(baseColor,_OutLineColor.rgb,(1-normalLine)*_OutLineBlend);
                 ApplyDecalToBaseColor(IN.positionCS, baseColor);
                 return half4(baseColor, 1.0);
             }
