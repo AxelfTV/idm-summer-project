@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Main/Scenes/Tutorial Level.unity
+    path: Assets/Main/Scenes/Level 0 (Tutorial).unity
     guid: ed532466b03a3d54c8ab6f3636dfb308
   - enabled: 1
     path: Assets/Rory/Scenes/Tutorial White box.unity
