@@ -1,4 +1,4 @@
-Shader "Custom/URPToonShader"
+Shader "Custom/GrowStalk"
 {
     Properties
     {
@@ -16,13 +16,15 @@ Shader "Custom/URPToonShader"
         _ShadowColor2("ShadowColor2",color)=(0.5,0.5,0.5,0.5)
         _OutLineColor("OutlineColor",Color)=(0,0,0,1)
         _OutLineBlend("OutlineBlend",Range(0,1)) = 1  
+        _GrowFactor("Grow Factor", Vector) = (0,1,0,0)
+        
     }
     SubShader
     {
         Tags { "RenderType"="Opaque" "RenderPipeline" = "UniversalPipeline" 
             "Queue"="Geometry" "UniversalMaterialType"="Lit" "DecalMeshForwardEmissive" = "True" }
         //LOD 200
-
+        Cull Off
         Pass
         {
             Name "ForwardLit"
@@ -75,6 +77,8 @@ Shader "Custom/URPToonShader"
                 float _HeightMove;
 
                 float4 _HeightTex_ST;
+
+                float3  _GrowFactor;
             CBUFFER_END
 
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
@@ -85,6 +89,9 @@ Shader "Custom/URPToonShader"
             Varyings vert(Attributes IN)
             {
                 Varyings OUT;
+                float vheightMap=saturate(IN.positionOS.y*_HeightFactor+_HeightMove);
+                IN.positionOS.xyz = IN.positionOS.xyz*_GrowFactor.x* vheightMap;
+              //  IN.positionOS.xyz+=IN.normalOS*saturate(_GrowFactor.y*IN.uv.x);
                 OUT.positionWS = TransformObjectToWorld(IN.positionOS.xyz);
                 OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
                 OUT.uv = IN.uv ;
@@ -101,7 +108,7 @@ Shader "Custom/URPToonShader"
                 
                 float3 positionOS= TransformWorldToObject(IN.positionWS);
                 float heightMap=positionOS.y*_HeightFactor+_HeightMove;
-               // return half4(heightMap.xxx,1);
+              //  return half4(heightMap.xxx,1);
                 float heightTex=SAMPLE_TEXTURE2D(_HeightTex, sampler_HeightTex, IN.uv*_HeightTex_ST.xy+_HeightTex_ST.zw).r;
                 _Color2.rgb = lerp(_Color2.rgb, _Color3.rgb, saturate(heightTex));
                 _Color0.rgb = lerp(_Color0.rgb, _Color1.rgb, saturate(heightTex));

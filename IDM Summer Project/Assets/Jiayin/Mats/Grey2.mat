@@ -25,6 +25,7 @@ Material:
     m_TexEnvs: []
     m_Ints: []
     m_Floats:
+    - _OutLineBlend: 0
     - _ShadowThreshold: 0
     m_Colors:
     - _Color: {r: 0.6167675, g: 0.71873045, b: 0.87169814, a: 1}

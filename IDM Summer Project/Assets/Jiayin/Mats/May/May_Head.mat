@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: May_Body
+  m_Name: May_Head
   m_Shader: {fileID: 4800000, guid: ca53272b8aba76b428ec2e030a9a88c1, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -23,16 +23,28 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _HeightTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e9e5a8f922a748240b3f6a0e73ccd658, type: 3}
+        m_Texture: {fileID: 2800000, guid: d40790cb889fd4c4ea24802b61d0694c, type: 3}
         m_Scale: {x: 0.42, y: 0.63}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ShadowThreshold: 0.05
+    - _HeightFactor: 1
+    - _HeightMove: 0
+    - _OutLineBlend: 0
+    - _ShadowThreshold: 0.2
     - _StylishShadow: 0.43
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color0: {r: 1, g: 1, b: 1, a: 1}
+    - _Color1: {r: 1, g: 1, b: 1, a: 1}
+    - _Color2: {r: 1, g: 1, b: 1, a: 1}
+    - _Color3: {r: 1, g: 1, b: 1, a: 1}
+    - _OutLineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ShadowColor: {r: 0.5822926, g: 0.6529313, b: 0.8792453, a: 1}
     - _ShadowColor2: {r: 1, g: 0.5113207, b: 0.67996293, a: 1}
   m_BuildTextureStacks: []

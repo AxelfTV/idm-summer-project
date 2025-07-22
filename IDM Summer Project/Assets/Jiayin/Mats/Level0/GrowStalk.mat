@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: White
-  m_Shader: {fileID: 4800000, guid: ca53272b8aba76b428ec2e030a9a88c1, type: 3}
+  m_Name: GrowStalk
+  m_Shader: {fileID: 4800000, guid: 57301ff2b5ac63b4fbe798bf5be2bf39, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -24,27 +24,28 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _HeightTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c9702e31b627a6240a09d96e67af290a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 0.56, y: 0.67}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _HeightFactor: 1
-    - _HeightMove: 0
-    - _OutLineBlend: 0
-    - _ShadowThreshold: 0.05
-    - _StylishShadow: 0.43
+    - _GrowFactor: -0.22
+    - _HeightFactor: 0.64
+    - _HeightMove: 3.74
+    - _OutLineBlend: 1
+    - _ShadowThreshold: 0.46
+    - _StylishShadow: 0.03
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color0: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 1, g: 1, b: 1, a: 1}
+    - _Color0: {r: 0, g: 1, b: 0.09615159, a: 1}
+    - _Color1: {r: 0.80468005, g: 1, b: 0.2245282, a: 1}
     - _Color2: {r: 1, g: 1, b: 1, a: 1}
     - _Color3: {r: 1, g: 1, b: 1, a: 1}
-    - _OutLineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadowColor: {r: 0.5822926, g: 0.6529313, b: 0.8792453, a: 1}
-    - _ShadowColor2: {r: 0.88744116, g: 1, b: 0, a: 1}
+    - _GrowFactor: {r: 1, g: 1, b: 1, a: 0}
+    - _OutLineColor: {r: 0.22338907, g: 0.30276653, b: 0.4716981, a: 1}
+    - _ShadowColor: {r: 0.16046612, g: 0.14149514, b: 0.6301887, a: 1}
+    - _ShadowColor2: {r: 0.40712705, g: 0.7756053, b: 0.79622644, a: 1}
   m_BuildTextureStacks: []
