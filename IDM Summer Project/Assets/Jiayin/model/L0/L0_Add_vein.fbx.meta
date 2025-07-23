@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Leave
     second: {fileID: 2100000, guid: a5ed2dc8e136aaa47a08b033ed954cfe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vein
+    second: {fileID: 2100000, guid: 55546ece5807a934d9b3665a9548f1d6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

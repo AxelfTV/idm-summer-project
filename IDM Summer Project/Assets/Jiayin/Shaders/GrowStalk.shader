@@ -16,7 +16,7 @@ Shader "Custom/GrowStalk"
         _ShadowColor2("ShadowColor2",color)=(0.5,0.5,0.5,0.5)
         _OutLineColor("OutlineColor",Color)=(0,0,0,1)
         _OutLineBlend("OutlineBlend",Range(0,1)) = 1  
-        _GrowFactor("Grow Factor", Vector) = (0,1,0,0)
+        _GrowFactor("Grow Factor", Range(0,1)) = 0
         
     }
     SubShader
@@ -78,7 +78,7 @@ Shader "Custom/GrowStalk"
 
                 float4 _HeightTex_ST;
 
-                float3  _GrowFactor;
+                float  _GrowFactor;
             CBUFFER_END
 
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
@@ -89,9 +89,9 @@ Shader "Custom/GrowStalk"
             Varyings vert(Attributes IN)
             {
                 Varyings OUT;
-                float vheightMap=saturate(IN.positionOS.y*_HeightFactor+_HeightMove);
-                IN.positionOS.xyz = IN.positionOS.xyz*_GrowFactor.x* vheightMap;
-              //  IN.positionOS.xyz+=IN.normalOS*saturate(_GrowFactor.y*IN.uv.x);
+                float GrowHeightMix=-IN.positionOS.y*0.1;
+                IN.positionOS.xz = IN.positionOS.xz*(saturate(GrowHeightMix+_GrowFactor*16));            
+              //  IN.positionOS.xz=lerp(IN.positionOS.xz*saturate(_GrowFactor-IN.uv.x),IN.positionOS.xz,_GrowFactor);
                 OUT.positionWS = TransformObjectToWorld(IN.positionOS.xyz);
                 OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
                 OUT.uv = IN.uv ;
