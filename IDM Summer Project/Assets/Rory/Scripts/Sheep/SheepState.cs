@@ -228,9 +228,15 @@ public class SheepGround : SheepState
     public override void Enter()
     {
         base.Enter();
+        stats.gameObject.layer = 6;
         stats.rb.velocity = Vector3.zero;
         stats.bouncePad.SetActive(true);
     }
+	public override void Exit()
+	{
+		base.Exit();
+        stats.gameObject.layer = 7;
+	}
     public override void Update()
     {
         stats.rb.velocity = Vector3.zero;

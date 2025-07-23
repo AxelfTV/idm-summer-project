@@ -9,22 +9,28 @@ public class BasicHoldable : MonoBehaviour, IHoldable
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterManager>().Grab(this);
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterManager>().Grab(this);
         }
     }
     private void Start()
     {
+        gameObject.layer = 6;
         rb = GetComponent<Rigidbody>();
     }
     public bool Grab()
     {
+        gameObject.layer = 7;
         rb.velocity = Vector3.zero;
+        rb.isKinematic = true;
         return true;
     }
     public void Throw(Vector3 direction)
     {
-        rb.velocity = Vector3.zero;
-        direction.Normalize();
+        gameObject.layer = 6;
+		rb.isKinematic = false;
+		rb.velocity = Vector3.zero;
+		rb.isKinematic = false;
+		direction.Normalize();
         rb.AddForce((Vector3.up + direction).normalized * 10, ForceMode.Impulse);
     }
     public GameObject GetGameObject()

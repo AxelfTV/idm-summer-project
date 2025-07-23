@@ -20,6 +20,7 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] public float downwardAcceleration = 1f;
     [SerializeField] public float airMovePower = 1f;
     [SerializeField] public float airMoveMaxSpeed = 1f;
+    [SerializeField] public float grabRange = 1f;
 
     [SerializeField] public float bouncePower = 15;
     // Start is called before the first frame update

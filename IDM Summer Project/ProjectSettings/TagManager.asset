@@ -15,9 +15,9 @@ TagManager:
   - Ground
   - Water
   - UI
-  - Entity
-  - Sheep
-  - 
+  - Grabbable
+  - NoPlayerCollision
+  - Player
   - 
   - 
   - 
