@@ -138,7 +138,7 @@ Shader "Custom/URPToonShader"
 
                 float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL * shadowAtten);
                 half3 baseColor = lerp(shadowColor.rgb*albedo*totalLight, albedo * totalLight, toonStep2);
-                baseColor = lerp(baseColor,_OutLineColor.rgb,(1-normalLine)*_OutLineBlend);
+              //  baseColor = lerp(baseColor,_OutLineColor.rgb,(1-normalLine)*_OutLineBlend);
                 ApplyDecalToBaseColor(IN.positionCS, baseColor);
                 return half4(baseColor, 1.0);
             }

@@ -144,10 +144,11 @@ MonoBehaviour:
   setting:
     Layer:
       serializedVersion: 2
-      m_Bits: 1
+      m_Bits: 4294967295
     NormalTex: {fileID: 2100000, guid: 39c7ba096e39a9c42b83793a7365d1f2, type: 2}
+    DepthTex: {fileID: 2100000, guid: e910562de6a344144aa01286834a28ce, type: 2}
     NormalLine: {fileID: 2100000, guid: ca98a2c3f03422640aff1a1a644fdf54, type: 2}
-    passEvent: 300
+    passEvent: 200
     Edge: 0
 --- !u!114 &5872519893774392296
 MonoBehaviour:

@@ -3,6 +3,8 @@ Shader "Unlit/DrawNormalLine"
 
     Properties {
    _EdgeControl ("Edge Control", Range(0, 10)) = 0.5
+   _EdgeColor("EdgeColor",Color)=(1,1,1,1)
+   _PixelCount("PicxelCount",Range(0,2048)) =100
     }
 
     SubShader {
@@ -18,6 +20,8 @@ Shader "Unlit/DrawNormalLine"
   
         CBUFFER_START(UnityPerMaterial)
         float _EdgeControl;
+        float3 _EdgeColor;
+        uint _PixelCount;
         CBUFFER_END
 
         ENDHLSL
@@ -43,8 +47,13 @@ Shader "Unlit/DrawNormalLine"
 
             TEXTURE2D(_NormalTex);
             SAMPLER(sampler_NormalTex);
+            TEXTURE2D(_DepthTex);
+            SAMPLER(sampler_DepthTex);
+            TEXTURE2D(_SColorTex);
+            SAMPLER(sampler_SColorTex);
             float4 _NormalTex_TexelSize;
-
+            float4 _DepthTex_TexelSize;
+            
             Varings vert(Attributes v) { 
                 Varings o;
                 VertexPositionInputs positionInputs = GetVertexPositionInputs(v.vertex.xyz);
@@ -58,7 +67,7 @@ half luminance(half3 c) {
     return dot(c, half3(0.2125, 0.7154, 0.0721));
 }
 
-half sobel(half3 tex,float2 texel,float2 uv)
+half sobel(TEXTURE2D_PARAM(mtex, mtexSampler), float2 texel,float2 uv)
 {
     const half Gx[9]= {
         -1, 0, 1,
@@ -77,21 +86,33 @@ half sobel(half3 tex,float2 texel,float2 uv)
 for(int j=0;j<9;j++)
 {
     half2 offsetuv = uv+ half2((j % 3) - 1, (j / 3) - 1) *texel;
-    half Texcolor = luminance(SAMPLE_TEXTURE2D(_NormalTex, sampler_NormalTex, offsetuv).xyz);
+    half Texcolor = luminance(SAMPLE_TEXTURE2D(mtex, mtexSampler, offsetuv).xyz);
+   // half Texcolor =SAMPLE_TEXTURE2D(_NormalTex, sampler_NormalTex, offsetuv).z;
     edgex += Texcolor * Gx[j];
     edgey += Texcolor * Gy[j];
 }
 
-half edge= abs(edgex) + abs(edgey);
+half edge=max( abs(edgex) , abs(edgey));
 return edge;
 }
 
             float4 frag(Varings i) : SV_Target { 
-                float3 c = SAMPLE_TEXTURE2D(_NormalTex, sampler_NormalTex, i.uv).xyz; 
-                half edge= sobel(c, _NormalTex_TexelSize.xy,i.uv);
-             //   return float4(c,1);
-                return float4(step(edge,_EdgeControl).xxx,1);
-               // return float4(lerp(c,float3(0,0,0),edge),1);
+              float2 pixeluv=floor(i.uv*_PixelCount)/_PixelCount;
+             float3 pixelSceneColor=SAMPLE_TEXTURE2D(_SColorTex,sampler_SColorTex,pixeluv).xyz;
+
+                float3 normal = SAMPLE_TEXTURE2D(_NormalTex, sampler_NormalTex, pixeluv).xyz; 
+                float3 depth=SAMPLE_TEXTURE2D(_DepthTex,sampler_DepthTex,i.uv).xyz;
+                float3 sceneColor=SAMPLE_TEXTURE2D(_SColorTex,sampler_SColorTex,i.uv).xyz;
+              //  return half4(sceneColor,1);
+                half edge= sobel(TEXTURE2D_ARGS(_NormalTex, sampler_NormalTex), _NormalTex_TexelSize.xy,pixeluv);
+              //  edge=sobel(TEXTURE2D_ARGS(_DepthTex,sampler_DepthTex),_DepthTex_TexelSize.xy,i.uv);
+             //   return float4(depth,1);
+             edge=step(edge,_EdgeControl);
+
+
+                return float4(lerp(pixelSceneColor,_EdgeColor,saturate(1-edge)),1);
+             // return float4(edge.xxx,1);
+               // return float4(lerp(normac,float3(0,0,0),edge),1);
             }
             ENDHLSL
         }

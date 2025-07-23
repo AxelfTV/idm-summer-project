@@ -8,6 +8,7 @@ public class NormalineRenderPassFeature : ScriptableRendererFeature
     public class Settings {
         public LayerMask Layer;
         public Material NormalTex;
+        public Material DepthTex;
         public Material NormalLine;
         public RenderPassEvent passEvent = RenderPassEvent.AfterRenderingPrePasses;
         [Range(0, 1)]
@@ -33,25 +34,52 @@ public class NormalineRenderPassFeature : ScriptableRendererFeature
             filter = new FilteringSettings(queue,setting.Layer);
         }
 
-        private RTHandle _outlineHandel;
+        private RTHandle _normalHandel;
+        private RTHandle _depthHandel;
+        private RTHandle _sceneColorHandel;
+        RenderTextureDescriptor dest;
         public override void Configure(CommandBuffer cmd, RenderTextureDescriptor cameraTextureDescriptor)
         {
             base.Configure(cmd, cameraTextureDescriptor);
-            int tmp = Shader.PropertyToID("_NormalTex");
-            RenderTextureDescriptor dest = cameraTextureDescriptor;
-            cmd.GetTemporaryRT(tmp,dest);
 
-            _outlineHandel = RTHandles.Alloc(tmp); 
-            ConfigureTarget(_outlineHandel);//set target
-            ConfigureClear(ClearFlag.All, Color.black);
+            int normalTexID = Shader.PropertyToID("_NormalTex");
+            int depthTexID = Shader.PropertyToID("_DepthTex");
+            int sceneColorTexID = Shader.PropertyToID("_SColorTex");
+
+            dest = cameraTextureDescriptor;
+            cmd.GetTemporaryRT(normalTexID, dest);
+            cmd.GetTemporaryRT(depthTexID, dest);
+            cmd.GetTemporaryRT(sceneColorTexID, dest);
+
+            _normalHandel = RTHandles.Alloc(normalTexID);
+            _depthHandel = RTHandles.Alloc(depthTexID);
+            _sceneColorHandel = RTHandles.Alloc(sceneColorTexID);
+            // ConfigureTarget(_normalHandel);//set target
+            // ConfigureClear(ClearFlag.All, Color.black);
         }
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
             CommandBuffer cmd = CommandBufferPool.Get("_ADD_GetNormalTex");
-            var draw=CreateDrawingSettings(shaderTag, ref renderingData, renderingData.cameraData.defaultOpaqueSortFlags);
+
+            ConfigureTarget(_normalHandel);//set target to normal
+            ConfigureClear(ClearFlag.All, Color.black);
+
+            var draw = CreateDrawingSettings(shaderTag, ref renderingData, renderingData.cameraData.defaultOpaqueSortFlags);
             draw.overrideMaterial = setting.NormalTex;
             draw.overrideMaterialPassIndex = 0;
             context.DrawRenderers(renderingData.cullResults, ref draw, ref filter);
+
+            ConfigureTarget(_depthHandel);//set target to depth
+            ConfigureClear(ClearFlag.All, Color.black);
+
+            draw = CreateDrawingSettings(shaderTag, ref renderingData, renderingData.cameraData.defaultOpaqueSortFlags);
+            draw.overrideMaterial = setting.DepthTex;
+            draw.overrideMaterialPassIndex = 0;
+            context.DrawRenderers(renderingData.cullResults, ref draw, ref filter);
+            
+            ConfigureClear(ClearFlag.All, Color.black);
+            cmd.Blit(renderingData.cameraData.renderer.cameraColorTargetHandle,_sceneColorHandel);
+            context.ExecuteCommandBuffer(cmd);
             CommandBufferPool.Release(cmd);
         }
     }
@@ -72,6 +100,8 @@ public class NormalineRenderPassFeature : ScriptableRendererFeature
         {
             cmd.ReleaseTemporaryRT(Shader.PropertyToID("_NormalLineTex"));
             cmd.ReleaseTemporaryRT(Shader.PropertyToID("_NormalTex"));
+            cmd.ReleaseTemporaryRT(Shader.PropertyToID("_DepthTex"));
+            cmd.ReleaseTemporaryRT(Shader.PropertyToID("_SColorTex"));
         }
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
@@ -80,11 +110,15 @@ public class NormalineRenderPassFeature : ScriptableRendererFeature
             setting.NormalLine.SetFloat("_Edge", setting.Edge);
             int NormalineID = Shader.PropertyToID("_NormalLineTex");
             cmd.GetTemporaryRT(NormalineID, desc);//使用desc创建新的RT并使用ID指定为全局着色器属性
-            cmd.Blit(NormalineID, NormalineID, setting.NormalLine, 0);//
+          //  cmd.Blit(NormalineID, NormalineID, setting.NormalLine, 0);
+            cmd.Blit(NormalineID, renderingData.cameraData.renderer.cameraColorTargetHandle, setting.NormalLine, 0);//提交到当前摄像机缓冲？
             context.ExecuteCommandBuffer(cmd);
             CommandBufferPool.Release(cmd); 
         }
     }
+
+
+
 
     private DrawNormalTex _DrawNormalPass;
     private DrawNormalLine _DrawNormalLinePass;
@@ -95,7 +129,8 @@ public class NormalineRenderPassFeature : ScriptableRendererFeature
         _DrawNormalPass = new DrawNormalTex(setting, this);
         _DrawNormalPass.renderPassEvent = setting.passEvent;
         _DrawNormalLinePass = new DrawNormalLine(setting, this);
-        _DrawNormalLinePass.renderPassEvent = setting.passEvent;
+      //  _DrawNormalLinePass.renderPassEvent = setting.passEvent;
+        _DrawNormalLinePass.renderPassEvent = RenderPassEvent.AfterRendering;
     }
 
     // Here you can inject one or multiple render passes in the renderer.
