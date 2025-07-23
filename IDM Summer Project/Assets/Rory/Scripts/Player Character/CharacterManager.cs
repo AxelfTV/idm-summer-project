@@ -36,7 +36,21 @@ public class CharacterManager : MonoBehaviour
             state.Enter();
         }
 
-        if (stats.input.Interact()) Throw();
+        if (stats.input.Interact()) 
+        {
+            if (CanHold())
+            {
+                IHoldable grababble = GetGrabable();
+                if (grababble != null)
+                {
+                    Grab(grababble);
+                }
+            }
+            else 
+            {
+				Throw();
+			}   
+        }
     }
     private void FixedUpdate()
     {
@@ -99,5 +113,23 @@ public class CharacterManager : MonoBehaviour
     bool CanHold()
     {
         return holding == null;
+    }
+    IHoldable GetGrabable() 
+    {
+        float raycastOffset = 0.5f;
+        float sphereRadius = 1f;
+        Debug.Log("Trying to grab");
+        RaycastHit hit;
+        bool ifHit = Physics.SphereCast(transform.position - transform.forward * raycastOffset, sphereRadius,transform.forward, out hit, stats.grabRange + raycastOffset, LayerMask.GetMask("Grabbable"));
+        if (ifHit) 
+        {
+            Debug.Log("Entity Hit");
+            IHoldable toHold;
+            if (hit.collider.gameObject.TryGetComponent<IHoldable>(out toHold)) 
+            {
+                return toHold;
+            }
+        }
+        return null;
     }
 }

@@ -119,6 +119,7 @@ MonoBehaviour:
   downwardAcceleration: 40
   airMovePower: 50
   airMoveMaxSpeed: 15
+  grabRange: 5
   bouncePower: 15
 --- !u!114 &5659423559324103451
 MonoBehaviour:
@@ -144,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f05544df8e9b74d9b18ae8d68aae7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  glideTime: 5
   jumpBuffer: 0.2
   sheep: {fileID: 0}
 --- !u!136 &3069384848127208335
