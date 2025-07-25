@@ -8,6 +8,9 @@ TagManager:
   - Bean
   - Ball
   - GlideRing
+  - RedSeed
+  - BlueSeed
+  - YellowSeed
   layers:
   - Default
   - TransparentFX

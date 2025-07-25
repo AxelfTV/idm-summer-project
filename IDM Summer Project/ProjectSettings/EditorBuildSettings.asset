@@ -6,24 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Main/Scenes/Level 0 (Tutorial).unity
-    guid: ed532466b03a3d54c8ab6f3636dfb308
-  - enabled: 1
-    path: Assets/Rory/Scenes/Tutorial White box.unity
-    guid: 9476c6458d91b1d4c8dcc6b725bcdf71
-  - enabled: 1
-    path: Assets/Rory/Scenes/Level1ObjectDev.unity
-    guid: 7b72cedcfacec6447ac5a338989833fe
-  - enabled: 1
-    path: Assets/Rory/Scenes/Level Prototype.unity
-    guid: eb1ddfe35fec43d478954a7e81c1d012
-  - enabled: 1
-    path: Assets/Rory/Scenes/CharacterControllerDev.unity
-    guid: 13f385e323a43f84398007d0b95e35eb
+    path: Assets/Main/Scenes/Level 1 (Beach).unity
+    guid: 9b58feec1dd4e62488e8d073c30b4936
   - enabled: 1
     path: Assets/Aaron/Scene/Main Menu.unity
     guid: aafcbb7f27713f04296e4b039ee84c73
   - enabled: 1
-    path: Assets/Aaron/Scene/Level 1.unity
-    guid: e481a7fd1747a1042b918e2bf62dd8b2
+    path: Assets/Main/Scenes/Level 0 (Tutorial).unity
+    guid: ed532466b03a3d54c8ab6f3636dfb308
   m_configObjects: {}
