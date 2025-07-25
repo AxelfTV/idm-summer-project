@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeanstalkCam : MonoBehaviour
+public class SpiralCam : MonoBehaviour
 {
 
     [SerializeField] CinemachineVirtualCamera cam;
