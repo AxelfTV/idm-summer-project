@@ -45,8 +45,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _HeightFactor: 0.03
-    - _HeightMove: -0.36
+    - _HeightFactor: -7.29
+    - _HeightMove: 1.27
     - _OutLineBlend: 0
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -56,8 +56,8 @@ Material:
     m_Colors:
     - _Color0: {r: 0.6734561, g: 1, b: 0.49622637, a: 1}
     - _Color1: {r: 0.54175556, g: 1, b: 0.2471698, a: 1}
-    - _Color2: {r: 0.90943396, g: 0.8253891, b: 0.19732988, a: 1}
-    - _Color3: {r: 0.83396226, g: 0.6288588, b: 0.14948371, a: 1}
+    - _Color2: {r: 0.33182615, g: 0.90188676, b: 0.88016486, a: 1}
+    - _Color3: {r: 0.4805054, g: 0.65384865, b: 0.81886786, a: 1}
     - _MainColor: {r: 1, g: 1, b: 1, a: 0}
     - _NormalLineColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutLineColor: {r: 0.10361691, g: 0.27676526, b: 0.3735848, a: 1}

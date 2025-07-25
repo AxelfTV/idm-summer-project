@@ -141,5 +141,8 @@ return float4(col, 1);
             }
             ENDHLSL
         }
+
+                UsePass "Universal Render Pipeline/Lit/DepthOnly"
+        UsePass "Universal Render Pipeline/Lit/DepthNormals"
     }
 }
