@@ -26,9 +26,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _EdgeControl: 0
-    - _PixelCount: 384
-    - _depthThreshold: 0.04
-    - _edgeWidth: 4
+    - _PixelCount: 600
+    - _depthThreshold: 0.015
+    - _edgeWidth: 1
+    - _normalThreshold: 0.13
     m_Colors:
-    - _EdgeColor: {r: 0.20379488, g: 0.352511, b: 0.5320754, a: 1}
+    - _EdgeColor: {r: 0, g: 0, b: 0, a: 1}
+    - _StucturelineColor: {r: 0.3529412, g: 0.39550316, b: 0.69803923, a: 1}
   m_BuildTextureStacks: []
