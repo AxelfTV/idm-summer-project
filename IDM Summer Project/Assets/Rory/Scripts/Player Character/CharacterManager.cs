@@ -79,10 +79,10 @@ public class CharacterManager : MonoBehaviour
         if (other.CompareTag("Bouncy"))
         {
             Debug.Log("Bouncy");
-            state = new CharacterBounce(stats, stats.bouncePower);
+            state = new CharacterBounce(stats, stats.sheep.stats.bouncePower);
             state.Enter();
         }
-        else if (other.CompareTag("GlideRing") && stats.input.sheep.HoldingSheep()) 
+        else if (other.CompareTag("GlideRing") && stats.sheep.HoldingSheep()) 
         {
 			Debug.Log("Glide Ring");
             transform.position = other.transform.position;

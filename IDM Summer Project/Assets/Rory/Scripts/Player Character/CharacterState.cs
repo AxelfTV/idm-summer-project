@@ -81,7 +81,7 @@ public abstract class CharacterState
     {
         Vector3 cVel = stats.rb.velocity;
         stats.rb.velocity = new Vector3(cVel.x, -0.5f, cVel.z);
-        stats.input.WhileGlide();
+        stats.WhileGlide();
     }
 }
 public class CharacterIdle : CharacterState
@@ -90,7 +90,7 @@ public class CharacterIdle : CharacterState
     public override void Enter()
     {
         base.Enter();
-        stats.input.Grounded();
+        stats.Grounded();
     }
     public override void Update()
     {
@@ -99,7 +99,7 @@ public class CharacterIdle : CharacterState
     public override CharacterState NewState()
     {
         if (!IsGrounded()) return new CharacterOffLedge(stats);
-        if (stats.input.Jump())
+        if (stats.input.Jump() || stats.JumpBuffered())
         {
             return new CharacterJump(stats);
         }
@@ -120,7 +120,7 @@ public class CharacterRunning : CharacterState
     public override CharacterState NewState()
     {
         if (!IsGrounded()) return new CharacterOffLedge(stats);
-        if (stats.input.Jump())
+        if (stats.input.Jump() || stats.JumpBuffered())
         {
             return new CharacterJump(stats);
         }
@@ -138,7 +138,7 @@ public class CharacterJump : CharacterState
     public override void Enter()
     {
         base.Enter();
-        stats.input.OnJump();
+        stats.OnJump();
         Jump(stats.jumpPower);
     }
     public override void Update()
@@ -149,8 +149,8 @@ public class CharacterJump : CharacterState
     }
     public override CharacterState NewState()
     {
-        if (stats.input.DoubleJump() && stats.input.Jump()) return new CharacterDoubleJump(stats);
-        if (jumpTimer >= stats.jumpLength || stats.input.JumpOver()) return new CharacterFall(stats);
+        if (stats.CanDouble() && stats.input.Jump()) return new CharacterDoubleJump(stats);
+        if (jumpTimer >= stats.jumpLength) return new CharacterFall(stats);
         return null;
     }
 }
@@ -166,8 +166,8 @@ public class CharacterFall : CharacterState
     {
 
         if (IsGrounded() && stats.input.Jump()) return new CharacterJump(stats);
-        if (stats.input.DoubleJump() && stats.input.Jump()) return new CharacterDoubleJump(stats);
-        if (stats.input.Glide()) return new CharacterGlide(stats);
+        if (stats.CanDouble() && stats.input.Jump()) return new CharacterDoubleJump(stats);
+        if (stats.input.Glide() && stats.CanGlide()) return new CharacterGlide(stats);
         if (IsGrounded()) return new CharacterIdle(stats);
         return null;
     }
@@ -183,7 +183,7 @@ public class CharacterFall : CharacterState
     }
     public override CharacterState NewState()
     {
-        if (stats.input.Jump()) return new CharacterJump(stats);
+        if (stats.input.Jump() || stats.JumpBuffered()) return new CharacterJump(stats);
         if (timer > stats.coyoteTime) return new CharacterFall(stats); 
         if (IsGrounded()) return new CharacterIdle(stats);
         return null;
@@ -196,8 +196,8 @@ public class CharacterDoubleJump : CharacterState
     public override void Enter()
     {
         base.Enter();
-        stats.input.OnJump();
-        stats.input.OnDouble();
+        stats.OnJump();
+        stats.OnDouble();
         Jump(stats.doubleJumpPower);
     }
     public override void Update()
@@ -226,7 +226,7 @@ public class CharacterGlide : CharacterState
     public override CharacterState NewState()
     {
         if (IsGrounded() && stats.input.Jump()) return new CharacterJump(stats);
-        if (!stats.input.Glide()) return new CharacterFall(stats);
+        if (!stats.input.Glide() || !stats.CanGlide()) return new CharacterFall(stats);
         if (IsGrounded()) return new CharacterIdle(stats);
         return null;
     }
@@ -243,7 +243,7 @@ public class CharacterGlideBoost : CharacterState
 	public override void Enter()
 	{
 		base.Enter();
-        stats.input.Grounded();
+        stats.Grounded();
 	}
 	public override void Update()
 	{
@@ -252,7 +252,7 @@ public class CharacterGlideBoost : CharacterState
 	}
 	public override CharacterState NewState()
 	{
-		if (IsGrounded() && stats.input.Jump()) return new CharacterJump(stats);
+		if (IsGrounded() && stats.input.Jump() || stats.JumpBuffered()) return new CharacterJump(stats);
 		if (timer > boostDuration) return new CharacterFall(stats);
 		if (IsGrounded()) return new CharacterIdle(stats);
 		return null;
@@ -269,8 +269,8 @@ public class CharacterBounce : CharacterState
     public override void Enter()
     {
         base.Enter();
-        stats.input.OnJump();
-        stats.input.Grounded();
+        stats.OnJump();
+        stats.Grounded();
         Jump(bouncePower);
     }
     public override void Update()

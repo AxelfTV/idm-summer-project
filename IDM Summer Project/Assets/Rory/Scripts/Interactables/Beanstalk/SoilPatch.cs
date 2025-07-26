@@ -17,8 +17,10 @@ public class SoilPatch : LockMechanism
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bean"))
+        //layer check to make sure player is not holding
+        if (other.CompareTag("Bean") && other.gameObject.layer == 6)
         {
+
             Unlock();
             Destroy(other.gameObject);
         }

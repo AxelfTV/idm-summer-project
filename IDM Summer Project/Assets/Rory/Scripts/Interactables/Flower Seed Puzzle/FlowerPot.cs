@@ -60,6 +60,8 @@ public class FlowerPot : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        //check if player holding
+        if (other.gameObject.layer != 6) return;
         if (other.CompareTag("RedSeed"))
         {
             GrowFlower(SeedType.red);

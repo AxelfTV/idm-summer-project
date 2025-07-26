@@ -4,22 +4,8 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour
 {
-    [SerializeField] float glideTime = 5f;
-    float glideEnergy;
-    [SerializeField] float jumpBuffer = 0.5f;
-    bool jumpBuffered;
-    bool canDouble;
     Vector3 move;
 
-    public SheepManager sheep;
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StopCoroutine("JumpBuffer");
-            StartCoroutine("JumpBuffer");
-        }
-    }
     public Vector3 GetMoveDirection()
     {
         move = Vector3.zero;
@@ -44,23 +30,7 @@ public class InputHandler : MonoBehaviour
     }
     public bool Jump()
     {
-        return Input.GetKeyDown(KeyCode.Space) || jumpBuffered;
-        
-    }
-    public void OnJump()
-    {
-        jumpBuffered = false;
-    }
-    IEnumerator JumpBuffer()
-    {
-        jumpBuffered = true;
-        yield return new WaitForSeconds(jumpBuffer);
-        jumpBuffered = false;
-    }
-    public bool JumpOver()
-    {
-        return false;
-        //return !Input.GetKey(KeyCode.Space);
+        return Input.GetKeyDown(KeyCode.Space);
     }
     public bool Call()
     {
@@ -72,24 +42,7 @@ public class InputHandler : MonoBehaviour
     }
     public bool Glide()
     {
-        return sheep.HoldingSheep() && Input.GetKey(KeyCode.Space) && (glideEnergy>0);
-    }
-    public void WhileGlide() 
-    {
-        glideEnergy -= Time.fixedDeltaTime;
-    }
-    public bool DoubleJump()
-    {
-        return sheep.HoldingSheep() && canDouble;
-    }
-    public void OnDouble()
-    {
-        canDouble = false;
-    }
-    public void Grounded()
-    {
-        canDouble = true;
-        glideEnergy = glideTime;
+        return Input.GetKey(KeyCode.Space);
     }
     Quaternion GetCameraForwardRotation()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SheepManager : MonoBehaviour, IHoldable
 {
-    SheepStats stats;
+    public SheepStats stats;
     SheepState state;
 
     // Start is called before the first frame update

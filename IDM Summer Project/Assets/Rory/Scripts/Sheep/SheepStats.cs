@@ -20,6 +20,7 @@ public class SheepStats : MonoBehaviour
     public float followSpeed = 3;
     public float travelSpeed = 10;
     public float throwDist = 10;
+    public float bouncePower = 15;
 
 
     // Start is called before the first frame update
@@ -30,9 +31,9 @@ public class SheepStats : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterManager>();
         sheep = GetComponent<SheepManager>();
         input = player.GetComponent<InputHandler>();
-        input.sheep = GetComponent<SheepManager>();
         CharacterStats playerStats = player.gameObject.GetComponent<CharacterStats>();
         holdPosition = playerStats.holdPosition;
         followPosition = playerStats.sheepFollowPosition;
+        playerStats.sheep = GetComponent<SheepManager>();
     }
 }
