@@ -40,6 +40,7 @@ Material:
     - _FadeDistance: 2.15
     - _ShadowThreshold: 0.25
     - _StylishShadow: 0.5
+    - _WeaveStrength: 5
     m_Colors:
     - _Color: {r: 0.6999999, g: 1, b: 0.9918708, a: 1}
     - _ShadowColor: {r: 0.3453399, g: 0.527078, b: 0.6377357, a: 1}

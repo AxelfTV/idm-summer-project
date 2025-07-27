@@ -47,9 +47,9 @@ public class NormalineRenderPassFeature : ScriptableRendererFeature
             int sceneColorTexID = Shader.PropertyToID("_SColorTex");
 
             dest = cameraTextureDescriptor;
-            cmd.GetTemporaryRT(normalTexID, dest);
-            cmd.GetTemporaryRT(depthTexID, dest);
-            cmd.GetTemporaryRT(sceneColorTexID, dest);
+            cmd.GetTemporaryRT(normalTexID, cameraTextureDescriptor);
+            cmd.GetTemporaryRT(depthTexID, cameraTextureDescriptor);
+            cmd.GetTemporaryRT(sceneColorTexID, cameraTextureDescriptor);
 
             _normalHandel = RTHandles.Alloc(normalTexID);
             _depthHandel = RTHandles.Alloc(depthTexID);
@@ -57,29 +57,46 @@ public class NormalineRenderPassFeature : ScriptableRendererFeature
             // ConfigureTarget(_normalHandel);//set target
             // ConfigureClear(ClearFlag.All, Color.black);
         }
+        public override void FrameCleanup(CommandBuffer cmd)
+    {
+    cmd.ReleaseTemporaryRT(Shader.PropertyToID("_NormalTex"));
+    cmd.ReleaseTemporaryRT(Shader.PropertyToID("_DepthTex"));
+    cmd.ReleaseTemporaryRT(Shader.PropertyToID("_SColorTex"));
+    }
         public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData)
         {
             CommandBuffer cmd = CommandBufferPool.Get("_ADD_GetNormalTex");
 
-            ConfigureTarget(_normalHandel);//set target to normal
-            ConfigureClear(ClearFlag.All, Color.black);
-
+            //ConfigureTarget(_normalHandel);//set target to normal
+            //ConfigureClear(ClearFlag.All, Color.black);
+            cmd.SetRenderTarget(_normalHandel);
+            cmd.ClearRenderTarget(true, true, Color.clear);
             var draw = CreateDrawingSettings(shaderTag, ref renderingData, renderingData.cameraData.defaultOpaqueSortFlags);
             draw.overrideMaterial = setting.NormalTex;
             draw.overrideMaterialPassIndex = 0;
-            context.DrawRenderers(renderingData.cullResults, ref draw, ref filter);
+            context.ExecuteCommandBuffer(cmd);
+            context.DrawRenderers(renderingData.cullResults, ref draw, ref filter);           
+            cmd.Clear();
 
-            ConfigureTarget(_depthHandel);//set target to depth
-            ConfigureClear(ClearFlag.All, Color.black);
+            // ConfigureTarget(_depthHandel);//set target to depth
+            // ConfigureClear(ClearFlag.All, Color.black);
+            cmd.SetRenderTarget(_depthHandel);
+            cmd.ClearRenderTarget(true, true, Color.clear);
 
             draw = CreateDrawingSettings(shaderTag, ref renderingData, renderingData.cameraData.defaultOpaqueSortFlags);
             draw.overrideMaterial = setting.DepthTex;
             draw.overrideMaterialPassIndex = 0;
-            context.DrawRenderers(renderingData.cullResults, ref draw, ref filter);
-            
-            ConfigureClear(ClearFlag.All, Color.black);
-            cmd.Blit(renderingData.cameraData.renderer.cameraColorTargetHandle,_sceneColorHandel);
             context.ExecuteCommandBuffer(cmd);
+            context.DrawRenderers(renderingData.cullResults, ref draw, ref filter);
+            cmd.Clear();
+
+
+            //         ConfigureClear(ClearFlag.All, Color.black);
+            cmd.SetRenderTarget(_sceneColorHandel);
+            cmd.ClearRenderTarget(true, true, Color.clear);
+            cmd.Blit(renderingData.cameraData.renderer.cameraColorTargetHandle, _sceneColorHandel);
+            context.ExecuteCommandBuffer(cmd);
+
             CommandBufferPool.Release(cmd);
         }
     }

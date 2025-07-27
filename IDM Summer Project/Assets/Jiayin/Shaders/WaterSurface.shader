@@ -12,6 +12,7 @@ Properties
         _ShadowColor ("Shadow Color", Color) = (0.2,0.2,0.2,1)
         _ShadowColor2("ShadowColor2",color)=(0.5,0.5,0.5,0.5)
         _FadeDistance("Fade Distance", Float) = 10.0
+        _WeaveStrength("Weave Strength",float)=1
     }
     SubShader
     {
@@ -64,6 +65,7 @@ Properties
                 float4 _ShadowColor2;
                 float _StylishShadow;//shadow edge 
                 float _FadeDistance;
+                float _WeaveStrength;
             CBUFFER_END
 
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
@@ -150,7 +152,7 @@ float3 GerstnerWaves_float(float3 position, float steepness, float wavelength, f
             {
                 Varyings OUT;
                 OUT.positionWS = TransformObjectToWorld(IN.positionOS.xyz);
-                OUT.positionWS += GerstnerWaves_float(OUT.positionWS, 0.1, 0.5, 0.1, float4(0.25, 0.5, 0.75, 1.0));
+                OUT.positionWS += GerstnerWaves_float(OUT.positionWS, 0.1*_WeaveStrength, 0.5*_WeaveStrength, 0.1*_WeaveStrength, float4(0.25, 0.5, 0.75, 1.0));
                 OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
                 OUT.uv = IN.uv ;
                 OUT.positionCS = TransformWorldToHClip(OUT.positionWS);
