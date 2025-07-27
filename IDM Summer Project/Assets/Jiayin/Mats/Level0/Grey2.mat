@@ -29,11 +29,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _HeightFactor: -0.04
+    - _HeightFactor: 0
     - _OutLineBlend: 0
     - _ShadowThreshold: 0
     m_Colors:
     - _Color: {r: 0.6167675, g: 0.71873045, b: 0.87169814, a: 1}
-    - _Color0: {r: 0.7479174, g: 0.769245, b: 0.8867924, a: 1}
-    - _Color1: {r: 0.4833108, g: 0.5090299, b: 0.7056604, a: 1}
+    - _Color0: {r: 0.7857102, g: 0.78721255, b: 0.79622644, a: 1}
+    - _Color1: {r: 0.40850836, g: 0.42924434, b: 0.5773585, a: 1}
   m_BuildTextureStacks: []
