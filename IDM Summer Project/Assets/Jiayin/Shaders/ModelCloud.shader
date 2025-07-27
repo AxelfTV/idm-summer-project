@@ -148,10 +148,11 @@ Shader "Custom/ModelCloud"
                 half NdotL = saturate(dot(IN.normalWS, mainLight.direction));
                 half shadowAtten = mainLight.shadowAttenuation;
 
-                half toonStep1 = NdotL * shadowAtten*noise > _ShadowThreshold ? 1.0: 0.0;
-                half toonStep2 = NdotL * shadowAtten*noise>_ShadowThreshold + _StylishShadow ? 1.0 : 0.0;
-          
-                float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL * shadowAtten*noise);
+               // half toonStep1 = NdotL * shadowAtten*noise > _ShadowThreshold ? 1.0: 0.0;
+              //  half toonStep2 = NdotL * shadowAtten*noise>_ShadowThreshold + _StylishShadow ? 1.0 : 0.0;
+            half toonStep1 = NdotL *noise > _ShadowThreshold ? 1.0: 0.0;
+                half toonStep2 = NdotL *noise>_ShadowThreshold + _StylishShadow ? 1.0 : 0.0;
+                float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL *noise);
                 half3 color = lerp(shadowColor.rgb*albedo*totalLight, albedo * totalLight, toonStep2);
 
                 return half4(color, 1.0);
@@ -160,7 +161,8 @@ Shader "Custom/ModelCloud"
         }
 
         // 阴影投射
-        UsePass "Universal Render Pipeline/Lit/DepthOnly"
+
+         UsePass "Universal Render Pipeline/Lit/DepthOnly"
         UsePass "Universal Render Pipeline/Lit/DepthNormals"
         UsePass "Universal Render Pipeline/Lit/ShadowCaster"
 

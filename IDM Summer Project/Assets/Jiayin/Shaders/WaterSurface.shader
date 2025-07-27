@@ -165,7 +165,7 @@ float3 GerstnerWaves_float(float3 position, float steepness, float wavelength, f
             {
 
                 float3 viewDir = normalize(_WorldSpaceCameraPos.xyz - IN.positionWS);
-//       
+      
                 float2 uv=IN.screenUV.xy/IN.screenUV.w;
                 float wavenoise= FBMvalueNoise(IN.uv*50+_Time.y*0.5)*2-1;
                 float depth=SampleSceneDepth(uv+wavenoise*0.01);
