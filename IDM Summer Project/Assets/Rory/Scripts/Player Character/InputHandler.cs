@@ -1,14 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
 {
-    Vector3 move;
+    private PlayerInput controls;
+    private Vector2 moveInput;
+    private bool jumpPressed;
+    private bool jumpHeld;
+    private bool callPressed;
+    private bool interactPressed;
 
+    private void Awake()
+    {
+        controls = new PlayerInput();
+
+        // Listen to Move (Vector2)
+        controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
+        controls.Player.Move.canceled += ctx => moveInput = Vector2.zero;
+
+        controls.Player.Jump.performed += ctx =>
+        {
+            jumpPressed = true;
+            jumpHeld = true;
+        };
+
+        controls.Player.Jump.canceled += ctx => jumpHeld = false;
+
+        controls.Player.Call.performed += ctx => callPressed = true;
+
+        controls.Player.Interact.performed += ctx => interactPressed = true;
+
+        controls.Player.Jump.performed += ctx => jumpPressed = true;
+    }
+    private void LateUpdate()
+    {
+        jumpPressed = false;
+        callPressed = false;
+        interactPressed = false;
+    }
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
+    }
     public Vector3 GetMoveDirection()
     {
-        move = Vector3.zero;
+        
+        Vector3 move = new Vector3(moveInput.x,0,moveInput.y);
+        /*
         if (Input.GetKey(KeyCode.W))
         {
             move += Vector3.forward;
@@ -26,23 +71,24 @@ public class InputHandler : MonoBehaviour
             move += Vector3.back;
         }
         move.Normalize();
+        */
         return GetCameraForwardRotation() * move;
     }
     public bool Jump()
     {
-        return Input.GetKeyDown(KeyCode.Space);
+        return jumpPressed;
     }
     public bool Call()
     {
-        return Input.GetKeyDown(KeyCode.LeftControl);
+        return callPressed;
     }
     public bool Interact()
     {
-        return Input.GetKeyDown(KeyCode.LeftShift);
+        return interactPressed;
     }
     public bool Glide()
     {
-        return Input.GetKey(KeyCode.Space);
+        return jumpHeld;
     }
     Quaternion GetCameraForwardRotation()
     {
