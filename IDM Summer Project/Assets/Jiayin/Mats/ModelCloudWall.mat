@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FarClouds
-  m_Shader: {fileID: 4800000, guid: 9109b7f833f5eb846a75281d1056b45b, type: 3}
+  m_Name: ModelCloudWall
+  m_Shader: {fileID: 4800000, guid: d3da0b60d09c64e499791e8ef42fa929, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -33,12 +33,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _CloudSpeed: 0.05
-    - _NoiseScale: 0.005
-    - _ShadowThreshold: 0.521
-    - _StylishShadow: 0.01
+    - _CloudSpeed: 0.12
+    - _FadeValue: 0.093
+    - _NoiseScale: 0.02
+    - _ShadowThreshold: 0
+    - _StylishShadow: 0.76
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ShadowColor: {r: 0.3014809, g: 0.429448, b: 0.6075471, a: 1}
-    - _ShadowColor2: {r: 0.68490565, g: 0.8604917, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.97784066, b: 0.9716981, a: 1}
+    - _ShadowColor: {r: 0.48113203, g: 0.8607914, b: 1, a: 1}
+    - _ShadowColor2: {r: 0.16509077, g: 0.2501858, b: 0.6679245, a: 1}
   m_BuildTextureStacks: []

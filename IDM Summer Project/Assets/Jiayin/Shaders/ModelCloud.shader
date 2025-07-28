@@ -11,6 +11,7 @@ Shader "Custom/ModelCloud"
         _ShadowColor ("Shadow Color", Color) = (0.2,0.2,0.2,1)
         _ShadowColor2("ShadowColor2",color)=(0.5,0.5,0.5,0.5)
         _CloudSpeed("Cloud Speed", Float) = 1.0
+        _FadeValue("FadedValue",Range(0,1))=0
     }
     SubShader
     {
@@ -69,6 +70,7 @@ Shader "Custom/ModelCloud"
                 float _StylishShadow;//shadow edge 
                 float _NoiseScale;
                 float  _CloudSpeed;
+                float _FadeValue;
             CBUFFER_END 
 
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
@@ -116,7 +118,7 @@ Shader "Custom/ModelCloud"
 
             half4 frag(Varyings IN) : SV_Target
             {
-                half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb;
+                half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb*_Color;
                 Light mainLight = GetMainLight(IN.shadowCoord);
 
                //point light support
@@ -134,28 +136,37 @@ Shader "Custom/ModelCloud"
                 float3 noiseUV = IN.positionWS * _NoiseScale;
                 noiseUV.x += _Time.y* _CloudSpeed; // Add time for animation
                 float noise=tex3D(_NoiseTex,noiseUV).x;
+                float stepNoise=step(0.5,noise);
+       
 
                 #ifdef UNITY_PROCEDURAL_INSTANCING_ENABLED
-              //  return half4(1,1,1,1);
                 float clipSize= _clouds[IN.instanceID].clipSize;
                 float dither = perlinNoise(IN.uv);
                 clip(noise-pow(clipSize,0.5));
-               // return half4(clipSize.xxx,1);
                 #endif
 
-              //  return half4(noise.xxx,1);
                 // Toon shadow
-                half NdotL = saturate(dot(IN.normalWS, mainLight.direction));
-                half shadowAtten = mainLight.shadowAttenuation;
+                half NdotL = max(0,dot(IN.normalWS, mainLight.direction));
+                half smoothNdotL=saturate(pow(NdotL,1.5));
 
-               // half toonStep1 = NdotL * shadowAtten*noise > _ShadowThreshold ? 1.0: 0.0;
-              //  half toonStep2 = NdotL * shadowAtten*noise>_ShadowThreshold + _StylishShadow ? 1.0 : 0.0;
-            half toonStep1 = NdotL *noise > _ShadowThreshold ? 1.0: 0.0;
-                half toonStep2 = NdotL *noise>_ShadowThreshold + _StylishShadow ? 1.0 : 0.0;
-                float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL *noise);
-                half3 color = lerp(shadowColor.rgb*albedo*totalLight, albedo * totalLight, toonStep2);
+                float3 viewDirWS = normalize(_WorldSpaceCameraPos.xyz - IN.positionWS);
+                half NdotV=max(0,dot(IN.normalWS,viewDirWS));
+                half smoothNdotV=saturate(pow(NdotV,1.9));
 
-                return half4(color, 1.0);
+                half shadowMask=saturate((smoothNdotV*0.5+smoothNdotL*(1-NdotV*0.5))*noise*2-0.8);
+                
+                shadowMask=max(saturate(shadowMask+(1-smoothNdotV)),(1-stepNoise));
+               // return half4( shadowMask.xxx,1);
+                // half shadowAtten = mainLight.shadowAttenuation;
+                
+                 half toonStep1 = shadowMask > _ShadowThreshold ? 1.0: 0.0;
+                 half toonStep2 = shadowMask>_ShadowThreshold + _StylishShadow ? 1.0 : 0.0;
+                 float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL *noise);
+                 half3 color = lerp(shadowColor.rgb*albedo, albedo , toonStep2);
+
+                 clip(noise+0.5-_FadeValue*1.5);
+
+                 return half4(color, 1.0);
             }
             ENDHLSL
         }
