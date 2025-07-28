@@ -1,4 +1,4 @@
-Shader "Custom/SkyCloud"
+Shader "Custom/GrassMoving"
 {
     Properties
     {
@@ -16,28 +16,22 @@ Shader "Custom/SkyCloud"
         _ShadowColor2("ShadowColor2",color)=(0.5,0.5,0.5,0.5)
         _OutLineColor("OutlineColor",Color)=(0,0,0,1)
         _OutLineBlend("OutlineBlend",Range(0,1)) = 1  
-
-        _NoiseScale("NoiseScale",float)=1
-        _CloudSpeed("CloudSpeed",float)=1
-        _CloudDensity("CloutDensity",float)=1
-        _ClipDensity("ClipDensity",float)=1
-        _DensityScale("density scale",float)=2
-        _DensitySpeed("densitySpeed",float)=1
-        _VertexOffsetDensity("_VertexOffsetDensity",float)=1
+        _MovingSpeed("Moving Speed",float)=0.5
+        _MovingRange("MovingRange",float)=1
     }
     SubShader
     {
-        Tags { "RenderType"="Transparent" "RenderPipeline" = "UniversalPipeline" 
-            "Queue"="Transparent"  "DecalMeshForwardEmissive" = "True" }
+        Tags { "RenderType"="Opaque" "RenderPipeline" = "UniversalPipeline" 
+            "Queue"="Geometry" "UniversalMaterialType"="Lit" "DecalMeshForwardEmissive" = "True" }
         //LOD 200
-        Cull off
+
         Pass
         {
             Name "ForwardLit"
             Tags { "LightMode"="UniversalForward" }
 
-            Blend SrcAlpha OneMinusSrcAlpha
-            ZWrite Off
+            ZWrite On
+            Cull Off
             ZTest LEqual
             HLSLPROGRAM
             #pragma vertex vert
@@ -50,13 +44,11 @@ Shader "Custom/SkyCloud"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl"
-            #include "../ShaderTools/NoiseLib.hlsl"
             struct Attributes
             {
                 float4 positionOS : POSITION;
                 float3 normalOS : NORMAL;
                 float2 uv : TEXCOORD0;
-                float3 tangent:TANGENT;
             };
 
             struct Varyings
@@ -67,8 +59,6 @@ Shader "Custom/SkyCloud"
                 float3 positionWS : TEXCOORD2;
                 float4 shadowCoord : TEXCOORD3;
                 float4 screenUV : TEXCOORD4; 
-
-                float3 debugvalue:TEXCOORD5;
             };
 
             CBUFFER_START(UnityPerMaterial)
@@ -88,15 +78,8 @@ Shader "Custom/SkyCloud"
                 float _HeightMove;
 
                 float4 _HeightTex_ST;
-
-                //cloud
-                float _NoiseScale;
-                float _CloudSpeed;
-                float _CloudDensity;
-                float _ClipDensity;
-                float _DensityScale;
-                float _DensitySpeed;
-                float _VertexOffsetDensity;
+                float  _MovingSpeed;
+                float _MovingRange;
             CBUFFER_END
 
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
@@ -107,32 +90,9 @@ Shader "Custom/SkyCloud"
             Varyings vert(Attributes IN)
             {
                 Varyings OUT;
-               
-                //Cloud vertex move
-                float noise=FBMvalueNoise(IN.uv*_NoiseScale+_CloudSpeed*_Time.y);              
-        //      float densityNoise=FBMvalueNoise(IN.uv*_DensityScale+_DensitySpeed*_Time.y);
-                float cloudNoise=saturate(noise);
-              // IN.positionOS.xyz+=IN.normalOS.xyz*cloudNoise*_VertexOffsetDensity;
-                float3 pos=IN.positionOS.xyz-IN.normalOS.xyz*cloudNoise*_VertexOffsetDensity;
-                //recalcutate normal
-            float2 du = float2(0.01, 0);
-            float2 dv = float2(0, 0.01);   
-            float3 Binormal=cross(IN.normalOS,IN.tangent);
-
-             float3 posU=(IN.positionOS.xyz+0.01*IN.tangent)-(IN.normalOS.xyz*saturate(FBMvalueNoise(IN.uv+du)*_NoiseScale+_CloudSpeed*_Time.y));
-             float3 posV=(IN.positionOS.xyz+0.01*Binormal)-(IN.normalOS.xyz*saturate(FBMvalueNoise(IN.uv+dv)*_NoiseScale+_CloudSpeed*_Time.y));
-            
-            // float3 posU=(IN.positionOS.xyz+0.1*IN.tangent);
-            // float3 posV=(IN.positionOS.xyz+0.1*Binormal);
-            
-            float3 modifyTangent=posU-pos;
-            float3 modifyBitangent=posV-pos;
-            float3 modifiedNormal=normalize(cross((modifyBitangent),(modifyTangent)));
-            
-        //    OUT.debugvalue=normalize(modifiedNormal);
-
-                OUT.positionWS = TransformObjectToWorld(pos);
-                OUT.normalWS = TransformObjectToWorldNormal(modifiedNormal);
+                IN.positionOS.xyz+=sin(_Time.y*_MovingSpeed)*_MovingRange*IN.uv.x;
+                OUT.positionWS = TransformObjectToWorld(IN.positionOS.xyz);
+                OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
                 OUT.uv = IN.uv ;
                 OUT.positionCS = TransformWorldToHClip(OUT.positionWS);
                 OUT.shadowCoord = TransformWorldToShadowCoord(OUT.positionWS);
@@ -142,31 +102,19 @@ Shader "Custom/SkyCloud"
 
             half4 frag(Varyings IN) : SV_Target
             {
-               // return float4 (IN.normalWS,1);
-
-           //     return float4(cloudNoise.xxx,heightMap*cloudNoise);
-            
-                //Color
-                float heightTex=SAMPLE_TEXTURE2D(_HeightTex, sampler_HeightTex, IN.uv*_HeightTex_ST.xy+_HeightTex_ST.zw+_Time.y*0.1).r;
+                // Normal line 
+                float normalLine = SAMPLE_TEXTURE2D(_NormalLineTex, sampler_NormalLineTex, IN.screenUV.xy/IN.screenUV.w).r;
+                
+                float3 positionOS= TransformWorldToObject(IN.positionWS);
+                float heightMap=positionOS.y*_HeightFactor+_HeightMove;
+               // return half4(heightMap.xxx,1);
+                float heightTex=SAMPLE_TEXTURE2D(_HeightTex, sampler_HeightTex, positionOS*_HeightTex_ST.xy+_HeightTex_ST.zw).r;
                 _Color2.rgb = lerp(_Color2.rgb, _Color3.rgb, saturate(heightTex));
                 _Color0.rgb = lerp(_Color0.rgb, _Color1.rgb, saturate(heightTex));
-                float3 positionOS= TransformWorldToObject(IN.positionWS);
-                 float heightMap=positionOS.y*_HeightFactor+_HeightMove;
                 float Grassmask =saturate( floor(heightMap*heightTex*10/3)/2);
                 float3 BaseColor= lerp(_Color0.rgb, _Color2.rgb, Grassmask);
                 half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb*BaseColor;
-
-                //Cloud Noise
-                float noise=FBMvalueNoise(IN.uv*_NoiseScale+_CloudSpeed*_Time.y);              
-                float densityNoise=FBMvalueNoise(IN.uv*_DensityScale+_DensitySpeed*_Time.y);
-              //  float cloudNoise=saturate(step(_CloudDensity,pow(noise*densityNoise, 0.5)));
-                float cloudNoise=saturate(pow(noise*densityNoise,_CloudDensity));
-                
-      
-               
-                float cloudAlpha=heightMap*cloudNoise*heightTex;    
-                clip(1-(1-cloudAlpha)*_ClipDensity);
-                
+               // return half4(albedo,1);
                 Light mainLight = GetMainLight(IN.shadowCoord);
               //  return half4(albedo,1);
                //point light support
@@ -182,11 +130,9 @@ Shader "Custom/SkyCloud"
 
                 // Toon shadow
                 half NdotL = saturate(dot(IN.normalWS, mainLight.direction));
-               // return half4(NdotL.xxx,1);
               //  half shadowAtten = mainLight.shadowAttenuation;
                 half shadowAtten=MainLightRealtimeShadow(IN.shadowCoord);
-            // half shadowAtten=1;
-         //      return half4(NdotL.xxx,1);
+               return half4(lerp(_Color0.rgb*_ShadowColor.rgb,_Color0.rgb, shadowAtten),1);
                 half toonStep1 = NdotL * shadowAtten > _ShadowThreshold ? 1.0: 0.0;
                 half toonStep2 = NdotL * shadowAtten>_ShadowThreshold + _StylishShadow ? 1.0 : 0.0;
           
@@ -197,19 +143,106 @@ Shader "Custom/SkyCloud"
               
 
                 float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL * shadowAtten);
-               
                 half3 baseColor = lerp(shadowColor.rgb*albedo*totalLight, albedo * totalLight, toonStep2);
               //  baseColor = lerp(baseColor,_OutLineColor.rgb,(1-normalLine)*_OutLineBlend);
-              //  ApplyDecalToBaseColor(IN.positionCS, baseColor);
-                return half4(baseColor*cloudAlpha,  cloudAlpha);
+                ApplyDecalToBaseColor(IN.positionCS, baseColor);
+                return half4(baseColor, 1.0);
             }
             ENDHLSL
         }
+        //depth only path support vertex moving
+        Pass
+{
+    Name "DepthOnly"
+    Tags { "LightMode"="DepthOnly" }
+    ZWrite On
+    ColorMask 0
+    HLSLPROGRAM
+    #pragma vertex vert
+    #pragma fragment frag
+
+
+    struct Attributes
+    {
+        float4 positionOS : POSITION;
+        float2 uv : TEXCOORD0;
+    };
+
+    struct Varyings
+    {
+        float4 positionCS : SV_POSITION;
+    };
+
+    Varyings vert(Attributes IN)
+    {
+        Varyings OUT;
+        // 顶点动画逻辑
+        IN.positionOS.xyz += sin(_Time.y * _MovingSpeed) * _MovingRange * IN.uv.x;
+        OUT.positionCS = TransformObjectToHClip(IN.positionOS.xyz);
+        return OUT;
+    }
+
+    float frag(Varyings IN) : SV_Depth
+    {
+        return IN.positionCS.z / IN.positionCS.w;
+    }
+    ENDHLSL
+} 
+
+
+Pass
+{
+    Name "DepthNormals"
+    Tags { "LightMode"="DepthNormals" }
+    ZWrite On
+    ColorMask RGBA
+    HLSLPROGRAM
+    #pragma vertex vert
+    #pragma fragment frag
+
+    #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+    CBUFFER_START(UnityPerMaterial)
+        float _MovingSpeed;
+        float _MovingRange;
+    CBUFFER_END
+
+    struct Attributes
+    {
+        float4 positionOS : POSITION;
+        float3 normalOS : NORMAL;
+        float2 uv : TEXCOORD0;
+    };
+
+    struct Varyings
+    {
+        float4 positionCS : SV_POSITION;
+        float3 normalWS : TEXCOORD0;
+    };
+
+    Varyings vert(Attributes IN)
+    {
+        Varyings OUT;
+        // 顶点动画逻辑
+        IN.positionOS.xyz += sin(_Time.y * _MovingSpeed) * _MovingRange * IN.uv.x;
+        OUT.positionCS = TransformObjectToHClip(IN.positionOS.xyz);
+        OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
+        return OUT;
+    }
+
+    float4 frag(Varyings IN) : SV_Target
+    {
+        // 输出世界空间法线到[0,1]范围
+        float3 normal = normalize(IN.normalWS);
+        return float4(normal * 0.5 + 0.5, 1.0);
+    }
+    ENDHLSL
+}
 
         // 阴影投射
-        UsePass "Universal Render Pipeline/Lit/DepthOnly"
-        UsePass "Universal Render Pipeline/Lit/DepthNormals"
-    //    UsePass "Universal Render Pipeline/Lit/ShadowCaster"
+   //     UsePass "Universal Render Pipeline/Lit/DepthOnly"
+   //     UsePass "Universal Render Pipeline/Lit/DepthNormals"
+        UsePass "Universal Render Pipeline/Lit/ShadowCaster"
 
     }
     FallBack "Universal Render Pipeline/Lit"
