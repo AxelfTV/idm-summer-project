@@ -20,8 +20,11 @@ Shader "TWShader/Skybox"
     }
     SubShader
     {
-        Tags { "Queue"="Background" "RenderType"="Background" "PreviewType"="Skybox" }
-        Cull Off ZWrite Off
+  //      Tags { "Queue"="Background" "RenderType"="Background" "PreviewType"="Skybox" }
+        Tags {"RenderType"="Opaque" "RenderPipeline" = "UniversalPipeline" 
+            "Queue"="Geometry"}
+        Cull Off 
+        ZWrite On
 
         Pass
         {

@@ -71,9 +71,9 @@ public class NormalineRenderPassFeature : ScriptableRendererFeature
             //ConfigureClear(ClearFlag.All, Color.black);
             cmd.SetRenderTarget(_normalHandel);
             cmd.ClearRenderTarget(true, true, Color.clear);
-            var draw = CreateDrawingSettings(shaderTag, ref renderingData, renderingData.cameraData.defaultOpaqueSortFlags);
-            draw.overrideMaterial = setting.NormalTex;
-            draw.overrideMaterialPassIndex = 0;
+            var draw = CreateDrawingSettings(new ShaderTagId("DepthNormals"), ref renderingData, renderingData.cameraData.defaultOpaqueSortFlags);
+            draw.overrideMaterial = null;
+           // draw.overrideMaterialPassIndex = 0;
             context.ExecuteCommandBuffer(cmd);
             context.DrawRenderers(renderingData.cullResults, ref draw, ref filter);           
             cmd.Clear();

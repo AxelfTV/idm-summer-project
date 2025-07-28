@@ -11,7 +11,7 @@ public class SkyboxController : MonoBehaviour
         // Directions are defined to point towards the object
 
         // Sun
-      //  Shader.SetGlobalVector("_SunDir", -_Sun.transform.forward);
+        Shader.SetGlobalVector("_SunDir", -_Sun.transform.forward);
 
         // Moon
      //   Shader.SetGlobalVector("_MoonDir", -_Moon.transform.forward);
