@@ -147,7 +147,7 @@ public class NormalineRenderPassFeature : ScriptableRendererFeature
         _DrawNormalPass.renderPassEvent = setting.passEvent;
         _DrawNormalLinePass = new DrawNormalLine(setting, this);
       //  _DrawNormalLinePass.renderPassEvent = setting.passEvent;
-        _DrawNormalLinePass.renderPassEvent = RenderPassEvent.AfterRendering;
+        _DrawNormalLinePass.renderPassEvent = setting.passEvent;
     }
 
     // Here you can inject one or multiple render passes in the renderer.

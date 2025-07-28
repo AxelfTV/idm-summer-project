@@ -15,7 +15,7 @@ Shader "Custom/ModelCloud_Instancing"
     SubShader
     {
         Tags { "RenderType"="Opaque" "RenderPipeline" = "UniversalPipeline" 
-            "Queue"="Geometry" }
+            "Queue"="Transparent" }
         //LOD 200
 
         Pass
@@ -109,7 +109,8 @@ Shader "Custom/ModelCloud_Instancing"
                 OUT.instanceID = IN.instanceID;
                 #endif
                 OUT.positionCS = TransformWorldToHClip(OUT.positionWS);
-                OUT.shadowCoord = TransformWorldToShadowCoord(OUT.positionWS);
+             //   OUT.shadowCoord = TransformWorldToShadowCoord(OUT.positionWS);
+                OUT.shadowCoord = float4(1,1,1,1);
 
                 return OUT;
             }
