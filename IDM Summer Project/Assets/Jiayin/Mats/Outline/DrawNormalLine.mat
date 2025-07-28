@@ -32,5 +32,5 @@ Material:
     - _normalThreshold: 0.13
     m_Colors:
     - _EdgeColor: {r: 0, g: 0, b: 0, a: 1}
-    - _StucturelineColor: {r: 0.3529412, g: 0.39550316, b: 0.69803923, a: 1}
+    - _StucturelineColor: {r: 0.49622637, g: 0.6076801, b: 1, a: 1}
   m_BuildTextureStacks: []

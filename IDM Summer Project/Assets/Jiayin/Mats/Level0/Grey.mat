@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Grey
+  m_Shader: {fileID: 4800000, guid: ca53272b8aba76b428ec2e030a9a88c1, type: 3}
+  m_Parent: {fileID: 2100000, guid: 478f1926fb68b134bb964359d01900ba, type: 2}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: _HeightFactor
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _HeightTex:
+        m_Texture: {fileID: 2800000, guid: c9702e31b627a6240a09d96e67af290a, type: 3}
+        m_Scale: {x: 0.8, y: 0.88}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _HeightFactor: 0
+    - _HeightMove: 0
+    - _OutLineBlend: 0
+    - _ShadowThreshold: 0.07
+    m_Colors:
+    - _Color: {r: 0.6271057, g: 0.6424113, b: 0.7056604, a: 1}
+    - _Color0: {r: 0.8792453, g: 0.8792453, b: 0.8792453, a: 1}
+    - _Color1: {r: 0.751254, g: 0.7418512, b: 0.85660374, a: 1}
+    - _Color2: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

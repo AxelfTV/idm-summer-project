@@ -98,42 +98,42 @@ TEXTURE2D(_Cloudflow);        SAMPLER(sampler_Cloudflow);
                 float3 sunViewColor = SAMPLE_TEXTURE2D(_SunViewGrad, sampler_SunViewGrad, float2(sunZenithDot01, 0.5)).rgb;
                 float svMask = pow(saturate(sunViewDot), 4);
 
-//Cloud
-float2 skyUV= IN.posWS.xz/IN.posWS.y;    
-//flowMap
-float3 flowmap=SAMPLE_TEXTURE2D(_Cloudflow,sampler_Cloudflow,IN.uv*_NoiseScale);
-float2 flowdir=flowmap.xy*2-1;
-float prase0=frac(_Time*_CloudSpeed);
-float prase1=frac(_Time*_CloudSpeed+0.5);
-float cloudLerp=abs((0.5-prase0)/0.5);
+// //Cloud
+// float2 skyUV= IN.posWS.xz/IN.posWS.y;    
+// //flowMap
+// float3 flowmap=SAMPLE_TEXTURE2D(_Cloudflow,sampler_Cloudflow,IN.uv*_NoiseScale);
+// float2 flowdir=flowmap.xy*2-1;
+// float prase0=frac(_Time*_CloudSpeed);
+// float prase1=frac(_Time*_CloudSpeed+0.5);
+// float cloudLerp=abs((0.5-prase0)/0.5);
 
-float3 baseNoise_0=SAMPLE_TEXTURE2D(_CloudTex,sampler_CloudTex,skyUV*_NoiseScale+prase0*flowdir);
-float3 noise1_0=SAMPLE_TEXTURE2D(_CloudNoise1,sampler_CloudNoise1,skyUV*_NoiseScale+prase0*flowdir);
-float3 noise2_0=SAMPLE_TEXTURE2D(_CloudNoise2,sampler_CloudNoise2,skyUV*_NoiseScale+prase0*flowdir);
+// float3 baseNoise_0=SAMPLE_TEXTURE2D(_CloudTex,sampler_CloudTex,skyUV*_NoiseScale+prase0*flowdir);
+// float3 noise1_0=SAMPLE_TEXTURE2D(_CloudNoise1,sampler_CloudNoise1,skyUV*_NoiseScale+prase0*flowdir);
+// float3 noise2_0=SAMPLE_TEXTURE2D(_CloudNoise2,sampler_CloudNoise2,skyUV*_NoiseScale+prase0*flowdir);
 
-float3 baseNoise_1=SAMPLE_TEXTURE2D(_CloudTex,sampler_CloudTex,skyUV*_NoiseScale+prase1*flowdir);
-float3 noise1_1=SAMPLE_TEXTURE2D(_CloudNoise1,sampler_CloudNoise1,skyUV*_NoiseScale+prase1*flowdir);
-float3 noise2_1=SAMPLE_TEXTURE2D(_CloudNoise2,sampler_CloudNoise2,skyUV*_NoiseScale+prase1*flowdir);
+// float3 baseNoise_1=SAMPLE_TEXTURE2D(_CloudTex,sampler_CloudTex,skyUV*_NoiseScale+prase1*flowdir);
+// float3 noise1_1=SAMPLE_TEXTURE2D(_CloudNoise1,sampler_CloudNoise1,skyUV*_NoiseScale+prase1*flowdir);
+// float3 noise2_1=SAMPLE_TEXTURE2D(_CloudNoise2,sampler_CloudNoise2,skyUV*_NoiseScale+prase1*flowdir);
 
 
-float3 baseNoise_3=SAMPLE_TEXTURE2D(_CloudTex,sampler_CloudTex,skyUV-prase0*flowdir);
-float3 baseNoise_4=SAMPLE_TEXTURE2D(_CloudTex,sampler_CloudTex,skyUV-prase1*flowdir);
+// float3 baseNoise_3=SAMPLE_TEXTURE2D(_CloudTex,sampler_CloudTex,skyUV-prase0*flowdir);
+// float3 baseNoise_4=SAMPLE_TEXTURE2D(_CloudTex,sampler_CloudTex,skyUV-prase1*flowdir);
 
-float3 cloud=lerp(noise2_0,noise2_1,cloudLerp);
-float cloudrange=saturate(IN.uv.y* _CloudClampmut+ _CloudClampadd);
-cloud= cloud*cloudrange;
-//�ײ����
-float3 Lowercloud=saturate(smoothstep(_CloudCut,_CloudCut+_Fuzziness,cloud));
-//return float4(cloud,1);
+// float3 cloud=lerp(noise2_0,noise2_1,cloudLerp);
+// float cloudrange=saturate(IN.uv.y* _CloudClampmut+ _CloudClampadd);
+// cloud= cloud*cloudrange;
+// //�ײ����
+// float3 Lowercloud=saturate(smoothstep(_CloudCut,_CloudCut+_Fuzziness,cloud));
+// //return float4(cloud,1);
 
-//return float4(cloud,1);
-float3 finalCloud=cloud+Lowercloud;
+// //return float4(cloud,1);
+// float3 finalCloud=cloud+Lowercloud;
 
-//���ϵ��½���
-float3 CloudColor=lerp(_CloudColor1,_CloudColor2,IN.uv.y);
+// //���ϵ��½���
+// float3 CloudColor=lerp(_CloudColor1,_CloudColor2,IN.uv.y);
 
                 float3 skyColor = sunZenithColor + vzMask * viewZenithColor + svMask * sunViewColor;
-                skyColor=lerp(skyColor,CloudColor.xyz,finalCloud);
+         //       skyColor=lerp(skyColor,CloudColor.xyz,finalCloud);
                 float3 col = skyColor;
                 //float3 col = saturate(float3(step(0.9,dot(_SunDir, viewDir)), step(0.9,dot(_MoonDir, viewDir)), 0));
 //return float4(IN.uv.y,0,0,1);                

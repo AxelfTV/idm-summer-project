@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SkyCloud
+  m_Shader: {fileID: 4800000, guid: 5b97f213918dee44fac8f61c823cf8cc, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _HeightTex:
+        m_Texture: {fileID: 2800000, guid: c9702e31b627a6240a09d96e67af290a, type: 3}
+        m_Scale: {x: 3, y: 2}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ClipDensity: -0.19
+    - _CloudDensity: -0.43
+    - _CloudSpeed: 0.9
+    - _DensityScale: 1.34
+    - _DensitySpeed: 0.46
+    - _HeightFactor: 0.01
+    - _HeightMove: 0.49
+    - _NoiseScale: 7.59
+    - _OutLineBlend: 1
+    - _ShadowThreshold: 0
+    - _StylishShadow: -0.16
+    - _VertexOffsetDensity: 20
+    m_Colors:
+    - _Color0: {r: 0.6320754, g: 0.8133598, b: 1, a: 1}
+    - _Color1: {r: 0.3226415, g: 0.35230196, b: 1, a: 1}
+    - _Color2: {r: 1, g: 1, b: 1, a: 1}
+    - _Color3: {r: 1, g: 1, b: 1, a: 1}
+    - _OutLineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ShadowColor: {r: 0.2088216, g: 0.7445348, b: 0.79622644, a: 1}
+    - _ShadowColor2: {r: 0.5091563, g: 0.5697356, b: 0.7433963, a: 1}
+  m_BuildTextureStacks: []
