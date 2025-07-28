@@ -66,6 +66,7 @@ public class CharacterManager : MonoBehaviour
             else
             {
                 holdObj.transform.position = stats.holdPosition.position;
+                holdObj.transform.rotation = transform.rotation;
             }
         }
     }

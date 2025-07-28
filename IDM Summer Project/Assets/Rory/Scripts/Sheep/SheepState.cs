@@ -1,6 +1,8 @@
+using Cinemachine.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 
 public abstract class SheepState
@@ -28,6 +30,13 @@ public abstract class SheepState
         Vector3 origin = stats.rb.position + Vector3.down * 0.5f + Vector3.up * 0.1f;
 
         return Physics.Raycast(origin, Vector3.down, rayLength, LayerMask.GetMask("Ground"));
+    }
+    protected void PointInDirectionOfMove()
+    {
+        Vector3 moveDir = stats.rb.velocity;
+        moveDir.ProjectOntoPlane(Vector3.up);
+        moveDir.Normalize();
+        stats.rb.transform.rotation = Quaternion.LookRotation(moveDir, Vector3.up);
     }
     protected Vector3 VectorToFollow()
     {
@@ -107,6 +116,7 @@ public class SheepFollow : SheepState
     {
         Vector3 toFollow = VectorToFollow();
         stats.rb.AddForce(stats.followSpeed * toFollow.normalized);
+        PointInDirectionOfMove();
     }
     public override SheepState NewState()
     {
@@ -128,6 +138,7 @@ public class SheepReturn : SheepState
     public override void Update()
     {
         TravelToPosition(stats.player.transform.position);
+        PointInDirectionOfMove();
     }
     public override SheepState NewState()
     {
@@ -211,7 +222,6 @@ public class SheepThrow : SheepState
     }
     public override void Update()
     {
-        
     }
     public override SheepState NewState()
     {

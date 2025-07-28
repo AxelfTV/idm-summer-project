@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1857282472611199703}
   - component: {fileID: 2044172682542384407}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Blob Shadow Projector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,8 +111,8 @@ MonoBehaviour:
   holdPosition: {fileID: 2301045024987279557}
   sheepFollowPosition: {fileID: 5563400394695847112}
   runSpeed: 10
-  jumpPower: 10
-  jumpLength: 0.15
+  jumpPower: 15
+  jumpLength: 0.2
   jumpBuffer: 0.2
   doubleJumpPower: 12
   doubleJumpLength: 0.2
@@ -121,7 +121,7 @@ MonoBehaviour:
   airMovePower: 50
   airMoveMaxSpeed: 15
   grabRange: 1
-  glideTime: 2
+  glideTime: 3
 --- !u!114 &5659423559324103451
 MonoBehaviour:
   m_ObjectHideFlags: 0
