@@ -20,6 +20,11 @@ Shader "Custom/GrassMoving"
         _MovingSpeed("Moving Speed",float)=0.5
         _MovinDirct("MovingDirect",Vector)=(1,1,1,1)
         _MovingRange("MovingRange",float)=1
+
+        _PlayerPos("PlayerPos",Vector)=(0,0,0,0)
+        _SheepPos("SheepPos",Vector)=(0,0,0,0)
+        _MaxBlendRange("MaxBlendRange",float)=5
+        _BlendSize("BlendSize",float)=1
     }
     SubShader
     {
@@ -84,6 +89,11 @@ Shader "Custom/GrassMoving"
                 float  _MovingSpeed;
                 float _MovingRange;
                 float3 _MovinDirct;
+
+                float3 _PlayerPos;
+                float _MaxBlendRange;
+                float _BlendSize;
+                float _SheepPos;
             CBUFFER_END
 
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
@@ -95,11 +105,18 @@ Shader "Custom/GrassMoving"
             {
                 Varyings OUT;
 
-             //   float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz);
-                IN.positionOS.xyz+=sin(_Time.y*_MovinDirct.xyz*_MovingSpeed)*_MovingRange*IN.uv.x;
+                float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz);
+                float3 BlendVector=normalize(positionWS-_PlayerPos);
+                BlendVector.y=0;
+                float BlendFactor=1-min(pow(distance(_PlayerPos,positionWS),0.3),_MaxBlendRange)*(1/_MaxBlendRange);
+                IN.positionOS.xyz=IN.positionOS.xyz+sin(_Time.y*_MovinDirct.xyz*_MovingSpeed)*_MovingRange*IN.uv.x;
+                
                 //for stylish shadow
                 float3 FakePositionWS=TransformObjectToWorld(float3(IN.positionOS.x,IN.positionOS.y*0.1,IN.positionOS.z));
                 OUT.positionWS = TransformObjectToWorld(IN.positionOS.xyz);
+                OUT.positionWS+=BlendVector*BlendFactor*IN.uv.x*_BlendSize;
+
+                
                 OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
                 OUT.uv = IN.uv ;
                 OUT.positionCS = TransformWorldToHClip(OUT.positionWS);
@@ -115,9 +132,11 @@ Shader "Custom/GrassMoving"
                // return half4(ColorNoise.xxx,1);
                 float3 positionOS= TransformWorldToObject(IN.positionWS);
                 float heightTex=SAMPLE_TEXTURE2D(_HeightTex, sampler_HeightTex, IN.positionWS.xz*_HeightTex_ST.xy+_HeightTex_ST.zw).r;
-                float3 BaseColor= lerp(_Color0.rgb, _Color1.rgb,heightTex);
+             
+                float3 BaseColor=lerp(_Color0.rgb, _Color1.rgb,pow(heightTex,0.5));
+               // return half4( BaseColor,1);
                 half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb*BaseColor;
-               // return half4(albedo,1);
+                
                 Light mainLight = GetMainLight(IN.shadowCoord);
            
                //point light support

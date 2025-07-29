@@ -34,7 +34,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _CloudSpeed: 0.12
-    - _FadeValue: 0.093
+    - _FadeValue: 0
     - _NoiseScale: 0.02
     - _ShadowThreshold: 0
     - _StylishShadow: 0.76
