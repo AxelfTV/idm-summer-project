@@ -150,7 +150,7 @@ Shader "Custom/VeinLeavesMoving"
             ENDHLSL
         }
         //depth only path support vertex moving
-        Pass
+Pass
 {
     Name "DepthOnly"
     Tags { "LightMode"="DepthOnly" }

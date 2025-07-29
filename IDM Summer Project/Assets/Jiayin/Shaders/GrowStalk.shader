@@ -151,11 +151,103 @@ Shader "Custom/GrowStalk"
             }
             ENDHLSL
         }
+Pass
+{
+    Name "DepthOnly"
+    Tags { "LightMode"="DepthOnly" }
+    ZWrite On
+    ColorMask 0
+    HLSLPROGRAM
+    #pragma vertex vert
+    #pragma fragment frag
 
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+        CBUFFER_START(UnityPerMaterial)
+        float  _GrowFactor;
+CBUFFER_END
+
+    struct Attributes
+    {
+        float4 positionOS : POSITION;
+        float2 uv : TEXCOORD0;
+    };
+
+    struct Varyings
+    {
+        float4 positionCS : SV_POSITION;
+    };
+
+    Varyings vert(Attributes IN)
+    {
+        Varyings OUT;
+        // 顶点动画逻辑
+        float GrowHeightMix=-IN.positionOS.y*0.1;
+        IN.positionOS.xz = IN.positionOS.xz*(saturate(GrowHeightMix+_GrowFactor*16));  
+        OUT.positionCS = TransformObjectToHClip(IN.positionOS.xyz);
+        return OUT;
+    }
+
+    float frag(Varyings IN) : SV_Depth
+    {
+        return IN.positionCS.z / IN.positionCS.w;
+    }
+    ENDHLSL
+} 
+
+
+Pass
+{
+    Name "DepthNormals"
+    Tags { "LightMode"="DepthNormals" }
+    ZWrite On
+    ColorMask RGBA
+    HLSLPROGRAM
+    #pragma vertex vert
+    #pragma fragment frag
+
+    #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+    CBUFFER_START(UnityPerMaterial)
+        float  _GrowFactor;
+    CBUFFER_END
+
+    struct Attributes
+    {
+        float4 positionOS : POSITION;
+        float3 normalOS : NORMAL;
+        float2 uv : TEXCOORD0;
+    };
+
+    struct Varyings
+    {
+        float4 positionCS : SV_POSITION;
+        float3 normalWS : TEXCOORD0;
+    };
+
+    Varyings vert(Attributes IN)
+    {
+        Varyings OUT;
+       float GrowHeightMix=-IN.positionOS.y*0.1;
+        IN.positionOS.xz = IN.positionOS.xz*(saturate(GrowHeightMix+_GrowFactor*16));  
+        OUT.positionCS = TransformObjectToHClip(IN.positionOS.xyz);
+        
+        OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
+        return OUT;
+    }
+
+    float4 frag(Varyings IN) : SV_Target
+    {
+        // 输出世界空间法线到[0,1]范围  
+        float3 normal = normalize(IN.normalWS);
+        return float4(1,1,1,1);
+        return float4(normal * 0.5 + 0.5, 1.0);
+    }
+    ENDHLSL
+}
         // 阴影投射
-        UsePass "Universal Render Pipeline/Lit/DepthOnly"
-        UsePass "Universal Render Pipeline/Lit/DepthNormals"
-        UsePass "Universal Render Pipeline/Lit/ShadowCaster"
+     //   UsePass "Universal Render Pipeline/Lit/DepthOnly"
+    //    UsePass "Universal Render Pipeline/Lit/DepthNormals"
+    //    UsePass "Universal Render Pipeline/Lit/ShadowCaster"
 
     }
     FallBack "Universal Render Pipeline/Lit"

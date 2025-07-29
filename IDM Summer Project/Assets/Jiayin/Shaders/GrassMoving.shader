@@ -176,7 +176,6 @@ Shader "Custom/GrassMoving"
     Varyings vert(Attributes IN)
     {
         Varyings OUT;
-        // 顶点动画逻辑
         IN.positionOS.xyz += sin(_Time.y * _MovingSpeed) * _MovingRange * IN.uv.x;
         OUT.positionCS = TransformObjectToHClip(IN.positionOS.xyz);
         return OUT;
@@ -196,6 +195,7 @@ Pass
     Tags { "LightMode"="DepthNormals" }
     ZWrite On
     ColorMask RGBA
+    Cull Off
     HLSLPROGRAM
     #pragma vertex vert
     #pragma fragment frag
@@ -223,7 +223,7 @@ Pass
     Varyings vert(Attributes IN)
     {
         Varyings OUT;
-        // 顶点动画逻辑
+
         IN.positionOS.xyz += sin(_Time.y * _MovingSpeed) * _MovingRange * IN.uv.x;
         OUT.positionCS = TransformObjectToHClip(IN.positionOS.xyz);
         OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
@@ -232,14 +232,15 @@ Pass
 
     float4 frag(Varyings IN) : SV_Target
     {
-        // 输出世界空间法线到[0,1]范围
+
+        return float4(0,0,0,1);
         float3 normal = normalize(IN.normalWS);
         return float4(normal * 0.5 + 0.5, 1.0);
     }
     ENDHLSL
 }
 
-        // 阴影投射
+
    //     UsePass "Universal Render Pipeline/Lit/DepthOnly"
    //     UsePass "Universal Render Pipeline/Lit/DepthNormals"
         UsePass "Universal Render Pipeline/Lit/ShadowCaster"
