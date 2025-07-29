@@ -10,6 +10,7 @@ Shader "Custom/GrassMoving"
         _HeightFactor("Height Factor", float) = 1
         _HeightMove("Height Move",float) = 0
         _HeightTex("Height Texture", 2D) = "white" {}
+        
         _ShadowThreshold ("Shadow Threshold", Range(0,1)) = 0.5
         _StylishShadow ("Stylish Shadow", Float) = 0.5
         _ShadowColor ("Shadow Color", Color) = (0.2,0.2,0.2,1)
@@ -17,6 +18,7 @@ Shader "Custom/GrassMoving"
         _OutLineColor("OutlineColor",Color)=(0,0,0,1)
         _OutLineBlend("OutlineBlend",Range(0,1)) = 1  
         _MovingSpeed("Moving Speed",float)=0.5
+        _MovinDirct("MovingDirect",Vector)=(1,1,1,1)
         _MovingRange("MovingRange",float)=1
     }
     SubShader
@@ -44,6 +46,7 @@ Shader "Custom/GrassMoving"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl"
+            #include "../ShaderTools/NoiseLib.hlsl"
             struct Attributes
             {
                 float4 positionOS : POSITION;
@@ -73,13 +76,14 @@ Shader "Custom/GrassMoving"
                 float _StylishShadow;//shadow edge 
                 float4 _OutLineColor;
                 float _OutLineBlend;
-                //height mix
+       
                 float _HeightFactor;
                 float _HeightMove;
 
                 float4 _HeightTex_ST;
                 float  _MovingSpeed;
                 float _MovingRange;
+                float3 _MovinDirct;
             CBUFFER_END
 
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
@@ -90,33 +94,32 @@ Shader "Custom/GrassMoving"
             Varyings vert(Attributes IN)
             {
                 Varyings OUT;
-                IN.positionOS.xyz+=sin(_Time.y*_MovingSpeed)*_MovingRange*IN.uv.x;
+
+             //   float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz);
+                IN.positionOS.xyz+=sin(_Time.y*_MovinDirct.xyz*_MovingSpeed)*_MovingRange*IN.uv.x;
+                //for stylish shadow
+                float3 FakePositionWS=TransformObjectToWorld(float3(IN.positionOS.x,IN.positionOS.y*0.1,IN.positionOS.z));
                 OUT.positionWS = TransformObjectToWorld(IN.positionOS.xyz);
                 OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
                 OUT.uv = IN.uv ;
                 OUT.positionCS = TransformWorldToHClip(OUT.positionWS);
-                OUT.shadowCoord = TransformWorldToShadowCoord(OUT.positionWS);
+                OUT.shadowCoord = TransformWorldToShadowCoord(FakePositionWS);
                 OUT.screenUV=ComputeScreenPos(OUT.positionCS);
                 return OUT;
             }
 
             half4 frag(Varyings IN) : SV_Target
             {
-                // Normal line 
-                float normalLine = SAMPLE_TEXTURE2D(_NormalLineTex, sampler_NormalLineTex, IN.screenUV.xy/IN.screenUV.w).r;
                 
+                //float ColorNoise=FBMvalueNoise(IN.positionWS.xz*0.2);
+               // return half4(ColorNoise.xxx,1);
                 float3 positionOS= TransformWorldToObject(IN.positionWS);
-                float heightMap=positionOS.y*_HeightFactor+_HeightMove;
-               // return half4(heightMap.xxx,1);
-                float heightTex=SAMPLE_TEXTURE2D(_HeightTex, sampler_HeightTex, positionOS*_HeightTex_ST.xy+_HeightTex_ST.zw).r;
-                _Color2.rgb = lerp(_Color2.rgb, _Color3.rgb, saturate(heightTex));
-                _Color0.rgb = lerp(_Color0.rgb, _Color1.rgb, saturate(heightTex));
-                float Grassmask =saturate( floor(heightMap*heightTex*10/3)/2);
-                float3 BaseColor= lerp(_Color0.rgb, _Color2.rgb, Grassmask);
+                float heightTex=SAMPLE_TEXTURE2D(_HeightTex, sampler_HeightTex, IN.positionWS.xz*_HeightTex_ST.xy+_HeightTex_ST.zw).r;
+                float3 BaseColor= lerp(_Color0.rgb, _Color1.rgb,heightTex);
                 half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb*BaseColor;
                // return half4(albedo,1);
                 Light mainLight = GetMainLight(IN.shadowCoord);
-              //  return half4(albedo,1);
+           
                //point light support
                 half3 totalLight = mainLight.color.rgb * mainLight.distanceAttenuation;
                 #if defined(_ADDITIONAL_LIGHTS)
@@ -129,20 +132,20 @@ Shader "Custom/GrassMoving"
                 #endif
 
                 // Toon shadow
-                half NdotL = saturate(dot(IN.normalWS, mainLight.direction));
               //  half shadowAtten = mainLight.shadowAttenuation;
                 half shadowAtten=MainLightRealtimeShadow(IN.shadowCoord);
-               return half4(lerp(_Color0.rgb*_ShadowColor.rgb,_Color0.rgb, shadowAtten),1);
-                half toonStep1 = NdotL * shadowAtten > _ShadowThreshold ? 1.0: 0.0;
-                half toonStep2 = NdotL * shadowAtten>_ShadowThreshold + _StylishShadow ? 1.0 : 0.0;
+
+        
+            //   return half4(lerp(_Color0.rgb*_ShadowColor.rgb,_Color0.rgb, shadowAtten),1);
+                half toonStep1 =shadowAtten > _ShadowThreshold ? 1.0: 0.0;
+                half toonStep2 = shadowAtten>_ShadowThreshold + _StylishShadow ? 1.0 : 0.0;
           
                 //decal support
              //   float2 decaluv = IN.screenUV.xy / IN.screenUV.w;
               //  float4 decal0 = SAMPLE_TEXTURE2D(_DBufferTexture0, sampler_DBufferTexture0, decaluv);
              
-              
-
-                float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL * shadowAtten);
+        
+                float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, shadowAtten);
                 half3 baseColor = lerp(shadowColor.rgb*albedo*totalLight, albedo * totalLight, toonStep2);
               //  baseColor = lerp(baseColor,_OutLineColor.rgb,(1-normalLine)*_OutLineBlend);
                 ApplyDecalToBaseColor(IN.positionCS, baseColor);
@@ -160,8 +163,11 @@ Shader "Custom/GrassMoving"
     HLSLPROGRAM
     #pragma vertex vert
     #pragma fragment frag
-
-
+    #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+ CBUFFER_START(UnityPerMaterial)
+        float _MovingSpeed;
+        float _MovingRange;
+    CBUFFER_END
     struct Attributes
     {
         float4 positionOS : POSITION;
@@ -205,6 +211,7 @@ Pass
     CBUFFER_START(UnityPerMaterial)
         float _MovingSpeed;
         float _MovingRange;
+         float3 _MovinDirct;
     CBUFFER_END
 
     struct Attributes
@@ -224,7 +231,7 @@ Pass
     {
         Varyings OUT;
 
-        IN.positionOS.xyz += sin(_Time.y * _MovingSpeed) * _MovingRange * IN.uv.x;
+       IN.positionOS.xyz+=sin(_Time.y*_MovinDirct.xyz*_MovingSpeed)*_MovingRange*IN.uv.x;
         OUT.positionCS = TransformObjectToHClip(IN.positionOS.xyz);
         OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
         return OUT;
@@ -243,8 +250,8 @@ Pass
 
    //     UsePass "Universal Render Pipeline/Lit/DepthOnly"
    //     UsePass "Universal Render Pipeline/Lit/DepthNormals"
-        UsePass "Universal Render Pipeline/Lit/ShadowCaster"
+   //     UsePass "Universal Render Pipeline/Lit/ShadowCaster"
 
     }
-    FallBack "Universal Render Pipeline/Lit"
+ //   FallBack "Universal Render Pipeline/Lit"
 }

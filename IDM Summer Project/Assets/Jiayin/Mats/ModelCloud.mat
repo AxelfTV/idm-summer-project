@@ -39,7 +39,7 @@ Material:
     - _ShadowThreshold: 0
     - _StylishShadow: 0.76
     m_Colors:
-    - _Color: {r: 1, g: 0.97784066, b: 0.9716981, a: 1}
+    - _Color: {r: 0.8509433, g: 1, b: 0.9875327, a: 1}
     - _ShadowColor: {r: 0.48113203, g: 0.8607914, b: 1, a: 1}
     - _ShadowColor2: {r: 0.16509077, g: 0.2501858, b: 0.6679245, a: 1}
   m_BuildTextureStacks: []

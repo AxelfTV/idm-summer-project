@@ -35,10 +35,10 @@ Material:
     m_Floats:
     - _CloudSpeed: 0.05
     - _NoiseScale: 0.005
-    - _ShadowThreshold: 0.521
+    - _ShadowThreshold: 0.473
     - _StylishShadow: 0.01
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.84339625, g: 0.97590184, b: 1, a: 1}
     - _ShadowColor: {r: 0.3014809, g: 0.429448, b: 0.6075471, a: 1}
     - _ShadowColor2: {r: 0.68490565, g: 0.8604917, b: 1, a: 1}
   m_BuildTextureStacks: []
