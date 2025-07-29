@@ -33,12 +33,12 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BlendSize: 3
+    - _BlendSize: 1.62
     - _HeightFactor: 0.21
     - _HeightMove: 0
     - _MaxBlendRange: 2.19
-    - _MovingRange: 0.11
-    - _MovingSpeed: 3.78
+    - _MovingRange: 0.25
+    - _MovingSpeed: 5
     - _OutLineBlend: 1
     - _ShadowThreshold: 0
     - _StylishShadow: 0.71
@@ -49,8 +49,8 @@ Material:
     - _Color3: {r: 1, g: 1, b: 1, a: 1}
     - _MovinDirct: {r: 1.06, g: 0, b: 1.4, a: 1}
     - _OutLineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _PlayerPos: {r: -8.574782, g: 1.4092759, b: 14.143733, a: 0}
+    - _PlayerPos: {r: 223.57886, g: -20.973917, b: -251.7593, a: 0}
     - _ShadowColor: {r: 0.38590956, g: 0.55651826, b: 0.7660377, a: 1}
     - _ShadowColor2: {r: 0.42830187, g: 0.57043856, b: 1, a: 1}
-    - _SheepPos: {r: -8.819344, g: 0.9061073, b: 13.0812645, a: 0}
+    - _SheepPos: {r: 223.57886, g: -19.554916, b: -251.7593, a: 0}
   m_BuildTextureStacks: []
