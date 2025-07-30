@@ -7,6 +7,8 @@ Shader "Custom/URPToonShader"
         _Color1 ("Color1", Color) = (1,1,1,1)
         _Color2("Color2",Color)=(1,1,1,1)
         _Color3("Color3",Color)=(1,1,1,1)
+        _GlossyColor("GlossyColor",Color)=(0,0,0,1)
+        _GlossyAmount("GlossyAmount",float)=0
         _HeightFactor("Height Factor", float) = 1
         _HeightMove("Height Move",float) = 0
         _HeightTex("Height Texture", 2D) = "white" {}
@@ -73,6 +75,9 @@ Shader "Custom/URPToonShader"
                 //height mix
                 float _HeightFactor;
                 float _HeightMove;
+                //HDR
+                float3 _GlossyColor;
+               float _GlossyAmount;
 
                 float4 _HeightTex_ST;
             CBUFFER_END
@@ -138,6 +143,7 @@ Shader "Custom/URPToonShader"
 
                 float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL * shadowAtten);
                 half3 baseColor = lerp(shadowColor.rgb*albedo*totalLight, albedo * totalLight, toonStep2);
+                baseColor+=_GlossyColor*_GlossyAmount;
               //  baseColor = lerp(baseColor,_OutLineColor.rgb,(1-normalLine)*_OutLineBlend);
                 ApplyDecalToBaseColor(IN.positionCS, baseColor);
                 return half4(baseColor, 1.0);

@@ -27,7 +27,7 @@ Material:
     m_Floats:
     - _EdgeControl: 0
     - _PixelCount: 600
-    - _depthThreshold: 0.015
+    - _depthThreshold: 0.05
     - _edgeWidth: 0.72
     - _normalThreshold: 0.13
     m_Colors:
