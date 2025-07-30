@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class CameraMovement : MonoBehaviour
 {
@@ -19,8 +20,16 @@ public class CameraMovement : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        if (!initial) parentLocation = transform.parent.position;
-        else parentLocation = Vector3.zero;
+        if (!initial) 
+        { 
+            parentLocation = transform.parent.position;
+            GetComponent<CinemachineVirtualCamera>().Priority = 0;
+        }
+        else
+        {
+            parentLocation = Vector3.zero;
+            GetComponent<CinemachineVirtualCamera>().Priority = 100;
+        }
         
     }
 

@@ -12,6 +12,8 @@ public class CameraManager : MonoBehaviour
     {
         currentCam = initialCam;
         initialCam.Priority = 100;
+        Camera.main.transform.position = currentCam.transform.position;
+        Camera.main.transform.rotation = currentCam.transform.rotation;
     }
 
     // Update is called once per frame
