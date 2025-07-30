@@ -12747,7 +12747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74bb446ea2f44a049922e7a9952de866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeValue: 0
+  fadeValue: 1
 --- !u!43 &537973537
 Mesh:
   m_ObjectHideFlags: 0

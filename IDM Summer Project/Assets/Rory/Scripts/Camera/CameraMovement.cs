@@ -5,48 +5,73 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     Transform player;
-    [SerializeField] Vector3 initialPos;
-    [SerializeField] Vector3 targetPos;
+    Vector3 parentLocation;
     [SerializeField] CamType type = CamType.stationary;
     [SerializeField] bool initial;
+
+    [SerializeField] float angleY = 0;
+    [SerializeField] float angleX = 0;
+    [SerializeField] float dist = 0;
+    [SerializeField] float panHor = 0;
+    [SerializeField] float panVert = 0;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        initialPos = transform.position;
-        if (initial) targetPos = player.position;
-        else targetPos = transform.parent.position;
+
+        if (!initial) parentLocation = transform.parent.position;
+        else parentLocation = Vector3.zero;
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = GetTargetPosition();
-    }
+		//transform.position = GetTargetPosition();
+		Vector3 targetPosition = GetTargetPosition();
+		Vector3 positionFromTarget = GetPositionFromTarget();
+
+		transform.rotation = Quaternion.identity;
+        
+        Vector3 toTarget = (-positionFromTarget).normalized;
+        transform.rotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(toTarget, Vector3.up), Vector3.up);
+        transform.rotation = Quaternion.LookRotation(toTarget, Vector3.Cross(toTarget, transform.right));
+		transform.position = targetPosition + positionFromTarget + transform.up * panVert + transform.right * panHor;
+	}
     Vector3 GetTargetPosition()
     {
+        Vector3 dif;
         switch (type)
         {
             case CamType.stationary:
-                return initialPos;
+                return parentLocation;
             case CamType.horizontalScroll:
-                Vector3 dif1 = Vector3.Project(player.position - targetPos, transform.right);
-                return initialPos + dif1;
+                dif = Vector3.Project(player.position - parentLocation, transform.right);
+                return parentLocation + dif;
             case CamType.verticalScroll:
-                Vector3 dif2 = Vector3.Project(player.position - targetPos, Vector3.up);
-                return initialPos + dif2;
+                dif = Vector3.Project(player.position - parentLocation, Vector3.up);
+                return parentLocation + dif;
             case CamType.forwardScroll:
-                Vector3 dif4 = Vector3.Project(player.position - targetPos, Vector3.ProjectOnPlane(transform.forward,Vector3.up).normalized);
-                return initialPos + dif4;
+                dif = Vector3.Project(player.position - parentLocation, Vector3.ProjectOnPlane(transform.forward,Vector3.up).normalized);
+                return parentLocation + dif;
             case CamType.follow:
-                Vector3 dif3 = player.position - targetPos;
-                return initialPos + dif3;
+                return player.position;
             default: 
-                return initialPos;
+                return player.position;
         }
     }
+	Vector3 GetPositionFromTarget()
+	{
+        float radAngleX = (-angleX + 90) * Mathf.Deg2Rad;
+        float radAngleY = (-angleY - 90) * Mathf.Deg2Rad;
+        float sinX = Mathf.Sin(radAngleX);
+        float sinY = Mathf.Sin(radAngleY);
+        float cosX = Mathf.Cos(radAngleX);
+        float cosY = Mathf.Cos(radAngleY);
+        return dist * new Vector3(sinX * cosY, cosX, sinX * sinY);
+    }
 }
+
 public enum CamType
 {
     stationary,

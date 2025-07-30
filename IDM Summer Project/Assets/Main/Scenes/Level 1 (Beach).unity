@@ -7245,10 +7245,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27f5bb5e03dfb746a672143854ceccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialPos: {x: 0, y: 0, z: 0}
-  targetPos: {x: 0, y: 0, z: 0}
   type: 4
   initial: 1
+  angleY: 30
+  angleX: 40
+  dist: 10
+  panHor: 0
+  panVert: 0
 --- !u!114 &2102734495
 MonoBehaviour:
   m_ObjectHideFlags: 0
