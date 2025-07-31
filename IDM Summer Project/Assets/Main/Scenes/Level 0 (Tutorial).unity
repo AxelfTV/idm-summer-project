@@ -606,7 +606,7 @@ PrefabInstance:
         type: 3}
       propertyPath: unlockableObjectComponent
       value: 
-      objectReference: {fileID: 527422253}
+      objectReference: {fileID: 527422255}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12336,8 +12336,9 @@ GameObject:
   - component: {fileID: 527422250}
   - component: {fileID: 527422252}
   - component: {fileID: 527422251}
-  - component: {fileID: 527422253}
+  - component: {fileID: 527422255}
   - component: {fileID: 527422254}
+  - component: {fileID: 527422256}
   m_Layer: 3
   m_Name: Cloud Door 1
   m_TagString: Untagged
@@ -12410,21 +12411,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527422249}
   m_Mesh: {fileID: 8733429697405204941, guid: f1bcb551c73ab6e44877a52e999f6f4c, type: 3}
---- !u!114 &527422253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 527422249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f77b9ad9850aee7448c1416d261cfdd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  door: {fileID: 527422249}
-  canClose: 0
-  toOpen: 1
 --- !u!114 &527422254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12438,6 +12424,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeValue: 0
+--- !u!114 &527422255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527422249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b40665d5e943304da80187e16c84c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canClose: 0
+  toOpen: 1
+  timeToFade: 2
+--- !u!65 &527422256
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527422249}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.4388287, y: 2.138645, z: 2.1100326}
+  m_Center: {x: -0.0035200731, y: 0.015622497, z: -0.0010282998}
 --- !u!1 &539059009
 GameObject:
   m_ObjectHideFlags: 0
@@ -22677,7 +22699,7 @@ PrefabInstance:
         type: 3}
       propertyPath: unlockableObjectComponent
       value: 
-      objectReference: {fileID: 1483350614}
+      objectReference: {fileID: 1483350619}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -34283,8 +34305,9 @@ GameObject:
   - component: {fileID: 1483350617}
   - component: {fileID: 1483350616}
   - component: {fileID: 1483350615}
-  - component: {fileID: 1483350614}
+  - component: {fileID: 1483350619}
   - component: {fileID: 1483350618}
+  - component: {fileID: 1483350620}
   m_Layer: 3
   m_Name: Cloud Door 2
   m_TagString: Untagged
@@ -34292,21 +34315,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1483350614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1483350613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f77b9ad9850aee7448c1416d261cfdd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  door: {fileID: 1483350613}
-  canClose: 0
-  toOpen: 2
 --- !u!23 &1483350615
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -34385,6 +34393,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeValue: 0
+--- !u!114 &1483350619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483350613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b40665d5e943304da80187e16c84c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canClose: 0
+  toOpen: 2
+  timeToFade: 2
+--- !u!65 &1483350620
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483350613}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.438828, y: 2.138645, z: 2.110032}
+  m_Center: {x: -0.0035200724, y: 0.015622497, z: -0.0010282996}
 --- !u!1 &1496880645
 GameObject:
   m_ObjectHideFlags: 0
@@ -34724,7 +34768,7 @@ PrefabInstance:
         type: 3}
       propertyPath: unlockableObjectComponent
       value: 
-      objectReference: {fileID: 1483350614}
+      objectReference: {fileID: 1483350619}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

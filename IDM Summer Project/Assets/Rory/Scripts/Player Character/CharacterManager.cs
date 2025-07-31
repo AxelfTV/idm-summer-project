@@ -52,6 +52,9 @@ public class CharacterManager : MonoBehaviour
 				Throw();
 			}   
         }
+
+        //Temp kill player when fall
+        if (transform.position.y < -40) Die();
     }
     private void FixedUpdate()
     {
@@ -133,5 +136,9 @@ public class CharacterManager : MonoBehaviour
             }
         }
         return null;
+    }
+    void Die()
+    {
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().LevelRestart();
     }
 }

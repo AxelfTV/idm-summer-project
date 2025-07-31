@@ -736,7 +736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7f0bd4e5bdb294d9b8ff9d5481f7fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growFactor: 1
+  growFactor: 0
 --- !u!1 &4559686094258161893
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,6 +1137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stalk: {fileID: 4544043807988042537}
+  growthFactor: {fileID: 113705270332406893}
+  growTime: 5
 --- !u!1 &5956297868998193608
 GameObject:
   m_ObjectHideFlags: 0

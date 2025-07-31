@@ -34,8 +34,9 @@ public class BasicHoldable : MonoBehaviour, IHoldable
 
     private void OnDestroy()
     {
-        CharacterManager player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterManager>();
-        if (player == null) return;
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj == null) return;
+        CharacterManager player = playerObj.GetComponent<CharacterManager>();
         if((object)player.holding == this)
         {
             player.Drop();
