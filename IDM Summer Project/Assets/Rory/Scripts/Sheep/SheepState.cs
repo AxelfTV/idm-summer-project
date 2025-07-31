@@ -262,3 +262,22 @@ public class SheepGround : SheepState
         return true;
     }
 }
+public class SheepFrozen : SheepState 
+{
+    public SheepFrozen(SheepStats stats) : base(stats) { }
+    public override void Enter()
+    {
+        base.Enter();
+        stats.gameObject.layer = 0;
+    }
+    public override void Exit()
+    {
+        base.Exit();
+        stats.gameObject.layer = 7;
+    }
+    public override void Update(){}
+    public override SheepState NewState()
+    {
+        return null;
+    }
+}

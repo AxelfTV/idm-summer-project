@@ -7,11 +7,13 @@ public class SheepManager : MonoBehaviour, IHoldable
     public SheepStats stats;
     SheepState state;
 
+    bool active = false;
+
     // Start is called before the first frame update
     void Start()
     {
         stats = GetComponent<SheepStats>();
-        state = new SheepFollow(stats);
+        state = new SheepFrozen(stats);
         state.Enter();
     }
 
@@ -34,6 +36,7 @@ public class SheepManager : MonoBehaviour, IHoldable
     {
         if (state.Grab())
         {
+            state.Exit();
             state = new SheepHold(stats);
             state.Enter();
             return true;
@@ -51,5 +54,16 @@ public class SheepManager : MonoBehaviour, IHoldable
     public bool HoldingSheep()
     {
         return state.holding;
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && !active)
+        {
+            active = true;
+            state.Exit();
+            state = new SheepFollow(stats);
+            state.Enter();
+            Destroy(GetComponent<BoxCollider>());
+        }
     }
 }

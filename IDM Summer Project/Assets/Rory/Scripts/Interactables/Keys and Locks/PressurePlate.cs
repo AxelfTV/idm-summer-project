@@ -26,6 +26,7 @@ public class PressurePlate : LockMechanism
     }
     bool CheckEntity()
     {
-        return Physics.Raycast(transform.position - Vector3.up * 0.3f, Vector3.up,0.5f, LayerMask.GetMask("Player", "Grabbable"));
+        return Physics.SphereCast(transform.position - Vector3.up*2, 1.5f, Vector3.up,out RaycastHit rch, 2.5f, LayerMask.GetMask("Player", "Grabbable"));
+        //return Physics.Raycast(transform.position - Vector3.up * 0.3f, Vector3.up,0.5f, LayerMask.GetMask("Player", "Grabbable"));
     }
 }
