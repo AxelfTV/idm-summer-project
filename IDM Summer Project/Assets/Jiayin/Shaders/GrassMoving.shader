@@ -208,6 +208,7 @@ Shader "Custom/GrassMoving"
 
     float frag(Varyings IN) : SV_Depth
     {
+        
         return IN.positionCS.z / IN.positionCS.w;
     }
     ENDHLSL

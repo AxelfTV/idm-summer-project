@@ -102,7 +102,7 @@ Shader "Custom/URPToonShader"
             half4 frag(Varyings IN) : SV_Target
             {
                 // Normal line 
-                float normalLine = SAMPLE_TEXTURE2D(_NormalLineTex, sampler_NormalLineTex, IN.screenUV.xy/IN.screenUV.w).r;
+              //  float normalLine = SAMPLE_TEXTURE2D(_NormalLineTex, sampler_NormalLineTex, IN.screenUV.xy/IN.screenUV.w).r;
                 
                 float3 positionOS= TransformWorldToObject(IN.positionWS);
                 float heightMap=positionOS.y*_HeightFactor+_HeightMove;
@@ -113,6 +113,7 @@ Shader "Custom/URPToonShader"
                 float Grassmask =saturate( floor(heightMap*heightTex*10/3)/2);
                 float3 BaseColor= lerp(_Color0.rgb, _Color2.rgb, Grassmask);
                 half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb*BaseColor;
+                clip(albedo-0.05);
                // return half4(albedo,1);
                 Light mainLight = GetMainLight(IN.shadowCoord);
               //  return half4(albedo,1);
