@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 8653569064673536486}
   - component: {fileID: 6577624851264235595}
   - component: {fileID: 1191698871528881121}
+  - component: {fileID: 6450100580800573698}
   m_Layer: 7
   m_Name: Woof
   m_TagString: Untagged
@@ -171,6 +172,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!65 &6450100580800573698
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8599549995883090907}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &9062926188838469860
 PrefabInstance:
   m_ObjectHideFlags: 0

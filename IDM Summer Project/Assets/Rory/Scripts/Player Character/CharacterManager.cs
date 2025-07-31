@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,7 +10,7 @@ public class CharacterManager : MonoBehaviour
     CharacterStats stats;
     CharacterState state;
 
-    IHoldable holding = null;
+    [NonSerialized] public IHoldable holding = null;
 
     private void Awake()
     {

@@ -5,13 +5,7 @@ using UnityEngine;
 public class BasicHoldable : MonoBehaviour, IHoldable
 {
     Rigidbody rb;
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            //GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterManager>().Grab(this);
-        }
-    }
+    
     private void Start()
     {
         gameObject.layer = 6;
@@ -36,5 +30,15 @@ public class BasicHoldable : MonoBehaviour, IHoldable
     public GameObject GetGameObject()
     {
         return gameObject;
+    }
+
+    private void OnDestroy()
+    {
+        CharacterManager player = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterManager>();
+        if (player == null) return;
+        if((object)player.holding == this)
+        {
+            player.Drop();
+        }
     }
 }
