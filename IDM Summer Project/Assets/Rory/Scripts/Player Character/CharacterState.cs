@@ -33,9 +33,7 @@ public abstract class CharacterState
 
         if(moveDir.magnitude > 0)
         {
-            Vector3 lookDir = stats.rb.velocity;
-            lookDir.y = 0f;
-            stats.rb.transform.rotation = Quaternion.LookRotation(lookDir, Vector3.up);
+            FaceMoveDirection();
         }
 
         //stick to ground
@@ -59,6 +57,8 @@ public abstract class CharacterState
         {
             stats.rb.velocity = new Vector3(0, stats.rb.velocity.y, 0) + horVel.normalized * stats.airMoveMaxSpeed;
         }
+
+        FaceMoveDirection();
     }
     protected void Jump(float power)
     {
@@ -82,6 +82,15 @@ public abstract class CharacterState
         Vector3 cVel = stats.rb.velocity;
         stats.rb.velocity = new Vector3(cVel.x, -0.5f, cVel.z);
         stats.WhileGlide();
+
+
+        FaceMoveDirection();
+    }
+    protected void FaceMoveDirection()
+    {
+        Vector3 lookDir = stats.rb.velocity;
+        lookDir.y = 0f;
+        stats.rb.transform.rotation = Quaternion.LookRotation(lookDir.normalized, Vector3.up);
     }
 }
 public class CharacterIdle : CharacterState
@@ -91,6 +100,7 @@ public class CharacterIdle : CharacterState
     {
         base.Enter();
         stats.Grounded();
+        stats.animator.SetAnimationState(PlayerAnimState.idle);
     }
     public override void Update()
     {
@@ -113,6 +123,11 @@ public class CharacterIdle : CharacterState
 public class CharacterRunning : CharacterState
 {
     public CharacterRunning(CharacterStats stats) : base(stats) { }
+    public override void Enter()
+    {
+        base.Enter();
+        stats.animator.SetAnimationState(PlayerAnimState.run);
+    }
     public override void Update()
     {
         Move();
@@ -140,6 +155,7 @@ public class CharacterJump : CharacterState
         base.Enter();
         stats.OnJump();
         Jump(stats.jumpPower);
+        stats.animator.SetAnimationState(PlayerAnimState.jump);
     }
     public override void Update()
     {
@@ -161,6 +177,7 @@ public class CharacterFall : CharacterState
     {
         AirMove();
         Fall();
+        
     }
     public override CharacterState NewState()
     {
@@ -180,6 +197,8 @@ public class CharacterFall : CharacterState
         AirMove();
         Fall();
         timer += Time.fixedDeltaTime;
+        //should be fall
+        stats.animator.SetAnimationState(PlayerAnimState.idle);
     }
     public override CharacterState NewState()
     {
@@ -199,6 +218,8 @@ public class CharacterDoubleJump : CharacterState
         stats.OnJump();
         stats.OnDouble();
         Jump(stats.doubleJumpPower);
+        //probably should be changed
+        stats.animator.SetAnimationState(PlayerAnimState.jump);
     }
     public override void Update()
     {
@@ -222,6 +243,8 @@ public class CharacterGlide : CharacterState
     {
         AirMove();
         Glide();
+        //need glide anim
+        stats.animator.SetAnimationState(PlayerAnimState.idle);
     }
     public override CharacterState NewState()
     {
@@ -244,7 +267,9 @@ public class CharacterGlideBoost : CharacterState
 	{
 		base.Enter();
         stats.Grounded();
-	}
+        //glide anim
+        stats.animator.SetAnimationState(PlayerAnimState.idle);
+    }
 	public override void Update()
 	{
         stats.rb.velocity = direction * 20;
@@ -272,6 +297,7 @@ public class CharacterBounce : CharacterState
         stats.OnJump();
         stats.Grounded();
         Jump(bouncePower);
+        stats.animator.SetAnimationState(PlayerAnimState.jump);
     }
     public override void Update()
     {

@@ -33,6 +33,7 @@ public class CloudDoor : MonoBehaviour, IUnlockableObject
         else if (!locked)
         {
             fadeController.fadeValue = 1;
+            
         }
         if (locked && fadeController.fadeValue > 0)
         {
@@ -42,6 +43,8 @@ public class CloudDoor : MonoBehaviour, IUnlockableObject
         {
             fadeController.fadeValue = 0;
         }
+        if(!locked && fadeController.fadeValue == 1) gameObject.SetActive(false);
+        else gameObject.SetActive(true);
     }
     public void Lock()
     {

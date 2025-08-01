@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterStats : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class CharacterStats : MonoBehaviour
     [NonSerialized] public Rigidbody rb;
     [NonSerialized] public SheepManager sheep;
 
+    [SerializeField] public CharacterAnimate animator;
     [SerializeField] public Transform holdPosition;
     [SerializeField] public Transform sheepFollowPosition;
 
@@ -29,11 +31,20 @@ public class CharacterStats : MonoBehaviour
     private bool isJumpBuffered = false;
     private float glideEnergy;
     private bool canDouble = true;
+
+    public float glideSliderValue
+    {
+        get { return glideEnergy / glideTime; }
+    }
+
+    //Temporary slider container
+    [SerializeField] Slider slider;
     // Start is called before the first frame update
     void Awake()
     {
         input = GetComponent<InputHandler>();
         rb = GetComponent<Rigidbody>();
+
 
         glideEnergy = glideTime;
     }
@@ -44,6 +55,8 @@ public class CharacterStats : MonoBehaviour
             StopCoroutine("JumpBuffer");
             StartCoroutine("JumpBuffer");
         }
+        
+        if(slider != null) slider.value = glideSliderValue;
     }
     public void OnJump()
     {
