@@ -104,7 +104,7 @@ Shader "Custom/GrowStalk"
             half4 frag(Varyings IN) : SV_Target
             {
                 // Normal line 
-                float normalLine = SAMPLE_TEXTURE2D(_NormalLineTex, sampler_NormalLineTex, IN.screenUV.xy/IN.screenUV.w).r;
+           //     float normalLine = SAMPLE_TEXTURE2D(_NormalLineTex, sampler_NormalLineTex, IN.screenUV.xy/IN.screenUV.w).r;
                 
                 float3 positionOS= TransformWorldToObject(IN.positionWS);
                 float heightMap=positionOS.y*_HeightFactor+_HeightMove;
@@ -145,7 +145,7 @@ Shader "Custom/GrowStalk"
 
                 float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL * shadowAtten);
                 half3 baseColor = lerp(shadowColor.rgb*albedo*totalLight, albedo * totalLight, toonStep2);
-                baseColor = lerp(baseColor,_OutLineColor.rgb,(1-normalLine)*_OutLineBlend);
+              //  baseColor = lerp(baseColor,_OutLineColor.rgb,(1-normalLine)*_OutLineBlend);
                 ApplyDecalToBaseColor(IN.positionCS, baseColor);
                 return half4(baseColor, 1.0);
             }

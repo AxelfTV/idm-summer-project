@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BloomFlower
+  m_Shader: {fileID: 4800000, guid: 97ebd7894aa2f2747a012344bb183e38, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _HeightTex:
+        m_Texture: {fileID: 2800000, guid: c9702e31b627a6240a09d96e67af290a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 156c3ea7b0c43ae43bddf22393010f64, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BlendSize: 5
+    - _GrowFactor: 0.073
+    - _HeightFactor: 0
+    - _HeightMove: 0
+    - _MaxBlendRange: 1.35
+    - _MovingRange: 0.2
+    - _MovingSpeed: 4
+    - _OutLineBlend: 1
+    - _ShadowThreshold: 0.62
+    - _StylishShadow: -0.32
+    m_Colors:
+    - _Color0: {r: 1, g: 1, b: 1, a: 1}
+    - _Color1: {r: 1, g: 1, b: 1, a: 1}
+    - _Color2: {r: 1, g: 1, b: 1, a: 1}
+    - _Color3: {r: 1, g: 1, b: 1, a: 1}
+    - _MovinDirct: {r: 0.69, g: 0, b: 0.98, a: 1}
+    - _OutLineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _PlayerPos: {r: 16.895506, g: 0.5002618, b: 84.34629, a: 0}
+    - _ShadowColor: {r: 0.30790314, g: 0.43678436, b: 0.5849056, a: 1}
+    - _ShadowColor2: {r: 0.5176471, g: 0.879899, b: 1, a: 1}
+    - _SheepPos: {r: 215.35, g: -5.4928885, b: 72.6, a: 0}
+  m_BuildTextureStacks: []

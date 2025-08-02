@@ -113,7 +113,7 @@ Shader "Custom/URPToonShader"
                 float Grassmask =saturate( floor(heightMap*heightTex*10/3)/2);
                 float3 BaseColor= lerp(_Color0.rgb, _Color2.rgb, Grassmask);
                 half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb*BaseColor;
-                clip(albedo-0.05);
+                clip(albedo-0.02);
                // return half4(albedo,1);
                 Light mainLight = GetMainLight(IN.shadowCoord);
               //  return half4(albedo,1);

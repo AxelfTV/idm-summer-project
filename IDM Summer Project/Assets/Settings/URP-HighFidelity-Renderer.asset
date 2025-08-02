@@ -166,5 +166,5 @@ MonoBehaviour:
   settings:
     material: {fileID: 2100000, guid: 376347d579e63bb40a5c1aea209605fa, type: 2}
     color: {r: 1, g: 0.58679235, b: 0.58679235, a: 1}
-    blendMultiply: 1
+    blendMultiply: 0.55
     renderPassEvent: 500

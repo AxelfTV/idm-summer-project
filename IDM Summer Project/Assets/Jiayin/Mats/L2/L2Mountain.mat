@@ -38,7 +38,7 @@ Material:
     - _HeightMove: 0
     - _OutLineBlend: 1
     - _ShadowThreshold: 0.05
-    - _StylishShadow: 0.43
+    - _StylishShadow: 0.44
     m_Colors:
     - _Color: {r: 0.8113208, g: 0.4819532, b: 0.35361335, a: 1}
     - _Color0: {r: 0.78867924, g: 0.6269385, b: 0.4508864, a: 1}

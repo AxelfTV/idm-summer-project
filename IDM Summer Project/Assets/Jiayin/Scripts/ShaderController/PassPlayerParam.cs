@@ -12,6 +12,10 @@ public class PassPlayerParam : MonoBehaviour
     {
         player = GameObject.Find("Player").GetComponent<Transform>();
         sheep = GameObject.Find("Woof").GetComponent<Transform>();
+        if (player == null)
+        {
+            Debug.LogWarning("Player not found");
+        }
     }
 
     void Update()
