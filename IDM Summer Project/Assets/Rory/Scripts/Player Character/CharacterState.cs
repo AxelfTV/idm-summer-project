@@ -31,10 +31,9 @@ public abstract class CharacterState
         Vector3 moveDir = stats.input.GetMoveDirection() * stats.runSpeed;
         stats.rb.velocity = new Vector3(moveDir.x, stats.rb.velocity.y, moveDir.z);
 
-        if(moveDir.magnitude > 0)
-        {
-            FaceMoveDirection();
-        }
+        
+        FaceMoveDirection();
+        
 
         //stick to ground
         stats.rb.AddForce(Vector3.down * stats.downwardAcceleration);
@@ -88,6 +87,7 @@ public abstract class CharacterState
     }
     protected void FaceMoveDirection()
     {
+        if (stats.input.GetMoveDirection().magnitude == 0) return;
         Vector3 lookDir = stats.rb.velocity;
         lookDir.y = 0f;
         stats.rb.transform.rotation = Quaternion.LookRotation(lookDir.normalized, Vector3.up);
