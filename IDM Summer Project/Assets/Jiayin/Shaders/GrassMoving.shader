@@ -106,20 +106,24 @@ Shader "Custom/GrassMoving"
                 Varyings OUT;
 
                 float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz);
-                float3 BlendVector=normalize(positionWS-_PlayerPos);
+                float3 BlendVector=normalize(positionWS-_PlayerPos); //player interact direction
                 BlendVector.y=0;
-                float BlendFactor=1-min(pow(distance(_PlayerPos,positionWS),0.3),_MaxBlendRange)*(1/_MaxBlendRange);
-                IN.positionOS.xyz=IN.positionOS.xyz+sin(_Time.y*_MovinDirct.xyz*_MovingSpeed)*_MovingRange*IN.uv.x;
-                
+                float BlendFactor=1-min(pow(distance(_PlayerPos,positionWS),0.3),_MaxBlendRange)*(1/_MaxBlendRange);//player interact amount
+                IN.positionOS.xyz=IN.positionOS.xyz+sin(_Time.y*_MovinDirct.xyz*_MovingSpeed)*_MovingRange*IN.uv.x;//wind
+            //    IN.positionOS.xyz+=sin(_Time.y*_MovinDirct.xyz*_MovingSpeed)*_MovingRange*IN.uv.x;
+              
+                OUT.positionWS = TransformObjectToWorld(IN.positionOS.xyz);
+                //apply player interact
+                OUT.positionWS+=BlendVector*BlendFactor*IN.uv.x*_BlendSize;
                 //for stylish shadow
                 float3 FakePositionWS=TransformObjectToWorld(float3(IN.positionOS.x,IN.positionOS.y*0.1,IN.positionOS.z));
-                OUT.positionWS = TransformObjectToWorld(IN.positionOS.xyz);
-                OUT.positionWS+=BlendVector*BlendFactor*IN.uv.x*_BlendSize;
+                //float3 FakePositionWS=OUT.positionWS;
+                //FakePositionWS.y*=0.1;
 
-                
                 OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
                 OUT.uv = IN.uv ;
                 OUT.positionCS = TransformWorldToHClip(OUT.positionWS);
+              //  OUT.shadowCoord = TransformWorldToShadowCoord(FakePositionWS);
                 OUT.shadowCoord = TransformWorldToShadowCoord(FakePositionWS);
                 OUT.screenUV=ComputeScreenPos(OUT.positionCS);
                 return OUT;
@@ -186,6 +190,11 @@ Shader "Custom/GrassMoving"
  CBUFFER_START(UnityPerMaterial)
         float _MovingSpeed;
         float _MovingRange;
+        float3 _MovinDirct;
+
+        float3 _PlayerPos;
+        float _MaxBlendRange;
+        float _BlendSize;
     CBUFFER_END
     struct Attributes
     {
@@ -232,6 +241,10 @@ Pass
         float _MovingSpeed;
         float _MovingRange;
          float3 _MovinDirct;
+
+        float3 _PlayerPos;
+        float _MaxBlendRange;
+        float _BlendSize;
     CBUFFER_END
 
     struct Attributes
@@ -250,9 +263,15 @@ Pass
     Varyings vert(Attributes IN)
     {
         Varyings OUT;
-
-       IN.positionOS.xyz+=sin(_Time.y*_MovinDirct.xyz*_MovingSpeed)*_MovingRange*IN.uv.x;
-        OUT.positionCS = TransformObjectToHClip(IN.positionOS.xyz);
+            float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz);
+         float3 BlendVector=normalize(positionWS-_PlayerPos);
+                BlendVector.y=0;
+                float BlendFactor=1-min(pow(distance(_PlayerPos,positionWS),0.3),_MaxBlendRange)*(1/_MaxBlendRange);
+                IN.positionOS.xyz=IN.positionOS.xyz+sin(_Time.y*_MovinDirct.xyz*_MovingSpeed)*_MovingRange*IN.uv.x;
+       
+               float3 positionWS2 = TransformObjectToWorld(IN.positionOS.xyz);
+               positionWS2+=BlendVector*BlendFactor*IN.uv.x*_BlendSize;
+                OUT.positionCS = TransformWorldToHClip(positionWS2);
         OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
         return OUT;
     }

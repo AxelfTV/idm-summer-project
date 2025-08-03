@@ -19,5 +19,9 @@ public class CloudFadeController : MonoBehaviour
         {
             mat.SetFloat("_FadeValue", fadeValue);
         }
+        if (gameObject.activeSelf)
+        {
+            if (fadeValue >= 1) gameObject.SetActive(false);
+        }
     }
 }

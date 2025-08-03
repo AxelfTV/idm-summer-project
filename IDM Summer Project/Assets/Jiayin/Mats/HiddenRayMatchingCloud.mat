@@ -29,13 +29,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ColorOffsetA: 0.21
+    - _ColorOffsetA: 0.04
     - _ColorOffsetB: 0.76
     - _NoiseScale: 0.05
     - _Step: -0.1
     m_Colors:
-    - _BoundingsMax: {r: 1.1989164, g: 0.71731997, b: 21.913527, a: 0}
-    - _BoundingsMin: {r: -29.358917, g: -4.73732, b: 4.0864735, a: 0}
+    - _BoundingsMax: {r: 12.349999, g: 0.54999995, b: 28.165, a: 0}
+    - _BoundingsMin: {r: -40.95, g: -6.3500004, b: -42.565002, a: 0}
     - _ColorA: {r: 1, g: 1, b: 1, a: 1}
     - _ColorB: {r: 0.4996724, g: 0.51215035, b: 0.5622641, a: 1}
   m_BuildTextureStacks: []
