@@ -39,6 +39,7 @@ Shader "Custom/ModelCloud"
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+             //     #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl"
             #include "../ShaderTools/NoiseLib.hlsl"
 
             struct Attributes
@@ -134,7 +135,7 @@ Shader "Custom/ModelCloud"
 
                 //sample noise
                 float3 noiseUV = IN.positionWS * _NoiseScale;
-                noiseUV.x += _Time.y* _CloudSpeed; // Add time for animation
+                noiseUV.y += _Time.y* _CloudSpeed; // Add time for animation
                 float noise=tex3D(_NoiseTex,noiseUV).x;
                 float stepNoise=step(0.5,noise);
        
@@ -162,16 +163,16 @@ Shader "Custom/ModelCloud"
                  half toonStep1 = shadowMask > _ShadowThreshold ? 1.0: 0.0;
                  half toonStep2 = shadowMask>_ShadowThreshold + _StylishShadow ? 1.0 : 0.0;
                  float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL *noise);
-                 half3 color = lerp(shadowColor.rgb*albedo, albedo , toonStep2);
-
+                 half3 basecolor = lerp(shadowColor.rgb*albedo, albedo , toonStep2);
+                ApplyDecalToBaseColor(IN.positionCS, basecolor.rgb);
                  clip(noise+0.5-_FadeValue*1.5);
 
-                 return half4(color, 1.0);
+                 return half4(basecolor, 1.0);
             }
             ENDHLSL
         }
 
-        // 阴影投射
+   
 
          UsePass "Universal Render Pipeline/Lit/DepthOnly"
         UsePass "Universal Render Pipeline/Lit/DepthNormals"
