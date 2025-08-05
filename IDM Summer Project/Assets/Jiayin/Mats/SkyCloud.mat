@@ -33,7 +33,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ClipDensity: 1.35
+    - _ClipDensity: 2
     - _CloudDensity: -0.43
     - _CloudSpeed: 0.9
     - _DensityScale: 1.32
