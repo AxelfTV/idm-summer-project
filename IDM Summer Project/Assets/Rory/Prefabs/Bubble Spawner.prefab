@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5719006464275205680}
   m_Layer: 0
   m_Name: Bubble Spawner
-  m_TagString: Untagged
+  m_TagString: BubbleSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,5 +98,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubblePlatform: {fileID: 4607653863451024045, guid: 1929ef6427b59d1499739ca7c44f1a66,
     type: 3}
-  platformHeight: 20
+  platformHeight: 4
   timer: 5

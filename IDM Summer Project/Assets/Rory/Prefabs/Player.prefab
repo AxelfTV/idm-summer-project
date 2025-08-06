@@ -122,7 +122,8 @@ MonoBehaviour:
   airMovePower: 50
   airMoveMaxSpeed: 8
   grabRange: 1
-  glideTime: 3
+  glideTime: 1.5
+  slider: {fileID: 0}
 --- !u!114 &5659423559324103451
 MonoBehaviour:
   m_ObjectHideFlags: 0

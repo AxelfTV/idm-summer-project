@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BubbleSpawner : MonoBehaviour
+public class BubbleSpawner : MonoBehaviour, IUnlockableObject
 {
     [SerializeField] GameObject bubblePlatform;
+    GameObject currentPlatform;
     [SerializeField] float platformHeight;
     [SerializeField] float timer;
     // Start is called before the first frame update
     void Start()
     {
-        SpawnBubble();
+        //SpawnBubble();
     }
 
     // Update is called once per frame
@@ -18,9 +19,25 @@ public class BubbleSpawner : MonoBehaviour
     {
         
     }
+    public void Lock()
+    {
+        DespawnBubble();
+        StopCoroutine("NextBubbleCooldown");
+    }
+    public void Unlock()
+    {
+        SpawnBubble();
+    }
+    void DespawnBubble()
+    {
+        if (currentPlatform == null) return;
+        Destroy(currentPlatform);
+    }
     void SpawnBubble()
     {
+        if (currentPlatform != null) return;
         BubblePlatform platform = Instantiate(bubblePlatform).GetComponent<BubblePlatform>();
+        currentPlatform = platform.gameObject;
         platform.spawner = this;
         platform.heightAboveSpawner = platformHeight;
     }
@@ -31,6 +48,6 @@ public class BubbleSpawner : MonoBehaviour
     }
     public void OnPlatformBurst()
     {
-        StartCoroutine(NextBubbleCooldown());
+        StartCoroutine("NextBubbleCooldown");
     }
 }

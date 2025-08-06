@@ -12,6 +12,7 @@ TagManager:
   - BlueSeed
   - YellowSeed
   - GameManager
+  - BubbleSpawner
   layers:
   - Default
   - TransparentFX
