@@ -86,6 +86,9 @@ Shader "Custom/URPToonShader"
             TEXTURE2D(_NormalLineTex);
             SAMPLER(sampler_NormalLineTex);
             TEXTURE2D(_HeightTex); SAMPLER(sampler_HeightTex);
+            
+            TEXTURE2D(_DepthTex);
+            SAMPLER(sampler_DepthTex);
 
             Varyings vert(Attributes IN)
             {
@@ -101,9 +104,9 @@ Shader "Custom/URPToonShader"
 
             half4 frag(Varyings IN) : SV_Target
             {
-                // Normal line 
-              //  float normalLine = SAMPLE_TEXTURE2D(_NormalLineTex, sampler_NormalLineTex, IN.screenUV.xy/IN.screenUV.w).r;
-                
+                //fog
+//                float depthfog =SAMPLE_TEXTURE2D(_DepthTex,sampler_DepthTex, IN.screenUV.xy/IN.screenUV.w).x; 
+
                 float3 positionOS= TransformWorldToObject(IN.positionWS);
                 float heightMap=positionOS.y*_HeightFactor+_HeightMove;
                // return half4(heightMap.xxx,1);
