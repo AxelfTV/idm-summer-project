@@ -26,11 +26,11 @@ Material:
     m_Ints: []
     m_Floats:
     - _EdgeControl: 0
-    - _PixelCount: 598.2
-    - _depthThreshold: 0.03
-    - _edgeWidth: 0.5
-    - _normalThreshold: 0.07
+    - _PixelCount: 500
+    - _depthThreshold: 0.01
+    - _edgeWidth: 0.7
+    - _normalThreshold: 0.15
     m_Colors:
-    - _EdgeColor: {r: 0.3132075, g: 0.14833033, b: 0.14833033, a: 1}
-    - _StucturelineColor: {r: 0.34148094, g: 0.6310107, b: 0.82641506, a: 1}
+    - _EdgeColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+    - _StucturelineColor: {r: 0.5999999, g: 0.50150937, b: 0.50557077, a: 1}
   m_BuildTextureStacks: []

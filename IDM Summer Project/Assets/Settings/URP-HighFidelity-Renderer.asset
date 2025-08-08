@@ -77,9 +77,9 @@ MonoBehaviour:
   m_RendererFeatures:
   - {fileID: -1878332245247344467}
   - {fileID: 966854183426990039}
-  - {fileID: 5872519893774392296}
   - {fileID: -5487797918758897259}
-  m_RendererFeatureMap: adc0de57c6d2eee5d71fc4d8c1f46a0de85bd6bcba617f5195793f55de6cd7b3
+  - {fileID: 8458700425666426492}
+  m_RendererFeatureMap: adc0de57c6d2eee5d71fc4d8c1f46a0d95793f55de6cd7b37cf64a9538576375
   m_UseNativeRenderPass: 0
   postProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   xrSystemData: {fileID: 11400000, guid: 60e1133243b97e347b653163a8c01b64, type: 2}
@@ -150,7 +150,7 @@ MonoBehaviour:
     NormalLine: {fileID: 2100000, guid: ca98a2c3f03422640aff1a1a644fdf54, type: 2}
     passEvent: 300
     Edge: 0
---- !u!114 &5872519893774392296
+--- !u!114 &8458700425666426492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,12 +159,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b4b294f9f2104d4ca60d2a9ae9180fc, type: 3}
-  m_Name: RenderCloud
+  m_Script: {fileID: 11500000, guid: 8d0ca2669e8883b439ebaa2a18677f58, type: 3}
+  m_Name: FogFeature
   m_EditorClassIdentifier: 
   m_Active: 0
-  settings:
-    material: {fileID: 2100000, guid: 376347d579e63bb40a5c1aea209605fa, type: 2}
-    color: {r: 1, g: 0.58679235, b: 0.58679235, a: 1}
-    blendMultiply: 0.55
-    renderPassEvent: 500
+  setting:
+    Layer:
+      serializedVersion: 2
+      m_Bits: 0
+    DrawFogMat: {fileID: 2100000, guid: 7292cf9bb5c9d404e8b0d700826152f8, type: 2}
+    passEvent: 500

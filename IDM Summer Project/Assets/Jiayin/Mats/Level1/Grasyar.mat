@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Grasyar
-  m_Shader: {fileID: 4800000, guid: ca53272b8aba76b428ec2e030a9a88c1, type: 3}
+  m_Shader: {fileID: 4800000, guid: b82efb27af79a4b4390bc883021c1061, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -31,19 +31,44 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _WaterGradient:
+        m_Texture: {fileID: 2800000, guid: 1c819a7aa975a254880ec8d09747fe5f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterNormal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WaterSurface:
+        m_Texture: {fileID: 2800000, guid: c9702e31b627a6240a09d96e67af290a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _ClipAmount: 0.67
+    - _FadeDistance: 10
+    - _FoamCutoff: 0.5
+    - _FoamDistance: 1
+    - _FoamSpeed: 1
+    - _FoamStrength: 0.2
+    - _GlossyAmount: 0
     - _HeightFactor: 0.75
     - _HeightMove: -0.43
+    - _MoveSpeed: 6
+    - _NormalStrength: 0.5
     - _OutLineBlend: 1
     - _ShadowThreshold: 0.06
     - _StylishShadow: 0.58
+    - _WeaveStrength: 1
+    - _geyserLife: 0
     m_Colors:
     - _Color: {r: 0.7207546, g: 0.5331221, b: 0.18902804, a: 1}
     - _Color0: {r: 0.7584905, g: 0.62351286, b: 0.42217866, a: 1}
     - _Color1: {r: 0.554717, g: 0.36709654, b: 0.28363827, a: 1}
     - _Color2: {r: 1, g: 0.7325983, b: 0.34509802, a: 1}
     - _Color3: {r: 0.9843137, g: 0.5565308, b: 0.54901963, a: 1}
+    - _GlossyColor: {r: 0, g: 0, b: 0, a: 1}
+    - _LightColor: {r: 0, g: 0, b: 1, a: 1}
     - _OutLineColor: {r: 0.21172658, g: 0.29133344, b: 0.4943396, a: 1}
     - _ShadowColor: {r: 0.5884792, g: 0.5530722, b: 0.7132075, a: 1}
     - _ShadowColor2: {r: 0.40664288, g: 0.6741913, b: 0.7509433, a: 1}

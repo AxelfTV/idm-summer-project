@@ -37,6 +37,7 @@ Properties
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
             #include "../ShaderTools/NoiseLib.hlsl"
             struct Attributes
@@ -176,7 +177,7 @@ float3 GerstnerWaves_float(float3 position, float steepness, float wavelength, f
                      depth = SampleSceneDepth(uv);
                      eyedepth=LinearEyeDepth(depth,_ZBufferParams);
                 }
-                        
+              //  return float4(eyedepth.xxx,1); 
                 float Waterdepth=1-saturate((eyedepth-IN.screenUV.w)/_FadeDistance);
                 //mix water color
                 float4 waterColor = SAMPLE_TEXTURE2D(_WaterGradient, sampler_WaterGradient, float2(floor(Waterdepth*10/2)/5, 0.5));

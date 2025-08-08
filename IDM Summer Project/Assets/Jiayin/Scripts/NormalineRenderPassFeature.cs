@@ -91,7 +91,7 @@ public class NormalineRenderPassFeature : ScriptableRendererFeature
             cmd.Clear();
 
 
-            //         ConfigureClear(ClearFlag.All, Color.black);
+            // ConfigureClear(ClearFlag.All, Color.black);
             cmd.SetRenderTarget(_sceneColorHandel);
             cmd.ClearRenderTarget(true, true, Color.clear);
             cmd.Blit(renderingData.cameraData.renderer.cameraColorTargetHandle, _sceneColorHandel);
@@ -128,12 +128,11 @@ public class NormalineRenderPassFeature : ScriptableRendererFeature
             int NormalineID = Shader.PropertyToID("_NormalLineTex");
             cmd.GetTemporaryRT(NormalineID, desc);//使用desc创建新的RT并使用ID指定为全局着色器属性
           //  cmd.Blit(NormalineID, NormalineID, setting.NormalLine, 0);
-            cmd.Blit(NormalineID, renderingData.cameraData.renderer.cameraColorTargetHandle, setting.NormalLine, 0);//提交到当前摄像机缓冲？
+            cmd.Blit(NormalineID, renderingData.cameraData.renderer.cameraColorTargetHandle, setting.NormalLine, 0);//提交到当前摄像机缓冲
             context.ExecuteCommandBuffer(cmd);
             CommandBufferPool.Release(cmd); 
         }
     }
-
 
 
 
