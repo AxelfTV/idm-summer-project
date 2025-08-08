@@ -99,4 +99,4 @@ MonoBehaviour:
   bubblePlatform: {fileID: 4607653863451024045, guid: 1929ef6427b59d1499739ca7c44f1a66,
     type: 3}
   platformHeight: 4
-  timer: 5
+  timer: 3

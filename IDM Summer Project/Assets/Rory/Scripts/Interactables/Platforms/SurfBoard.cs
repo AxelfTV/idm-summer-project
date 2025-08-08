@@ -8,8 +8,9 @@ public class SurfBoard : MonoBehaviour
     [SerializeField] float centreHalfWidth;
     [SerializeField] float forwardSpeed;
     [SerializeField] float sideMaxSpeed;
+    [SerializeField] float lifeSpan;
     [SerializeField] GameObject model;
-
+    GameObject player;
     float playerSideDist;
     float halfWidth;
 
@@ -30,8 +31,14 @@ public class SurfBoard : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            if (!active) StartCoroutine(LifeSpan(lifeSpan));
             active = true;
             collision.transform.parent = transform;
+            player = collision.gameObject;
+        }
+        else
+        {
+            DestroyBoard();
         }
     }
     private void OnCollisionStay(Collision collision)
@@ -48,7 +55,23 @@ public class SurfBoard : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             collision.transform.parent = null;
+            player = null;
             playerSideDist = 0;
         }
+    }
+    void DestroyBoard()
+    {
+        Debug.Log("Destroying board");
+        if(player != null)
+        {
+            player.transform.parent = null;
+        }
+        Destroy(gameObject);
+    }
+    IEnumerator LifeSpan(float time)
+    {
+        Debug.Log("Starting surf timer");
+        yield return new WaitForSeconds(time);
+        DestroyBoard();
     }
 }

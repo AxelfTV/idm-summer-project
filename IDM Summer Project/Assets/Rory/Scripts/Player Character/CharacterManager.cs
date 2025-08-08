@@ -10,6 +10,8 @@ public class CharacterManager : MonoBehaviour
     CharacterStats stats;
     CharacterState state;
 
+    [SerializeField] float levelBottom = -40;
+
     [NonSerialized] public IHoldable holding = null;
 
     private void Awake()
@@ -54,7 +56,7 @@ public class CharacterManager : MonoBehaviour
         }
 
         //Temp kill player when fall
-        if (transform.position.y < -40) Die();
+        if (transform.position.y < levelBottom) Die();
     }
     private void FixedUpdate()
     {
