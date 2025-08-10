@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{cf3bad07-9c52-4d53-926f-56d940af02d1}">
+		<property name="assetPath">
+			<value>Tutorial Level/SFX/Pressure Plate SFX.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>295.3665306122449</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a8a848f9-e133-41bf-addd-cd4e0ae091a4}</destination>
+		</relationship>
+	</object>
+</objects>

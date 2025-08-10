@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class PressurePlate : LockMechanism
 {
     bool pressed;
+    public EventReference pressurePlateSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,7 @@ public class PressurePlate : LockMechanism
         {
             if (checkPress) Unlock();
             else Lock();
+            RuntimeManager.PlayOneShot(pressurePlateSound);
         }
 
         pressed = checkPress;
