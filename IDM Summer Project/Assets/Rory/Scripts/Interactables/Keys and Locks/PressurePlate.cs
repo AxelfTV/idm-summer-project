@@ -7,6 +7,9 @@ public class PressurePlate : LockMechanism
 {
     bool pressed;
     public EventReference pressurePlateSound;
+    public EventReference windSound;
+    public bool canPlaySound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +25,11 @@ public class PressurePlate : LockMechanism
             if (checkPress) Unlock();
             else Lock();
             RuntimeManager.PlayOneShot(pressurePlateSound);
+            if(!canPlaySound)
+            {
+                RuntimeManager.PlayOneShot(windSound);
+            }
+            canPlaySound = true;
         }
 
         pressed = checkPress;
