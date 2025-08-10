@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 3.36, y: 1.86}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
@@ -49,8 +49,8 @@ Material:
     - _Color3: {r: 1, g: 1, b: 1, a: 1}
     - _MovinDirct: {r: 0.85, g: 0, b: 1.65, a: 1}
     - _OutLineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _PlayerPos: {r: -10.800109, g: 1.4029595, b: 13.929902, a: 0}
+    - _PlayerPos: {r: 202.6423, g: -20.418541, b: -93.77318, a: 0}
     - _ShadowColor: {r: 0.38590956, g: 0.55651826, b: 0.7660377, a: 1}
     - _ShadowColor2: {r: 0.42830187, g: 0.57043856, b: 1, a: 1}
-    - _SheepPos: {r: 215.35, g: -5.4928885, b: 72.6, a: 0}
+    - _SheepPos: {r: 202.59511, g: -18.99954, b: -93.896416, a: 0}
   m_BuildTextureStacks: []
