@@ -5,7 +5,7 @@
 			<value>Bubble SFX</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{1214373f-8914-4aeb-9584-679b019881f9}</destination>
@@ -60,7 +60,7 @@
 	<object class="MarkerTrack" id="{b2b701a9-7cc6-46f4-8470-f955718d8d20}" />
 	<object class="GroupTrack" id="{6492a8cf-5752-44d1-a6b3-45e6eba0dec9}">
 		<relationship name="modules">
-			<destination>{278f3592-a13c-4264-a452-387c4373f311}</destination>
+			<destination>{5cf730a0-57e7-46b9-bd6d-3082095dfe8b}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{03d5c1b6-5cf4-4020-a4d8-2a60feb875fd}</destination>
@@ -68,7 +68,7 @@
 	</object>
 	<object class="Timeline" id="{b91fd466-1ccb-4c05-8abb-0e5647201c20}">
 		<relationship name="modules">
-			<destination>{278f3592-a13c-4264-a452-387c4373f311}</destination>
+			<destination>{5cf730a0-57e7-46b9-bd6d-3082095dfe8b}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{2ce1eb3a-5ade-430d-ba4e-e21fdf0bfd59}">
@@ -88,12 +88,15 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{6134b597-4068-42ec-b58e-cafc3f9df16d}" />
-	<object class="SingleSound" id="{278f3592-a13c-4264-a452-387c4373f311}">
+	<object class="SingleSound" id="{5cf730a0-57e7-46b9-bd6d-3082095dfe8b}">
+		<property name="start">
+			<value>0.14999999999999999</value>
+		</property>
 		<property name="length">
-			<value>1.0448979591836736</value>
+			<value>1.280204081632653</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{e932d918-83e9-43ae-b342-035d5bff4ba1}</destination>
+			<destination>{14f80c41-aa77-4f6d-a948-7d7470f3b093}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{03d5c1b6-5cf4-4020-a4d8-2a60feb875fd}">
