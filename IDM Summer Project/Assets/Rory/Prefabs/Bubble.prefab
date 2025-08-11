@@ -118,3 +118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0a0686dbc0aace448d10aea43c8c8ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bubbleSound:
+    Guid:
+      Data1: 1933076622
+      Data2: 1297063940
+      Data3: -999090033
+      Data4: -1807702980
+    Path: event:/SFX/Level 1/Bubble SFX

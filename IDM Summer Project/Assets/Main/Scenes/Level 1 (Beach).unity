@@ -2968,6 +2968,69 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450485697}
   m_Mesh: {fileID: -383859999368052200, guid: 117f799492b454e45b7e5eaea9cb30d8, type: 3}
+--- !u!1 &457278715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 457278716}
+  - component: {fileID: 457278717}
+  m_Layer: 0
+  m_Name: Beach Ambience
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &457278716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457278715}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 526223676}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &457278717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457278715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -900743809
+      Data2: 1276491887
+      Data3: 1027942040
+      Data4: -430701369
+    Path: event:/Music/Level 1/Beach Ambience
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &464494096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3552,6 +3615,39 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 753587348}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &526223675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 526223676}
+  m_Layer: 0
+  m_Name: Music
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &526223676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526223675}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.082845, y: 51.008965, z: -5.861558}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1746773198}
+  - {fileID: 457278716}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &527237691
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4406,6 +4502,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bubble Activator
       objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: pressurePlateSound.Path
+      value: event:/SFX/Tutorial Level/Pressure Plate SFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data1
+      value: 69337434
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data2
+      value: 1257995721
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data3
+      value: 1862557065
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data4
+      value: 830632610
+      objectReference: {fileID: 0}
     - target: {fileID: 6393356863567026973, guid: 5459e3de8eccc3741adbe7f75296c758,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4970,6 +5091,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bubble Activator
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: pressurePlateSound.Path
+      value: event:/SFX/Tutorial Level/Pressure Plate SFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data1
+      value: 69337434
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data2
+      value: 1257995721
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data3
+      value: 1862557065
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data4
+      value: 830632610
       objectReference: {fileID: 0}
     - target: {fileID: 6393356863567026973, guid: 5459e3de8eccc3741adbe7f75296c758,
         type: 3}
@@ -6278,7 +6424,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -7326,6 +7472,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bubble Activator (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: pressurePlateSound.Path
+      value: event:/SFX/Tutorial Level/Pressure Plate SFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data1
+      value: 69337434
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data2
+      value: 1257995721
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data3
+      value: 1862557065
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data4
+      value: 830632610
+      objectReference: {fileID: 0}
     - target: {fileID: 6393356863567026973, guid: 5459e3de8eccc3741adbe7f75296c758,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -7859,6 +8030,78 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 573597253}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1148625012
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1148625015}
+  - component: {fileID: 1148625014}
+  - component: {fileID: 1148625013}
+  m_Layer: 0
+  m_Name: Sad Emotion Volume Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1148625013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148625012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 0
+  priority: 0
+  blendDistance: 10
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 95b0c7ef70c6a6f4caf0428862efb6ba, type: 2}
+--- !u!65 &1148625014
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148625012}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1148625015
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148625012}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.8, y: 2.554519, z: 13.21}
+  m_LocalScale: {x: 32.25909, y: 32.5127, z: 18.699429}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1848395519}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1153544757 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6474317229738379928, guid: 055b5b427afed03479e87075761e5a40,
@@ -11890,6 +12133,69 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734318246}
   m_Mesh: {fileID: -383859999368052200, guid: 117f799492b454e45b7e5eaea9cb30d8, type: 3}
+--- !u!1 &1746773197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1746773198}
+  - component: {fileID: 1746773199}
+  m_Layer: 0
+  m_Name: BGM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1746773198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746773197}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 526223676}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1746773199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1746773197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 498859227
+      Data2: 1308473154
+      Data3: 706853258
+      Data4: 1735923159
+    Path: event:/Music/Level 1/Level 1 BGM
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!4 &1752211504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2289063364845889369, guid: 312ab42259ae014429b6fd78e08baf02,
@@ -12552,6 +12858,137 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1901035882}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1848395518
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1848395519}
+  - component: {fileID: 1848395523}
+  - component: {fileID: 1848395522}
+  - component: {fileID: 1848395521}
+  - component: {fileID: 1848395520}
+  m_Layer: 0
+  m_Name: Trigger Box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1848395519
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848395518}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2.0584636, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1148625015}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1848395520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848395518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: Player
+  EventReference:
+    Guid:
+      Data1: -687291212
+      Data2: 1079187094
+      Data3: -396581195
+      Data4: -1721824898
+    Path: snapshot:/Sad
+  Event: 
+  EventPlayTrigger: 3
+  EventStopTrigger: 4
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
+--- !u!114 &1848395521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848395518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: Player
+  EventReference:
+    Guid:
+      Data1: 2060565871
+      Data2: 1289468910
+      Data3: -1869919578
+      Data4: 1743285719
+    Path: event:/SFX/Tutorial Level/Rain SFX
+  Event: 
+  EventPlayTrigger: 3
+  EventStopTrigger: 4
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
+--- !u!114 &1848395522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848395518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4db3eab2723ed2e438bb0df7a6439b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rain: {fileID: 0}
+--- !u!65 &1848395523
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848395518}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6530191, y: 1, z: 1}
+  m_Center: {x: 0.17349093, y: 0, z: 0}
 --- !u!4 &1857678224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6603816793968953507, guid: 3b9dec077e10f7e418e61c537445889b,
@@ -14875,3 +15312,5 @@ SceneRoots:
   - {fileID: 1937994980}
   - {fileID: 1812917529}
   - {fileID: 1725453527}
+  - {fileID: 526223676}
+  - {fileID: 1148625015}

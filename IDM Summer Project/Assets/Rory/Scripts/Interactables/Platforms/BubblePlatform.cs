@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class BubblePlatform : MonoBehaviour
 {
     [NonSerialized] public BubbleSpawner spawner;
     [NonSerialized] public float heightAboveSpawner;
+    public EventReference bubbleSound;
     bool burst;
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,7 @@ public class BubblePlatform : MonoBehaviour
     void Burst()
     {
         Destroy(gameObject, 0.5f);
+        RuntimeManager.PlayOneShot(bubbleSound);
         burst = true;
     }
     private void OnCollisionEnter(Collision collision)
