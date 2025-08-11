@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TreeLeaves 1
+  m_Shader: {fileID: 4800000, guid: ca53272b8aba76b428ec2e030a9a88c1, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _HeightTex:
+        m_Texture: {fileID: 2800000, guid: c9702e31b627a6240a09d96e67af290a, type: 3}
+        m_Scale: {x: 0.52, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MossBase:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MossHeight:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MossNormal:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _GlossyAmount: 0
+    - _HeightFactor: 0
+    - _HeightMove: 0
+    - _MossCut: 0
+    - _MossOffset: 1
+    - _NormalStrength: 1
+    - _OutLineBlend: 1
+    - _ShadowThreshold: 0.05
+    - _StylishShadow: 0.31
+    - _WindSpeed: 0.67
+    - _WindStrength: 1
+    m_Colors:
+    - _Color0: {r: 0.8867924, g: 0.65773696, b: 0.3597365, a: 1}
+    - _Color1: {r: 0.8113208, g: 0.5178508, b: 0.2985047, a: 1}
+    - _Color2: {r: 0.40365258, g: 0.96981126, b: 0.39341396, a: 1}
+    - _Color3: {r: 0.93745923, g: 1, b: 0.5568628, a: 1}
+    - _GlossyColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutLineColor: {r: 0.50603765, g: 0.5285304, b: 0.5999999, a: 1}
+    - _ShadowColor: {r: 0.3764706, g: 0.38095084, b: 0.6509804, a: 1}
+    - _ShadowColor2: {r: 0.9169811, g: 0.53115696, b: 0.583327, a: 1}
+    - _WindDir: {r: 0.49, g: 0.68, b: 0, a: 0}
+  m_BuildTextureStacks: []
