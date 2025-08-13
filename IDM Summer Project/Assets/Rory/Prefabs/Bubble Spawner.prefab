@@ -136,7 +136,6 @@ GameObject:
   - component: {fileID: 1570983379505478109}
   - component: {fileID: 5815684066547036824}
   - component: {fileID: 9211443036573968661}
-  - component: {fileID: 6114765210216317246}
   m_Layer: 3
   m_Name: Bubble (Animation)
   m_TagString: Untagged
@@ -209,25 +208,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &6114765210216317246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8392985756891914177}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0a0686dbc0aace448d10aea43c8c8ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bubbleSound:
-    Guid:
-      Data1: 1933076622
-      Data2: 1297063940
-      Data3: -999090033
-      Data4: -1807702980
-    Path: event:/SFX/Level 1/Bubble SFX
 --- !u!1 &8984666826429503585
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,9 +220,8 @@ GameObject:
   - component: {fileID: 5534373537451753600}
   - component: {fileID: 2108332368897148762}
   - component: {fileID: 4628388612071569452}
-  - component: {fileID: 3447711743102964070}
   m_Layer: 3
-  m_Name: Bubble
+  m_Name: Pearl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -334,25 +313,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3447711743102964070
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8984666826429503585}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0a0686dbc0aace448d10aea43c8c8ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bubbleSound:
-    Guid:
-      Data1: 1933076622
-      Data2: 1297063940
-      Data3: -999090033
-      Data4: -1807702980
-    Path: event:/SFX/Level 1/Bubble SFX
 --- !u!1001 &652851335094870225
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -430,6 +390,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: clam (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148817236446094103, guid: 0860ba67cd87fb34aae734f1289872ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6507901977716847365, guid: 0860ba67cd87fb34aae734f1289872ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4305582594677378970}
   - component: {fileID: 2192195329408507405}
   - component: {fileID: 3517658231443474265}
+  - component: {fileID: 5262688590819718205}
   m_Layer: 0
   m_Name: Geyser
   m_TagString: Untagged
@@ -31,6 +32,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 736323239368150911}
   - {fileID: 9070745475327870941}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -69,6 +71,132 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 30
   period: 3
+  geyserAnimator: {fileID: 5262688590819718205}
+--- !u!95 &5262688590819718205
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2372696179410897965}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fc50c21d0afec16439540ee2ef57244f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1001 &990030406308472980
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4305582594677378970}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.46967
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.983558
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.46967
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 59f9e22b0e371184982ec4a88b82c8a4, type: 2}
+    - target: {fileID: 919132149155446097, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_Name
+      value: Geyser (Jet)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a54c799919a833d4a999f31c2fc55739, type: 3}
+--- !u!4 &736323239368150911 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a54c799919a833d4a999f31c2fc55739,
+    type: 3}
+  m_PrefabInstance: {fileID: 990030406308472980}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2068524466625083482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77,6 +205,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4305582594677378970}
     m_Modifications:
+    - target: {fileID: 6995032348068031865, guid: d65fb97a79e66c64dbd2bd4a2fc55a59,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: affdbfb0bc895ae40a3ea4b3c3f68caf, type: 2}
     - target: {fileID: 7013550449865408391, guid: d65fb97a79e66c64dbd2bd4a2fc55a59,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -150,7 +283,7 @@ PrefabInstance:
     - target: {fileID: 8683122196070076554, guid: d65fb97a79e66c64dbd2bd4a2fc55a59,
         type: 3}
       propertyPath: m_Name
-      value: Geyser
+      value: Geyser (Object)
       objectReference: {fileID: 0}
     - target: {fileID: 8683122196070076554, guid: d65fb97a79e66c64dbd2bd4a2fc55a59,
         type: 3}
