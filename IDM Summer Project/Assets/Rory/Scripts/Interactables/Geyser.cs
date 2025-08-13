@@ -9,6 +9,8 @@ public class Geyser : MonoBehaviour
     [SerializeField] float period;
 
     [SerializeField] Animator geyserAnimator;
+
+    public GameObject geyserIdleSFX;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,10 @@ public class Geyser : MonoBehaviour
     }
     IEnumerator ActivateTimer()
     {
+        yield return new WaitForSeconds(period/2);
+        geyserIdleSFX.SetActive(true);
         yield return new WaitForSeconds(period);
+        geyserIdleSFX.SetActive(false);
         geyserAnimator.SetTrigger("canJet");
         Activate();
         StartCoroutine(ActivateTimer());

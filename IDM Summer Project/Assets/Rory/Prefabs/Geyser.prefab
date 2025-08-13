@@ -34,6 +34,7 @@ Transform:
   m_Children:
   - {fileID: 736323239368150911}
   - {fileID: 9070745475327870941}
+  - {fileID: 3078444370957015984}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2192195329408507405
@@ -72,6 +73,7 @@ MonoBehaviour:
   power: 30
   period: 3
   geyserAnimator: {fileID: 5262688590819718205}
+  geyserIdleSFX: {fileID: 8025057865112703705}
 --- !u!95 &5262688590819718205
 Animator:
   serializedVersion: 5
@@ -93,6 +95,69 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &8025057865112703705
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3078444370957015984}
+  - component: {fileID: 5359985554342396219}
+  m_Layer: 0
+  m_Name: Geyser Idle SFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3078444370957015984
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025057865112703705}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4305582594677378970}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5359985554342396219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025057865112703705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 455428521
+      Data2: 1124319232
+      Data3: -1115909219
+      Data4: 749543709
+    Path: event:/SFX/Level 1/Geyser Idle SFX
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 2
+  OverrideMaxDistance: 10
 --- !u!1001 &990030406308472980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,8 +254,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a54c799919a833d4a999f31c2fc55739,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7097979136188483340}
   m_SourcePrefab: {fileID: 100100000, guid: a54c799919a833d4a999f31c2fc55739, type: 3}
+--- !u!1 &106998670604834245 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a54c799919a833d4a999f31c2fc55739,
+    type: 3}
+  m_PrefabInstance: {fileID: 990030406308472980}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7097979136188483340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 106998670604834245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: Player
+  EventReference:
+    Guid:
+      Data1: 523287705
+      Data2: 1091718411
+      Data3: 455452328
+      Data4: -790456695
+    Path: event:/SFX/Level 1/Geyser Jet SFX
+  Event: 
+  EventPlayTrigger: 11
+  EventStopTrigger: 12
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 1
+  OverrideMinDistance: 2.5
+  OverrideMaxDistance: 15.53
 --- !u!4 &736323239368150911 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a54c799919a833d4a999f31c2fc55739,
