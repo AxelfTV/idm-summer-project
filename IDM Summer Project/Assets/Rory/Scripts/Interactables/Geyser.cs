@@ -26,6 +26,7 @@ public class Geyser : MonoBehaviour
     {
         yield return new WaitForSeconds(period/2);
         geyserIdleSFX.SetActive(true);
+        geyserAnimator.SetTrigger("canReady");
         yield return new WaitForSeconds(period);
         geyserIdleSFX.SetActive(false);
         geyserAnimator.SetTrigger("canJet");
