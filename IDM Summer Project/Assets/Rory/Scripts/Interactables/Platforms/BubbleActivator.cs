@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class BubbleActivator : MonoBehaviour, IUnlockableObject
 {
     [SerializeField] GameObject[] spawners;
+    public EventReference bubbleSound;
+    public EventReference popSound;
 
     void Start()
     {
@@ -22,6 +25,8 @@ public class BubbleActivator : MonoBehaviour, IUnlockableObject
                 animator.SetBool("canOpen", true);
             }
         }
+
+        RuntimeManager.PlayOneShot(popSound);
     }
 
     public void Unlock()
@@ -36,5 +41,7 @@ public class BubbleActivator : MonoBehaviour, IUnlockableObject
                 animator.SetBool("canOpen", false);
             }
         }
+
+        RuntimeManager.PlayOneShot(bubbleSound);
     }
 }

@@ -104,6 +104,13 @@ MonoBehaviour:
   timer: 3
   otherAnimator: {fileID: 1413665022012315285}
   bubbleAnimationTrigger: 
+  bubbleSound:
+    Guid:
+      Data1: -2083152293
+      Data2: 1217908830
+      Data3: -176850776
+      Data4: 2010674145
+    Path: event:/SFX/Level 1/Bubble Spwan SFX
 --- !u!95 &7364925408026383425
 Animator:
   serializedVersion: 5

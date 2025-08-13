@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class BubbleSpawner : MonoBehaviour, IUnlockableObject
 {
@@ -11,6 +12,9 @@ public class BubbleSpawner : MonoBehaviour, IUnlockableObject
 
     [SerializeField] Animator otherAnimator;
     public string bubbleAnimationTrigger;
+
+    public EventReference bubbleSound;
+    private bool firstTime;
 
 
     void Start()
@@ -58,6 +62,7 @@ public class BubbleSpawner : MonoBehaviour, IUnlockableObject
     {
         yield return new WaitForSeconds(0f);
         otherAnimator.SetBool(bubbleAnimationTrigger, true);
+        
         yield return new WaitForSeconds(timer);
         SpawnBubble();
     }
@@ -66,5 +71,6 @@ public class BubbleSpawner : MonoBehaviour, IUnlockableObject
     {
         StartCoroutine("NextBubbleCooldown");
         otherAnimator.SetBool(bubbleAnimationTrigger, false);
+        RuntimeManager.PlayOneShot(bubbleSound);
     }
 }

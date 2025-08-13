@@ -5934,6 +5934,56 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9178802352840656953, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: popSound.Path
+      value: event:/SFX/Level 1/Bubble SFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178802352840656953, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: bubbleSound.Path
+      value: event:/SFX/Level 1/Bubble Spwan SFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178802352840656953, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: popSound.Guid.Data1
+      value: 1933076622
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178802352840656953, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: popSound.Guid.Data2
+      value: 1297063940
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178802352840656953, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: popSound.Guid.Data3
+      value: -999090033
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178802352840656953, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: popSound.Guid.Data4
+      value: -1807702980
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178802352840656953, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: bubbleSound.Guid.Data1
+      value: -2083152293
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178802352840656953, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: bubbleSound.Guid.Data2
+      value: 1217908830
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178802352840656953, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: bubbleSound.Guid.Data3
+      value: -176850776
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178802352840656953, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: bubbleSound.Guid.Data4
+      value: 2010674145
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9187,6 +9237,31 @@ PrefabInstance:
         type: 3}
       propertyPath: bubbleAnimationTrigger
       value: canRespawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719006464275205680, guid: 3d388e6ef8cbfb64f887266690b8f8cf,
+        type: 3}
+      propertyPath: pressurePlateSound.Path
+      value: event:/SFX/Level 1/Testt
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719006464275205680, guid: 3d388e6ef8cbfb64f887266690b8f8cf,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data1
+      value: -2083152293
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719006464275205680, guid: 3d388e6ef8cbfb64f887266690b8f8cf,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data2
+      value: 1217908830
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719006464275205680, guid: 3d388e6ef8cbfb64f887266690b8f8cf,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data3
+      value: -176850776
+      objectReference: {fileID: 0}
+    - target: {fileID: 5719006464275205680, guid: 3d388e6ef8cbfb64f887266690b8f8cf,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data4
+      value: 2010674145
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

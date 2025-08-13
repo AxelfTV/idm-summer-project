@@ -120,6 +120,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawners: []
+  bubbleSound:
+    Guid:
+      Data1: -2083152293
+      Data2: 1217908830
+      Data3: -176850776
+      Data4: 2010674145
+    Path: event:/SFX/Level 1/Bubble Spwan SFX
+  popSound:
+    Guid:
+      Data1: 1933076622
+      Data2: 1297063940
+      Data3: -999090033
+      Data4: -1807702980
+    Path: event:/SFX/Level 1/Bubble SFX
 --- !u!1001 &5568498739625145093
 PrefabInstance:
   m_ObjectHideFlags: 0
