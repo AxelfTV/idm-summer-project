@@ -214,9 +214,8 @@ Properties
             ENDHLSL
         }
 
-        // 阴影投射
-        UsePass "Universal Render Pipeline/Lit/DepthOnly"
-        UsePass "Universal Render Pipeline/Lit/DepthNormals"
+//        UsePass "Universal Render Pipeline/Lit/DepthOnly"
+//        UsePass "Universal Render Pipeline/Lit/DepthNormals"
         UsePass "Universal Render Pipeline/Lit/ShadowCaster"
 
     }

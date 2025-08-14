@@ -43,7 +43,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Obstacles
-    second: {fileID: 2100000, guid: f7f61bc420902eb42a017058af881346, type: 2}
+    second: {fileID: 2100000, guid: 4b4d6b981fbfa4847a110c5e15c0bcb8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

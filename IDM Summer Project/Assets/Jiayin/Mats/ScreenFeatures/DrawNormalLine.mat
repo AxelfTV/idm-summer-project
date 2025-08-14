@@ -28,7 +28,7 @@ Material:
     - _EdgeControl: 0
     - _PixelCount: 500
     - _depthThreshold: 0.01
-    - _edgeWidth: 0.7
+    - _edgeWidth: -0.24
     - _normalThreshold: 0.15
     m_Colors:
     - _EdgeColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}

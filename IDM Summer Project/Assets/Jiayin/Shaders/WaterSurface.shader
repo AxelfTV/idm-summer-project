@@ -13,6 +13,12 @@ Properties
         _ShadowColor2("ShadowColor2",color)=(0.5,0.5,0.5,0.5)
         _FadeDistance("Fade Distance", Float) = 10.0
         _WeaveStrength("Weave Strength",float)=1
+
+        //foam
+        _FoamSpeed("FoamSpeed",float)=1
+        _FoamDistance("FoamDistance",float)=1
+        _FoamCutoff("FoamCutOff",float)=0.5
+        _FoamStrength("FoamStrength",float)=0.2
     }
     SubShader
     {
@@ -67,6 +73,12 @@ Properties
                 float _StylishShadow;//shadow edge 
                 float _FadeDistance;
                 float _WeaveStrength;
+
+                //foam
+                float _FoamSpeed;
+                float _FoamDistance;
+                float _FoamCutoff;
+                float _FoamStrength;
             CBUFFER_END
 
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
@@ -182,16 +194,22 @@ float3 GerstnerWaves_float(float3 position, float steepness, float wavelength, f
                 //mix water color
                 float4 waterColor = SAMPLE_TEXTURE2D(_WaterGradient, sampler_WaterGradient, float2(floor(Waterdepth*10/2)/5, 0.5));
                
-                float3 WaterSurface = SAMPLE_TEXTURE2D(_WaterSurface, sampler_WaterSurface, DistortUV_float(IN.uv*10,1)).rgb;
+                float3 WaterSurface = SAMPLE_TEXTURE2D(_WaterSurface, sampler_WaterSurface, DistortUV_float(IN.uv*40,1)).rgb;
                 
-                waterColor.rgb = lerp(waterColor.rgb,_WaterColor , step(0.05,WaterSurface.b));
+                waterColor.rgb = lerp(_WaterColor,waterColor.rgb, WaterSurface.x);
+                //foam
+                float distortFoam=voronoiNoise(IN.positionWS.xz*0.5);
+                float FoamDepth=1-saturate((eyedepth-IN.screenUV.w)/_FoamDistance);
+                float2 foamUV=float2(uv.x, FoamDepth+_Time.y*_FoamSpeed);
+                float3 foamTex= SAMPLE_TEXTURE2D(_WaterSurface, sampler_WaterSurface, foamUV).rgb;
+                float fomes=step(_FoamCutoff,(FoamDepth)*(foamTex.r)*_FoamStrength*distortFoam);
+                waterColor.rgb=waterColor.rgb+fomes;
 
-                float fomes=step(0.4,Waterdepth*(WaterSurface.r+WaterSurface.g));
-                waterColor.rgb +=fomes;
                  //fresnel
                 float fresnel = pow(1.0 - saturate(dot(IN.normalWS, viewDir)), 8); 
                 waterColor.rgb = lerp(waterColor.rgb, _Color.rgb, fresnel);
                 return half4(waterColor.rgb ,1);
+
                 half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb*_Color;
                 Light mainLight = GetMainLight(IN.shadowCoord);
                 
@@ -224,7 +242,6 @@ float3 GerstnerWaves_float(float3 position, float steepness, float wavelength, f
             ENDHLSL
         }
 
-        // 阴影投射
         UsePass "Universal Render Pipeline/Lit/DepthOnly"
         UsePass "Universal Render Pipeline/Lit/DepthNormals"
         UsePass "Universal Render Pipeline/Lit/ShadowCaster"

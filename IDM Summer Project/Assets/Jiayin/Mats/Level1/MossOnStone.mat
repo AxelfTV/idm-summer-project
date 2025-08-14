@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MossOnStone
+  m_Shader: {fileID: 4800000, guid: f3cecc48f2b31df45b95e76be038d277, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _HeightTex:
+        m_Texture: {fileID: 2800000, guid: c9702e31b627a6240a09d96e67af290a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MossBase:
+        m_Texture: {fileID: 2800000, guid: d1ed94c7e182fed4f87e30808889b6d2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MossHeight:
+        m_Texture: {fileID: 2800000, guid: 7bb0bc017ce287543ae604fa01d6e4c2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MossNormal:
+        m_Texture: {fileID: 2800000, guid: 7117bcfa2113ec84a92bc2fe5ade19a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _HeightFactor: 0.25
+    - _HeightMove: -0.86
+    - _MossCut: 0.78
+    - _MossOffset: 0
+    - _NormalStrength: 0.67
+    - _ShadowThreshold: 0.359
+    - _StylishShadow: -0.02
+    m_Colors:
+    - _Color0: {r: 0.7650053, g: 0.7910303, b: 0.93207544, a: 1}
+    - _Color1: {r: 0.86347455, g: 0.9014108, b: 0.9245283, a: 1}
+    - _ShadowColor: {r: 0.40655744, g: 0.4812102, b: 0.6754716, a: 1}
+    - _ShadowColor2: {r: 1, g: 0.4509434, b: 0.4663588, a: 1}
+  m_BuildTextureStacks: []
