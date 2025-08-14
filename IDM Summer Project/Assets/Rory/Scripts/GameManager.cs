@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public Checkpoint currentCheckPoint = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,5 +24,19 @@ public class GameManager : MonoBehaviour
     public void LevelRestart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void OnPlayerDeath()
+    {
+        if(currentCheckPoint != null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            player.transform.position = currentCheckPoint.transform.position;
+            CameraTrigger.ResetAllCams();
+            currentCheckPoint.camTrig.SwapCams();
+        }
+        else
+        {
+            LevelRestart();
+        }
     }
 }

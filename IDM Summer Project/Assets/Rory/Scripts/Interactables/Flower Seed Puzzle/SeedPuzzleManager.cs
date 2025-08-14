@@ -21,7 +21,9 @@ public class SeedPuzzleManager : LockMechanism
             switch (pot.state)
             {
                 case PotState.empty:
-                    reset = false; break;
+                    reset = false;
+                    correct = false;
+                    break;
                 case PotState.wrong:
                     correct = false; break;
             }

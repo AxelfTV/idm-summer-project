@@ -9,6 +9,7 @@ public class MovingPlatform : MonoBehaviour, IUnlockableObject
     [SerializeField] GameObject end;
     [SerializeField] float fullCycleTime = 10;
     [SerializeField] float cycleOffset = 0;
+    [SerializeField] bool rotate;
     Vector3 startPos;
     Vector3 toEnd;
     [SerializeField] bool switchedOn = true;
@@ -40,12 +41,12 @@ public class MovingPlatform : MonoBehaviour, IUnlockableObject
         if (cyclePosition < 1)
         {
             transform.position = startPos + toEnd * cyclePosition;
-            transform.rotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(toEnd, Vector3.up).normalized, Vector3.up);
+            if(rotate) transform.rotation = Quaternion.RotateTowards(transform.rotation,Quaternion.LookRotation(Vector3.ProjectOnPlane(toEnd, Vector3.up).normalized, Vector3.up), 600 * Time.deltaTime);
         }
         else 
         {
 			transform.position = startPos + toEnd * (2 - cyclePosition);
-            transform.rotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(-toEnd, Vector3.up).normalized, Vector3.up);
+            if(rotate) transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(Vector3.ProjectOnPlane(-toEnd, Vector3.up).normalized, Vector3.up), 600 * Time.deltaTime);
         }
     }
     private void OnCollisionEnter(Collision collision)

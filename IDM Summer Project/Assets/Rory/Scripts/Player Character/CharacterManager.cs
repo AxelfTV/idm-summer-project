@@ -145,7 +145,7 @@ public class CharacterManager : MonoBehaviour
     }
     void Die()
     {
-        GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().LevelRestart();
+        GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().OnPlayerDeath();
     }
     void SetShadowDistance()
     {

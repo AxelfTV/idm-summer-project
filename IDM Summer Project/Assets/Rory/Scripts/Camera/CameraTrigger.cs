@@ -6,11 +6,12 @@ using Cinemachine;
 public class CameraTrigger : MonoBehaviour
 {
     [SerializeField] CinemachineVirtualCamera toSwap;
+    CinemachineVirtualCamera original;
     bool enterDir;
     // Start is called before the first frame update
     void Start()
     {
-        
+        original = toSwap;
     }
 
     // Update is called once per frame
@@ -18,7 +19,7 @@ public class CameraTrigger : MonoBehaviour
     {
         
     }
-    void SwapCams()
+    public void SwapCams()
     {
         toSwap.Priority = 100;
         CinemachineVirtualCamera current = CameraManager.currentCam;
@@ -48,5 +49,17 @@ public class CameraTrigger : MonoBehaviour
         Vector3 dist = Vector3.Project(transform.position - position, transform.right).normalized;
         float dot = Vector3.Dot(dist, transform.right);
         return dot > 0;
+    }
+    public void ResetCam()
+    {
+        toSwap = original;
+        toSwap.Priority = 0;
+    }
+    public static void ResetAllCams()
+    {
+        foreach(var cam in GameObject.FindGameObjectsWithTag("CamTrig"))
+        {
+            cam.GetComponent<CameraTrigger>().ResetCam();
+        }
     }
 }

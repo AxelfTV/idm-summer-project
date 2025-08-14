@@ -182,6 +182,7 @@ MonoBehaviour:
   end: {fileID: 605676703717861529}
   fullCycleTime: 10
   cycleOffset: 0
+  rotate: 1
   switchedOn: 1
 --- !u!1 &3741866139615431354
 GameObject:
@@ -290,7 +291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9068657055940320407}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.77513796, z: -0, w: 0.63179207}
+  m_LocalRotation: {x: 0, y: -0.77513754, z: 0, w: 0.6317926}
   m_LocalPosition: {x: -11.034779, y: 8.04, z: 2.4190762}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 390638006178274099}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.63179207, z: -0, w: 0.77513796}
+  m_LocalRotation: {x: 0, y: 0.6317926, z: 0, w: 0.77513754}
   m_LocalPosition: {x: -23.7, y: 8.04, z: 1.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -133,6 +133,7 @@ MonoBehaviour:
   end: {fileID: 5022298726013299063}
   fullCycleTime: 10
   cycleOffset: 0
+  rotate: 1
   switchedOn: 1
 --- !u!1 &5022298726013299063
 GameObject:
