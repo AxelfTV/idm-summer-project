@@ -24,8 +24,8 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _HeightTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: c9702e31b627a6240a09d96e67af290a, type: 3}
+        m_Scale: {x: 0.58, y: 0.53}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
@@ -39,13 +39,13 @@ Material:
     - _MovingSpeed: 1
     - _OutLineBlend: 1
     - _ShadowThreshold: 0.12
-    - _StylishShadow: 0.5
+    - _StylishShadow: 0.46
     m_Colors:
-    - _Color0: {r: 0.5317523, g: 1, b: 0.41320753, a: 1}
-    - _Color1: {r: 0.469592, g: 1, b: 0.42830187, a: 1}
+    - _Color0: {r: 0.4601361, g: 1, b: 0.42075467, a: 1}
+    - _Color1: {r: 0.49286574, g: 0.81886786, b: 0.7481131, a: 1}
     - _Color2: {r: 1, g: 1, b: 1, a: 1}
     - _Color3: {r: 1, g: 1, b: 1, a: 1}
     - _OutLineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadowColor: {r: 0.3983268, g: 0.46431318, b: 0.6301887, a: 1}
-    - _ShadowColor2: {r: 0.3372549, g: 0.4238017, b: 0.7019608, a: 1}
+    - _ShadowColor: {r: 0.5646493, g: 0.672477, b: 0.9622642, a: 1}
+    - _ShadowColor2: {r: 0.36066276, g: 0.3372549, b: 0.7019608, a: 1}
   m_BuildTextureStacks: []

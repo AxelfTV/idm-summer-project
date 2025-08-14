@@ -25,7 +25,7 @@ Material:
     m_TexEnvs:
     - _HeightTex:
         m_Texture: {fileID: 2800000, guid: c9702e31b627a6240a09d96e67af290a, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 0.66, y: 0.59}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
@@ -33,6 +33,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _GlossyAmount: 0
     - _HeightFactor: 0
     - _HeightMove: 0
     - _OutLineBlend: 1
@@ -41,9 +42,10 @@ Material:
     m_Colors:
     - _Color: {r: 0.78867924, g: 0.5938107, b: 0.4389818, a: 1}
     - _Color0: {r: 0.9622642, g: 0.90799814, b: 0.7897829, a: 1}
-    - _Color1: {r: 1, g: 0.9339622, b: 0.9339622, a: 1}
+    - _Color1: {r: 0.9169811, g: 0.70417225, b: 0.70417225, a: 1}
     - _Color2: {r: 1, g: 1, b: 1, a: 1}
     - _Color3: {r: 1, g: 1, b: 1, a: 1}
+    - _GlossyColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutLineColor: {r: 0.5320754, g: 0.5167114, b: 0.38449976, a: 1}
     - _ShadowColor: {r: 0.57799405, g: 0.5763687, b: 0.6377357, a: 1}
     - _ShadowColor2: {r: 0.45753643, g: 0.5056047, b: 0.6754716, a: 1}
