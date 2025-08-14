@@ -13,6 +13,7 @@ TagManager:
   - YellowSeed
   - GameManager
   - BubbleSpawner
+  - Sheep
   layers:
   - Default
   - TransparentFX

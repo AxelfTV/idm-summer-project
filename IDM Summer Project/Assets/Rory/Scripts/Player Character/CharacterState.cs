@@ -277,7 +277,7 @@ public class CharacterGlideBoost : CharacterState
 	}
 	public override CharacterState NewState()
 	{
-		if (IsGrounded() && stats.input.Jump() || stats.JumpBuffered()) return new CharacterJump(stats);
+		if (IsGrounded() && (stats.input.Jump() || stats.JumpBuffered())) return new CharacterJump(stats);
 		if (timer > boostDuration) return new CharacterFall(stats);
 		if (IsGrounded()) return new CharacterIdle(stats);
 		return null;

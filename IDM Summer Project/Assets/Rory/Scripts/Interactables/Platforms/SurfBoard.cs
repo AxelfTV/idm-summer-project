@@ -36,7 +36,7 @@ public class SurfBoard : MonoBehaviour
             collision.transform.parent = transform;
             player = collision.gameObject;
         }
-        else
+        else if(!collision.collider.CompareTag("Sheep") && !collision.collider.CompareTag("Bouncy"))
         {
             DestroyBoard();
         }

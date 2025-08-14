@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class CharacterManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class CharacterManager : MonoBehaviour
 
     [NonSerialized] public IHoldable holding = null;
 
+    [SerializeField] DecalProjector shadowProjector;
     private void Awake()
     {
         //ignore collisions with sheep
@@ -57,6 +59,8 @@ public class CharacterManager : MonoBehaviour
 
         //Temp kill player when fall
         if (transform.position.y < levelBottom) Die();
+
+        SetShadowDistance();
     }
     private void FixedUpdate()
     {
@@ -142,5 +146,17 @@ public class CharacterManager : MonoBehaviour
     void Die()
     {
         GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>().LevelRestart();
+    }
+    void SetShadowDistance()
+    {
+        RaycastHit hit ;
+        bool ifHit = Physics.Raycast(transform.position, Vector3.down, out hit, 100, ~0, QueryTriggerInteraction.Ignore);
+
+        if (ifHit)
+        {
+            float depth = Mathf.Max(hit.distance + 0.5f, 1f);
+            shadowProjector.size = new Vector3(shadowProjector.size.x, shadowProjector.size.y, depth);
+            shadowProjector.pivot = new Vector3(shadowProjector.pivot.x, shadowProjector.pivot.y, (depth / 2f) - 0.05f);
+        }
     }
 }

@@ -14,10 +14,26 @@ public class SeedPuzzleManager : LockMechanism
     }
     public void CheckPots()
     {
+        bool reset = true;
+        bool correct = true;
         foreach (FlowerPot pot in pots) 
         {
-            if (!pot.correct) return;
+            switch (pot.state)
+            {
+                case PotState.empty:
+                    reset = false; break;
+                case PotState.wrong:
+                    correct = false; break;
+            }
         }
-        Unlock();
+        if(correct) Unlock();
+        else if(reset) ResetPuzzle();
+    }
+    void ResetPuzzle()
+    {
+        foreach (FlowerPot pot in pots)
+        {
+            pot.ResetFlower();
+        }
     }
 }

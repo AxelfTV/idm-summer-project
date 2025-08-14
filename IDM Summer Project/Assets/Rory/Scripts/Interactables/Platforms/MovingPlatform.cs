@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,10 +40,26 @@ public class MovingPlatform : MonoBehaviour, IUnlockableObject
         if (cyclePosition < 1)
         {
             transform.position = startPos + toEnd * cyclePosition;
+            transform.rotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(toEnd, Vector3.up).normalized, Vector3.up);
         }
         else 
         {
 			transform.position = startPos + toEnd * (2 - cyclePosition);
-		}
+            transform.rotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(-toEnd, Vector3.up).normalized, Vector3.up);
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            collision.transform.parent = transform;
+        }  
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.collider.CompareTag("Player"))
+        {
+            collision.transform.parent = null;
+        }
     }
 }

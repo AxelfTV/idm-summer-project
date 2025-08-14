@@ -11,15 +11,17 @@ public class FlowerPot : MonoBehaviour
     [SerializeField] GameObject blueFlower;
     [SerializeField] GameObject yellowFlower;
     GameObject currentFlower = null;
-    [NonSerialized] public bool correct;
+    [NonSerialized] public PotState state;
     [NonSerialized] public SeedPuzzleManager manager;
     enum SeedType
     {
         red, yellow, blue
     }
+    
     // Start is called before the first frame update
     void Start()
     {
+        state = PotState.empty;
         if(manager == null)
         {
             Destroy(gameObject);
@@ -46,12 +48,13 @@ public class FlowerPot : MonoBehaviour
                 currentFlower = Instantiate(blueFlower, transform.position + Vector3.up, Quaternion.identity);
                 break;
         }
-        correct = seedColour == seed;
+        if(seedColour == seed) state = PotState.correct;
+        else state = PotState.wrong;
         manager.CheckPots();
     }
     public void ResetFlower()
     {
-        correct = false;
+        state = PotState.empty;
         if(currentFlower != null)
         {
             Destroy(currentFlower);
@@ -78,4 +81,8 @@ public class FlowerPot : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+}
+public enum PotState
+{
+    empty, correct, wrong
 }
