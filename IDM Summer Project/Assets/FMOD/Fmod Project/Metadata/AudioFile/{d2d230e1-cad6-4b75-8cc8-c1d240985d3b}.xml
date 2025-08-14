@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{d2d230e1-cad6-4b75-8cc8-c1d240985d3b}">
+		<property name="assetPath">
+			<value>Intro Cutscene/SFX/Distant Breeze SFX.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>32.543999999999997</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a8a848f9-e133-41bf-addd-cd4e0ae091a4}</destination>
+		</relationship>
+	</object>
+</objects>
