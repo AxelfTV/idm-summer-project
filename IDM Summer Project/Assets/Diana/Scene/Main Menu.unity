@@ -2711,14 +2711,14 @@ RectTransform:
   m_GameObject: {fileID: 1339395686}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3954932, y: 0.3954932, z: 0.3954932}
+  m_LocalScale: {x: 0.46964818, y: 0.3954932, z: 0.3954932}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2143601883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -261.1, y: 13.800007}
+  m_AnchoredPosition: {x: -253.9, y: 2.7}
   m_SizeDelta: {x: 676, y: 448}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1339395688
@@ -2741,7 +2741,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 471ff96068afe6e448b546d4c4d0bc24, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc870c27a91f03048aeb6c72c8d95cb3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3130,7 +3130,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534060946}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: a13ed0430cc788c4a9abb36172b6255b, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 33b32edce86e96a4c8a156217ded300e, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
