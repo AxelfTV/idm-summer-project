@@ -67,34 +67,37 @@ public class BubbleSpawner : MonoBehaviour, IUnlockableObject
         float elapsed = 0f;
 
         bool reachedHeight = false;
-
-        while (!reachedHeight || Vector3.Distance(bubble.localScale, targetScale) > 0.01f)
-        {
-            elapsed += Time.deltaTime;
-
-            if (!reachedHeight)
-            {
-                bubble.position = Vector3.MoveTowards(bubble.position, new Vector3(bubble.position.x, targetPos.y, bubble.position.z), riseSpeed * Time.deltaTime);
-
-                if (Vector3.Distance(bubble.position, targetPos) < 0.01f)
-                    reachedHeight = true;
-            }
-
-            float swayOffset = Mathf.Sin(elapsed * swayFrequency + phaseOffset) * swayAmplitude;
-            bubble.position = new Vector3(startPos.x + swayOffset, bubble.position.y, bubble.position.z);
-
-            bubble.localScale = Vector3.Lerp(bubble.localScale, targetScale, scaleSpeed * Time.deltaTime);
-
-            yield return null;
-        }
-
         while (true)
         {
-            elapsed += Time.deltaTime;
-            float swayOffset = Mathf.Sin(elapsed * swayFrequency + phaseOffset) * swayAmplitude;
-            bubble.position = new Vector3(startPos.x + swayOffset, targetPos.y, bubble.position.z);
-            yield return null;
+            if (bubble == null) break;
+            if (!reachedHeight || Vector3.Distance(bubble.localScale, targetScale) > 0.01f)
+            {
+                elapsed += Time.deltaTime;
+
+                if (!reachedHeight)
+                {
+                    bubble.position = Vector3.MoveTowards(bubble.position, new Vector3(bubble.position.x, targetPos.y, bubble.position.z), riseSpeed * Time.deltaTime);
+
+                    if (Vector3.Distance(bubble.position, targetPos) < 0.01f)
+                        reachedHeight = true;
+                }
+
+                float swayOffset = Mathf.Sin(elapsed * swayFrequency + phaseOffset) * swayAmplitude;
+                bubble.position = new Vector3(startPos.x + swayOffset, bubble.position.y, bubble.position.z);
+
+                bubble.localScale = Vector3.Lerp(bubble.localScale, targetScale, scaleSpeed * Time.deltaTime);
+
+                yield return null;
+            }
+            else
+            {
+                elapsed += Time.deltaTime;
+                float swayOffset = Mathf.Sin(elapsed * swayFrequency + phaseOffset) * swayAmplitude;
+                bubble.position = new Vector3(startPos.x + swayOffset, targetPos.y, bubble.position.z);
+                yield return null;
+            }
         }
+        
     }
 
     IEnumerator NextBubbleCooldown()
