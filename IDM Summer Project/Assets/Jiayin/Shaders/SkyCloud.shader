@@ -147,7 +147,7 @@ Shader "Custom/SkyCloud"
            //     return float4(cloudNoise.xxx,heightMap*cloudNoise);
             
                 //Color
-                float heightTex=SAMPLE_TEXTURE2D(_HeightTex, sampler_HeightTex, IN.uv*_HeightTex_ST.xy+_HeightTex_ST.zw+_Time.y*0.1).r;
+                float heightTex=SAMPLE_TEXTURE2D(_HeightTex, sampler_HeightTex, IN.uv*_HeightTex_ST.xy+_HeightTex_ST.zw+_Time.y*0.05).r;
                 _Color2.rgb = lerp(_Color2.rgb, _Color3.rgb, saturate(heightTex));
                 _Color0.rgb = lerp(_Color0.rgb, _Color1.rgb, saturate(heightTex));
                 float3 positionOS= TransformWorldToObject(IN.positionWS);

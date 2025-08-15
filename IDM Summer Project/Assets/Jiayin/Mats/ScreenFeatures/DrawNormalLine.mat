@@ -28,9 +28,9 @@ Material:
     - _EdgeControl: 0
     - _PixelCount: 500
     - _depthThreshold: 0.01
-    - _edgeWidth: -0.24
+    - _edgeWidth: 0.7
     - _normalThreshold: 0.15
     m_Colors:
     - _EdgeColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
-    - _StucturelineColor: {r: 0.5999999, g: 0.50150937, b: 0.50557077, a: 1}
+    - _StucturelineColor: {r: 0.5698112, g: 0.3755842, b: 0.27415442, a: 1}
   m_BuildTextureStacks: []
