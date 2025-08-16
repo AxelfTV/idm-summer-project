@@ -14,11 +14,14 @@ public class SurfBoard : MonoBehaviour
     float playerSideDist;
     float halfWidth;
 
+    Vector3 startPos;
+
     bool active;
     // Start is called before the first frame update
     void Start()
     {
         halfWidth = GetComponent<BoxCollider>().size.x;
+        startPos = transform.position;
     }
 
     private void FixedUpdate()
@@ -26,6 +29,11 @@ public class SurfBoard : MonoBehaviour
         if (!active) return;
         transform.position = Time.fixedDeltaTime * (sideMaxSpeed * (playerSideDist / halfWidth) * transform.right + transform.forward * forwardSpeed) + transform.position;
         model.transform.localRotation = Quaternion.Euler(0, 0, -20 * playerSideDist / halfWidth);
+    }
+    void ResetBoard()
+    {
+        active = false;
+        transform.position = startPos;
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -41,6 +49,7 @@ public class SurfBoard : MonoBehaviour
             DestroyBoard();
         }
     }
+    
     private void OnCollisionStay(Collision collision)
     {
         if (collision.collider.CompareTag("Player"))
@@ -66,7 +75,7 @@ public class SurfBoard : MonoBehaviour
         {
             player.transform.parent = null;
         }
-        Destroy(gameObject);
+        ResetBoard();
     }
     IEnumerator LifeSpan(float time)
     {

@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.2, y: -1.37, z: 22.4}
-  m_LocalScale: {x: 3.5, y: 1, z: 3.5}
+  m_LocalScale: {x: 3.4999995, y: 1, z: 3.4999995}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6160124925581267441}
@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534463294661886416}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -103,7 +103,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -145,12 +145,17 @@ PrefabInstance:
     - target: {fileID: 1745814332876006132, guid: f6e7a3788a210f648b394883ab11f62d,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8571428
+      value: 1.1753142
+      objectReference: {fileID: 0}
+    - target: {fileID: 1745814332876006132, guid: f6e7a3788a210f648b394883ab11f62d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.31312725
       objectReference: {fileID: 0}
     - target: {fileID: 1745814332876006132, guid: f6e7a3788a210f648b394883ab11f62d,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8571428
+      value: 1.1753142
       objectReference: {fileID: 0}
     - target: {fileID: 1745814332876006132, guid: f6e7a3788a210f648b394883ab11f62d,
         type: 3}
@@ -160,7 +165,7 @@ PrefabInstance:
     - target: {fileID: 1745814332876006132, guid: f6e7a3788a210f648b394883ab11f62d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.58
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1745814332876006132, guid: f6e7a3788a210f648b394883ab11f62d,
         type: 3}
@@ -170,22 +175,22 @@ PrefabInstance:
     - target: {fileID: 1745814332876006132, guid: f6e7a3788a210f648b394883ab11f62d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.70710677
       objectReference: {fileID: 0}
     - target: {fileID: 1745814332876006132, guid: f6e7a3788a210f648b394883ab11f62d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.000000007450578
       objectReference: {fileID: 0}
     - target: {fileID: 1745814332876006132, guid: f6e7a3788a210f648b394883ab11f62d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 1745814332876006132, guid: f6e7a3788a210f648b394883ab11f62d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.0000000027939668
       objectReference: {fileID: 0}
     - target: {fileID: 1745814332876006132, guid: f6e7a3788a210f648b394883ab11f62d,
         type: 3}
@@ -195,7 +200,7 @@ PrefabInstance:
     - target: {fileID: 1745814332876006132, guid: f6e7a3788a210f648b394883ab11f62d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 1745814332876006132, guid: f6e7a3788a210f648b394883ab11f62d,
         type: 3}
@@ -209,9 +214,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6645719498138636732, guid: f6e7a3788a210f648b394883ab11f62d,
         type: 3}
+      propertyPath: pressurePlateSound.Path
+      value: event:/SFX/Tutorial Level/Pressure Plate SFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645719498138636732, guid: f6e7a3788a210f648b394883ab11f62d,
+        type: 3}
       propertyPath: unlockableObjectComponent
       value: 
       objectReference: {fileID: 9178802352840656953}
+    - target: {fileID: 6645719498138636732, guid: f6e7a3788a210f648b394883ab11f62d,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data1
+      value: 69337434
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645719498138636732, guid: f6e7a3788a210f648b394883ab11f62d,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data2
+      value: 1257995721
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645719498138636732, guid: f6e7a3788a210f648b394883ab11f62d,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data3
+      value: 1862557065
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645719498138636732, guid: f6e7a3788a210f648b394883ab11f62d,
+        type: 3}
+      propertyPath: pressurePlateSound.Guid.Data4
+      value: 830632610
+      objectReference: {fileID: 0}
+    - target: {fileID: 7558154866180727029, guid: f6e7a3788a210f648b394883ab11f62d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

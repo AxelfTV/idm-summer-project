@@ -282,7 +282,7 @@ public class SheepGround : SheepState
     public override SheepState NewState()
     {
         if (stats.input.Call()) return new SheepToHold(stats);
-        if (VectorToPlayer().magnitude > stats.returnFromThrowDist) return new SheepReturn(stats);
+        //if (VectorToPlayer().magnitude > stats.returnFromThrowDist) return new SheepReturn(stats);
         if (toGrab) return new SheepHold(stats);
         return null;
     }
