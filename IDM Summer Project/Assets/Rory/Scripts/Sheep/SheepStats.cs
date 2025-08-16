@@ -17,11 +17,18 @@ public class SheepStats : MonoBehaviour
     public float returnFromFollowDist = 5;
     public float followFromReturnDist = 3;
     public float idleDist = 3;
+    public float returnFromThrowDist = 30;
     public float followSpeed = 3;
     public float travelSpeed = 10;
     public float throwDist = 10;
+    public float throwDownForce = 30;
     public float bouncePower = 15;
 
+    //scale stuff
+    public float baseScale = 1;
+    public float scaleSpeed = 1;
+    public float glideMaxScale = 1.75f;
+    public float doubleJumpScale = 2;
 
     // Start is called before the first frame update
     void Start()

@@ -1625,6 +1625,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Woof
       objectReference: {fileID: 0}
+    - target: {fileID: 8653569064673536486, guid: e47609e8436387342a05d6440bdf3245,
+        type: 3}
+      propertyPath: doubleJumpScale
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

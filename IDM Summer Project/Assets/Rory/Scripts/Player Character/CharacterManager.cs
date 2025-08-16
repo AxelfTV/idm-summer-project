@@ -8,8 +8,8 @@ using UnityEngine.Rendering.Universal;
 public class CharacterManager : MonoBehaviour
 {
 
-    CharacterStats stats;
-    CharacterState state;
+    public CharacterStats stats;
+    public CharacterState state;
 
     [SerializeField] float levelBottom = -40;
 

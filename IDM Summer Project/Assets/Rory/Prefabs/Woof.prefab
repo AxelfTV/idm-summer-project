@@ -122,8 +122,13 @@ MonoBehaviour:
   idleDist: 1
   followSpeed: 10
   travelSpeed: 30
-  throwDist: 7
+  throwDist: 15
+  throwDownForce: 30
   bouncePower: 15
+  baseScale: 1
+  scaleSpeed: 20
+  glideMaxScale: 1.75
+  doubleJumpScale: 1.5
 --- !u!135 &6577624851264235595
 SphereCollider:
   m_ObjectHideFlags: 0

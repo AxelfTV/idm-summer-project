@@ -473,7 +473,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!135 &326798398
 SphereCollider:
@@ -619,7 +619,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!135 &331447295
 SphereCollider:
@@ -882,6 +882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd455d446b962c845b2c1ad29627534d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentCheckPoint: {fileID: 0}
 --- !u!1 &675225796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1604,7 +1605,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!135 &1223293532
 SphereCollider:
@@ -3017,6 +3018,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Woof
+      objectReference: {fileID: 0}
+    - target: {fileID: 8653569064673536486, guid: e47609e8436387342a05d6440bdf3245,
+        type: 3}
+      propertyPath: returnFromThrowDist
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
