@@ -55,7 +55,7 @@ MonoBehaviour:
   m_ScaleMode: 0
   m_Offset: {x: 0, y: 0, z: 10}
   m_Size: {x: 1, y: 1, z: 20}
-  m_FadeFactor: 1
+  m_FadeFactor: 0.9
 --- !u!1 &3072096319817882600
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,7 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da05de433c9d5445b919f876e84111d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelBottom: -40
+  stats: {fileID: 0}
+  levelBottom: 0.5
   shadowProjector: {fileID: 2044172682542384407}
 --- !u!114 &3603142872071958648
 MonoBehaviour:
@@ -363,3 +364,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7acbaf70264ae05448129aac5690bfa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  input: {fileID: 3603142872071958648}

@@ -89,15 +89,14 @@ public class CharacterManager : MonoBehaviour
     {
         if (other.CompareTag("Bouncy"))
         {
-            Debug.Log("Bouncy");
             state = new CharacterBounce(stats, stats.sheep.stats.bouncePower);
             state.Enter();
         }
         else if (other.CompareTag("GlideRing") && stats.sheep.HoldingSheep()) 
         {
 			Debug.Log("Glide Ring");
-            transform.position = other.transform.position;
-			state = new CharacterGlideBoost(stats, other.transform.forward);
+            //transform.position = other.transform.position;
+			state = new CharacterGlideBoost(stats, other.transform.parent.forward);
 			state.Enter();
 		}
     }
@@ -129,12 +128,10 @@ public class CharacterManager : MonoBehaviour
     {
         float raycastOffset = 0.5f;
         float sphereRadius = 1f;
-        Debug.Log("Trying to grab");
         RaycastHit hit;
         bool ifHit = Physics.SphereCast(transform.position - transform.forward * raycastOffset, sphereRadius,transform.forward, out hit, stats.grabRange + raycastOffset, LayerMask.GetMask("Grabbable"));
         if (ifHit) 
         {
-            Debug.Log("Entity Hit");
             IHoldable toHold;
             if (hit.collider.gameObject.TryGetComponent<IHoldable>(out toHold)) 
             {

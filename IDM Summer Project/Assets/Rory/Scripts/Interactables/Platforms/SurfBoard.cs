@@ -70,7 +70,6 @@ public class SurfBoard : MonoBehaviour
     }
     void DestroyBoard()
     {
-        Debug.Log("Destroying board");
         if(player != null)
         {
             player.transform.parent = null;
@@ -79,7 +78,6 @@ public class SurfBoard : MonoBehaviour
     }
     IEnumerator LifeSpan(float time)
     {
-        Debug.Log("Starting surf timer");
         yield return new WaitForSeconds(time);
         DestroyBoard();
     }

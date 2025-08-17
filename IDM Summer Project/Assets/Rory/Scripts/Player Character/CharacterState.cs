@@ -22,7 +22,7 @@ public abstract class CharacterState
     }
     public virtual void Enter() 
     {
-        Debug.Log(this);
+        //Debug.Log(this);
     }
     
     protected void Move()
