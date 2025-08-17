@@ -5,6 +5,9 @@ using UnityEngine;
 public class BasicHoldable : MonoBehaviour, IHoldable
 {
     Rigidbody rb;
+
+    float downForce = 30;
+    float forwardForce = 15;
     
     private void Start()
     {
@@ -25,7 +28,11 @@ public class BasicHoldable : MonoBehaviour, IHoldable
 		rb.velocity = Vector3.zero;
 		rb.isKinematic = false;
 		direction.Normalize();
-        rb.AddForce((Vector3.up + direction).normalized * 10, ForceMode.Impulse);
+        rb.AddForce((Vector3.up + direction).normalized * forwardForce, ForceMode.Impulse);
+    }
+    private void FixedUpdate()
+    {
+        rb.AddForce(Vector3.down * downForce, ForceMode.Acceleration);
     }
     public GameObject GetGameObject()
     {

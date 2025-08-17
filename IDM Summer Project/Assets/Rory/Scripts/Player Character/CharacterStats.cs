@@ -29,7 +29,7 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] public float glideTime = 2f;
 
     private bool isJumpBuffered = false;
-    private float glideEnergy;
+    float glideEnergy;
     private bool canDouble = true;
 
     public float glideSliderValue
@@ -56,7 +56,7 @@ public class CharacterStats : MonoBehaviour
             StartCoroutine("JumpBuffer");
         }
         
-        if(slider != null) slider.value = glideSliderValue;
+        if(slider != null) slider.value = Mathf.Lerp(slider.value, glideSliderValue,Time.deltaTime * 20);
     }
     public void OnJump()
     {

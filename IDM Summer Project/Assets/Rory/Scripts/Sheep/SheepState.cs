@@ -23,6 +23,15 @@ public abstract class SheepState
     {
 
     }
+    protected void ScaleSheep(float targetScale)
+    {
+        
+        float currentScaleMult = stats.transform.localScale.x/stats.baseScale;
+
+        float nextScale = Mathf.Lerp(currentScaleMult, targetScale, stats.scaleSpeed * Time.fixedDeltaTime);
+
+        stats.transform.localScale = new Vector3(nextScale, nextScale, nextScale);
+    }
     protected bool IsGrounded()
     {
         float rayLength = 0.2f;
@@ -56,7 +65,7 @@ public abstract class SheepState
     protected void FollowMode()
     {
         stats.rb.useGravity = true;
-        stats.rb.transform.localScale = Vector3.one;
+        //stats.rb.transform.localScale = Vector3.one;
         stats.col.isTrigger = false;
         stats.rb.velocity = Vector3.zero;
 
@@ -65,15 +74,16 @@ public abstract class SheepState
     protected void TravelMode()
     {
         stats.rb.useGravity = false;
-        stats.rb.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        //stats.rb.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         stats.col.isTrigger = true;
+        stats.rb.velocity = Vector3.zero;
 
         stats.bouncePad.SetActive(false);
     }
     protected void HoldMode()
     {
         stats.rb.useGravity = false;
-        stats.rb.transform.localScale = Vector3.one;
+        //stats.rb.transform.localScale = Vector3.one;
         stats.col.isTrigger = true;
 
         stats.bouncePad.SetActive(false);
@@ -94,7 +104,7 @@ public class SheepIdle : SheepState
     }
     public override void Update()
     {
-        
+        ScaleSheep(1);
     }
     public override SheepState NewState()
     {
@@ -116,6 +126,8 @@ public class SheepFollow : SheepState
         Vector3 toFollow = VectorToFollow();
         stats.rb.AddForce(stats.followSpeed * toFollow.normalized);
         PointInDirectionOfMove();
+
+        ScaleSheep(1);
     }
     public override SheepState NewState()
     {
@@ -138,6 +150,8 @@ public class SheepReturn : SheepState
     {
         TravelToPosition(stats.player.transform.position);
         PointInDirectionOfMove();
+
+        ScaleSheep(0.5f);
     }
     public override SheepState NewState()
     {
@@ -158,6 +172,8 @@ public class SheepToHold : SheepState
     public override void Update()
     {
         TravelToPosition(stats.holdPosition.position);
+
+        ScaleSheep(0.5f);
     }
     public override SheepState NewState()
     {
@@ -187,7 +203,16 @@ public class SheepHold : SheepState
     {
         holding = false;
     }
-    public override void Update(){}
+    public override void Update()
+    {
+        float scaleValue;
+
+        if (stats.player.state is CharacterDoubleJump) scaleValue = stats.doubleJumpScale;
+
+        else scaleValue = stats.player.stats.glideSliderValue == 1 ? 1 : stats.player.stats.glideSliderValue + stats.glideMaxScale - 1;
+
+        ScaleSheep(scaleValue);
+    }
     public override SheepState NewState()
     {
         if (stats.input.Call()) 
@@ -208,8 +233,8 @@ public class SheepThrow : SheepState
 {
     void Fire()
     {
-        Vector3 throwDir = stats.player.transform.forward + Vector3.up;
-        stats.rb.velocity = throwDir * stats.throwDist;
+        Vector3 throwDir = (stats.player.transform.forward + Vector3.up).normalized;
+        stats.rb.AddForce(throwDir * stats.throwDist, ForceMode.Impulse);
     }
     public SheepThrow(SheepStats stats) : base(stats) { }
     public override void Enter()
@@ -221,10 +246,13 @@ public class SheepThrow : SheepState
     }
     public override void Update()
     {
+        ScaleSheep(1);
+        stats.rb.AddForce(Vector3.down * stats.throwDownForce, ForceMode.Acceleration);
     }
     public override SheepState NewState()
     {
         if (IsGrounded()) return new SheepGround(stats);
+        if (VectorToPlayer().magnitude > stats.returnFromThrowDist) return new SheepReturn(stats);
         if (stats.input.Call()) return new SheepToHold(stats);
         return null;
     }
@@ -249,10 +277,12 @@ public class SheepGround : SheepState
     public override void Update()
     {
         stats.rb.velocity = Vector3.zero;
+        ScaleSheep(1);
     }
     public override SheepState NewState()
     {
         if (stats.input.Call()) return new SheepToHold(stats);
+        //if (VectorToPlayer().magnitude > stats.returnFromThrowDist) return new SheepReturn(stats);
         if (toGrab) return new SheepHold(stats);
         return null;
     }
@@ -275,7 +305,10 @@ public class SheepFrozen : SheepState
         base.Exit();
         stats.gameObject.layer = 7;
     }
-    public override void Update(){}
+    public override void Update()
+    {
+        ScaleSheep(1);
+    }
     public override SheepState NewState()
     {
         return null;
