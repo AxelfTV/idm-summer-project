@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ProBuilder.Shapes;
 using UnityEngine.SocialPlatforms;
+using FMODUnity;
 
 public class CloudDoor : MonoBehaviour, IUnlockableObject
 {
+    public EventReference windSound;
+
     CloudFadeController fadeController;
     [SerializeField] bool canClose;
     [SerializeField] int toOpen = 1;
@@ -58,6 +61,7 @@ public class CloudDoor : MonoBehaviour, IUnlockableObject
     public void Unlock()
     {
         locks--;
+        RuntimeManager.PlayOneShot(windSound);
         if (locks <= 0)
         {
             locked = false;
