@@ -1,22 +1,14 @@
-Shader "Unlit/WindRing"
+Shader "Unlit/Bubble"
 {
-
+    
     Properties
     {
-        _MainTex ("Main Texture", 2D) = "white" {}
-        _Color0 ("Color0", Color) = (1,1,1,1)
-        _Color1 ("Color1", Color) = (1,1,1,1)
-        _Color2("Color2",Color)=(1,1,1,1)
-        _Color3("Color3",Color)=(1,1,1,1)
-
-        _HeightFactor("Height Factor", float) = 1
-        _HeightMove("Height Move",float) = 0
-        _HeightTex("Height Texture", 2D) = "white" {}
-
-        _ShadowThreshold ("Shadow Threshold", Range(0,1)) = 0.5
-        _StylishShadow ("Stylish Shadow", Float) = 0.5
-        _ShadowColor ("Shadow Color", Color) = (0.2,0.2,0.2,1)
-        _ShadowColor2("ShadowColor2",color)=(0.5,0.5,0.5,0.5)
+        _Color("Color",Color)=(1,1,1,1)
+        _FresnelColor("FresnelColor",Color)=(1,1,1,1)
+        _FresnelPower("FresnelPower",float)=4
+        _TwistSpeed("TwistSpeed",float)=1
+        _TwistAmount("TwistAmount",float)=0.5
+        _BubbleLife("BubbleLife",Range(0,1))=0
 
     }
     SubShader
@@ -33,7 +25,7 @@ Shader "Unlit/WindRing"
             ZWrite On
             ZTest LEqual
             Blend SrcAlpha OneMinusSrcAlpha
-            Cull Off
+       //     Cull Off
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -64,32 +56,23 @@ Shader "Unlit/WindRing"
             };
 
             CBUFFER_START(UnityPerMaterial)
-                float4 _MainTex_ST;
-                float4 _Color0;
-                float4 _Color1;
-                float4 _Color2;
-                float4 _Color3;
+            float _BubbleLife;
 
-                float _ShadowThreshold;
-                float4 _ShadowColor;
-                float4 _ShadowColor2;
-                float _StylishShadow;
+            float  _TwistSpeed;
+            float _TwistAmount;
 
-                //height mix
-                float _HeightFactor;
-                float _HeightMove;
-
-                float4 _HeightTex_ST;
+            float4  _Color;
+            float4 _FresnelColor;
+            float _FresnelPower;
             CBUFFER_END
-
-            TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
-            TEXTURE2D(_HeightTex); SAMPLER(sampler_HeightTex);
             
 
 
             Varyings vert(Attributes IN)
             {
                 Varyings OUT;
+                float noise= FBMvalueNoise(IN.positionOS.xy*5+_Time.y*_TwistSpeed);
+                IN.positionOS.xyz+=IN.normalOS*noise*_TwistAmount*(0.1+_BubbleLife);
                 OUT.positionWS = TransformObjectToWorld(IN.positionOS.xyz);
                 OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
                 OUT.uv = IN.uv ;
@@ -101,26 +84,23 @@ Shader "Unlit/WindRing"
 
             float4 frag(Varyings IN) : SV_Target
             {
-                float3 positionOS= TransformWorldToObject(IN.positionWS);
 
-                // wind
-                
-                float2 winduv= IN.uv - 0.5;
-                float WindNoise=voronoiNoise(IN.uv+_Time.y);
-                float r = length(winduv);
-                float theta = atan2(winduv.y, winduv.x);
-                float spiral = sin(theta * 2 + r *20 - _Time.y* 15);
-                float spiral2 = sin(theta  + r *20 - _Time.y* 12);
-                float spiral3 = sin(theta  + r *20 - _Time.y*5);
+            float3 positionOS=TransformWorldToObject(IN.positionWS);
+            float3 normalWS = normalize(IN.normalWS);
+            float3 viewDir = normalize(_WorldSpaceCameraPos.xyz - IN.positionWS.xyz);
+            float fresnel = pow(1.0 - saturate(dot(normalWS, viewDir)), _FresnelPower);
 
-                float mixspiral=saturate( spiral*spiral2* spiral3*WindNoise)*r;
-                    mixspiral=mixspiral*10;
-                 float band = smoothstep(0.2, 0.8,  mixspiral)*WindNoise;
-                 float alpha = saturate(1.0 - r * 1.5);
-                float3 col = lerp(float3(0.0, 0.3, 0.7), float3(0.9, 0.9, 1.0), band);
+            float4 color = lerp(_Color, _FresnelColor, fresnel);
 
-              
-                return float4( mixspiral.xxxx);
+            float Noise=voronoiNoise(positionOS.xy*5*_BubbleLife+_Time.y);
+            clip(Noise-_BubbleLife);
+
+            float smallNoise=voronoiNoise(float2(IN.uv.x*15,IN.uv.y*5+_Time.y*_TwistSpeed))*(1-fresnel);
+            float smallBubbleMask=step(0.03,smallNoise);
+          //  return float4(smallBubbleMask.xxx,1);
+            float4 finalColor=lerp(_FresnelColor,color,smallBubbleMask);
+            return finalColor;
+            
 
             }
             ENDHLSL
