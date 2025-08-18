@@ -22,6 +22,7 @@ public class TutorialCutsceneTrigger : MonoBehaviour
 
     [Header("Animate Player")]
     public Animator playerAnimator;
+    public string bellAnimationName = "Bell";
 
     [Header("Woof")]
     public GameObject Woof;
@@ -57,10 +58,15 @@ public class TutorialCutsceneTrigger : MonoBehaviour
     private IEnumerator MovePlayerToEndLocation()
     {
         if (inputHandlerScript != null)
+        {
             inputHandlerScript.enabled = false;
+        }
 
         if (playerAnimator != null)
-            playerAnimator.SetBool("isRunning", true);
+        {
+            playerAnimator.SetBool("cutsceneRun", true);
+            playerAnimator.SetBool("isCutscene", true);
+        }
 
         while (Vector3.Distance(playerObject.transform.position, endLocation.position) > stopDistance)
         {
@@ -92,9 +98,9 @@ public class TutorialCutsceneTrigger : MonoBehaviour
 
         if (playerAnimator != null)
         {
-            playerAnimator.SetBool("isRunning", false);
+            playerAnimator.SetBool("cutsceneRun", false);
             playerAnimator.SetBool("isCutscene", true);
-            playerAnimator.SetBool("isBell", true);
+            playerAnimator.Play(bellAnimationName);
         }
 
         isMoving = false;
