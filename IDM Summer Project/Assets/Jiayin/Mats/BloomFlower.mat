@@ -50,8 +50,8 @@ Material:
     - _Color3: {r: 1, g: 1, b: 1, a: 1}
     - _MovinDirct: {r: 0.69, g: 0, b: 0.98, a: 1}
     - _OutLineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _PlayerPos: {r: 192.95695, g: 19.722591, b: -236.12254, a: 0}
+    - _PlayerPos: {r: -8.583234, g: 1.4477336, b: 51.91754, a: 0}
     - _ShadowColor: {r: 0.30790314, g: 0.43678436, b: 0.5849056, a: 1}
     - _ShadowColor2: {r: 0.5176471, g: 0.879899, b: 1, a: 1}
-    - _SheepPos: {r: 193.05128, g: 21.141592, b: -236.024, a: 0}
+    - _SheepPos: {r: 215.35, g: -5.4928885, b: 72.6, a: 0}
   m_BuildTextureStacks: []
