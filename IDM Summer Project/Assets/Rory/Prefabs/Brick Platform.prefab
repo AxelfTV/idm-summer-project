@@ -150,7 +150,8 @@ Transform:
   m_LocalPosition: {x: -4.93, y: -2.2289352, z: 0.29}
   m_LocalScale: {x: 5.3838997, y: 5.3839, z: 5.3838997}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 754966890510078688}
   m_Father: {fileID: 7181492716140435988}
   m_LocalEulerAnglesHint: {x: 0, y: -98.107, z: 0}
 --- !u!33 &3165181930717695049
@@ -270,6 +271,69 @@ MonoBehaviour:
   cycleOffset: 0
   rotate: 0
   switchedOn: 1
+--- !u!1 &5707461513493143120
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 754966890510078688}
+  - component: {fileID: 8729791151705933320}
+  m_Layer: 3
+  m_Name: Brick SFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &754966890510078688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707461513493143120}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7553229, z: -0, w: 0.6553529}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.18573897, y: 0.18573897, z: 0.18573897}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6927331479933370093}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8729791151705933320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707461513493143120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -300840815
+      Data2: 1157809795
+      Data3: -232041046
+      Data4: 1088136526
+    Path: event:/SFX/Level 1/Moving Platform SFX
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &6742821927961259970
 GameObject:
   m_ObjectHideFlags: 0
