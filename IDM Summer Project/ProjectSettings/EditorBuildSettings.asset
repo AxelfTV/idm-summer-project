@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Diana/Scene/Main Menu.unity
     guid: b2723a0264bde24479b7a2ff5e93eb7a
   - enabled: 1
-    path: Assets/Main/Scenes/Level 2 (Forest).unity
-    guid: 540a149d7ff8eeb44b3f3c418754fddc
-  - enabled: 1
     path: Assets/Main/Scenes/Level 0 (Tutorial) (Copy) (1).unity
     guid: 49b29ee648f78f24ebd87f34b6fd5417
   - enabled: 1
     path: Assets/Main/Scenes/Level 1 (Beach).unity
     guid: 9b58feec1dd4e62488e8d073c30b4936
+  - enabled: 1
+    path: Assets/Main/Scenes/Level 2 (Forest).unity
+    guid: 540a149d7ff8eeb44b3f3c418754fddc
   - enabled: 1
     path: Assets/Rory/Scenes/EndOfPlayTest.unity
     guid: c9e50e53e5cb4e943b113db7a0d061cd
