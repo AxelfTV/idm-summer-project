@@ -5,6 +5,9 @@ using UnityEngine;
 public class CharacterAnimate : MonoBehaviour
 {
     Animator animator;
+    [SerializeField] CharacterStats stats;
+
+    bool isHolding;
     // Start is called before the first frame update
     void Awake()
     {
@@ -29,7 +32,10 @@ public class CharacterAnimate : MonoBehaviour
                 break;
         }
     }
-
+    private void Update()
+    {
+        isHolding = stats.sheep.HoldingSheep();
+    }
 }
 public enum PlayerAnimState
 {
