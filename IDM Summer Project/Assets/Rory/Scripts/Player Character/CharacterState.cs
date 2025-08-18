@@ -173,6 +173,13 @@ public class CharacterJump : CharacterState
 public class CharacterFall : CharacterState
 {
     public CharacterFall(CharacterStats stats) : base(stats) { }
+
+    public override void Enter()
+    {
+        base.Enter();
+        
+        stats.animator.SetAnimationState(PlayerAnimState.fall);
+    }
     public override void Update()
     {
         AirMove();
@@ -198,7 +205,7 @@ public class CharacterFall : CharacterState
         Fall();
         timer += Time.fixedDeltaTime;
         //should be fall
-        stats.animator.SetAnimationState(PlayerAnimState.idle);
+        stats.animator.SetAnimationState(PlayerAnimState.fall);
     }
     public override CharacterState NewState()
     {
@@ -218,8 +225,7 @@ public class CharacterDoubleJump : CharacterState
         stats.OnJump();
         stats.OnDouble();
         Jump(stats.doubleJumpPower);
-        //probably should be changed
-        stats.animator.SetAnimationState(PlayerAnimState.jump);
+        stats.animator.SetAnimationState(PlayerAnimState.glide);
     }
     public override void Update()
     {
@@ -238,13 +244,12 @@ public class CharacterGlide : CharacterState
     public override void Enter()
     {
         base.Enter();
+        stats.animator.SetAnimationState(PlayerAnimState.glide);
     }
     public override void Update()
     {
         AirMove();
         Glide();
-        //need glide anim
-        stats.animator.SetAnimationState(PlayerAnimState.idle);
     }
     public override CharacterState NewState()
     {
@@ -267,8 +272,7 @@ public class CharacterGlideBoost : CharacterState
 	{
 		base.Enter();
         stats.Grounded();
-        //glide anim
-        stats.animator.SetAnimationState(PlayerAnimState.idle);
+        stats.animator.SetAnimationState(PlayerAnimState.glide);
     }
 	public override void Update()
 	{
