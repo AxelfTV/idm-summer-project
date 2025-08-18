@@ -105,8 +105,6 @@ Shader "Custom/URPToonShader"
             half4 frag(Varyings IN) : SV_Target
             {
                 //fog
-//                float depthfog =SAMPLE_TEXTURE2D(_DepthTex,sampler_DepthTex, IN.screenUV.xy/IN.screenUV.w).x; 
-
                 float3 positionOS= TransformWorldToObject(IN.positionWS);
                 float heightMap=positionOS.y*_HeightFactor+_HeightMove;
                // return half4(heightMap.xxx,1);
@@ -115,11 +113,12 @@ Shader "Custom/URPToonShader"
                 _Color0.rgb = lerp(_Color0.rgb, _Color1.rgb, saturate(heightTex));
                 float Grassmask =saturate( floor(heightMap*heightTex*10/3)/2);
                 float3 BaseColor= lerp(_Color0.rgb, _Color2.rgb, Grassmask);
-                half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb*BaseColor;
+                half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb;
                 clip(albedo-0.02);
-               // return half4(albedo,1);
+                albedo*=BaseColor;
+
                 Light mainLight = GetMainLight(IN.shadowCoord);
-              //  return half4(albedo,1);
+
                //point light support
                 half3 totalLight = mainLight.color.rgb * mainLight.distanceAttenuation;
                 #if defined(_ADDITIONAL_LIGHTS)
@@ -139,16 +138,11 @@ Shader "Custom/URPToonShader"
                 half toonStep1 = NdotL * shadowAtten > _ShadowThreshold ? 1.0: 0.0;
                 half toonStep2 = NdotL * shadowAtten>_ShadowThreshold + _StylishShadow ? 1.0 : 0.0;
           
-                //decal support
-             //   float2 decaluv = IN.screenUV.xy / IN.screenUV.w;
-              //  float4 decal0 = SAMPLE_TEXTURE2D(_DBufferTexture0, sampler_DBufferTexture0, decaluv);
-             
-              
+                //decal support              
 
                 float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL * shadowAtten);
                 half3 baseColor = lerp(shadowColor.rgb*albedo*totalLight, albedo * totalLight, toonStep2);
                 baseColor+=_GlossyColor*_GlossyAmount;
-              //  baseColor = lerp(baseColor,_OutLineColor.rgb,(1-normalLine)*_OutLineBlend);
                 ApplyDecalToBaseColor(IN.positionCS, baseColor);
                 return half4(baseColor, 1.0);
             }
@@ -157,7 +151,58 @@ Shader "Custom/URPToonShader"
 
         // 阴影投射
         UsePass "Universal Render Pipeline/Lit/DepthOnly"
-        UsePass "Universal Render Pipeline/Lit/DepthNormals"
+   //     UsePass "Universal Render Pipeline/Lit/DepthNormals"
+   
+Pass
+{
+    Name "DepthNormals"
+    Tags { "LightMode"="DepthNormals" }
+    ZWrite On
+    ColorMask RGBA
+    Cull Off
+    HLSLPROGRAM
+    #pragma vertex vert
+    #pragma fragment frag
+
+    #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+    CBUFFER_START(UnityPerMaterial)
+    CBUFFER_END
+
+     TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
+    struct Attributes
+    {
+        float4 positionOS : POSITION;
+        float3 normalOS : NORMAL;
+        float2 uv : TEXCOORD0;
+    };
+
+    struct Varyings
+    {
+        float4 positionCS : SV_POSITION;
+        float3 normalWS : TEXCOORD0;
+        float2 uv:TEXCOORD1;
+    };
+
+    Varyings vert(Attributes IN)
+    {
+        Varyings OUT;
+            float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz);
+            OUT.positionCS = TransformWorldToHClip(positionWS);
+            OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
+            OUT.uv=IN.uv;
+        return OUT;
+    }
+
+    float4 frag(Varyings IN) : SV_Target
+    {
+        half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb;
+        clip(albedo-0.02);
+        float3 normal = normalize(IN.normalWS);
+        return float4(normal * 0.5 + 0.5, 1.0);
+    }
+    ENDHLSL
+}
         UsePass "Universal Render Pipeline/Lit/ShadowCaster"
 
     }
