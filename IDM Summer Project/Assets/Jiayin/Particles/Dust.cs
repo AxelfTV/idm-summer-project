@@ -11,7 +11,6 @@ public class Dust : MonoBehaviour
 
     void Start()
     {
-      //  rb = GetComponent<Rigidbody>();
         if (vfx == null)
         {
             vfx = GetComponent<VisualEffect>();
@@ -22,16 +21,26 @@ public class Dust : MonoBehaviour
     {
         if (vfx != null && rb != null)
         {
-            this.transform.position= rb.position+Offset;
+           
             Vector3 velocity = rb.velocity;
-            Vector3 horizontalVel = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            Vector3 horizontalVel = new Vector3(0, rb.velocity.y, 0);
 
-            if (velocity.sqrMagnitude > 0.0001f) 
+            if (velocity.sqrMagnitude > 0.0001f && horizontalVel.sqrMagnitude < 0.1f)
             {
-                Vector3 dir = -velocity.normalized; 
-                vfx.SetVector3("MoveDirection", dir); 
+                Vector3 dir = -velocity.normalized;
+                vfx.SetVector3("MoveDirection", dir);
+                vfx.SetFloat("SpawnRate", 50f);
+                this.transform.position = rb.position + Offset;
             }
-            vfx.SetFloat("SpawnRate", horizontalVel.sqrMagnitude > 0.0001f ? 50f : 0f);
-    }
+            else
+            {
+                vfx.SetFloat("SpawnRate", 0f);
+            }
+            // if (horizontalVel.sqrMagnitude > 0.0001f)
+            //     vfx.SetFloat("SpawnRate", 0f);
+            // else
+            //    vfx.SetFloat("SpawnRate",50f);
+            // Debug.Log(horizontalVel.sqrMagnitude);
+        }
     }
 }

@@ -19,6 +19,9 @@ Properties
         _FoamDistance("FoamDistance",float)=1
         _FoamCutoff("FoamCutOff",float)=0.5
         _FoamStrength("FoamStrength",float)=0.2
+
+        //interact
+        
     }
     SubShader
     {
@@ -65,6 +68,7 @@ Properties
 
             CBUFFER_START(UnityPerMaterial)
                 float4 _MainTex_ST;
+                float4 _WaterSurface_ST;
                 float4 _Color;
                 float3 _WaterColor;
                 float _ShadowThreshold;
@@ -194,7 +198,7 @@ float3 GerstnerWaves_float(float3 position, float steepness, float wavelength, f
                 //mix water color
                 float4 waterColor = SAMPLE_TEXTURE2D(_WaterGradient, sampler_WaterGradient, float2(floor(Waterdepth*10/2)/5, 0.5));
                
-                float3 WaterSurface = SAMPLE_TEXTURE2D(_WaterSurface, sampler_WaterSurface, DistortUV_float(IN.uv*40,1)).rgb;
+                float3 WaterSurface = SAMPLE_TEXTURE2D(_WaterSurface, sampler_WaterSurface, DistortUV_float(IN.uv*_WaterSurface_ST.xy+_WaterSurface_ST.zw,1)).rgb;
                 
                 waterColor.rgb = lerp(_WaterColor,waterColor.rgb, WaterSurface.x);
                 //foam
