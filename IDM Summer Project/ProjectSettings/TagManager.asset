@@ -15,6 +15,7 @@ TagManager:
   - BubbleSpawner
   - Sheep
   - CamTrig
+  - Death
   layers:
   - Default
   - TransparentFX

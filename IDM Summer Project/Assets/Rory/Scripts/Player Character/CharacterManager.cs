@@ -99,6 +99,10 @@ public class CharacterManager : MonoBehaviour
 			state = new CharacterGlideBoost(stats, other.transform.parent.forward);
 			state.Enter();
 		}
+        else if (other.CompareTag("Death"))
+        {
+            Die();
+        }
     }
     public void Grab(IHoldable item)
     {

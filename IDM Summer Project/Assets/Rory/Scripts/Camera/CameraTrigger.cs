@@ -8,6 +8,8 @@ public class CameraTrigger : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera toSwap;
     CinemachineVirtualCamera original;
     bool enterDir;
+
+    [SerializeField] bool singleUse = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,8 @@ public class CameraTrigger : MonoBehaviour
         CinemachineVirtualCamera temp = toSwap;
         toSwap = current;
         CameraManager.currentCam = temp;
+
+        if(singleUse) GetComponent<BoxCollider>().enabled = false;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -54,6 +58,7 @@ public class CameraTrigger : MonoBehaviour
     {
         toSwap = original;
         toSwap.Priority = 0;
+        GetComponent<BoxCollider>().enabled = true;
     }
     public static void ResetAllCams()
     {
