@@ -30,7 +30,7 @@ Shader "Custom/MossShader"
     SubShader
     {
         Tags { "RenderType"="Opaque" "RenderPipeline" = "UniversalPipeline" 
-            "Queue"="Geometry" "UniversalMaterialType"="Lit"  }
+            "Queue"="Geometry" "UniversalMaterialType"="Lit"  "DecalMeshForwardEmissive" = "True"  }
         //LOD 200
 
         Pass
@@ -50,6 +50,7 @@ Shader "Custom/MossShader"
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
+             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl"
             struct Attributes
             {
                 float4 positionOS : POSITION;
@@ -166,6 +167,7 @@ Shader "Custom/MossShader"
 
                 float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL * shadowAtten);
                 float3 baseColor = lerp(shadowColor.rgb*albedo*totalLight, albedo * totalLight, toonStep2); 
+                ApplyDecalToBaseColor(IN.positionCS, baseColor);
                 return float4(baseColor, 1.0);
             }
             ENDHLSL
