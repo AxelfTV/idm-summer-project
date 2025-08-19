@@ -18,6 +18,8 @@ Shader "Custom/URPToonShader"
         _ShadowColor2("ShadowColor2",color)=(0.5,0.5,0.5,0.5)
         _OutLineColor("OutlineColor",Color)=(0,0,0,1)
         _OutLineBlend("OutlineBlend",Range(0,1)) = 1  
+
+         [Toggle] _ReceiveDecal("Receive Decal", Float) = 1
     }
     SubShader
     {
@@ -39,6 +41,8 @@ Shader "Custom/URPToonShader"
             #pragma multi_compile _ _MAIN_LIGHT_SHADOWS _MAIN_LIGHT_SHADOWS_CASCADE _MAIN_LIGHT_SHADOWS_SCREEN
             #pragma multi_compile _ _ADDITIONAL_LIGHTS_VERTEX _ADDITIONAL_LIGHTS
             #pragma multi_compile _ _SHADOWS_SOFT
+
+            #pragma shader_feature_local _ _RECEIVEDECAL_ON
 
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
@@ -143,7 +147,9 @@ Shader "Custom/URPToonShader"
                 float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL * shadowAtten);
                 half3 baseColor = lerp(shadowColor.rgb*albedo*totalLight, albedo * totalLight, toonStep2);
                 baseColor+=_GlossyColor*_GlossyAmount;
+                #ifdef _RECEIVEDECAL_ON
                 ApplyDecalToBaseColor(IN.positionCS, baseColor);
+                #endif
                 return half4(baseColor, 1.0);
             }
             ENDHLSL
