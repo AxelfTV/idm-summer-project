@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using FMODUnity;
 
 public class CharacterManager : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class CharacterManager : MonoBehaviour
     [NonSerialized] public IHoldable holding = null;
 
     [SerializeField] DecalProjector shadowProjector;
+    [SerializeField] public EventReference throwSound;
     private void Awake()
     {
         //ignore collisions with sheep
@@ -112,6 +114,7 @@ public class CharacterManager : MonoBehaviour
     void Throw()
     {
         if(holding != null) holding.Throw(transform.forward);
+        RuntimeManager.PlayOneShot(throwSound);
         holding = null;
     }
     public bool SheepToHold(IHoldable sheep)

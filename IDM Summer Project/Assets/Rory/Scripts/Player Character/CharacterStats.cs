@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 public class CharacterStats : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] public float glideTime = 2f;
     [SerializeField] public float glideBoostStrength = 20;
     [SerializeField] public float glideBoostTime = 0.5f;
+    [SerializeField] public EventReference jumpSound;
 
     private bool isJumpBuffered = false;
     float glideEnergy;
@@ -62,6 +64,7 @@ public class CharacterStats : MonoBehaviour
     }
     public void OnJump()
     {
+        RuntimeManager.PlayOneShot(jumpSound);
         isJumpBuffered = false;
     }
     public bool JumpBuffered()
