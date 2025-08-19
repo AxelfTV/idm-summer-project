@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6707228633702786049}
   - component: {fileID: 5819462582148601735}
   - component: {fileID: 4840551083342294296}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Falling Obstacle
   m_TagString: Death
   m_Icon: {fileID: 0}
