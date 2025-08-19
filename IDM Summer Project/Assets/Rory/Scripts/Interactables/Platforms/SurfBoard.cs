@@ -17,6 +17,7 @@ public class SurfBoard : MonoBehaviour
     Vector3 startPos;
 
     bool active;
+    bool onBeach;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,14 +27,16 @@ public class SurfBoard : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!active) return;
+        if (!active || onBeach) return;
         transform.position = Time.fixedDeltaTime * (sideMaxSpeed * (playerSideDist / halfWidth) * transform.right + transform.forward * forwardSpeed) + transform.position;
         model.transform.localRotation = Quaternion.Euler(0, 0, -20 * playerSideDist / halfWidth);
     }
     void ResetBoard()
     {
         active = false;
+        onBeach = false;
         transform.position = startPos;
+        GetComponent<Rigidbody>().isKinematic = false;
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -44,7 +47,12 @@ public class SurfBoard : MonoBehaviour
             collision.transform.parent = transform;
             player = collision.gameObject;
         }
-        else if(!collision.collider.CompareTag("Sheep") && !collision.collider.CompareTag("Bouncy"))
+        else if (collision.gameObject.layer == 3) 
+        {
+            onBeach = true;
+            GetComponent<Rigidbody>().isKinematic = true;
+        } 
+        else if (!collision.collider.CompareTag("Sheep") && !collision.collider.CompareTag("Bouncy"))
         {
             DestroyBoard();
         }
