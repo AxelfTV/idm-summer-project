@@ -151,58 +151,58 @@ Shader "Custom/URPToonShader"
 
         // 阴影投射
         UsePass "Universal Render Pipeline/Lit/DepthOnly"
-   //     UsePass "Universal Render Pipeline/Lit/DepthNormals"
+        UsePass "Universal Render Pipeline/Lit/DepthNormals"
    
-Pass
-{
-    Name "DepthNormals"
-    Tags { "LightMode"="DepthNormals" }
-    ZWrite On
-    ColorMask RGBA
-    Cull Off
-    HLSLPROGRAM
-    #pragma vertex vert
-    #pragma fragment frag
+// Pass
+// {
+//     Name "DepthNormals"
+//     Tags { "LightMode"="DepthNormals" }
+//     ZWrite On
+//     ColorMask RGBA
+//     Cull Off
+//     HLSLPROGRAM
+//     #pragma vertex vert
+//     #pragma fragment frag
 
-    #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+//     #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-    CBUFFER_START(UnityPerMaterial)
-    CBUFFER_END
+//     CBUFFER_START(UnityPerMaterial)
+//     CBUFFER_END
 
-     TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
-    struct Attributes
-    {
-        float4 positionOS : POSITION;
-        float3 normalOS : NORMAL;
-        float2 uv : TEXCOORD0;
-    };
+//      TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
+//     struct Attributes
+//     {
+//         float4 positionOS : POSITION;
+//         float3 normalOS : NORMAL;
+//         float2 uv : TEXCOORD0;
+//     };
 
-    struct Varyings
-    {
-        float4 positionCS : SV_POSITION;
-        float3 normalWS : TEXCOORD0;
-        float2 uv:TEXCOORD1;
-    };
+//     struct Varyings
+//     {
+//         float4 positionCS : SV_POSITION;
+//         float3 normalWS : TEXCOORD0;
+//         float2 uv:TEXCOORD1;
+//     };
 
-    Varyings vert(Attributes IN)
-    {
-        Varyings OUT;
-            float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz);
-            OUT.positionCS = TransformWorldToHClip(positionWS);
-            OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
-            OUT.uv=IN.uv;
-        return OUT;
-    }
+//     Varyings vert(Attributes IN)
+//     {
+//         Varyings OUT;
+//             float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz);
+//             OUT.positionCS = TransformWorldToHClip(positionWS);
+//             OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
+//             OUT.uv=IN.uv;
+//         return OUT;
+//     }
 
-    float4 frag(Varyings IN) : SV_Target
-    {
-        half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb;
-        clip(albedo-0.02);
-        float3 normal = normalize(IN.normalWS);
-        return float4(normal * 0.5 + 0.5, 1.0);
-    }
-    ENDHLSL
-}
+//     float4 frag(Varyings IN) : SV_Target
+//     {
+//         half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb;
+//         clip(albedo-0.02);
+//         float3 normal = normalize(IN.normalWS);
+//         return float4(normal * 0.5 + 0.5, 1.0);
+//     }
+//     ENDHLSL
+// }
         UsePass "Universal Render Pipeline/Lit/ShadowCaster"
 
     }
