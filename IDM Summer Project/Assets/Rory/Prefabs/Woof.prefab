@@ -117,11 +117,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bouncePad: {fileID: 1670128080994310086}
-  returnFromFollowDist: 10
+  returnFromFollowDist: 15
   followFromReturnDist: 3
   idleDist: 1
   returnFromThrowDist: 30
-  followSpeed: 10
+  followSpeed: 15
   travelSpeed: 30
   throwDist: 15
   throwDownForce: 30

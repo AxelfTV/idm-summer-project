@@ -11,6 +11,7 @@ public class SceneLoadManager : MonoBehaviour
     }
     public void NextScene()
     {
+        if(SpeedrunTimer.instance != null) SpeedrunTimer.instance.StartTimer();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

@@ -14,7 +14,7 @@ public abstract class CharacterState
     public abstract CharacterState NewState();
     protected bool IsGrounded()
     {
-        float rayLength = 1.2f;
+        float rayLength = 0.8f;
         float sphereRadius = 0.4f;
         Vector3 origin = stats.rb.position + Vector3.up * 0.1f;
 
@@ -262,7 +262,6 @@ public class CharacterGlide : CharacterState
 public class CharacterGlideBoost : CharacterState 
 {
     Vector3 direction;
-    float boostDuration = 0.5f;
     float timer = 0;
 	public CharacterGlideBoost(CharacterStats stats, Vector3 direction) : base(stats) 
     {
@@ -276,13 +275,13 @@ public class CharacterGlideBoost : CharacterState
     }
 	public override void Update()
 	{
-        stats.rb.velocity = direction * 20;
+        stats.rb.velocity = direction * stats.glideBoostStrength;
         timer += Time.deltaTime;
 	}
 	public override CharacterState NewState()
 	{
 		if (IsGrounded() && (stats.input.Jump() || stats.JumpBuffered())) return new CharacterJump(stats);
-		if (timer > boostDuration) return new CharacterFall(stats);
+		if (timer > stats.glideBoostTime) return new CharacterFall(stats);
 		if (IsGrounded()) return new CharacterIdle(stats);
 		return null;
 	}
