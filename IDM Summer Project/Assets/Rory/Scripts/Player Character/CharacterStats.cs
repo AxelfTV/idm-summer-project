@@ -27,6 +27,8 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] public float airMoveMaxSpeed = 1f;
     [SerializeField] public float grabRange = 1f;
     [SerializeField] public float glideTime = 2f;
+    [SerializeField] public float glideBoostStrength = 20;
+    [SerializeField] public float glideBoostTime = 0.5f;
 
     private bool isJumpBuffered = false;
     float glideEnergy;

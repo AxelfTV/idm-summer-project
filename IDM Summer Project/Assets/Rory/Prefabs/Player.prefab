@@ -124,6 +124,8 @@ MonoBehaviour:
   airMoveMaxSpeed: 8
   grabRange: 1
   glideTime: 1.5
+  glideBoostStrength: 25
+  glideBoostTime: 0.4
   slider: {fileID: 0}
 --- !u!114 &5659423559324103451
 MonoBehaviour:
