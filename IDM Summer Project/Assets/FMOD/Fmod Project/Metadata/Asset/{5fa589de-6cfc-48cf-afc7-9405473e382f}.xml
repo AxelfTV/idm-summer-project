@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{5fa589de-6cfc-48cf-afc7-9405473e382f}">
+		<property name="assetPath">
+			<value>Woof SFX/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a8a848f9-e133-41bf-addd-cd4e0ae091a4}</destination>
+		</relationship>
+	</object>
+</objects>

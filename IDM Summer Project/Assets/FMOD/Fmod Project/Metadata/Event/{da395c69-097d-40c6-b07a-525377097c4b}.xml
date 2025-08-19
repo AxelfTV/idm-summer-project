@@ -5,7 +5,7 @@
 			<value>Sheep SFX</value>
 		</property>
 		<property name="outputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{93b24b12-e846-4e01-b381-ec760a7c2d25}</destination>
@@ -60,7 +60,7 @@
 	<object class="MarkerTrack" id="{69af2861-fc21-4064-8bf2-e6afbb0f5003}" />
 	<object class="GroupTrack" id="{58f22885-4d72-44fe-b075-40ebfcb59157}">
 		<relationship name="modules">
-			<destination>{2f4d8a05-2689-4ef4-9839-2434ea4b1feb}</destination>
+			<destination>{b4b5a0dc-3fba-4504-999f-33f48fa9d00e}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{d99ff811-c171-4470-bf86-757ad14feb9e}</destination>
@@ -68,7 +68,7 @@
 	</object>
 	<object class="Timeline" id="{e5afd7bd-0eb0-462a-9cea-0bd6f49401b9}">
 		<relationship name="modules">
-			<destination>{2f4d8a05-2689-4ef4-9839-2434ea4b1feb}</destination>
+			<destination>{b4b5a0dc-3fba-4504-999f-33f48fa9d00e}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{6f6d0e00-974a-42ca-acb9-20b82dea6dd0}">
@@ -88,15 +88,18 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8ad02ac9-7323-4ad4-b16d-a58f2bb04b90}" />
-	<object class="SingleSound" id="{2f4d8a05-2689-4ef4-9839-2434ea4b1feb}">
+	<object class="SingleSound" id="{b4b5a0dc-3fba-4504-999f-33f48fa9d00e}">
 		<property name="length">
-			<value>1.0448979591836736</value>
+			<value>0.74863541666666666</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{e932d918-83e9-43ae-b342-035d5bff4ba1}</destination>
+			<destination>{a0fd42a7-e70d-4d4c-a69d-8a1e7adc88a6}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{d99ff811-c171-4470-bf86-757ad14feb9e}">
+		<property name="volume">
+			<value>-19.5</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
