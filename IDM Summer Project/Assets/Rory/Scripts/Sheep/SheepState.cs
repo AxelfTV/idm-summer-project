@@ -60,7 +60,8 @@ public abstract class SheepState
     }
     protected void TravelToPosition(Vector3 position)
     {
-        stats.rb.transform.position = Vector3.MoveTowards(stats.rb.position, position, stats.travelSpeed * Time.fixedDeltaTime);
+        float distToPosition = (stats.transform.position - position).magnitude + 1;
+        stats.rb.transform.position = Vector3.MoveTowards(stats.rb.position, position, (stats.travelSpeed + distToPosition) * Time.fixedDeltaTime);
     }
     protected void FollowMode()
     {
@@ -177,7 +178,7 @@ public class SheepToHold : SheepState
     }
     public override SheepState NewState()
     {
-        if (VectorToHold().magnitude < 0.3f) 
+        if (VectorToHold().magnitude < 1) 
         {
             //attempt to enter players hold
             if (stats.player.SheepToHold(stats.sheep)) return new SheepHold(stats);
