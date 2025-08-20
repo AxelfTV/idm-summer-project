@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class SoilPatch : LockMechanism
 {
+    [SerializeField] public EventReference beanstalkSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,7 @@ public class SoilPatch : LockMechanism
         {
 
             Unlock();
+            RuntimeManager.PlayOneShot(beanstalkSound);
             Destroy(other.gameObject);
         }
     }
