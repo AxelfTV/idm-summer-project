@@ -154,13 +154,19 @@ public class CharacterManager : MonoBehaviour
     void SetShadowDistance()
     {
         RaycastHit hit ;
-        bool ifHit = Physics.Raycast(transform.position, Vector3.down, out hit, 100, ~0, QueryTriggerInteraction.Ignore);
-
+        bool ifHit = Physics.Raycast(transform.position, Vector3.down, out hit, 100, ~3, QueryTriggerInteraction.Ignore);
+        float depth;
         if (ifHit)
         {
-            float depth = Mathf.Max(hit.distance + 0.5f, 1f);
-            shadowProjector.size = new Vector3(shadowProjector.size.x, shadowProjector.size.y, depth);
-            shadowProjector.pivot = new Vector3(shadowProjector.pivot.x, shadowProjector.pivot.y, (depth / 2f) - 0.05f);
+            depth = Mathf.Max(hit.distance + 0.5f, 1f);
+            
         }
+        else
+        {
+            depth = 20;
+        }
+        Debug.Log(ifHit);
+        shadowProjector.size = new Vector3(shadowProjector.size.x, shadowProjector.size.y, depth);
+        shadowProjector.pivot = new Vector3(shadowProjector.pivot.x, shadowProjector.pivot.y, (depth / 2f) - 0.05f);
     }
 }
