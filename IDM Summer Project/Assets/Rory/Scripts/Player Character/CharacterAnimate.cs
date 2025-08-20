@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class CharacterAnimate : MonoBehaviour
 {
     Animator animator;
     [SerializeField] CharacterManager manager;
+    [SerializeField] public EventReference bellSound;
 
     // Start is called before the first frame update
     void Awake()
@@ -42,9 +44,13 @@ public class CharacterAnimate : MonoBehaviour
     private void Update()
     {
         animator.SetBool("isHolding", manager.holding != null);
-        if (manager.stats.input.Call()) animator.SetTrigger("onBell");
+        if (manager.stats.input.Call())
+        {
+            RuntimeManager.PlayOneShot(bellSound);
+            animator.SetTrigger("onBell");
+        }
     }
-    
+
 }
 public enum PlayerAnimState
 {
