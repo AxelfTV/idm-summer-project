@@ -46,7 +46,7 @@ public class CloudDoor : MonoBehaviour, IUnlockableObject
         {
             fadeController.fadeValue = 0;
         }
-        if(!locked && fadeController.fadeValue == 1) gameObject.SetActive(false);
+        if(!locked && fadeController.fadeValue == 1) gameObject.SetActive(false);   
         else gameObject.SetActive(true);
     }
     public void Lock()
@@ -61,11 +61,12 @@ public class CloudDoor : MonoBehaviour, IUnlockableObject
     public void Unlock()
     {
         locks--;
-        RuntimeManager.PlayOneShot(windSound);
+        
         if (locks <= 0)
         {
             locked = false;
             boxCollider.enabled = false;
+            RuntimeManager.PlayOneShot(windSound);
         }
     }
 }
