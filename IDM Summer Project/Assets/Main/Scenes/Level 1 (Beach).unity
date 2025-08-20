@@ -10980,6 +10980,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2752067823167080573, guid: 0d01a36ae6a7ff749a06461e0b188c40,
         type: 3}
+      propertyPath: glideSound.Path
+      value: event:/SFX/Player SFX/Glide
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752067823167080573, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+        type: 3}
       propertyPath: jumpSound.Guid.Data1
       value: 635750340
       objectReference: {fileID: 0}
@@ -10998,6 +11003,26 @@ PrefabInstance:
       propertyPath: jumpSound.Guid.Data4
       value: 1587627808
       objectReference: {fileID: 0}
+    - target: {fileID: 2752067823167080573, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+        type: 3}
+      propertyPath: glideSound.Guid.Data1
+      value: 1361313322
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752067823167080573, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+        type: 3}
+      propertyPath: glideSound.Guid.Data2
+      value: 1177195551
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752067823167080573, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+        type: 3}
+      propertyPath: glideSound.Guid.Data3
+      value: -1947991407
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752067823167080573, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+        type: 3}
+      propertyPath: glideSound.Guid.Data4
+      value: -1958645352
+      objectReference: {fileID: 0}
     - target: {fileID: 3072096319817882600, guid: 0d01a36ae6a7ff749a06461e0b188c40,
         type: 3}
       propertyPath: m_Name
@@ -11012,6 +11037,11 @@ PrefabInstance:
         type: 3}
       propertyPath: throwSound.Path
       value: event:/SFX/Player SFX/Throw
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659423559324103451, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+        type: 3}
+      propertyPath: pickupSound.Path
+      value: event:/SFX/Player SFX/Pick Up
       objectReference: {fileID: 0}
     - target: {fileID: 5659423559324103451, guid: 0d01a36ae6a7ff749a06461e0b188c40,
         type: 3}
@@ -11033,10 +11063,35 @@ PrefabInstance:
       propertyPath: throwSound.Guid.Data4
       value: 706816402
       objectReference: {fileID: 0}
+    - target: {fileID: 5659423559324103451, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+        type: 3}
+      propertyPath: pickupSound.Guid.Data1
+      value: -788018783
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659423559324103451, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+        type: 3}
+      propertyPath: pickupSound.Guid.Data2
+      value: 1265503930
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659423559324103451, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+        type: 3}
+      propertyPath: pickupSound.Guid.Data3
+      value: -294551135
+      objectReference: {fileID: 0}
+    - target: {fileID: 5659423559324103451, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+        type: 3}
+      propertyPath: pickupSound.Guid.Data4
+      value: -1307941332
+      objectReference: {fileID: 0}
     - target: {fileID: 6423884500596175827, guid: 0d01a36ae6a7ff749a06461e0b188c40,
         type: 3}
       propertyPath: bellSound.Path
       value: event:/SFX/Player SFX/Bell
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423884500596175827, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+        type: 3}
+      propertyPath: glideSound.Path
+      value: event:/SFX/Sheep SFX/Sheep SFX
       objectReference: {fileID: 0}
     - target: {fileID: 6423884500596175827, guid: 0d01a36ae6a7ff749a06461e0b188c40,
         type: 3}
@@ -11057,6 +11112,26 @@ PrefabInstance:
         type: 3}
       propertyPath: bellSound.Guid.Data4
       value: 1399212252
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423884500596175827, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+        type: 3}
+      propertyPath: glideSound.Guid.Data1
+      value: -633774999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423884500596175827, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+        type: 3}
+      propertyPath: glideSound.Guid.Data2
+      value: 1086720381
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423884500596175827, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+        type: 3}
+      propertyPath: glideSound.Guid.Data3
+      value: 1397914288
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423884500596175827, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+        type: 3}
+      propertyPath: glideSound.Guid.Data4
+      value: 1266420087
       objectReference: {fileID: 0}
     - target: {fileID: 7110689308563430099, guid: 0d01a36ae6a7ff749a06461e0b188c40,
         type: 3}

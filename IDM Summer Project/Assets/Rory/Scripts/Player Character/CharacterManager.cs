@@ -18,6 +18,7 @@ public class CharacterManager : MonoBehaviour
 
     [SerializeField] DecalProjector shadowProjector;
     [SerializeField] public EventReference throwSound;
+    [SerializeField] public EventReference pickupSound;
     private void Awake()
     {
         //ignore collisions with sheep
@@ -143,6 +144,7 @@ public class CharacterManager : MonoBehaviour
         bool ifHit = Physics.SphereCast(transform.position - transform.forward * raycastOffset, sphereRadius,transform.forward, out hit, stats.grabRange + raycastOffset, LayerMask.GetMask("Grabbable"));
         if (ifHit) 
         {
+            RuntimeManager.PlayOneShot(pickupSound);
             IHoldable toHold;
             if (hit.collider.gameObject.TryGetComponent<IHoldable>(out toHold)) 
             {

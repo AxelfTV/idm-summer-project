@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using FMODUnity;
+using FMOD.Studio;
 
 public class CharacterStats : MonoBehaviour
 {
@@ -31,6 +32,8 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] public float glideBoostStrength = 20;
     [SerializeField] public float glideBoostTime = 0.5f;
     [SerializeField] public EventReference jumpSound;
+    [SerializeField] public EventReference glideSound;
+    [NonSerialized] public EventInstance glideSoundInstance;
 
     private bool isJumpBuffered = false;
     float glideEnergy;
@@ -51,6 +54,8 @@ public class CharacterStats : MonoBehaviour
 
 
         glideEnergy = glideTime;
+
+        glideSoundInstance = RuntimeManager.CreateInstance(glideSound);
     }
     private void Update()
     {

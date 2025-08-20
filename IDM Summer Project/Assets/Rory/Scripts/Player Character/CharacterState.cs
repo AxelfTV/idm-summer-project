@@ -249,10 +249,12 @@ public class CharacterGlide : CharacterState
     {
         base.Enter();
         stats.animator.SetAnimationState(PlayerAnimState.glide);
+        stats.glideSoundInstance.start();
     }
     public override void Exit()
     {
         base.Exit();
+        stats.glideSoundInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
 
     }
     public override void Update()
