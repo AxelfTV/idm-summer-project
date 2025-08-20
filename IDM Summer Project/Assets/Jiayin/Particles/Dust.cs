@@ -5,8 +5,8 @@ using UnityEngine.VFX;
 
 public class Dust : MonoBehaviour
 {
-    public VisualEffect vfx;   
-    public Rigidbody rb;
+   private VisualEffect vfx;   
+    private Rigidbody rb;
     public Vector3 Offset;
 
     void Start()
@@ -15,6 +15,8 @@ public class Dust : MonoBehaviour
         {
             vfx = GetComponent<VisualEffect>();
         }
+        rb = GameObject.Find("Player").GetComponent<Rigidbody>();
+
     }
 
     void Update()
