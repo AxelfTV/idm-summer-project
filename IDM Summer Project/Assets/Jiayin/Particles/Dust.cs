@@ -27,7 +27,7 @@ public class Dust : MonoBehaviour
             Vector3 velocity = rb.velocity;
             Vector3 horizontalVel = new Vector3(0, rb.velocity.y, 0);
 
-            if (velocity.sqrMagnitude > 0.0001f && horizontalVel.sqrMagnitude < 0.1f)
+            if (velocity.sqrMagnitude > 0.1f && horizontalVel.sqrMagnitude < 0.1f)
             {
                 Vector3 dir = -velocity.normalized;
                 vfx.SetVector3("MoveDirection", dir);
