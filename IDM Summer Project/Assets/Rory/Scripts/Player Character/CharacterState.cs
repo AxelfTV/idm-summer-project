@@ -24,6 +24,10 @@ public abstract class CharacterState
     {
         //Debug.Log(this);
     }
+    public virtual void Exit()
+    {
+
+    }
     
     protected void Move()
     {
@@ -245,6 +249,11 @@ public class CharacterGlide : CharacterState
     {
         base.Enter();
         stats.animator.SetAnimationState(PlayerAnimState.glide);
+    }
+    public override void Exit()
+    {
+        base.Exit();
+
     }
     public override void Update()
     {

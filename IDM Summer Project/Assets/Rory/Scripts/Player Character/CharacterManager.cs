@@ -38,7 +38,8 @@ public class CharacterManager : MonoBehaviour
     {
         CharacterState newState = state.NewState();
         if (newState != null) 
-        { 
+        {
+            state.Exit();
             state = newState;
             state.Enter();
         }
@@ -84,6 +85,7 @@ public class CharacterManager : MonoBehaviour
     }
     public void Geyser(float power)
     {
+        state.Exit();
         state = new CharacterBounce(stats, power);
         state.Enter();
     }
@@ -91,6 +93,7 @@ public class CharacterManager : MonoBehaviour
     {
         if (other.CompareTag("Bouncy"))
         {
+            state.Exit();
             state = new CharacterBounce(stats, stats.sheep.stats.bouncePower);
             state.Enter();
         }
@@ -98,6 +101,7 @@ public class CharacterManager : MonoBehaviour
         {
 			Debug.Log("Glide Ring");
             //transform.position = other.transform.position;
+            state.Exit();
 			state = new CharacterGlideBoost(stats, other.transform.parent.forward);
 			state.Enter();
 		}
