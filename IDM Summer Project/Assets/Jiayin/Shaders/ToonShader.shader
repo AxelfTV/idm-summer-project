@@ -19,7 +19,7 @@ Shader "Custom/URPToonShader"
         _OutLineColor("OutlineColor",Color)=(0,0,0,1)
         _OutLineBlend("OutlineBlend",Range(0,1)) = 1  
 
-         [Toggle] _ReceiveDecal("Receive Decal", Float) = 1
+         [Toggle(_RECEIVEDECAL)] _ReceiveDecal("Receive Decal", Float) = 1
     }
     SubShader
     {
@@ -84,6 +84,8 @@ Shader "Custom/URPToonShader"
                float _GlossyAmount;
 
                 float4 _HeightTex_ST;
+
+                float _ReceiveDecal;
             CBUFFER_END
 
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
@@ -147,9 +149,15 @@ Shader "Custom/URPToonShader"
                 float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, NdotL * shadowAtten);
                 half3 baseColor = lerp(shadowColor.rgb*albedo*totalLight, albedo * totalLight, toonStep2);
                 baseColor+=_GlossyColor*_GlossyAmount;
-                #ifdef _RECEIVEDECAL_ON
-                ApplyDecalToBaseColor(IN.positionCS, baseColor);
-                #endif
+                // #ifdef _RECEIVEDECAL_ON
+                // ApplyDecalToBaseColor(IN.positionCS, baseColor);
+                // #endif
+ 
+                if (_ReceiveDecal > 0.5)   
+                {
+                    ApplyDecalToBaseColor(IN.positionCS, baseColor);
+                }
+
                 return half4(baseColor, 1.0);
             }
             ENDHLSL

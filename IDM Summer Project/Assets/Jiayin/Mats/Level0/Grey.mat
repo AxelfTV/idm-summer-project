@@ -33,6 +33,7 @@ Material:
     - _HeightFactor: 0
     - _HeightMove: 0
     - _OutLineBlend: 0
+    - _ReceiveDecal: 1
     - _ShadowThreshold: 0.07
     m_Colors:
     - _Color: {r: 0.6271057, g: 0.6424113, b: 0.7056604, a: 1}
