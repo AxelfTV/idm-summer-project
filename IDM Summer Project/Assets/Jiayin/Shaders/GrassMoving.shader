@@ -21,10 +21,11 @@ Shader "Custom/GrassMoving"
         _MovinDirct("MovingDirect",Vector)=(1,1,1,1)
         _MovingRange("MovingRange",float)=1
 
-        _PlayerPos("PlayerPos",Vector)=(0,0,0,0)
-        _SheepPos("SheepPos",Vector)=(0,0,0,0)
+       // _PlayerPos("PlayerPos",Vector)=(0,0,0,0)
+      //  _SheepPos("SheepPos",Vector)=(0,0,0,0)
         _MaxBlendRange("MaxBlendRange",float)=5
         _BlendSize("BlendSize",float)=1
+        _FakeDecalShadowRange("_FakeDecalShadowRange",float)=1
     }
     SubShader
     {
@@ -94,6 +95,8 @@ Shader "Custom/GrassMoving"
                 float _MaxBlendRange;
                 float _BlendSize;
                 float _SheepPos;
+
+                float _FakeDecalShadowRange;
             CBUFFER_END
 
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
@@ -153,10 +156,11 @@ Shader "Custom/GrassMoving"
                     totalLight += addLight.color.rgb * addLight.distanceAttenuation;
                 }
                 #endif
-
+                   //fake decal shadow
+               float DecalshadowRange=saturate(distance(_PlayerPos.xz,IN.positionWS.xz)-_FakeDecalShadowRange);
                 // Toon shadow
               //  half shadowAtten = mainLight.shadowAttenuation;
-                half shadowAtten=MainLightRealtimeShadow(IN.shadowCoord);
+                half shadowAtten=MainLightRealtimeShadow(IN.shadowCoord)*DecalshadowRange;
 
         
             //   return half4(lerp(_Color0.rgb*_ShadowColor.rgb,_Color0.rgb, shadowAtten),1);
@@ -167,11 +171,14 @@ Shader "Custom/GrassMoving"
              //   float2 decaluv = IN.screenUV.xy / IN.screenUV.w;
               //  float4 decal0 = SAMPLE_TEXTURE2D(_DBufferTexture0, sampler_DBufferTexture0, decaluv);
              
-        
+
                 float4 shadowColor=lerp(_ShadowColor, _ShadowColor2, shadowAtten);
                 half3 baseColor = lerp(shadowColor.rgb*albedo*totalLight, albedo * totalLight, toonStep2);
               //  baseColor = lerp(baseColor,_OutLineColor.rgb,(1-normalLine)*_OutLineBlend);
-                ApplyDecalToBaseColor(IN.positionCS, baseColor);
+               // ApplyDecalToBaseColor(IN.positionCS, baseColor);
+
+
+              // return half4(DecalshadowRange.xxx,1);
                 return half4(baseColor, 1.0);
             }
             ENDHLSL
@@ -236,6 +243,7 @@ Pass
     #pragma fragment frag
 
     #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+  //  #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DBuffer.hlsl"
 
     CBUFFER_START(UnityPerMaterial)
         float _MovingSpeed;
@@ -278,6 +286,8 @@ Pass
 
     float4 frag(Varyings IN) : SV_Target
     {
+      //  float3 normalWS = normalize(IN.normalWS);
+     //  ApplyDecalToBaseColorAndNormal(IN.positionCS, normalWS);
 
         return float4(0,0,0,1);
         float3 normal = normalize(IN.normalWS);

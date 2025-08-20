@@ -6,7 +6,7 @@ public class PassPlayerParam : MonoBehaviour
 {
     private Transform player;
     private Transform sheep;
-    public List<Material> mats;
+  //  public List<Material> mats;
 
     void Start()
     {
@@ -20,13 +20,16 @@ public class PassPlayerParam : MonoBehaviour
 
     void Update()
     {
-        if (mats.Count != 0 && player != null&&sheep!=null)
+        if (player != null && sheep != null)
         {
-            foreach (Material mat in mats)
-            {
-                mat.SetVector("_PlayerPos", player.position);
-                mat.SetVector("_SheepPos", sheep.position);
-            }
+            Shader.SetGlobalVector("_PlayerPos", player.position);
+            Shader.SetGlobalVector("_SheepPos", sheep.position);
+            Debug.Log("PlayerSet");
+            // foreach (Material mat in mats)
+            // {
+            //     mat.SetVector("_PlayerPos", player.position);
+            //     mat.SetVector("_SheepPos", sheep.position);
+            // }
         }
     }
 }
