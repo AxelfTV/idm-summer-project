@@ -105,7 +105,7 @@ public class CharacterIdle : CharacterState
         base.Enter();
         stats.Grounded();
         stats.animator.SetAnimationState(PlayerAnimState.idle);
-        stats.rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        if(stats.input.GetMoveDirection() == Vector3.zero)stats.rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
 	public override void Exit()
 	{
