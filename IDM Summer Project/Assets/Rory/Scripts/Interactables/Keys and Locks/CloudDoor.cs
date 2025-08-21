@@ -16,6 +16,7 @@ public class CloudDoor : MonoBehaviour, IUnlockableObject
     BoxCollider boxCollider;
     bool locked;
     int locks;
+    bool playOnce;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,7 +67,12 @@ public class CloudDoor : MonoBehaviour, IUnlockableObject
         {
             locked = false;
             boxCollider.enabled = false;
-            RuntimeManager.PlayOneShot(windSound);
+            if(!playOnce)
+            {
+                RuntimeManager.PlayOneShot(windSound);
+                playOnce = true;
+            }         
         }
     }
 }
+    

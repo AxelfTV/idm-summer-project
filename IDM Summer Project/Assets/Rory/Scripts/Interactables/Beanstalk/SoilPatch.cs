@@ -31,7 +31,7 @@ public class SoilPatch : LockMechanism
             Unlock();
             RuntimeManager.PlayOneShot(beanstalkSound);
             sparkleAnimator.SetTrigger(sparkleTrigger);
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }

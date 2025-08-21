@@ -10,31 +10,40 @@ public class PressurePlate : LockMechanism
     public EventReference windSound;
     public bool canPlaySound;
 
-    // Start is called before the first frame update
+    public float pressDepth = 0.1f; 
+    public float pressSpeed = 5f;   
+    private Vector3 startPos;       
+    private Vector3 targetPos;      
+
     void Start()
     {
-        
+        startPos = transform.position;
+        targetPos = startPos;
     }
 
-    // Update is called once per frame
     void Update()
     {
         bool checkPress = CheckEntity();
-        if(checkPress != pressed)
+        if (checkPress != pressed)
         {
             if (checkPress) Unlock();
             else Lock();
+
             RuntimeManager.PlayOneShot(pressurePlateSound);
-            if(!canPlaySound)
+            if (!canPlaySound)
             {
                 RuntimeManager.PlayOneShot(windSound);
             }
             canPlaySound = true;
+
+            targetPos = checkPress ? startPos - new Vector3(0, pressDepth, 0) : startPos;
         }
 
+        transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * pressSpeed);
+
         pressed = checkPress;
-        
     }
+
     bool CheckEntity()
     {
         return Physics.SphereCast(transform.position - Vector3.up*2, 1f, Vector3.up,out RaycastHit rch, 2.5f, LayerMask.GetMask("Player", "Grabbable"));
