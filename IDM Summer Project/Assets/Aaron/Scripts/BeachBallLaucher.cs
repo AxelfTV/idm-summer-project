@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 public class BeachBallLaucher : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class BeachBallLaucher : MonoBehaviour
     public Transform firePoint;
     public float shootForce = 50f;
     public bool isInTriggerZone;
+    public Animator cannonAnimator;
+    public EventReference shootSound;
+    private const string shootTrigger = "canShoot";
     private bool shot;
     private bool isWaitingToShoot = false;
     private bool firstShotDone = false;
@@ -60,6 +64,9 @@ public class BeachBallLaucher : MonoBehaviour
 
         activeProjectiles.Add(projectile);
         shot = true;
+
+        cannonAnimator.SetTrigger(shootTrigger);
+        RuntimeManager.PlayOneShot(shootSound, firePoint.position);
     }
 
     public void OnTriggerEnter(Collider other)
