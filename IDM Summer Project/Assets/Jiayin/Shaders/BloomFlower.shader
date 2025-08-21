@@ -22,8 +22,8 @@ Shader "Custom/BloomFlower"
         _MovinDirct("MovingDirect",Vector)=(1,1,1,1)
         _MovingRange("MovingRange",float)=1
 
-        _PlayerPos("PlayerPos",Vector)=(0,0,0,0)
-        _SheepPos("SheepPos",Vector)=(0,0,0,0)
+      //  _PlayerPos("PlayerPos",Vector)=(0,0,0,0)
+      //  _SheepPos("SheepPos",Vector)=(0,0,0,0)
         _MaxBlendRange("MaxBlendRange",float)=5
         _BlendSize("BlendSize",float)=1
         
