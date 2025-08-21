@@ -139,7 +139,7 @@ public class CharacterManager : MonoBehaviour
     IHoldable GetGrabable() 
     {
         float raycastOffset = 0.5f;
-        float sphereRadius = 1f;
+        float sphereRadius = 0.9f;
         RaycastHit hit;
         bool ifHit = Physics.SphereCast(transform.position - transform.forward * raycastOffset, sphereRadius,transform.forward, out hit, stats.grabRange + raycastOffset, LayerMask.GetMask("Grabbable"));
         if (ifHit) 
