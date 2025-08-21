@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9b5db49ceccd3774d8155a6711d4a711, type: 2}
+  - {fileID: 2100000, guid: 206af16f97e0bcb4e89b2f8f97d8a2ff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -125,5 +125,3 @@ MonoBehaviour:
       Data3: -999090033
       Data4: -1807702980
     Path: event:/SFX/Level 1/Bubble SFX
-  maxSwayAmount: 1
-  maxSwaySpeed: 1

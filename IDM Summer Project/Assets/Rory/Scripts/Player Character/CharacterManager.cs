@@ -171,7 +171,6 @@ public class CharacterManager : MonoBehaviour
         {
             depth = 20;
         }
-        Debug.Log(ifHit);
         shadowProjector.size = new Vector3(shadowProjector.size.x, shadowProjector.size.y, depth);
         shadowProjector.pivot = new Vector3(shadowProjector.pivot.x, shadowProjector.pivot.y, (depth / 2f) - 0.05f);
     }

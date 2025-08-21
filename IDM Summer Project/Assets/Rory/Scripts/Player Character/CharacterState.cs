@@ -14,11 +14,11 @@ public abstract class CharacterState
     public abstract CharacterState NewState();
     protected bool IsGrounded()
     {
-        float rayLength = 0.8f;
+        float rayLength = 0.9f;
         float sphereRadius = 0.4f;
         Vector3 origin = stats.rb.position + Vector3.up * 0.1f;
-
-        return Physics.SphereCast(origin, sphereRadius, Vector3.down,out RaycastHit hit, rayLength, LayerMask.GetMask("Ground"));
+        bool ifHit = Physics.SphereCast(origin, sphereRadius, Vector3.down, out RaycastHit hit, rayLength, LayerMask.GetMask("Ground"), QueryTriggerInteraction.Ignore);
+        return ifHit;
     }
     public virtual void Enter() 
     {
@@ -105,7 +105,13 @@ public class CharacterIdle : CharacterState
         base.Enter();
         stats.Grounded();
         stats.animator.SetAnimationState(PlayerAnimState.idle);
+        stats.rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
+	public override void Exit()
+	{
+		base.Exit();
+		stats.rb.constraints = RigidbodyConstraints.None | RigidbodyConstraints.FreezeRotation;
+	}
     public override void Update()
     {
         Move();
