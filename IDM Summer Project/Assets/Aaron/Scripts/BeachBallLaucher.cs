@@ -11,6 +11,8 @@ public class BeachBallLaucher : MonoBehaviour
     public bool isInTriggerZone;
     public Animator cannonAnimator;
     public EventReference shootSound;
+    public Transform cloudVFXSpawnpoint;
+    public GameObject cloudVFX;
     private const string shootTrigger = "canShoot";
     private bool shot;
     private bool isWaitingToShoot = false;
@@ -54,7 +56,7 @@ public class BeachBallLaucher : MonoBehaviour
 
     void Shoot()
     {
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
 
         if (rb != null)
@@ -67,6 +69,9 @@ public class BeachBallLaucher : MonoBehaviour
 
         cannonAnimator.SetTrigger(shootTrigger);
         RuntimeManager.PlayOneShot(shootSound, firePoint.position);
+
+        GameObject vfxInstance = Instantiate(cloudVFX, cloudVFXSpawnpoint.position, cloudVFXSpawnpoint.rotation);
+        Destroy(vfxInstance, 2f);
     }
 
     public void OnTriggerEnter(Collider other)
