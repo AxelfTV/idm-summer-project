@@ -278,7 +278,7 @@ public class SheepGround : SheepState
     public override void Update()
     {
         stats.rb.velocity = Vector3.zero;
-        ScaleSheep(1);
+        ScaleSheep(stats.doubleJumpScale);
     }
     public override SheepState NewState()
     {

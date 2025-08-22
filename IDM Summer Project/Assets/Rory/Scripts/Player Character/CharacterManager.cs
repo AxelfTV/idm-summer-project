@@ -101,9 +101,9 @@ public class CharacterManager : MonoBehaviour
         else if (other.CompareTag("GlideRing") && stats.sheep.HoldingSheep()) 
         {
 			Debug.Log("Glide Ring");
-            //transform.position = other.transform.position;
+            int direction = Math.Sign(Vector3.Dot(other.transform.position - transform.position, other.transform.parent.forward));
             state.Exit();
-			state = new CharacterGlideBoost(stats, other.transform.parent.forward);
+			state = new CharacterGlideBoost(stats, direction * other.transform.parent.forward);
 			state.Enter();
 		}
         else if (other.CompareTag("Death"))
