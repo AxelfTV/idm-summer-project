@@ -22,7 +22,6 @@ public class SheepStats : MonoBehaviour
     public float travelSpeed = 10;
     public float throwDist = 10;
     public float throwDownForce = 30;
-    public float bouncePower = 15;
 
     //scale stuff
     public float baseScale = 1;

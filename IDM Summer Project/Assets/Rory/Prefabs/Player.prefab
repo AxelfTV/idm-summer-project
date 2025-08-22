@@ -164,23 +164,24 @@ MonoBehaviour:
   airMovePower: 50
   airMoveMaxSpeed: 8
   grabRange: 1
+  bouncePower: 25
   glideTime: 1.5
   glideBoostStrength: 25
   glideBoostTime: 0.4
   jumpSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 635750340
+      Data2: 1208944967
+      Data3: 1932164228
+      Data4: 1587627808
+    Path: event:/SFX/Player SFX/Jump
   glideSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1361313322
+      Data2: 1177195551
+      Data3: -1947991407
+      Data4: -1958645352
+    Path: event:/SFX/Player SFX/Glide
   slider: {fileID: 0}
 --- !u!114 &5659423559324103451
 MonoBehaviour:
@@ -195,22 +196,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 0}
-  levelBottom: 0.5
+  levelBottom: -1.5
   shadowProjector: {fileID: 2044172682542384407}
   throwSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -530965737
+      Data2: 1164905790
+      Data3: -1106588031
+      Data4: 706816402
+    Path: event:/SFX/Player SFX/Throw
   pickupSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -788018783
+      Data2: 1265503930
+      Data3: -294551135
+      Data4: -1307941332
+    Path: event:/SFX/Player SFX/Pick Up
 --- !u!114 &3603142872071958648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1063,11 +1064,11 @@ MonoBehaviour:
   manager: {fileID: 5659423559324103451}
   bellSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 337602294
+      Data2: 1256210605
+      Data3: -640962922
+      Data4: 1399212252
+    Path: event:/SFX/Player SFX/Bell
 --- !u!4 &8100459652254019912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -3225744230849817767, guid: 15353d8b850dfd7439d5042bbdfcdafc,

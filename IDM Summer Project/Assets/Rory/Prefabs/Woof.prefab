@@ -125,7 +125,7 @@ MonoBehaviour:
   travelSpeed: 30
   throwDist: 15
   throwDownForce: 30
-  bouncePower: 15
+  bouncePower: 25
   baseScale: 1
   scaleSpeed: 20
   glideMaxScale: 1.75
