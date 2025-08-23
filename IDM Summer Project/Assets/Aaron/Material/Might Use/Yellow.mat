@@ -13,7 +13,8 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _RECEIVEDECAL_ON
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _RECEIVEDECAL
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -25,7 +26,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _HeightTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c9702e31b627a6240a09d96e67af290a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -35,7 +36,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _GlossyAmount: 0
-    - _HeightFactor: 1
+    - _HeightFactor: 0
     - _HeightMove: 0
     - _OutLineBlend: 1
     - _ReceiveDecal: 1
@@ -43,12 +44,12 @@ Material:
     - _StylishShadow: 0.43
     m_Colors:
     - _Color: {r: 0.82641506, g: 0.7128551, b: 0.59720176, a: 1}
-    - _Color0: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 1, g: 0.9488233, b: 0.41960788, a: 1}
+    - _Color0: {r: 0.98601574, g: 1, b: 0.4433962, a: 1}
+    - _Color1: {r: 1, g: 0.8663519, b: 0.5113207, a: 1}
     - _Color2: {r: 1, g: 0.98314196, b: 0.16470587, a: 1}
     - _Color3: {r: 1, g: 0.95760083, b: 0.4470588, a: 1}
     - _GlossyColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutLineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ShadowColor: {r: 0.5822926, g: 0.6529313, b: 0.8792453, a: 1}
+    - _ShadowColor: {r: 0.6230331, g: 0.6676276, b: 0.8113208, a: 1}
     - _ShadowColor2: {r: 1, g: 0.65428704, b: 0.41320753, a: 1}
   m_BuildTextureStacks: []

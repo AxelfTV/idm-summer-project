@@ -206,6 +206,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7192378022336067925, guid: 62b0e5e5778c8c74a9f310c3cd1fcce6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850146055741840409, guid: 62b0e5e5778c8c74a9f310c3cd1fcce6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12847,6 +12857,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock Platform (Medium)
       objectReference: {fileID: 0}
+    - target: {fileID: 3541055035863228414, guid: 3b9dec077e10f7e418e61c537445889b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5123121433176562171, guid: 3b9dec077e10f7e418e61c537445889b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6603816793968953507, guid: 3b9dec077e10f7e418e61c537445889b,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -19652,6 +19672,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1267936004}
     m_Modifications:
+    - target: {fileID: 3585858715670082668, guid: 055b5b427afed03479e87075761e5a40,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6474317229738379928, guid: 055b5b427afed03479e87075761e5a40,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -19715,6 +19740,11 @@ PrefabInstance:
     - target: {fileID: 6474317229738379928, guid: 055b5b427afed03479e87075761e5a40,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7283356282065302051, guid: 055b5b427afed03479e87075761e5a40,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9124157855626662012, guid: 055b5b427afed03479e87075761e5a40,
