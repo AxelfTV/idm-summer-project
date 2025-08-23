@@ -10,16 +10,18 @@ public class BubblePlatform : MonoBehaviour
     [NonSerialized] public float heightAboveSpawner;
     public EventReference bubbleSound;
     bool burst;
+    Bubble mat;
     // Start is called before the first frame update
     void Start()
     {
         transform.position = spawner.transform.position + Vector3.up * heightAboveSpawner;
+        mat = GetComponent<Bubble>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (burst && mat.Life + Time.deltaTime * 2 < 1) mat.Life += Time.deltaTime * 2;
     }
     protected virtual void OnPlayerStand()
     {
