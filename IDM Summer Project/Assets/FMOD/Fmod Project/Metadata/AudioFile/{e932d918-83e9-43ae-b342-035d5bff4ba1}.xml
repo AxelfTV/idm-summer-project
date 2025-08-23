@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{e932d918-83e9-43ae-b342-035d5bff4ba1}">
 		<property name="assetPath">
-			<value>sheep-352668.mp3</value>
+			<value>Woof SFX/sheep-352668.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>22.0499992</value>

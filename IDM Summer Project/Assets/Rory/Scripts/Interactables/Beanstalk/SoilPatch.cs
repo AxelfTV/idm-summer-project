@@ -6,6 +6,7 @@ using FMODUnity;
 public class SoilPatch : LockMechanism
 {
     [SerializeField] public EventReference beanstalkSound;
+    [SerializeField] public EventReference mayVoiceLine;
     [SerializeField] public Animator sparkleAnimator;
 
     private const string sparkleTrigger = "PlaySparkle";
@@ -30,6 +31,7 @@ public class SoilPatch : LockMechanism
 
             Unlock();
             RuntimeManager.PlayOneShot(beanstalkSound);
+            RuntimeManager.PlayOneShot(mayVoiceLine);
             sparkleAnimator.SetTrigger(sparkleTrigger);
             other.gameObject.SetActive(false);
         }

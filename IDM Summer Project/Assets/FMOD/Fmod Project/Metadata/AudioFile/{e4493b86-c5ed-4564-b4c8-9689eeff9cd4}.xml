@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{e4493b86-c5ed-4564-b4c8-9689eeff9cd4}">
 		<property name="assetPath">
-			<value>Grab.wav</value>
+			<value>Player SFX/Grab.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>96</value>
