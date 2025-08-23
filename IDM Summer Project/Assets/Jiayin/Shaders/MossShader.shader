@@ -19,6 +19,7 @@ Shader "Custom/MossShader"
         _HeightFactor("Height Factor", float) = 1
         _HeightMove("Height Move",float) = 0
         _HeightTex("Height Texture", 2D) = "white" {}
+        _NormalMixWeight("NormalMixWeight",Range(0,1))=1
 
         //lighting
         _ShadowThreshold ("Shadow Threshold", Range(0,1)) = 0.5
@@ -90,6 +91,7 @@ Shader "Custom/MossShader"
                 //height mix
                 float _HeightFactor;
                 float _HeightMove;
+                float _NormalMixWeight;
 
                 float4 _HeightTex_ST;
             CBUFFER_END
@@ -130,14 +132,18 @@ Shader "Custom/MossShader"
 
             float4 frag(Varyings IN) : SV_Target
             {
-                float3 BaseColor= lerp(_Color0.rgb, _Color1.rgb,IN.MossMask);
+
+                float normalFactor= pow(dot(IN.normalWS,float3(0,1,0)),5);
+                float mossMask=lerp(saturate(normalFactor),IN.MossMask,_NormalMixWeight);
+               // return float4(mossMask.xxx,1);
+                float3 BaseColor= lerp(_Color0.rgb, _Color1.rgb,mossMask);
                 float3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb*BaseColor;
               //  return float4(IN.MossMask.xxx,1);
 
                 //moss color
                 float3 MossColor=SAMPLE_TEXTURE2D(_MossBase,sampler_MossBase,IN.uv).rgb;
                 float height=SAMPLE_TEXTURE2D(_MossHeight, sampler_MossHeight, IN.uv).z*_MossOffset;
-                albedo=lerp(albedo,MossColor,IN.MossMask);
+                albedo=lerp(albedo,MossColor,mossMask);
 
                 Light mainLight = GetMainLight(IN.shadowCoord);
                 

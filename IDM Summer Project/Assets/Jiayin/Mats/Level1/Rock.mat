@@ -8,12 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Rock
-  m_Shader: {fileID: 4800000, guid: ca53272b8aba76b428ec2e030a9a88c1, type: 3}
+  m_Shader: {fileID: 4800000, guid: f3cecc48f2b31df45b95e76be038d277, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _RECEIVEDECAL
   - _RECEIVEDECAL_ON
-  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -32,19 +33,35 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MossBase:
+        m_Texture: {fileID: 2800000, guid: 95f71b2ed0fc3a84cb412e70708a904c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MossHeight:
+        m_Texture: {fileID: 2800000, guid: c9702e31b627a6240a09d96e67af290a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MossNormal:
+        m_Texture: {fileID: 2800000, guid: 7117bcfa2113ec84a92bc2fe5ade19a2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _GlossyAmount: 0
     - _HeightFactor: 0
     - _HeightMove: 0
+    - _MossCut: -1.66
+    - _MossOffset: 0
+    - _NormalMixWeight: 0
+    - _NormalStrength: 0
     - _OutLineBlend: 1
     - _ReceiveDecal: 1
-    - _ShadowThreshold: 0.169
+    - _ShadowThreshold: 0.33
     - _StylishShadow: 0.12
     m_Colors:
     - _Color: {r: 0.7137255, g: 0.7359654, b: 0.8117647, a: 1}
-    - _Color0: {r: 0.6346244, g: 0.70379657, b: 0.82641506, a: 1}
-    - _Color1: {r: 0.35549307, g: 0.43719888, b: 0.7056604, a: 1}
+    - _Color0: {r: 0.54533994, g: 0.6323823, b: 0.79622644, a: 1}
+    - _Color1: {r: 0.2483089, g: 0.8490566, b: 0.7434524, a: 1}
     - _Color2: {r: 1, g: 1, b: 1, a: 1}
     - _Color3: {r: 1, g: 1, b: 1, a: 1}
     - _GlossyColor: {r: 0, g: 0, b: 0, a: 1}
