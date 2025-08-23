@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MossOnStone
+  m_Name: noTopMossOnStone
   m_Shader: {fileID: 4800000, guid: f3cecc48f2b31df45b95e76be038d277, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -46,10 +46,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _HeightFactor: 0.25
-    - _HeightMove: -0.86
+    - _HeightMove: -0.53
     - _MossCut: 0.68
     - _MossOffset: 0
-    - _NormalMixWeight: 0.236
+    - _NormalMixWeight: 1
     - _NormalStrength: 0.67
     - _ShadowThreshold: 0.359
     - _StylishShadow: -0.02
