@@ -3059,6 +3059,79 @@ Transform:
   - {fileID: 1535448137}
   m_Father: {fileID: 1348097573}
   m_LocalEulerAnglesHint: {x: 0, y: -22.387, z: 0}
+--- !u!1 &216314040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 216314041}
+  - component: {fileID: 216314043}
+  - component: {fileID: 216314042}
+  m_Layer: 3
+  m_Name: May's Voice Line EW
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &216314041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216314040}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 628652453}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &216314042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216314040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f929117b412794e91c554b8fd43127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voicelineSFX:
+    Guid:
+      Data1: -638307851
+      Data2: 1251450398
+      Data3: 1950435254
+      Data4: 1472025108
+    Path: event:/Voice Lines/Ew
+--- !u!65 &216314043
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216314040}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.2, y: 2, z: 0.2}
+  m_Center: {x: 0, y: -0.83, z: 0}
 --- !u!4 &225435408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6393356863567026973, guid: 5459e3de8eccc3741adbe7f75296c758,
@@ -6262,6 +6335,12 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+--- !u!4 &628652453 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4521355006875593709, guid: 3622dcd75fe458c4bb15fb17a754f70d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1979608973}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &646611446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6652,6 +6731,79 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.019999998, y: 0.022947667, z: 0.036841065}
   m_Center: {x: -0.0000000037252903, y: 0.0014738293, z: 0.008003165}
+--- !u!1 &696284638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 696284639}
+  - component: {fileID: 696284641}
+  - component: {fileID: 696284640}
+  m_Layer: 0
+  m_Name: I Hate Crabs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &696284639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696284638}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.26474652, z: -0, w: 0.96431804}
+  m_LocalPosition: {x: -72.49, y: -4.84, z: -90.34}
+  m_LocalScale: {x: 13.811617, y: 13.811617, z: 41.440376}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 728428367}
+  m_LocalEulerAnglesHint: {x: 0, y: 30.704, z: 0}
+--- !u!114 &696284640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696284638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f929117b412794e91c554b8fd43127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voicelineSFX:
+    Guid:
+      Data1: 21808788
+      Data2: 1247397263
+      Data3: -534533213
+      Data4: -1967257799
+    Path: event:/Voice Lines/I Hate Crabs
+--- !u!65 &696284641
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696284638}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &700241136 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3831366761863898119, guid: 0de709d0bb621ec44af584805f155292,
@@ -7066,6 +7218,43 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f119bdd58181fd04fa1f18bf05392e9c, type: 3}
+--- !u!1 &728428366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 728428367}
+  m_Layer: 0
+  m_Name: May's Voice Lines
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &728428367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728428366}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 70.55, y: -21.51242, z: -128.20001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 696284639}
+  - {fileID: 1369404394}
+  - {fileID: 1584957810}
+  - {fileID: 1036615558}
+  - {fileID: 899800879}
+  - {fileID: 788925403}
+  m_Father: {fileID: 934395844}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &730006442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7337,6 +7526,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bubble Activator
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: windSound.Path
+      value: event:/Voice Lines/Oh Bubbles
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: windSound.Guid.Data1
+      value: -304309031
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: windSound.Guid.Data2
+      value: 1185455677
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: windSound.Guid.Data3
+      value: -1733674340
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260197237512856249, guid: 5459e3de8eccc3741adbe7f75296c758,
+        type: 3}
+      propertyPath: windSound.Guid.Data4
+      value: 1202362206
       objectReference: {fileID: 0}
     - target: {fileID: 6393356863567026973, guid: 5459e3de8eccc3741adbe7f75296c758,
         type: 3}
@@ -7883,6 +8097,79 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 925084138}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &788925402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 788925403}
+  - component: {fileID: 788925405}
+  - component: {fileID: 788925404}
+  m_Layer: 0
+  m_Name: I Went To That Lighthouse
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &788925403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788925402}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.255213, z: -0, w: 0.9668849}
+  m_LocalPosition: {x: -121, y: 24.232864, z: 617.9}
+  m_LocalScale: {x: 1, y: 34.456, z: 101.42403}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 728428367}
+  m_LocalEulerAnglesHint: {x: 0, y: 12.362, z: 0}
+--- !u!114 &788925404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788925402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f929117b412794e91c554b8fd43127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voicelineSFX:
+    Guid:
+      Data1: -1297796843
+      Data2: 1104155324
+      Data3: 1969596032
+      Data4: -1549029009
+    Path: event:/Voice Lines/I Went To A Lighthouse
+--- !u!65 &788925405
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788925402}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &817239827
 GameObject:
   m_ObjectHideFlags: 0
@@ -9120,6 +9407,79 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62b0e5e5778c8c74a9f310c3cd1fcce6, type: 3}
+--- !u!1 &899800878
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899800879}
+  - component: {fileID: 899800881}
+  - component: {fileID: 899800880}
+  m_Layer: 0
+  m_Name: My Icecream
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &899800879
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899800878}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.106322065, z: -0, w: 0.9943318}
+  m_LocalPosition: {x: 3.4, y: 124.2, z: 618.4}
+  m_LocalScale: {x: 2.418815, y: 23.689985, z: 57.95117}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 728428367}
+  m_LocalEulerAnglesHint: {x: 0, y: -12.207, z: 0}
+--- !u!114 &899800880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899800878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f929117b412794e91c554b8fd43127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voicelineSFX:
+    Guid:
+      Data1: 1234572581
+      Data2: 1196439914
+      Data3: -1329048661
+      Data4: 869637622
+    Path: event:/Voice Lines/My Icecream
+--- !u!65 &899800881
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899800878}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &903232881
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9532,6 +9892,7 @@ Transform:
   m_Children:
   - {fileID: 526223676}
   - {fileID: 2108201655}
+  - {fileID: 728428367}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &945724341
@@ -10289,6 +10650,79 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1031752579}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1036615557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1036615558}
+  - component: {fileID: 1036615560}
+  - component: {fileID: 1036615559}
+  m_Layer: 0
+  m_Name: Pop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1036615558
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036615557}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.26034284, z: -0, w: 0.96551627}
+  m_LocalPosition: {x: -204.93, y: 17.45, z: 563.49}
+  m_LocalScale: {x: 5.4089203, y: 5.40892, z: 5.4089203}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 728428367}
+  m_LocalEulerAnglesHint: {x: 0, y: -30.181, z: 0}
+--- !u!114 &1036615559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036615557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f929117b412794e91c554b8fd43127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voicelineSFX:
+    Guid:
+      Data1: 37601473
+      Data2: 1176607529
+      Data3: -1664623710
+      Data4: -614359451
+    Path: event:/Voice Lines/Pop
+--- !u!65 &1036615560
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036615557}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1043974405
 GameObject:
   m_ObjectHideFlags: 0
@@ -11651,7 +12085,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IsGlobal: 0
   priority: 0
-  blendDistance: 10
+  blendDistance: 5
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 95b0c7ef70c6a6f4caf0428862efb6ba, type: 2}
 --- !u!65 &1148625014
@@ -11684,8 +12118,8 @@ Transform:
   m_GameObject: {fileID: 1148625012}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -50.1, y: 2.554519, z: 48.3}
-  m_LocalScale: {x: 32.25909, y: 32.5127, z: 18.699429}
+  m_LocalPosition: {x: 45.6, y: 98, z: 721.1}
+  m_LocalScale: {x: 136.38113, y: 32.5127, z: 163.362}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1848395519}
@@ -12882,6 +13316,79 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1475234541}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1369404393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1369404394}
+  - component: {fileID: 1369404396}
+  - component: {fileID: 1369404395}
+  m_Layer: 0
+  m_Name: Mom Taught Me How To Surf
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1369404394
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369404393}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.26034284, z: -0, w: 0.96551627}
+  m_LocalPosition: {x: -76.87, y: -10.35, z: 130.16}
+  m_LocalScale: {x: 18.23, y: 18.23, z: 18.23}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 728428367}
+  m_LocalEulerAnglesHint: {x: 0, y: -30.181, z: 0}
+--- !u!114 &1369404395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369404393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f929117b412794e91c554b8fd43127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voicelineSFX:
+    Guid:
+      Data1: -141847470
+      Data2: 1141323450
+      Data3: 1188923025
+      Data4: 1849073115
+    Path: event:/Voice Lines/Mom Taught Me How To Surf
+--- !u!65 &1369404396
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369404393}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1374761480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14572,6 +15079,79 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577919417}
   m_Mesh: {fileID: 6797559992013963307, guid: 117f799492b454e45b7e5eaea9cb30d8, type: 3}
+--- !u!1 &1584957809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1584957810}
+  - component: {fileID: 1584957812}
+  - component: {fileID: 1584957811}
+  m_Layer: 0
+  m_Name: Dad Loves Rock Climbing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1584957810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584957809}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.26034284, z: -0, w: 0.96551627}
+  m_LocalPosition: {x: -275.5, y: 9.3, z: 564.8}
+  m_LocalScale: {x: 18.23, y: 18.23, z: 18.23}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 728428367}
+  m_LocalEulerAnglesHint: {x: 0, y: -30.181, z: 0}
+--- !u!114 &1584957811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584957809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f929117b412794e91c554b8fd43127, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voicelineSFX:
+    Guid:
+      Data1: 1876955647
+      Data2: 1314785386
+      Data3: 1941564581
+      Data4: -179153279
+    Path: event:/Voice Lines/Dad Loves Rock Climbing
+--- !u!65 &1584957812
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584957809}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1595275471
 GameObject:
   m_ObjectHideFlags: 0
@@ -17208,8 +17788,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.6530191, y: 1, z: 1}
-  m_Center: {x: 0.17349093, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1861381723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18777,6 +19357,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1474214626}
+    - targetCorrespondingSourceObject: {fileID: 4521355006875593709, guid: 3622dcd75fe458c4bb15fb17a754f70d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 216314041}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5279574870465684758, guid: 3622dcd75fe458c4bb15fb17a754f70d,
         type: 3}

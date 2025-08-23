@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{12f742f8-c2e4-4cf1-b08a-f994c8e4dc04}">
+		<property name="assetPath">
+			<value>May's Voice Lines/36-my-ice-cream.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>7.1616666666666671</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{a8a848f9-e133-41bf-addd-cd4e0ae091a4}</destination>
+		</relationship>
+	</object>
+</objects>

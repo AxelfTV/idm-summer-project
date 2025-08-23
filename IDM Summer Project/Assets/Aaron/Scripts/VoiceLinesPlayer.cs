@@ -6,12 +6,18 @@ using FMODUnity;
 public class VoiceLinesPlayer : MonoBehaviour
 {
     public EventReference voicelineSFX;
+    private bool playOnce;
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            RuntimeManager.PlayOneShot(voicelineSFX);
+            if (!playOnce)
+            {
+                RuntimeManager.PlayOneShot(voicelineSFX);
+                playOnce = true;
+            }
+            
         }
     }
 
