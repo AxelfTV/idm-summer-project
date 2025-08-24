@@ -110,6 +110,10 @@ public class CharacterManager : MonoBehaviour
         {
             Die();
         }
+        else if (other.CompareTag("Drop"))
+        {
+            Drop();
+        }
     }
     public void Grab(IHoldable item)
     {
@@ -130,6 +134,7 @@ public class CharacterManager : MonoBehaviour
     }
     public void Drop()
     {
+        if (holding != null) holding.Drop();
         holding = null;
     }
     bool CanHold()

@@ -47,6 +47,12 @@ public class SheepManager : MonoBehaviour, IHoldable
     {
         state.Throw();
     }
+    public void Drop()
+    {
+        state.Exit();
+        state = new SheepIdle(stats);
+        state.Enter();
+    }
     public GameObject GetGameObject()
     {
         return gameObject;

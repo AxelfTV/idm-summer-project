@@ -30,6 +30,12 @@ public class BasicHoldable : MonoBehaviour, IHoldable
 		direction.Normalize();
         rb.AddForce((Vector3.up + direction).normalized * forwardForce, ForceMode.Impulse);
     }
+    public void Drop()
+    {
+        gameObject.layer = 6;
+        rb.isKinematic = false;
+        rb.velocity = Vector3.zero;
+    }
     private void FixedUpdate()
     {
         rb.AddForce(Vector3.down * downForce, ForceMode.Acceleration);

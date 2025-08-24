@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4840551083342294296}
   m_Layer: 0
   m_Name: Falling Obstacle
-  m_TagString: Death
+  m_TagString: Drop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

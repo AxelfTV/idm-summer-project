@@ -16,6 +16,7 @@ TagManager:
   - Sheep
   - CamTrig
   - Death
+  - Drop
   layers:
   - Default
   - TransparentFX
