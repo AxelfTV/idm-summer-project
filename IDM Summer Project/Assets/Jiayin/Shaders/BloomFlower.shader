@@ -109,8 +109,8 @@ Shader "Custom/BloomFlower"
             Varyings vert(Attributes IN)
             {
                 Varyings OUT;
-                float GrowHeightMix=-IN.positionOS.y*0.1;
-                IN.positionOS.xz = IN.positionOS.xz*(saturate(GrowHeightMix+_GrowFactor*16));     
+              //  float GrowHeightMix=-IN.positionOS.y*0.1;
+             //   IN.positionOS.xz = IN.positionOS.xz*(saturate(GrowHeightMix+_GrowFactor*16));     
                 
                 float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz*0.1);       
                 float3 BlendVector=normalize(positionWS-_PlayerPos); //player interact direction
@@ -191,6 +191,14 @@ Pass
 #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
         CBUFFER_START(UnityPerMaterial)
         float  _GrowFactor;
+                         float  _MovingSpeed;
+                float _MovingRange;
+                float3 _MovinDirct;
+                                //Player interact
+                float3 _PlayerPos;
+                float _MaxBlendRange;
+                float _BlendSize;
+                float _SheepPos;
 CBUFFER_END
 
     struct Attributes
@@ -208,8 +216,15 @@ CBUFFER_END
     {
         Varyings OUT;
 
-        float GrowHeightMix=-IN.positionOS.y*0.1;
-        IN.positionOS.xz = IN.positionOS.xz*(saturate(GrowHeightMix+_GrowFactor*16));  
+      //  float GrowHeightMix=-IN.positionOS.y*0.1;
+      //  IN.positionOS.xz = IN.positionOS.xz*(saturate(GrowHeightMix+_GrowFactor*16));  
+        float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz*0.1);       
+      float3 BlendVector=normalize(positionWS-_PlayerPos); //player interact direction
+     BlendVector.y=0;
+    float BlendFactor=1-min(pow(distance(_PlayerPos,positionWS),0.3),_MaxBlendRange)*(1/_MaxBlendRange);//player interact amount
+                
+    IN.positionOS.xyz=IN.positionOS.xyz+sin(_Time.y*_MovinDirct.xyz*_MovingSpeed)*_MovingRange*IN.positionOS.y;//apply wind
+    
         OUT.positionCS = TransformObjectToHClip(IN.positionOS.xyz);
         return OUT;
     }
@@ -236,6 +251,14 @@ Pass
 
     CBUFFER_START(UnityPerMaterial)
         float  _GrowFactor;
+                 float  _MovingSpeed;
+                float _MovingRange;
+                float3 _MovinDirct;
+                                //Player interact
+                float3 _PlayerPos;
+                float _MaxBlendRange;
+                float _BlendSize;
+                float _SheepPos;
     CBUFFER_END
 
     struct Attributes
@@ -254,8 +277,14 @@ Pass
     Varyings vert(Attributes IN)
     {
         Varyings OUT;
-       float GrowHeightMix=-IN.positionOS.y*0.1;
-        IN.positionOS.xz = IN.positionOS.xz*(saturate(GrowHeightMix+_GrowFactor*16));  
+      // float GrowHeightMix=-IN.positionOS.y*0.1;
+     //   IN.positionOS.xz = IN.positionOS.xz*(saturate(GrowHeightMix+_GrowFactor*16));  
+      float3 positionWS = TransformObjectToWorld(IN.positionOS.xyz*0.1);       
+      float3 BlendVector=normalize(positionWS-_PlayerPos); //player interact direction
+     BlendVector.y=0;
+    float BlendFactor=1-min(pow(distance(_PlayerPos,positionWS),0.3),_MaxBlendRange)*(1/_MaxBlendRange);//player interact amount
+                
+    IN.positionOS.xyz=IN.positionOS.xyz+sin(_Time.y*_MovinDirct.xyz*_MovingSpeed)*_MovingRange*IN.positionOS.y;//apply wind
         OUT.positionCS = TransformObjectToHClip(IN.positionOS.xyz);
         
         OUT.normalWS = TransformObjectToWorldNormal(IN.normalOS);
