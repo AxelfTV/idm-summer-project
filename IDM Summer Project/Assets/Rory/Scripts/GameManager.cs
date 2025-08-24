@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 public class GameManager : MonoBehaviour
 {
     public Checkpoint currentCheckPoint = null;
+    public EventReference polaroidSound;
     [SerializeField] Animator fade;
     // Start is called before the first frame update
     void Start()
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
     IEnumerator PolaroidSequence()
     {
         if (fade != null) fade.Play("Fade Out Level");//Fade out
+        RuntimeManager.PlayOneShot(polaroidSound);
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
