@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Polaroid : MonoBehaviour
 {
+    [SerializeField] GameObject image;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +14,7 @@ public class Polaroid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        image.transform.rotation = image.transform.rotation * Quaternion.Euler(0, 60 * Time.deltaTime, 0);
     }
     void Pickup()
     {
