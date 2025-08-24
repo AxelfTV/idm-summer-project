@@ -42,6 +42,11 @@ Material:
     - _FoamDistance: 0.88
     - _FoamSpeed: 0.24
     - _FoamStrength: 0.33
+    - _InteractRange: 4.85
+    - _RippleRange: 4.91
+    - _RippleSize: 7.7
+    - _RippleSpeed: 11.2
+    - _RippleStrength: 0.86
     - _ShadowThreshold: 0.25
     - _StylishShadow: 0.5
     - _WeaveStrength: 5

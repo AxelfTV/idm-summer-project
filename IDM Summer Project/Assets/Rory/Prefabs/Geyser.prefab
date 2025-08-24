@@ -72,6 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 30
   period: 3
+  maxStartDelay: 3
   geyserAnimator: {fileID: 5262688590819718205}
   geyserIdleSFX: {fileID: 8025057865112703705}
 --- !u!95 &5262688590819718205

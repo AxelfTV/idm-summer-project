@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 405856906345518045}
   - component: {fileID: 2300193640438636362}
   - component: {fileID: 5476992467819235219}
+  - component: {fileID: 426379714243143629}
   m_Layer: 3
   m_Name: Bubble
   m_TagString: Untagged
@@ -125,3 +126,16 @@ MonoBehaviour:
       Data3: -999090033
       Data4: -1807702980
     Path: event:/SFX/Level 1/Bubble SFX
+--- !u!114 &426379714243143629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4607653863451024045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 514ff3798c11a9644ad11c789ffff368, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Life: 0

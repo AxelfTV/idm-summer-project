@@ -21,7 +21,10 @@ Properties
         _FoamStrength("FoamStrength",float)=0.2
 
         //interact
-        
+         _RippleStrength("RippleStrength",float)=1
+        _RippleSpeed("RippleSpeed",float)=0
+        _RippleRange("RippleRange",float)=1
+        _RippleSize("RippleSize",float)=1
     }
     SubShader
     {
@@ -83,6 +86,13 @@ Properties
                 float _FoamDistance;
                 float _FoamCutoff;
                 float _FoamStrength;
+
+                //interact
+                float3 _SurfBoardPos;
+                 float  _RippleStrength;
+                float _RippleRange;
+                float _RippleSpeed;
+                float  _RippleSize;
             CBUFFER_END
 
             TEXTURE2D(_MainTex); SAMPLER(sampler_MainTex);
@@ -212,6 +222,15 @@ float3 GerstnerWaves_float(float3 position, float steepness, float wavelength, f
                  //fresnel
                 float fresnel = pow(1.0 - saturate(dot(IN.normalWS, viewDir)), 8); 
                 waterColor.rgb = lerp(waterColor.rgb, _Color.rgb, fresnel);
+
+
+                //interact
+                float ripplePlane=(distance(_SurfBoardPos.xz,IN.positionWS.xz)-_RippleRange);
+                float waveMask=sin(ripplePlane*_RippleStrength*_RippleSize*(1-saturate(ripplePlane))-_Time.y*_RippleSpeed);
+                waveMask=waveMask*(1-saturate(ripplePlane));
+                float waveFoam=step(0.5, waveMask* distortFoam);
+//return float4( waveFoam.xxx,1);
+                waterColor.rgb+=waveFoam;
                 return half4(waterColor.rgb ,1);
 
                 half3 albedo = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, IN.uv).rgb*_Color;
