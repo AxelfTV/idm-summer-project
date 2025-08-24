@@ -41,7 +41,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FadeDistance: 54.59
+    - _FadeDistance: 28
     - _FoamCutoff: 0.5
     - _FoamDistance: 1
     - _FoamSpeed: 1
