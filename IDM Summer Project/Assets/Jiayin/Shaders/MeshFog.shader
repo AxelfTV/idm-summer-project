@@ -16,6 +16,8 @@ Properties
         _FadeDistance("Fade Distance", Float) = 10.0
         _WeaveStrength("Weave Strength",float)=1
 
+        _FogCut("FogCut",float)=0.5
+
 //foam
         _FoamSpeed("FoamSpeed",float)=1
         _FoamDistance("FoamDistance",float)=1
@@ -91,6 +93,8 @@ Properties
                 float _FoamCutoff;
                 float _FoamStrength;
                 //interact objects
+
+                float _FogCut;
                      
                 float4 _WaterNormal_ST;
             CBUFFER_END
@@ -197,13 +201,14 @@ float3 GerstnerWaves_float(float3 position, float steepness, float wavelength, f
                 float3 viewDir = normalize(_WorldSpaceCameraPos.xyz - IN.positionWS);
       
                 float2 uv=IN.screenUV.xy/IN.screenUV.w;
-                float wavenoise= FBMvalueNoise(IN.uv*50+_Time.y*0.5)*2-1;
+                float wavenoise= FBMvalueNoise(IN.uv*30+_Time.y*0.2);
+                wavenoise*=_FogCut;
                 float depth=SampleSceneDepth(uv);                
                 float eyedepth=LinearEyeDepth(depth,_ZBufferParams);
     
                 float Waterdepth=1-saturate((eyedepth-IN.screenUV.w)/_FadeDistance);
                 //mix water color
-                float4 waterColor = float4(1,1,1,1);
+                float4 waterColor =float4( wavenoise.xxx,1);
                 waterColor.a=(1-Waterdepth)*0.5;
 
                 float3 WaterSurface = SAMPLE_TEXTURE2D(_WaterSurface, sampler_WaterSurface, DistortUV_float(IN.uv,1)).rgb;
@@ -247,7 +252,7 @@ float3 GerstnerWaves_float(float3 position, float steepness, float wavelength, f
                 float shadow=step(0.4,NdotL*shadowAtten);
 
                 //apply light
-                waterColor.rgb+=shadow*_LightColor;
+                waterColor.rgb+=_LightColor;
                 return float4(waterColor);
 
             }
@@ -255,9 +260,9 @@ float3 GerstnerWaves_float(float3 position, float steepness, float wavelength, f
         }
 
         // 阴影投射
-        UsePass "Universal Render Pipeline/Lit/DepthOnly"
-        UsePass "Universal Render Pipeline/Lit/DepthNormals"
-        UsePass "Universal Render Pipeline/Lit/ShadowCaster"
+        // UsePass "Universal Render Pipeline/Lit/DepthOnly"
+        // UsePass "Universal Render Pipeline/Lit/DepthNormals"
+        // UsePass "Universal Render Pipeline/Lit/ShadowCaster"
 
     }
 }
