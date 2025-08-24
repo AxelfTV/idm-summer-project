@@ -21,18 +21,21 @@ public class BubblePlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (burst && mat.Life + Time.deltaTime * 2 < 1) mat.Life += Time.deltaTime * 2;
+        if (burst && mat.Life + Time.deltaTime * 2 < 1) mat.Life += Time.deltaTime * 4;
     }
     protected virtual void OnPlayerStand()
     {
         spawner.OnPlatformBurst();
-        Burst();
+        StartCoroutine(Burst());
     }
-    void Burst()
+    IEnumerator Burst()
     {
-        Destroy(gameObject, 0.5f);
         RuntimeManager.PlayOneShot(bubbleSound);
+        yield return new WaitForSeconds(0.3f);
         burst = true;
+        Destroy(gameObject, 0.25f);
+        
+        
     }
     private void OnCollisionEnter(Collision collision)
     {

@@ -10972,6 +10972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentCheckPoint: {fileID: 0}
+  fade: {fileID: 852617296}
 --- !u!114 &1043974407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12020,7 +12021,7 @@ PrefabInstance:
     - target: {fileID: 3309445120397924380, guid: 4e1e73d55689dc24a9801658fd673e28,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.3
       objectReference: {fileID: 0}
     - target: {fileID: 3309445120397924380, guid: 4e1e73d55689dc24a9801658fd673e28,
         type: 3}
@@ -12841,6 +12842,12 @@ GameObject:
 --- !u!4 &1210479199 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7110689308563430099, guid: 0d01a36ae6a7ff749a06461e0b188c40,
+    type: 3}
+  m_PrefabInstance: {fileID: 1210479197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1210479200 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9118272784132515549, guid: 0d01a36ae6a7ff749a06461e0b188c40,
     type: 3}
   m_PrefabInstance: {fileID: 1210479197}
   m_PrefabAsset: {fileID: 0}
@@ -18051,7 +18058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db3eab2723ed2e438bb0df7a6439b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rain: {fileID: 0}
+  rain: {fileID: 1210479200}
 --- !u!65 &1848395523
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -18094,7 +18101,7 @@ PrefabInstance:
     - target: {fileID: 3309445120397924380, guid: 4e1e73d55689dc24a9801658fd673e28,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -18.60301
+      value: -18.59
       objectReference: {fileID: 0}
     - target: {fileID: 3309445120397924380, guid: 4e1e73d55689dc24a9801658fd673e28,
         type: 3}

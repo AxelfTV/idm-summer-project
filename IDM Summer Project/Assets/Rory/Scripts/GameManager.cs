@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public Checkpoint currentCheckPoint = null;
+    [SerializeField] Animator fade;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour
     }
     public void OnPolaroid()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(PolaroidSequence());
     }
     public void LevelRestart()
     {
@@ -27,16 +28,29 @@ public class GameManager : MonoBehaviour
     }
     public void OnPlayerDeath()
     {
-        if(currentCheckPoint != null)
+        StartCoroutine(PlayerDeathSequence()); 
+    }
+    IEnumerator PlayerDeathSequence()
+    {
+        if (fade != null) fade.Play("Fade Out Level");//Fade out
+        yield return new WaitForSeconds(1);
+        if (currentCheckPoint != null)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             player.transform.position = currentCheckPoint.transform.position;
             CameraTrigger.ResetAllCams();
             currentCheckPoint.camTrig.SwapCams();
+            if (fade != null) fade.Play("Fade In Level");//Fade in
         }
         else
         {
             LevelRestart();
         }
+    }
+    IEnumerator PolaroidSequence()
+    {
+        if (fade != null) fade.Play("Fade Out Level");//Fade out
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
