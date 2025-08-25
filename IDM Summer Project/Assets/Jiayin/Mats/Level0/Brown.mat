@@ -13,7 +13,8 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _RECEIVEDECAL_ON
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _RECEIVEDECAL
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -35,7 +36,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _GlossyAmount: 0
-    - _HeightFactor: 0.58
+    - _HeightFactor: 0
     - _HeightMove: 0
     - _OutLineBlend: 1
     - _ReceiveDecal: 1
