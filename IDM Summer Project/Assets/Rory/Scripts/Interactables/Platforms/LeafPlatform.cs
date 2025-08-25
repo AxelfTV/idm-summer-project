@@ -9,10 +9,15 @@ public class LeafPlatform : MonoBehaviour
     [NonSerialized] public float lifeSpan = 5;
 
     GameObject player = null;
+    [SerializeField] bool platform = true;
+    [SerializeField] float rotationSpeed = 10;
+    Quaternion randomRot; 
     // Start is called before the first frame update
     void Start()
     {
+        randomRot = UnityEngine.Random.rotation;
         StartCoroutine(DestroyTimer());
+        if(platform) transform.rotation = Quaternion.Euler(0, UnityEngine.Random.Range(0,360), 0);
     }
     IEnumerator DestroyTimer()
     {
@@ -31,6 +36,11 @@ public class LeafPlatform : MonoBehaviour
     void FixedUpdate()
     {
         transform.position -= Vector3.up * fallSpeed * Time.fixedDeltaTime;
+
+        if (!platform)
+        {
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, transform.rotation * randomRot, Time.fixedDeltaTime * rotationSpeed);
+        }
     }
     private void OnCollisionEnter(Collision collision)
     {
