@@ -33,7 +33,7 @@ Shader "Unlit/WindRing"
             ZWrite On
             ZTest LEqual
             Blend SrcAlpha OneMinusSrcAlpha
-            Cull Off
+         //   Cull Off
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
