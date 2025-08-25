@@ -252,7 +252,7 @@ float3 GerstnerWaves_float(float3 position, float steepness, float wavelength, f
                 float shadow=step(0.4,NdotL*shadowAtten);
 
                 //apply light
-                waterColor.rgb+=_LightColor;
+                waterColor.rgb*=_LightColor;
                 return float4(waterColor);
 
             }
