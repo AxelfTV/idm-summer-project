@@ -1124,6 +1124,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockableObjectComponent: {fileID: 136559559683108537}
+  beanstalkSound:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  mayVoiceLine:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  sparkleAnimator: {fileID: 0}
 --- !u!114 &136559559683108537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1670,7 +1685,7 @@ GameObject:
   - component: {fileID: 2756087602596057120}
   - component: {fileID: 1334183158856941281}
   - component: {fileID: 2773791613815296070}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: Plane.031
   m_TagString: Untagged
   m_Icon: {fileID: 0}
