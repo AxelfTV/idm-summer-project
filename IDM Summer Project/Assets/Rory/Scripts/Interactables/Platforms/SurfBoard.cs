@@ -36,13 +36,14 @@ public class SurfBoard : MonoBehaviour
         active = false;
         onBeach = false;
         transform.position = startPos;
+        StopCoroutine("LifeSpan");
         GetComponent<Rigidbody>().isKinematic = false;
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
-            if (!active) StartCoroutine(LifeSpan(lifeSpan));
+            if (!active) StartCoroutine("LifeSpan", lifeSpan);
             active = true;
             collision.transform.parent = transform;
             player = collision.gameObject;
