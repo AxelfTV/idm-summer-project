@@ -41,19 +41,19 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _FadeDistance: 28
+    - _FadeDistance: 12.75
     - _FoamCutoff: 0.5
     - _FoamDistance: 1
     - _FoamSpeed: 1
     - _FoamStrength: 0.2
-    - _FogCut: 1.43
+    - _FogCut: 2.6
     - _NormalStrength: 0.5
     - _ShadowThreshold: 0.5
     - _StylishShadow: 0.5
     - _WeaveStrength: 2.9
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _LightColor: {r: 0.1509505, g: 0.55259496, b: 0.7207546, a: 1}
+    - _Color: {r: 1, g: 0.41198504, b: 0, a: 1}
+    - _LightColor: {r: 1, g: 0.8442004, b: 0.76792455, a: 1}
     - _ShadowColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _ShadowColor2: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
     - _WaterColor: {r: 0, g: 0, b: 1, a: 1}
