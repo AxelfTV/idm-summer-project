@@ -158,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4221894358823955818}
   - component: {fileID: 2295002203124199816}
-  - component: {fileID: 3058630875983304558}
+  - component: {fileID: 3041039416772197842}
   m_Layer: 6
   m_Name: Voice Line Trigger
   m_TagString: Untagged
@@ -202,7 +202,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 2, z: 0.1}
   m_Center: {x: 0, y: -0.87, z: 0}
---- !u!114 &3058630875983304558
+--- !u!114 &3041039416772197842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2693568793870845251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41f929117b412794e91c554b8fd43127, type: 3}
+  m_Script: {fileID: 11500000, guid: 464f6ee7e32c04649895d48430c39dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   voicelineSFX:
@@ -221,6 +221,7 @@ MonoBehaviour:
       Data3: -1904228195
       Data4: -1420234783
     Path: event:/Voice Lines/I love Red
+  subtitleObjectName: Dialogue 3
 --- !u!1001 &1764721928829965976
 PrefabInstance:
   m_ObjectHideFlags: 0

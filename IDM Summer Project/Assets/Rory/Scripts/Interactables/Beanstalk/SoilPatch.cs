@@ -9,6 +9,7 @@ public class SoilPatch : LockMechanism
     [SerializeField] public EventReference mayVoiceLine;
     [SerializeField] public Animator sparkleAnimator;
     [SerializeField] public GameObject poofCloudVFX;
+    [SerializeField] public GameObject subtitles;
 
     private const string sparkleTrigger = "PlaySparkle";
 
@@ -42,6 +43,7 @@ public class SoilPatch : LockMechanism
         yield return new WaitForSeconds(0.5f);
 
         Unlock();
+        subtitles.SetActive(true);
         RuntimeManager.PlayOneShot(beanstalkSound);
         RuntimeManager.PlayOneShot(mayVoiceLine);
         sparkleAnimator.SetTrigger(sparkleTrigger);

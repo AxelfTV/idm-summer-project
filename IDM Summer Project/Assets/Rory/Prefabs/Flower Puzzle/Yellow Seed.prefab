@@ -158,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3718602705564390137}
   - component: {fileID: 3590527095577569864}
-  - component: {fileID: 5956824963883109128}
+  - component: {fileID: 189937272254264564}
   m_Layer: 6
   m_Name: Voice Line Trigger
   m_TagString: Untagged
@@ -202,7 +202,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 2, z: 0.1}
   m_Center: {x: 0, y: -0.87, z: 0}
---- !u!114 &5956824963883109128
+--- !u!114 &189937272254264564
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8315301510320454864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41f929117b412794e91c554b8fd43127, type: 3}
+  m_Script: {fileID: 11500000, guid: 464f6ee7e32c04649895d48430c39dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   voicelineSFX:
@@ -221,6 +221,7 @@ MonoBehaviour:
       Data3: -1109986396
       Data4: -654933590
     Path: event:/Voice Lines/I like Yellow
+  subtitleObjectName: Dialogue 4
 --- !u!1001 &2836371370735085185
 PrefabInstance:
   m_ObjectHideFlags: 0

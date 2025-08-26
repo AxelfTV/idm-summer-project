@@ -158,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4273986448486898638}
   - component: {fileID: 1607688470564748501}
-  - component: {fileID: 6695049561456427810}
+  - component: {fileID: 8622891030000901519}
   m_Layer: 6
   m_Name: Voice Line Trigger
   m_TagString: Untagged
@@ -202,7 +202,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1, y: 2, z: 0.1}
   m_Center: {x: 0, y: -0.87, z: 0}
---- !u!114 &6695049561456427810
+--- !u!114 &8622891030000901519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9071924910949413523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41f929117b412794e91c554b8fd43127, type: 3}
+  m_Script: {fileID: 11500000, guid: 464f6ee7e32c04649895d48430c39dec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   voicelineSFX:
@@ -221,6 +221,7 @@ MonoBehaviour:
       Data3: 1706718107
       Data4: 1244399628
     Path: event:/Voice Lines/I don't like Blue
+  subtitleObjectName: Dialogue 2
 --- !u!1001 &7001166300651971179
 PrefabInstance:
   m_ObjectHideFlags: 0
