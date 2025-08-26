@@ -17,6 +17,9 @@ Shader "TWShader/Skybox"
     _CloudColor2("CloudColor2",COLOR)=(1,1,1,1)
     _CloudCut("CloudCut",range(0,1))=0.5
     _Fuzziness("Fuzziness",float)=1
+
+    _StarStrength("StarStrength",range(0,1))=1
+    [NoScaleOffset] _StarMap ("StarMap", 2D) = "white" {}
     }
     SubShader
     {
@@ -69,6 +72,8 @@ TEXTURE2D(_CloudTex);        SAMPLER(sampler_CloudTex);
 TEXTURE2D(_CloudNoise1);        SAMPLER(sampler_CloudNoise1);
 TEXTURE2D(_CloudNoise2);        SAMPLER(sampler_CloudNoise2);
 TEXTURE2D(_Cloudflow);        SAMPLER(sampler_Cloudflow);
+
+TEXTURE2D(_StarMap );           SAMPLER(sampler_StarMap);
             float3 _SunDir, _MoonDir;
             float _NoiseScale;
             float  _CloudClampmut;
@@ -78,6 +83,7 @@ TEXTURE2D(_Cloudflow);        SAMPLER(sampler_Cloudflow);
             float4  _CloudColor2;
             float _CloudCut;
             float _Fuzziness;
+            float _StarStrength;
             float4 Fragment (v2f IN) : SV_TARGET
             {
                 float3 viewDir = normalize(IN.viewDirWS);
@@ -136,6 +142,9 @@ TEXTURE2D(_Cloudflow);        SAMPLER(sampler_Cloudflow);
 // float3 CloudColor=lerp(_CloudColor1,_CloudColor2,IN.uv.y);
 
                 float3 skyColor = sunZenithColor + vzMask * viewZenithColor + svMask * sunViewColor;
+                //stars
+                float star=SAMPLE_TEXTURE2D(_StarMap ,sampler_StarMap,IN.uv+_Time.y*0.01);
+                skyColor=lerp(skyColor,float3(1,1,1),star);
          //       skyColor=lerp(skyColor,CloudColor.xyz,finalCloud);
                 float3 col = skyColor;
                 //float3 col = saturate(float3(step(0.9,dot(_SunDir, viewDir)), step(0.9,dot(_MoonDir, viewDir)), 0));
