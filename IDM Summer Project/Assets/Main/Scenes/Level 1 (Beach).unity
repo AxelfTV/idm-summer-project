@@ -128,6 +128,142 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1279226042}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2575471
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1937994980}
+    m_Modifications:
+    - target: {fileID: 988969355452227924, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eebacbb3500fccd46b84ede738379e32,
+        type: 3}
+    - target: {fileID: 4612963359195826465, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_Name
+      value: PolaroidUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3e74c6394413e4f4bbab7efed0b92587, type: 3}
+--- !u!224 &2575472 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5763699878677557703, guid: 3e74c6394413e4f4bbab7efed0b92587,
+    type: 3}
+  m_PrefabInstance: {fileID: 2575471}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2575473 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4612963359195826465, guid: 3e74c6394413e4f4bbab7efed0b92587,
+    type: 3}
+  m_PrefabInstance: {fileID: 2575471}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3720869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20667,7 +20803,6 @@ Transform:
   - {fileID: 1369404394}
   - {fileID: 1584957810}
   - {fileID: 1036615558}
-  - {fileID: 899800879}
   - {fileID: 788925403}
   m_Father: {fileID: 934395844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26212,80 +26347,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62b0e5e5778c8c74a9f310c3cd1fcce6, type: 3}
---- !u!1 &899800878
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 899800879}
-  - component: {fileID: 899800881}
-  - component: {fileID: 899800880}
-  m_Layer: 0
-  m_Name: My Icecream
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &899800879
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899800878}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.106322065, z: -0, w: 0.9943318}
-  m_LocalPosition: {x: 3.4, y: 124.2, z: 618.4}
-  m_LocalScale: {x: 2.418815, y: 23.689985, z: 57.95117}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 728428367}
-  m_LocalEulerAnglesHint: {x: 0, y: -12.207, z: 0}
---- !u!114 &899800880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899800878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41f929117b412794e91c554b8fd43127, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  voicelineSFX:
-    Guid:
-      Data1: 1234572581
-      Data2: 1196439914
-      Data3: -1329048661
-      Data4: 869637622
-    Path: event:/Voice Lines/My Icecream
-  subtitle: {fileID: 35215072}
---- !u!65 &899800881
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899800878}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &902785564
 GameObject:
   m_ObjectHideFlags: 0
@@ -30954,12 +31015,13 @@ MonoBehaviour:
   currentCheckPoint: {fileID: 0}
   polaroidSound:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 1234572581
+      Data2: 1196439914
+      Data3: -1329048661
+      Data4: 869637622
+    Path: event:/Voice Lines/My Icecream
   fade: {fileID: 1476876772}
+  polaroidUI: {fileID: 2575473}
 --- !u!114 &1043974407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53780,7 +53842,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -53798,6 +53860,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2029013586}
+  - {fileID: 2575472}
   - {fileID: 1476876771}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
