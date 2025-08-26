@@ -6,6 +6,7 @@ using FMODUnity;
 public class VoiceLinesPlayer : MonoBehaviour
 {
     public EventReference voicelineSFX;
+    public GameObject subtitle;
     private bool playOnce;
 
     public void OnTriggerEnter(Collider other)
@@ -15,6 +16,7 @@ public class VoiceLinesPlayer : MonoBehaviour
             if (!playOnce)
             {
                 RuntimeManager.PlayOneShot(voicelineSFX);
+                subtitle.SetActive(true);
                 playOnce = true;
             }
             

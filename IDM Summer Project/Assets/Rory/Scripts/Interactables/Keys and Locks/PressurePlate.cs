@@ -10,6 +10,8 @@ public class PressurePlate : LockMechanism
     public EventReference windSound;
     public bool canPlaySound;
 
+    public GameObject subtitles;
+
     public float pressDepth = 0.1f; 
     public float pressSpeed = 5f;   
     private Vector3 startPos;       
@@ -33,6 +35,10 @@ public class PressurePlate : LockMechanism
             if (!canPlaySound)
             {
                 RuntimeManager.PlayOneShot(windSound);
+                if (subtitles != null)
+                {
+                    subtitles.SetActive(true);
+                }
             }
             canPlaySound = true;
 

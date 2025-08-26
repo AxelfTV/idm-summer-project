@@ -29,6 +29,11 @@ public class TutorialCutsceneTrigger : MonoBehaviour
     public GameObject WoofMesh;
     public GameObject WoofClone;
 
+    [Header("Subtitles")]
+    public GameObject toggleSubtitle;
+    public GameObject bellSub;
+    public GameObject baaSub;
+
 
     void Start()
     {
@@ -151,5 +156,20 @@ public class TutorialCutsceneTrigger : MonoBehaviour
         {
             playerAnimator.SetBool("isBell", false);
         }
+    }
+
+    public void toggleSubs()
+    {
+        toggleSubtitle.SetActive(true);
+    }
+
+    public void toggleBell()
+    {
+        bellSub.SetActive(true);
+    }
+
+    public void toggleBaa()
+    {
+        baaSub.SetActive(true);
     }
 }

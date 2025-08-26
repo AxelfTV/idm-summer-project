@@ -15,6 +15,9 @@ public class PressurePlateCutsceneTrigger : MonoBehaviour
     [Header("Toggle Camera")]
     public GameObject gameCamera;
 
+    [Header("Subtitles")]
+    public GameObject toggleSubtitle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +62,11 @@ public class PressurePlateCutsceneTrigger : MonoBehaviour
     public void toggleCameraOff()
     {
         gameCamera.SetActive(false);
+    }
+
+    public void toggleSub()
+    {
+        toggleSubtitle.SetActive(true);
     }
 
 }
