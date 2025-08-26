@@ -59,6 +59,7 @@ public class FlowerPot : MonoBehaviour
             if (poofVFX != null)
             {
                 GameObject vfx = Instantiate(poofVFX, transform.position + Vector3.up, Quaternion.Euler(-90f, 0f, 0f));
+                visualCue.SetActive(true);
                 Destroy(vfx, 3f);
             }
         }
