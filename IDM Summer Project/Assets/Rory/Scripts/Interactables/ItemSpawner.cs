@@ -8,6 +8,7 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] GameObject toSpawn;
     [SerializeField] float destroyRadius;
     [SerializeField] public EventReference spawnSFX;
+    [SerializeField] public GameObject poofVFX;
     GameObject current = null;
     bool firstSpawn = true;
     // Start is called before the first frame update
@@ -39,6 +40,8 @@ public class ItemSpawner : MonoBehaviour
         {
             firstSpawn = false; // after first spawn, disable the flag
         }
+        GameObject cloudInstance = Instantiate(poofVFX, transform.position, Quaternion.Euler(-90f, 0f, 0f));
+        Destroy(cloudInstance, 3f);
         current = Instantiate(toSpawn, transform.position + Vector3.up, Quaternion.identity);
     }
 }
