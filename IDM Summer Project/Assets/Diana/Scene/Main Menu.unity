@@ -3243,7 +3243,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3abdb6db2b45a3e499e419999875b862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playButtonSound: {fileID: 0}
+  playButtonSound:
+    Guid:
+      Data1: 1249864809
+      Data2: 1096512843
+      Data3: -1185267571
+      Data4: 221672150
+    Path: event:/SFX/Menu/Play Button SFX
 --- !u!1 &1534060946
 GameObject:
   m_ObjectHideFlags: 0

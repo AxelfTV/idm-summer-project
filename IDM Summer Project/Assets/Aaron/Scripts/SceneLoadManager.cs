@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class SceneLoadManager : MonoBehaviour
     private PlayerInput controls;
 
     bool jumpPressed;
-    [SerializeField] AudioSource playButtonSound;
+    [SerializeField] EventReference playButtonSound;
     private void Awake()
     {
         controls = new PlayerInput();
@@ -41,12 +42,7 @@ public class SceneLoadManager : MonoBehaviour
     }
     public void OnPlayClick()
     {
-        StartCoroutine(PlayButtonAudio());
-    }
-    IEnumerator PlayButtonAudio()
-    {
-        playButtonSound.Play();
-        yield return new WaitForSeconds(playButtonSound.clip.length);
+        FMODUnity.RuntimeManager.PlayOneShot(playButtonSound);
         NextScene();
     }
     public void QuitGame()
