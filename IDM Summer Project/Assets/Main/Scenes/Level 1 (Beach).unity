@@ -20408,7 +20408,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeDuration: 0.5
-  stayDuration: 1
+  stayDuration: 3
 --- !u!114 &721145437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25370,7 +25370,7 @@ MonoBehaviour:
     type: 3}
   firePoint: {fileID: 1262051133}
   shootForce: 5
-  isInTriggerZone: 1
+  isInTriggerZone: 0
   cannonAnimator: {fileID: 1695072263}
   shootSound:
     Guid:
@@ -51612,7 +51612,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 1.21, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1848478029
 GameObject:
