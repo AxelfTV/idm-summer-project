@@ -31022,6 +31022,7 @@ MonoBehaviour:
     Path: event:/Voice Lines/My Icecream
   fade: {fileID: 1476876772}
   polaroidUI: {fileID: 2575473}
+  player: {fileID: 1210479198}
 --- !u!114 &1043974407
 MonoBehaviour:
   m_ObjectHideFlags: 0

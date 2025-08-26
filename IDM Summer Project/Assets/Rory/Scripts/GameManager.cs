@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public EventReference polaroidSound;
     [SerializeField] Animator fade;
     [SerializeField] GameObject polaroidUI;
-    GameObject player;
+    [SerializeField] GameObject player;
 
     bool polaroidCollected;
     bool jumpPressed;
@@ -38,8 +38,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
-        player = GameObject.FindGameObjectWithTag("Player");
-        polaroidUI.SetActive(false);
+        if(polaroidUI != null) polaroidUI.SetActive(false);
     }
 
     // Update is called once per frame
@@ -53,7 +52,8 @@ public class GameManager : MonoBehaviour
     }
     public void OnPolaroid()
     {
-        StartCoroutine(PolaroidSequence());
+        if (polaroidUI != null) StartCoroutine(PolaroidSequence());
+        else StartCoroutine(EndLevelSequence());
     }
     public void LevelRestart()
     {
@@ -81,10 +81,10 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator PolaroidSequence()
     {
-        player.GetComponent<InputHandler>().enabled = false;
+        if(player != null)player.GetComponent<InputHandler>().enabled = false;
         //fade in polaroid Ui;
         yield return new WaitForSeconds(0.5f);
-        polaroidUI.SetActive(true);
+        if (polaroidUI != null) polaroidUI.SetActive(true);
         yield return new WaitForSeconds(0.3f);
         RuntimeManager.PlayOneShot(polaroidSound);
         yield return new WaitForSeconds(1);
