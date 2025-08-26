@@ -12,6 +12,7 @@ public class FlowerPot : MonoBehaviour
     [SerializeField] GameObject yellowFlower;
     GameObject currentFlower = null;
     [SerializeField] GameObject poofVFX;
+    [SerializeField] GameObject visualCue;
     [NonSerialized] public PotState state;
     [NonSerialized] public SeedPuzzleManager manager;
 
@@ -64,6 +65,9 @@ public class FlowerPot : MonoBehaviour
         else
         {
             state = PotState.wrong;
+            GameObject vfx = Instantiate(poofVFX, transform.position + Vector3.up, Quaternion.Euler(-90f, 0f, 0f));
+            Destroy(vfx, 3f);
+
         }
 
         manager.CheckPots();
