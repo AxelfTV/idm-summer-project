@@ -17,6 +17,7 @@ TagManager:
   - CamTrig
   - Death
   - Drop
+  - Key
   layers:
   - Default
   - TransparentFX
