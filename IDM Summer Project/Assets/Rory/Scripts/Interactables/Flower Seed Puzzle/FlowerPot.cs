@@ -11,31 +11,33 @@ public class FlowerPot : MonoBehaviour
     [SerializeField] GameObject blueFlower;
     [SerializeField] GameObject yellowFlower;
     GameObject currentFlower = null;
+    [SerializeField] GameObject poofVFX;
     [NonSerialized] public PotState state;
     [NonSerialized] public SeedPuzzleManager manager;
+
     enum SeedType
     {
         red, yellow, blue
     }
-    
-    // Start is called before the first frame update
+
     void Start()
     {
         state = PotState.empty;
-        if(manager == null)
+        if (manager == null)
         {
             Destroy(gameObject);
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
 
     }
+
     void GrowFlower(SeedType seed)
     {
         if (currentFlower != null) return;
+
         switch (seed)
         {
             case SeedType.red:
@@ -48,23 +50,40 @@ public class FlowerPot : MonoBehaviour
                 currentFlower = Instantiate(blueFlower, transform.position + Vector3.up, Quaternion.identity);
                 break;
         }
-        if(seedColour == seed) state = PotState.correct;
-        else state = PotState.wrong;
+
+        // Check if correct
+        if (seedColour == seed)
+        {
+            state = PotState.correct;
+            if (poofVFX != null)
+            {
+                GameObject vfx = Instantiate(poofVFX, transform.position + Vector3.up, Quaternion.Euler(-90f, 0f, 0f));
+                Destroy(vfx, 3f);
+            }
+        }
+        else
+        {
+            state = PotState.wrong;
+        }
+
         manager.CheckPots();
     }
+
     public void ResetFlower()
     {
         state = PotState.empty;
-        if(currentFlower != null)
+        if (currentFlower != null)
         {
             Destroy(currentFlower);
             currentFlower = null;
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         //check if player holding
         if (other.gameObject.layer != 6) return;
+
         if (other.CompareTag("RedSeed"))
         {
             GrowFlower(SeedType.red);
@@ -82,6 +101,7 @@ public class FlowerPot : MonoBehaviour
         }
     }
 }
+
 public enum PotState
 {
     empty, correct, wrong

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Door : MonoBehaviour, IUnlockableObject
 {
     [SerializeField] GameObject door;
+    [SerializeField] Animator rockDoor;
     [SerializeField] bool canClose;
     [SerializeField] int toOpen = 1;
     int locks;
@@ -16,7 +17,7 @@ public class Door : MonoBehaviour, IUnlockableObject
     public void Unlock()
     {
         locks--;
-        if(locks <= 0)door.SetActive(false);
+        if(locks <= 0) rockDoor.SetTrigger("DoorOpen");
     }
     // Start is called before the first frame update
     void Start()

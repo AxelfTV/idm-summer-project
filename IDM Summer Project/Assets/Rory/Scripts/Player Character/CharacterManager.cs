@@ -19,6 +19,8 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] DecalProjector shadowProjector;
     [SerializeField] public EventReference throwSound;
     [SerializeField] public EventReference pickupSound;
+    [SerializeField] public EventReference boostSound;
+    [SerializeField] public EventReference dropSound;
     private void Awake()
     {
         //ignore collisions with sheep
@@ -102,6 +104,7 @@ public class CharacterManager : MonoBehaviour
         {
 			Debug.Log("Glide Ring");
             int direction = Math.Sign(Vector3.Dot(other.transform.position - transform.position, other.transform.parent.forward));
+            RuntimeManager.PlayOneShot(boostSound);
             state.Exit();
 			state = new CharacterGlideBoost(stats, direction * other.transform.parent.forward);
 			state.Enter();
@@ -136,6 +139,7 @@ public class CharacterManager : MonoBehaviour
     {
         if (holding != null) holding.Drop();
         holding = null;
+        RuntimeManager.PlayOneShot(dropSound);
     }
     bool CanHold()
     {
