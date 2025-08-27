@@ -22,7 +22,7 @@ public class CreditsFade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        creditsText1.color = new Color(1,1,1,0);
+        creditsText1.color = new Color(1, 1, 1, 0);
         creditsText2.color = new Color(1, 1, 1, 0);
         StartCoroutine(Timeline());
     }
