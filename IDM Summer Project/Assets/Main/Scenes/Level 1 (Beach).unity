@@ -33908,7 +33908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1148625013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51619,6 +51619,7 @@ GameObject:
   - component: {fileID: 1848395522}
   - component: {fileID: 1848395521}
   - component: {fileID: 1848395520}
+  - component: {fileID: 1848395524}
   m_Layer: 0
   m_Name: Trigger Box
   m_TagString: Untagged
@@ -51738,6 +51739,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.21, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1848395524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848395518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: Player
+  EventReference:
+    Guid:
+      Data1: -498301077
+      Data2: 1303517535
+      Data3: -796510318
+      Data4: -1359722994
+    Path: event:/Music/Level 1/Rain BGM
+  Event: 
+  EventPlayTrigger: 3
+  EventStopTrigger: 4
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &1848478029
 GameObject:
   m_ObjectHideFlags: 0
