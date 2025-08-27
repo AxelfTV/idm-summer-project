@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
         {
             player.transform.position = currentCheckPoint.transform.position;
             CameraTrigger.ResetAllCams();
-            currentCheckPoint.camTrig.SwapCams();
+            if(currentCheckPoint.camTrig != null) currentCheckPoint.camTrig.SwapCams();
             if (fade != null) fade.Play("Fade In Level");//Fade in
         }
         else

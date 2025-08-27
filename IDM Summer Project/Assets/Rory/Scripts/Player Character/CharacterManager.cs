@@ -116,6 +116,7 @@ public class CharacterManager : MonoBehaviour
         else if (other.CompareTag("Drop"))
         {
             Drop();
+            RuntimeManager.PlayOneShot(dropSound);
         }
     }
     public void Grab(IHoldable item)
@@ -139,7 +140,6 @@ public class CharacterManager : MonoBehaviour
     {
         if (holding != null) holding.Drop();
         holding = null;
-        RuntimeManager.PlayOneShot(dropSound);
     }
     bool CanHold()
     {

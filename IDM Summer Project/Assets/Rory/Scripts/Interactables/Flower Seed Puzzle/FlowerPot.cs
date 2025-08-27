@@ -77,6 +77,7 @@ public class FlowerPot : MonoBehaviour
     public void ResetFlower()
     {
         state = PotState.empty;
+        visualCue.SetActive(false);
         if (currentFlower != null)
         {
             Destroy(currentFlower);
