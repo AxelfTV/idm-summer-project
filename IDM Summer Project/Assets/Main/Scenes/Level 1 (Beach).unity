@@ -1464,7 +1464,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u201CMy ice cream.\u201D"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d71319156e8388441be28944d4ab299c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e79820b98845e5349b0ce3abecdc57e2, type: 2}
   m_sharedMaterial: {fileID: 2135029046644727258, guid: d71319156e8388441be28944d4ab299c,
     type: 2}
   m_fontSharedMaterials: []
@@ -1529,7 +1529,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &35215076
@@ -7432,7 +7432,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u201CEW\u201D"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d71319156e8388441be28944d4ab299c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e79820b98845e5349b0ce3abecdc57e2, type: 2}
   m_sharedMaterial: {fileID: 2135029046644727258, guid: d71319156e8388441be28944d4ab299c,
     type: 2}
   m_fontSharedMaterials: []
@@ -7497,7 +7497,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &185258223
@@ -8071,7 +8071,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '*Music plays*'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d71319156e8388441be28944d4ab299c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e79820b98845e5349b0ce3abecdc57e2, type: 2}
   m_sharedMaterial: {fileID: 2135029046644727258, guid: d71319156e8388441be28944d4ab299c,
     type: 2}
   m_fontSharedMaterials: []
@@ -8136,7 +8136,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &202731374
@@ -15594,7 +15594,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u201CPop!\u201D"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d71319156e8388441be28944d4ab299c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e79820b98845e5349b0ce3abecdc57e2, type: 2}
   m_sharedMaterial: {fileID: 2135029046644727258, guid: d71319156e8388441be28944d4ab299c,
     type: 2}
   m_fontSharedMaterials: []
@@ -15659,7 +15659,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &486068965
@@ -20634,7 +20634,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u201CI went to that lighthouse with mum and dad.\u201D"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d71319156e8388441be28944d4ab299c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e79820b98845e5349b0ce3abecdc57e2, type: 2}
   m_sharedMaterial: {fileID: 2135029046644727258, guid: d71319156e8388441be28944d4ab299c,
     type: 2}
   m_fontSharedMaterials: []
@@ -20699,7 +20699,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &721145438
@@ -27983,7 +27983,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u201CI hate crabs\u201D"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d71319156e8388441be28944d4ab299c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e79820b98845e5349b0ce3abecdc57e2, type: 2}
   m_sharedMaterial: {fileID: 2135029046644727258, guid: d71319156e8388441be28944d4ab299c,
     type: 2}
   m_fontSharedMaterials: []
@@ -28048,7 +28048,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &940366068
@@ -28842,7 +28842,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u201CBubbles!\u201D"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d71319156e8388441be28944d4ab299c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e79820b98845e5349b0ce3abecdc57e2, type: 2}
   m_sharedMaterial: {fileID: 2135029046644727258, guid: d71319156e8388441be28944d4ab299c,
     type: 2}
   m_fontSharedMaterials: []
@@ -28907,7 +28907,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &969702683
@@ -29503,7 +29503,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u201CDad loves rockclimbing.\u201D"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d71319156e8388441be28944d4ab299c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e79820b98845e5349b0ce3abecdc57e2, type: 2}
   m_sharedMaterial: {fileID: 2135029046644727258, guid: d71319156e8388441be28944d4ab299c,
     type: 2}
   m_fontSharedMaterials: []
@@ -29568,7 +29568,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &993103919
@@ -54185,7 +54185,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u201CMum taught me how to surf.\u201D"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d71319156e8388441be28944d4ab299c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e79820b98845e5349b0ce3abecdc57e2, type: 2}
   m_sharedMaterial: {fileID: 2135029046644727258, guid: d71319156e8388441be28944d4ab299c,
     type: 2}
   m_fontSharedMaterials: []
@@ -54250,7 +54250,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1943498751
