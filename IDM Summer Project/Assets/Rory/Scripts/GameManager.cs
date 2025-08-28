@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (Input.GetKeyDown(KeyCode.M)) SceneManager.LoadScene(0);
 
         if (jumpPressed && polaroidCollected) StartCoroutine(EndLevelSequence());
 
