@@ -5,6 +5,7 @@ using TMPro;
 public class SubtitleToggle : MonoBehaviour
 {
     private TextMeshProUGUI tmpText;
+    public GameObject subtitleBackground;
     public float fadeDuration = 1f;   // Fade in/out time
     public float stayDuration = 2f;   // How long text stays fully visible
 
@@ -16,6 +17,7 @@ public class SubtitleToggle : MonoBehaviour
     private void OnEnable()
     {
         StartCoroutine(FadeSequence());
+        subtitleBackground.SetActive(true);
     }
 
     private IEnumerator FadeSequence()
