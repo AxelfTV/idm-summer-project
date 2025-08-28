@@ -26,5 +26,6 @@ public class PlayTestEndScreen : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(0);
+        if (Input.GetKeyDown(KeyCode.M)) SceneManager.LoadScene(0);
     }
 }
