@@ -1,61 +1,63 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class CreditsFade : MonoBehaviour
 {
-    [SerializeField] TMP_Text creditsText1;
-    [SerializeField] TMP_Text creditsText2;
-    [SerializeField] float timeUntilStart;
-    [SerializeField] float lifespan;
-    [SerializeField] float fadeTime;
+    [SerializeField] TMP_Text[] creditsTexts;  // Array of texts to fade
+    [SerializeField] float fadeDuration = 1f;   // Fade in/out time
+    [SerializeField] float stayDuration = 2f;   // Time text stays fully visible
 
-    bool fadeIn;
+    private void OnEnable()
+    {
 
-    string[][] names = new string[][]
-    {
-        new string[] {"Voice of May - Asling Healy", "Project Manager & Narrative Lead - Eve Brady"},
-        new string[] {"2D Artist & UI/UX Designer - Diana Petrova", "Technical & 3D Artist - Jiayin Wen"},
-        new string[] {"Unity Developer & Game Designer - Rory Lyons", "Game Designer & Unity Developer - Ming Hei Chan"},
-    };
-    // Start is called before the first frame update
-    void Start()
-    {
-        creditsText1.color = new Color(1, 1, 1, 0);
-        creditsText2.color = new Color(1, 1, 1, 0);
-        StartCoroutine(Timeline());
+        StartCoroutine(FadeCreditsSequence());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator FadeCreditsSequence()
     {
-        if (fadeIn && creditsText1.color.a < 1)
+        foreach (TMP_Text text in creditsTexts)
         {
-            creditsText1.color += new Color(0, 0, 0, 1 * Time.deltaTime / fadeTime);
-            creditsText2.color += new Color(0, 0, 0, 1 * Time.deltaTime / fadeTime);
+            text.gameObject.SetActive(true);
+
+            // Start invisible
+            SetAlpha(text, 0f);
+
+            // Fade in
+            yield return StartCoroutine(FadeText(text, 0f, 1f, fadeDuration));
+
+            // Stay visible
+            yield return new WaitForSeconds(stayDuration);
+
+            // Fade out
+            yield return StartCoroutine(FadeText(text, 1f, 0f, fadeDuration));
+
+            text.gameObject.SetActive(false);
         }
-        else if (!fadeIn && creditsText1.color.a > 0) 
-        {
-            creditsText1.color -= new Color(0, 0, 0, 1 * Time.deltaTime / fadeTime);
-            creditsText2.color -= new Color(0, 0, 0, 1 * Time.deltaTime / fadeTime);
-        } 
+
+
     }
-    IEnumerator Timeline()
+
+    private IEnumerator FadeText(TMP_Text text, float startAlpha, float endAlpha, float duration)
     {
-        yield return new WaitForSeconds(timeUntilStart);
-        
-        for (int i = 0;i < names.GetLength(0); i++)
+        float elapsed = 0f;
+        Color color = text.color;
+
+        while (elapsed < duration)
         {
-            creditsText1.text = names[i][0];
-            creditsText2.text = names[i][1];
-            fadeIn = true;
-            yield return new WaitForSeconds(fadeTime);
-            yield return new WaitForSeconds(lifespan);
-            fadeIn = false;
-            yield return new WaitForSeconds(fadeTime);
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(startAlpha, endAlpha, elapsed / duration);
+            text.color = new Color(color.r, color.g, color.b, alpha);
+            yield return null;
         }
-        
-        fadeIn = false;
+
+        SetAlpha(text, endAlpha);
+    }
+
+    private void SetAlpha(TMP_Text text, float alpha)
+    {
+        Color color = text.color;
+        color.a = alpha;
+        text.color = color;
     }
 }
