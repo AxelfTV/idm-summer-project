@@ -52579,7 +52579,7 @@ MonoBehaviour:
     Path: snapshot:/Sad
   Event: 
   EventPlayTrigger: 3
-  EventStopTrigger: 4
+  EventStopTrigger: 2
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -52610,7 +52610,7 @@ MonoBehaviour:
     Path: event:/SFX/Tutorial Level/Rain SFX
   Event: 
   EventPlayTrigger: 3
-  EventStopTrigger: 4
+  EventStopTrigger: 2
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
