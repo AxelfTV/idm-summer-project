@@ -99,7 +99,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toSpawn: {fileID: 5773616042233897665, guid: 8be3822448f773145b974c125c8e08af, type: 3}
-  destroyRadius: 30
+  destroyRadius: 45
+  spawnSFX:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  poofVFX: {fileID: 0}
 --- !u!65 &8614380265907557789
 BoxCollider:
   m_ObjectHideFlags: 0
